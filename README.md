@@ -11,13 +11,20 @@ Have you ever wished of a web-based application where you can see ALL the trendy
 
 Your journey will end here!
 
+strebo is the project that we will work on, while we are in our third and fourth semester at the Cooperative State University in Karlsruhe. This blog will be used to publish news and other stuff about the project.
+
+Enjoy!
+
 ## possible features
 
-Following features are planned for strebo:
+The following features are thinkable options for strebo:
 
-* Showing trending and relevant content from Twitter, Facebook, Google+, Instagram, YouTube, …
+Core features:
+* Showing trending content from social media platforms like Twitter, Facebook, Google+, Instagram, YouTube, …
+* Connecting your social media accounts with strebo and show your personal relevant content from social media platforms
 * Searching for content across several social media platforms
+
+Additional features:
 * Diagrams about trends, how they grow/how they fall
 * World map that shows live posting activities
-* (more to come)
 
