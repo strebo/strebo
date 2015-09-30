@@ -11,7 +11,7 @@ Have you ever wished of a web-based application where you can see ALL the trendy
 
 Your journey will end here!
 
-strebo is the project that we will work on, while we are in our third and fourth semester at the Cooperative State University in Karlsruhe. This blog will be used to publish news and other stuff about the project.
+strebo is the project that we will work on, while we are in our third and fourth semester at the Cooperative State University in Karlsruhe.
 
 Enjoy!
 
