@@ -20,11 +20,13 @@ Enjoy!
 The following features are thinkable options for strebo:
 
 Core features:
-* Showing trending content from social media platforms like Twitter, Facebook, Google+, Instagram, YouTube, …
+* Showing trending content (text, images, videos, …) from social media platforms like Twitter, Facebook, Google+, Instagram, YouTube, …
 * Connecting your social media accounts with strebo and show your personal relevant content from social media platforms
 * Searching for content across several social media platforms
 
 Additional features:
 * Diagrams about trends, how they grow/how they fall
 * World map that shows live posting activities
+* Showing trends in single countries/regions or trends depending on other factors
+* ...
 
