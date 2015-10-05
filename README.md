@@ -28,5 +28,9 @@ Additional features:
 * Diagrams about trends, how they grow/how they fall
 * World map that shows live posting activities
 * Showing trends in single countries/regions or trends depending on other factors
+* Mobile solution
 * ...
 
+## technology
+
+For this project we will use PHP on serverside. Furthermore, we assume that we can use APIs of these social media networks to obtain the information needed for the different strebo features.
