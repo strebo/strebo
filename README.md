@@ -1,5 +1,7 @@
 # strebo – social trend board ❤
 
+![strebo - social trend board](/resources/logo-large-with-subtitle.png "strebo - social trend board")
+
 ## team
 We are Aram Parsegyan, Fabian Retkowski and David Schreck and we are students of Applied Computer Science at the Cooperative State University in Karlsruhe.
 
