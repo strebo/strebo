@@ -4,6 +4,6 @@ php:
   - 5.4
   - 5.5
 
-before_script:/home/travis/.phpenv/versions/5.4/bin/composer self-update
+before_script: /home/travis/.phpenv/versions/5.4/bin/composer self-update
 
 script: build.sh
