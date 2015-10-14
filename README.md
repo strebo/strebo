@@ -1,5 +1,6 @@
+[![Build Status](https://travis-ci.org/strebo/strebo.svg?branch=master)](https://travis-ci.org/strebo/strebo)
+
 # strebo – social trend board ❤
-[![Build Status](https://travis-ci.org/ScientiaEtVeritas/strebo.svg?branch=master)](https://travis-ci.org/ScientiaEtVeritas/strebo)
 ![strebo - social trend board](/resources/logo-large-with-subtitle.png "strebo - social trend board")
 
 ## team
