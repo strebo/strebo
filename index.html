@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var conn = new WebSocket('ws://localhost:8080/echo');
+        conn.onmessage = function(e) { console.log("GOT: " + e.data); };
+        //conn.send('Hello Me!');
+    </script>
+</head>
+<body>
+    Hallo Welt!
+</body>
+</html>
