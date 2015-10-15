@@ -10,3 +10,7 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script: phpunit Test.php
+
+deploy:
+  provider: heroku
+  api_key: "YOUR API KEY"
