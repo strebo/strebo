@@ -1,12 +1,27 @@
 <?php
-use Ratchet\MessageComponentInterface;
-use Ratchet\ConnectionInterface;
+use Strebo\StreboServer;
 
-    // Make sure composer dependencies have been installed
+    $host = 'localhost';
+    $port = '8080';
+
+    // Get composer dependencies
     require __DIR__ . '/vendor/autoload.php';
+    require 'autoload.php';
+    autoload('Strebo\StreboServer');
 
-    // Run the server application through the WebSocket protocol on port 8080
-    $app = new Ratchet\App('localhost', 8080);
-    $app->route('/echo', new Ratchet\Server\EchoServer, array('*'));
+    echo "\n".'  Welcome at strebo.
+              _            _
+             | |          | |
+          ___| |_ _ __ ___| |__   ___
+         / __| __| \'__/ _ \ \'_ \ / _ \
+         \__ \ |_| | |  __/ |_) | (_) |
+         |___/\__|_|  \___|_.__/ \___/'."\n";
+
+    // Run the server application
+    $app = new Ratchet\App($host, $port);
+    $app->route('/strebo', new StreboServer(), array('*'));
+
+    echo "\n".'   Server configured as ' . $host . ':' . $port . "\n\n";
+
     $app->run();
 ?>

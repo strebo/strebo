@@ -4,3 +4,4 @@
 .env
 vendor/
 composer.phar
+.idea
