@@ -14,7 +14,7 @@ body {
     margin:0;
 }
  
-p.MsoNormal, li.MsoNormal, div.MsoNormal
+p.MsoNormal, li.MsoNormal, div.MsoNormal, ul, strong
 	{
 	margin:0in;
 	margin-bottom:.0001pt;
@@ -508,6 +508,27 @@ Feature&gt;</p> -->
   </td>
  </tr>
  <tr>
+     <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt">
+         <p class="Tabletext">18.10.2015</p>
+     </td>
+     <td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
+  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+  padding:0in 5.4pt 0in 5.4pt">
+         <p class="Tabletext">1.1</p>
+     </td>
+     <td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
+  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+  padding:0in 5.4pt 0in 5.4pt">
+         <p class="Tabletext">some improvements</p>
+     </td>
+     <td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
+  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+  padding:0in 5.4pt 0in 5.4pt">
+         <p class="Tabletext">Retkowski, Fabian</p>
+     </td>
+ </tr>
+ <tr>
   <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
   border-top:none;padding:0in 5.4pt 0in 5.4pt">
   <p class="Tabletext">&nbsp;</p>
@@ -649,7 +670,26 @@ Introduction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 <p class="Body Text">Strebo is a web-based application that combines the trends of various social media networks on
     one single page. Furthermode the user will be able to connect it's own social media accounts to get access to a
-    personal dashboard, to view it's personally relevant content.</p>
+    personal dashboard, to view it's personally relevant content.<br/><br/>
+
+    The possible features in detail:<br/>
+</p><br/>
+    <strong>Core features</strong>
+    <ul>
+        <li>Showing trending content (text, images, videos, …) from social media platforms like Twitter, Facebook, Google+, Instagram, YouTube, …</li>
+        <li>Connecting your social media accounts with strebo and show your personal relevant content from social media platforms</li>
+        <li>Searching for content across several social media platforms</li>
+    </ul>
+
+    <strong>Additional features</strong>
+
+    <ul>
+        <li>Diagrams about trends, how they grow/how they fall</li>
+        <li>World map that shows live posting activities</li>
+        <li>Showing trends in single countries/regions or trends depending on other factors</li>
+        <li>Mobile solution</li>
+        <li>…</li>
+    </ul>
 
 <h2><a name="1.3               Definitions, Acronyms and Abbreviations" id="Definitions, Acronyms and Abbreviations">1.3<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Definitions, Acronyms and Abbreviations</a></h2>
@@ -679,7 +719,9 @@ Introduction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <h1><a name="3.                  Specific Requirements" id="Specific Requirements">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Specific Requirements</a> </h1>
 
-<p class="Body Text">Strebo requires a modern web browser for full functionallity.</p>
+<p class="Body Text">Strebo requires a modern web browser for full functionality. In addition there are strong
+    dependencies to several APIs. To get information from social media platforms we use APIs like the Twitter API or
+    Facebook API. The support of APIs and their functions are very different, so the integration of these APIs will be also very different and maybe it is also necessary to scrape data from websites.</p>
 
 <h2><a name="3.1               Functionality" id="Functionality">3.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Functionality</a></h2>
