@@ -2,18 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <script>
-        var conn = new WebSocket('ws://localhost:8080/strebo');
+    <title>strebo | social trend board</title>
 
-        conn.onmessage = function(e) {
-            console.log(e.data);
-        };
+    <!-- Favicion -->
+    <link rel="icon" href="resources/logo-small.ico" type="image/x-icon" />
 
-        conn.onopen = function () {
-            conn.send('Ping'); // Send the message 'Ping' to the server
-        };
-    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Angular.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+    <!--------------------------------->
+    <script src="js/socket.js"></script>
 </head>
 <body>
     Hallo Welt!
