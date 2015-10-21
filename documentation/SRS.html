@@ -1,817 +1,766 @@
-
 <!-- saved from url=(0083)http://sce.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/req/rup_srsuc.htm -->
-<html xmlns="http://www.w3.org/1999/html"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<meta name="Generator" content="Microsoft FrontPage 4.0">
-
-<meta name="Originator" content="Microsoft Word 9">
-<title>Software Requirements Specification</title>
-<style>
-<!--
-
-body {
-    width:75%;
-    padding:35px 12.5%;
-    margin:0;
-}
- 
-p.MsoNormal, li.MsoNormal, div.MsoNormal, ul, strong
-	{
-	margin:0in;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-h1
-	{
-	margin-top:6.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:.5in;
-	text-indent:-.5in;
-	line-height:12.0pt;
-	page-break-after:avoid;
-	font-size:12.0pt;
-	font-family:Arial;}
-h2
-	{
-	margin-top:6.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:.5in;
-	text-indent:-.5in;
-	line-height:12.0pt;
-	page-break-after:avoid;
-	font-size:10.0pt;
-	font-family:Arial;}
-h3
-	{
-	margin-top:6.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:.5in;
-	text-indent:-.5in;
-	line-height:12.0pt;
-	page-break-after:avoid;
-	font-size:10.0pt;
-	font-family:Arial;
-	font-weight:normal;
-	font-style:italic;}
-h4
-	{
-	margin-top:6.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:.5in;
-	text-indent:-.5in;
-	line-height:12.0pt;
-	page-break-after:avoid;
-	font-size:10.0pt;
-	font-family:Arial;
-	font-weight:normal;}
-h5
-	{
-	margin-top:12.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:2.0in;
-	text-indent:0in;
-	line-height:12.0pt;
-	font-size:11.0pt;
-	font-family:"Times New Roman";
-	font-weight:normal;}
-h6
-	{
-	margin-top:12.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:2.0in;
-	text-indent:0in;
-	line-height:12.0pt;
-	font-size:11.0pt;
-	font-family:"Times New Roman";
-	font-weight:normal;
-	font-style:italic;}
-p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
-	{
-	margin-top:12.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:2.0in;
-	text-indent:0in;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
-	{
-	margin-top:12.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:2.0in;
-	text-indent:0in;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	font-style:italic;}
-p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
-	{
-	margin-top:12.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:2.0in;
-	text-indent:0in;
-	line-height:12.0pt;
-	font-size:9.0pt;
-	font-family:"Times New Roman";
-	font-weight:bold;
-	font-style:italic;}
-p.MsoToc1, li.MsoToc1, div.MsoToc1
-	{
-	margin-top:12.0pt;
-	margin-right:.5in;
-	margin-bottom:3.0pt;
-	margin-left:0in;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoToc2, li.MsoToc2, div.MsoToc2
-	{
-	margin-top:0in;
-	margin-right:.5in;
-	margin-bottom:0in;
-	margin-left:.3in;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoToc3, li.MsoToc3, div.MsoToc3
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:.6in;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoToc4, li.MsoToc4, div.MsoToc4
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:30.0pt;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoToc5, li.MsoToc5, div.MsoToc5
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:40.0pt;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoToc6, li.MsoToc6, div.MsoToc6
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:50.0pt;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoToc7, li.MsoToc7, div.MsoToc7
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:60.0pt;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoToc8, li.MsoToc8, div.MsoToc8
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:70.0pt;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoToc9, li.MsoToc9, div.MsoToc9
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:80.0pt;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
-	{margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:45.0pt;
-	margin-bottom:.0001pt;
-	text-indent:-45.0pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
-	{margin-top:2.0pt;
-	margin-right:0in;
-	margin-bottom:2.0pt;
-	margin-left:.25in;
-	text-indent:-.25in;
-	line-height:12.0pt;
-	page-break-after:avoid;
-	border:none;
-	padding:0in;
-	font-size:8.0pt;
-	font-family:HELVETICA;}
-p.MsoHeader, li.MsoHeader, div.MsoHeader
-	{margin:0in;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoFooter, li.MsoFooter, div.MsoFooter
-	{margin:0in;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-span.MsoFootnoteReference
-	{
-	vertical-align:super;}
-p.MsoTitle, li.MsoTitle, div.MsoTitle
-	{
-	margin:0in;
-	margin-bottom:.0001pt;
-	text-align:center;
-	font-size:18.0pt;
-	font-family:Arial;
-	font-weight:bold;}
-p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
-	{margin-top:0in;
-	margin-right:0in;
-	margin-bottom:6.0pt;
-	margin-left:.5in;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
-	{margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:.5in;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	color:blue;
-	font-style:italic;
-	text-decoration:underline;}
-p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
-	{margin-top:0in;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:0in;
-	text-align:center;
-	font-size:18.0pt;
-	font-family:Arial;
-	font-style:italic;}
-p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
-	{margin:0in;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	color:blue;
-	font-style:italic;}
-a:link, span.MsoHyperlink
-	{color:blue;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{color:purple;
-	text-decoration:underline;}
-p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
-	{margin:0in;
-	margin-bottom:.0001pt;
-	line-height:12.0pt;
-	background:navy;
-	font-size:10.0pt;
-	font-family:Tahoma;}
-p.Paragraph2, li.Paragraph2, div.Paragraph2
-	{
-	margin-top:4.0pt;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:.5in;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	color:black;}
-p.Bullet1, li.Bullet1, div.Bullet1
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:.5in;
-	margin-bottom:.0001pt;
-	text-indent:-.3in;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.Bullet2, li.Bullet2, div.Bullet2
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:1.0in;
-	margin-bottom:.0001pt;
-	text-indent:-.25in;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	color:navy;}
-p.Tabletext, li.Tabletext, div.Tabletext
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:6.0pt;
-	margin-left:0in;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.MainTitle, li.MainTitle, div.MainTitle
-	{
-	margin-top:24.0pt;
-	margin-right:0in;
-	margin-bottom:3.0pt;
-	margin-left:0in;
-	text-align:center;
-	font-size:16.0pt;
-	font-family:Arial;
-	font-weight:bold;}
-p.Paragraph1, li.Paragraph1, div.Paragraph1
-	{
-	margin-top:4.0pt;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:0in;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.Paragraph3, li.Paragraph3, div.Paragraph3
-	{
-	margin-top:4.0pt;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:76.5pt;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.Paragraph4, li.Paragraph4, div.Paragraph4
-	{
-	margin-top:4.0pt;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:112.5pt;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	font-size:10.0pt;
-	font-family:"Times New Roman";}
-p.Body, li.Body, div.Body
-	{
-	margin-top:6.0pt;
-	margin-right:0in;
-	margin-bottom:0in;
-	margin-left:0in;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	font-size:10.0pt;
-	font-family:"Book Antiqua";}
-p.Bullet, li.Bullet, div.Bullet
-	{
-	margin-top:6.0pt;
-	margin-right:.25in;
-	margin-bottom:0in;
-	margin-left:.5in;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	text-indent:0in;
-	font-size:10.0pt;
-	font-family:"Book Antiqua";}
-p.InfoBlue, li.InfoBlue, div.InfoBlue
-	{
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:6.0pt;
-	margin-left:38.25pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	color:blue;
-	font-style:italic;}
-ol
-	{margin-bottom:0in;}
-ul
-	{margin-bottom:0in;}
--->
-</style>
-</head>
-
-<body lang="EN-US" link="blue" vlink="purple">
-<!---
-<rpw name="PresentationName"> SRS w/ Use-Cases</rpw>
---->
-<div class="Section1">
-
-<p class="MsoTitle" align="right" style="text-align:right"><img width="40%" src="../resources/logo-large-with-subtitle.png" /></p>
-<br />
-<p class="MsoTitle" align="right" style="text-align:right">Software Requirements Specification</p>
-
-<!-- <p class="MsoTitle" align="right" style="text-align:right">For &lt;Subsystem or
-Feature&gt;</p> -->
-
-<p class="MsoNormal">&nbsp;</p>
-
-<p class="MsoNormal">&nbsp;</p>
-
-<p class="MsoTitle" align="right" style="text-align:right"><span style="font-size:
-14.0pt;">Version 1.0</span></p>
-
-<p class="MsoTitle"><span style="font-size:14.0pt;">&nbsp;</span></p>
-
-<p class="MsoNormal" align="right" style="text-align:right">&nbsp;</p>
-
-</div>
-
-<i><span style="font-size:10.0pt;font-family:
-&quot;Times New Roman&quot;;color:blue;"><br clear="all" style="page-break-before:always;">
-</span></i>
-
-<div class="Section2">
-
-<p class="MsoTitle">Revision History</p>
-
-<table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;
- border:none;">
- <tbody><tr>
-  <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext" align="center" style="text-align:center"><b>Date</b></p>
-  </td>
-  <td width="77" valign="top" style="width:.8in;border:solid windowtext .75pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext" align="center" style="text-align:center"><b>Version</b></p>
-  </td>
-  <td width="250" valign="top" style="width:2.6in;border:solid windowtext .75pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext" align="center" style="text-align:center"><b>Description</b></p>
-  </td>
-  <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext" align="center" style="text-align:center"><b>Author</b></p>
-  </td>
- </tr>
- <tr>
-  <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">17.10.2015</p>
-  </td>
-  <td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">1.0</p>
-  </td>
-  <td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">basic information, general structure of the document</p>
-  </td>
-  <td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">Schreck, David</p>
-  </td>
- </tr>
- <tr>
-     <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt">
-         <p class="Tabletext">18.10.2015</p>
-     </td>
-     <td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-         <p class="Tabletext">1.1</p>
-     </td>
-     <td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-         <p class="Tabletext">some improvements</p>
-     </td>
-     <td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-         <p class="Tabletext">Retkowski, Fabian</p>
-     </td>
- </tr>
- <tr>
-  <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
- </tr>
- <tr>
-  <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
- </tr>
- <tr>
-  <td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
-  <td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
-  border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
-  padding:0in 5.4pt 0in 5.4pt">
-  <p class="Tabletext">&nbsp;</p>
-  </td>
- </tr>
-</tbody></table>
-
-<p class="MsoNormal">&nbsp;</p>
-
-<b><span style="font-size:18.0pt;font-family:Arial;"><br clear="all" style="page-break-before:always">
-</span></b>
-
-<p class="MsoTitle">Table of Contents</p>
-
-<p class="MsoToc1"><a href="#Introduction">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Introduction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-<p class="MsoToc2"><a href="#Purpose" >1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Purpose</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-<p class="MsoToc2"><a href="#Scope">1.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scope</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-<p class="MsoToc2"><a href="#Definitions, Acronyms and Abbreviations">1.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Definitions, Acronyms and Abbreviations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-<p class="MsoToc2"><a href="#References">1.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; References</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-<p class="MsoToc2"><a href="#Overview">1.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Overview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-<p class="MsoToc1"><a href="#Overall Description">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Overall Description</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-<p class="MsoToc1"><a href="#Specific Requirements">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Specific Requirements</a></p>
-
-<p class="MsoToc2"><a href="#Functionality">3.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Functionality</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Usability">3.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Usability</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Reliability">3.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reliability</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Performance">3.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Performance</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Supportability">3.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supportability</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Design Constrains">3.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design Constrains</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#On-line User Documentation and Help System Requirements">3.7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On-line User Documentation and Help System Requirements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Purchase Components">3.8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Purchase Components</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Interfaces">3.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#User Interfaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Hardware Interfaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hardware Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Software Interfaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Software Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Communications Interfaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Communications Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Licensing Requirements">3.10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Licensing Requirements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Legal, Copyright, and other Notes">3.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Legal, Copyright, and other Notes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc2"><a href="#Applicable Standards">3.12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Applicable Standards</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-
-<p class="MsoToc1"><a href="#Supporting Information">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supporting Information</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-<p class="MsoTitle"><br clear="all" style="page-break-before:always">Software Requirements Specification </p>
-
-<h1><a name="1.                  Introduction" id="Introduction">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Introduction</a></h1>
-
-<p class="Body Text"></p>
-
-
-<h2><a name="1.1               Purpose" id="Purpose">1.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Purpose</a></h2>
-
-<p class="Body Text">This SRS describes the specifications for the social trend board – strebo. The document will
-    provide an overview over the „Use Case Diagram“ and explains the used technologies.</p>
-
-<h2><a name="1.2               Scope" id="Scope">1.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Scope</a></h2>
-
-<p class="Body Text">Strebo is a web-based application that combines the trends of various social media networks on
-    one single page. Furthermode the user will be able to connect it's own social media accounts to get access to a
-    personal dashboard, to view it's personally relevant content.<br/><br/>
-
-    The possible features in detail:<br/>
-</p><br/>
-    <strong>Core features</strong>
-    <ul>
-        <li>Showing trending content (text, images, videos, …) from social media platforms like Twitter, Facebook, Google+, Instagram, YouTube, …</li>
-        <li>Connecting your social media accounts with strebo and show your personal relevant content from social media platforms</li>
-        <li>Searching for content across several social media platforms</li>
-    </ul>
-
-    <strong>Additional features</strong>
-
-    <ul>
-        <li>Diagrams about trends, how they grow/how they fall</li>
-        <li>World map that shows live posting activities</li>
-        <li>Showing trends in single countries/regions or trends depending on other factors</li>
-        <li>Mobile solution</li>
-        <li>…</li>
-    </ul>
-
-<h2><a name="1.3               Definitions, Acronyms and Abbreviations" id="Definitions, Acronyms and Abbreviations">1.3<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Definitions, Acronyms and Abbreviations</a></h2>
-
-<p class="Body Text">strebo – <strong>s</strong>ocial <strong>tre</strong>nd <strong>bo</strong>ard</p>
-
-<h2><a name="1.4               References" id="References">1.4<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>References</a></h2>
-
-<p class="Body Text"> <a href="https://strebo.wordpress.com/"> Wordpress </p>
-<p class="Body Text"> <a href="https://github.com/strebo/strebo"> GitHub </p>
-    <p class="Body Text"> <a href="http://strebo.herokuapp.com/"> Heroku-Web-App </p>
-
-<h2><a name="1.5               Overview" id="Overview">1.5<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Overview</a></h2>
-
-<p class="Body Text">First, this document will provide an overall description. Afther that the requirements will be specified and at the end there will be supporting information.</p>
-
-<h1><a name="2.                  Overall Description" id="Overall Description">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Overall Description</a></h1>
-
-<p class="Body Text">The following picture provides an overwiev of the different Use-Cases that display the possible functions of strebo.</p>
-
-<!-- Overall-Use-Case-Diagram -->
-<div class="mxgraph" style="position:relative;overflow:auto;width:100%;background-color:#ffffff;"><div style="width:1px;height:1px;overflow:hidden;">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</div></div>
-
-<h1><a name="3.                  Specific Requirements" id="Specific Requirements">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Specific Requirements</a> </h1>
-
-<p class="Body Text">Strebo requires a modern web browser for full functionality. In addition there are strong
-    dependencies to several APIs. To get information from social media platforms we use APIs like the Twitter API or
-    Facebook API. The support of APIs and their functions are very different, so the integration of these APIs will be also very different and maybe it is also necessary to scrape data from websites.</p>
-
-<h2><a name="3.1               Functionality" id="Functionality">3.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Functionality</a></h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.2               Usability" id="Usability">3.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Usability</a></h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.3               Reliability" id="Reliability">3.3<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Reliability</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.4               Performance" id="Performance">3.4<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Performance</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.5               Supportability" id="Supportability">3.5<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Supportability</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.6               Design Constrains" id="Design Constrains">3.6<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Design Constrains</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.7               On-line User Documentation and Help System Requirements" id="On-line User Documentation and Help System Requirements">3.7<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>On-line User Documentation and Help System Requirements</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.8               Purchase Components" id="Purchase Components">3.8<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Purchase Components</a> </h2>
-
-<p class="Body Text">not applicable</p>
-
-<h2><a name="3.9               Interfaces" id="Interfaces">3.9<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Interfaces</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h3><a name="3.9.1               User Interfaces" id="User Interfaces">3.9.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>User Interfaces</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h3><a name="3.9.2               Hardware Interfaces" id="Hardware Interfaces">3.9.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Hardware Interfaces</a> </h2>
-
-<p class="Body Text">not applicable</p>
-
-<h3><a name="3.9.3               Software Interfaces" id="Software Interfaces">3.9.3<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Software Interfaces</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h3><a name="3.9.4               Communications Interfaces" id="Communications Interfaces">3.9.4<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Communications Interfaces</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.10               Licensing Requirements" id="Licensing Requirements">3.10<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Licensing Requirements</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.11               Legal, Copyright, and Other Notes" id="Legal, Copyright, and other Notes">3.11<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Legal, Copyright, and Other Notes</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h2><a name="3.12               Applicable Standards" id="Applicable Standards">3.12<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Applicable Standards</a> </h2>
-
-<p class="Body Text">to be determined</p>
-
-<h1><a name="4.                  Supporting Information" id="Supporting Information">4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>Supporting Information</a></h1>
-
-<p class="Body Text">to be determined</p>
-
-
-</div>
-
-
-<script type="text/javascript" src="https://www.draw.io/js/embed-static.min.js"></script>
-
-</body></html>
+<html xmlns="http://www.w3.org/1999/html">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<meta name="Generator" content="Microsoft FrontPage 4.0">
+		<meta name="Originator" content="Microsoft Word 9">
+		<title>Software Requirements Specification</title>
+		<style>
+			<!--
+				body {
+				    width:75%;
+				    padding:35px 12.5%;
+				    margin:0;
+				}
+				
+				p.MsoNormal, li.MsoNormal, div.MsoNormal, ul, strong
+					{
+					margin:0in;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				h1
+					{
+					margin-top:6.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:.5in;
+					text-indent:-.5in;
+					line-height:12.0pt;
+					page-break-after:avoid;
+					font-size:12.0pt;
+					font-family:Arial;}
+				h2
+					{
+					margin-top:6.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:.5in;
+					text-indent:-.5in;
+					line-height:12.0pt;
+					page-break-after:avoid;
+					font-size:10.0pt;
+					font-family:Arial;}
+				h3
+					{
+					margin-top:6.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:.5in;
+					text-indent:-.5in;
+					line-height:12.0pt;
+					page-break-after:avoid;
+					font-size:10.0pt;
+					font-family:Arial;
+					font-weight:normal;
+					font-style:italic;}
+				h4
+					{
+					margin-top:6.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:.5in;
+					text-indent:-.5in;
+					line-height:12.0pt;
+					page-break-after:avoid;
+					font-size:10.0pt;
+					font-family:Arial;
+					font-weight:normal;}
+				h5
+					{
+					margin-top:12.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:2.0in;
+					text-indent:0in;
+					line-height:12.0pt;
+					font-size:11.0pt;
+					font-family:"Times New Roman";
+					font-weight:normal;}
+				h6
+					{
+					margin-top:12.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:2.0in;
+					text-indent:0in;
+					line-height:12.0pt;
+					font-size:11.0pt;
+					font-family:"Times New Roman";
+					font-weight:normal;
+					font-style:italic;}
+				p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+					{
+					margin-top:12.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:2.0in;
+					text-indent:0in;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+					{
+					margin-top:12.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:2.0in;
+					text-indent:0in;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";
+					font-style:italic;}
+				p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+					{
+					margin-top:12.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:2.0in;
+					text-indent:0in;
+					line-height:12.0pt;
+					font-size:9.0pt;
+					font-family:"Times New Roman";
+					font-weight:bold;
+					font-style:italic;}
+				p.MsoToc1, li.MsoToc1, div.MsoToc1
+					{
+					margin-top:12.0pt;
+					margin-right:.5in;
+					margin-bottom:3.0pt;
+					margin-left:0in;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoToc2, li.MsoToc2, div.MsoToc2
+					{
+					margin-top:0in;
+					margin-right:.5in;
+					margin-bottom:0in;
+					margin-left:.3in;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoToc3, li.MsoToc3, div.MsoToc3
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:.6in;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoToc4, li.MsoToc4, div.MsoToc4
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:30.0pt;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoToc5, li.MsoToc5, div.MsoToc5
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:40.0pt;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoToc6, li.MsoToc6, div.MsoToc6
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:50.0pt;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoToc7, li.MsoToc7, div.MsoToc7
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:60.0pt;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoToc8, li.MsoToc8, div.MsoToc8
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:70.0pt;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoToc9, li.MsoToc9, div.MsoToc9
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:80.0pt;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+					{margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:45.0pt;
+					margin-bottom:.0001pt;
+					text-indent:-45.0pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+					{margin-top:2.0pt;
+					margin-right:0in;
+					margin-bottom:2.0pt;
+					margin-left:.25in;
+					text-indent:-.25in;
+					line-height:12.0pt;
+					page-break-after:avoid;
+					border:none;
+					padding:0in;
+					font-size:8.0pt;
+					font-family:HELVETICA;}
+				p.MsoHeader, li.MsoHeader, div.MsoHeader
+					{margin:0in;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoFooter, li.MsoFooter, div.MsoFooter
+					{margin:0in;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				span.MsoFootnoteReference
+					{
+					vertical-align:super;}
+				p.MsoTitle, li.MsoTitle, div.MsoTitle
+					{
+					margin:0in;
+					margin-bottom:.0001pt;
+					text-align:center;
+					font-size:18.0pt;
+					font-family:Arial;
+					font-weight:bold;}
+				p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+					{margin-top:0in;
+					margin-right:0in;
+					margin-bottom:6.0pt;
+					margin-left:.5in;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+					{margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:.5in;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";
+					color:blue;
+					font-style:italic;
+					text-decoration:underline;}
+				p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+					{margin-top:0in;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:0in;
+					text-align:center;
+					font-size:18.0pt;
+					font-family:Arial;
+					font-style:italic;}
+				p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+					{margin:0in;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";
+					color:blue;
+					font-style:italic;}
+				a:link, span.MsoHyperlink
+					{color:blue;
+					text-decoration:underline;}
+				a:visited, span.MsoHyperlinkFollowed
+					{color:purple;
+					text-decoration:underline;}
+				p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+					{margin:0in;
+					margin-bottom:.0001pt;
+					line-height:12.0pt;
+					background:navy;
+					font-size:10.0pt;
+					font-family:Tahoma;}
+				p.Paragraph2, li.Paragraph2, div.Paragraph2
+					{
+					margin-top:4.0pt;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:.5in;
+					margin-bottom:.0001pt;
+					text-align:justify;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";
+					color:black;}
+				p.Bullet1, li.Bullet1, div.Bullet1
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:.5in;
+					margin-bottom:.0001pt;
+					text-indent:-.3in;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.Bullet2, li.Bullet2, div.Bullet2
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:1.0in;
+					margin-bottom:.0001pt;
+					text-indent:-.25in;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";
+					color:navy;}
+				p.Tabletext, li.Tabletext, div.Tabletext
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:6.0pt;
+					margin-left:0in;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.MainTitle, li.MainTitle, div.MainTitle
+					{
+					margin-top:24.0pt;
+					margin-right:0in;
+					margin-bottom:3.0pt;
+					margin-left:0in;
+					text-align:center;
+					font-size:16.0pt;
+					font-family:Arial;
+					font-weight:bold;}
+				p.Paragraph1, li.Paragraph1, div.Paragraph1
+					{
+					margin-top:4.0pt;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:0in;
+					margin-bottom:.0001pt;
+					text-align:justify;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.Paragraph3, li.Paragraph3, div.Paragraph3
+					{
+					margin-top:4.0pt;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:76.5pt;
+					margin-bottom:.0001pt;
+					text-align:justify;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.Paragraph4, li.Paragraph4, div.Paragraph4
+					{
+					margin-top:4.0pt;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:112.5pt;
+					margin-bottom:.0001pt;
+					text-align:justify;
+					font-size:10.0pt;
+					font-family:"Times New Roman";}
+				p.Body, li.Body, div.Body
+					{
+					margin-top:6.0pt;
+					margin-right:0in;
+					margin-bottom:0in;
+					margin-left:0in;
+					margin-bottom:.0001pt;
+					text-align:justify;
+					font-size:10.0pt;
+					font-family:"Book Antiqua";}
+				p.Bullet, li.Bullet, div.Bullet
+					{
+					margin-top:6.0pt;
+					margin-right:.25in;
+					margin-bottom:0in;
+					margin-left:.5in;
+					margin-bottom:.0001pt;
+					text-align:justify;
+					text-indent:0in;
+					font-size:10.0pt;
+					font-family:"Book Antiqua";}
+				p.InfoBlue, li.InfoBlue, div.InfoBlue
+					{
+					margin-top:0in;
+					margin-right:0in;
+					margin-bottom:6.0pt;
+					margin-left:38.25pt;
+					line-height:12.0pt;
+					font-size:10.0pt;
+					font-family:"Times New Roman";
+					color:blue;
+					font-style:italic;}
+				ol
+					{margin-bottom:0in;}
+				ul
+					{margin-bottom:0in;}
+				-->
+		</style>
+	</head>
+	<body lang="EN-US" link="blue" vlink="purple">
+		<!---
+			<rpw name="PresentationName"> SRS w/ Use-Cases</rpw>
+			--->
+		<div class="Section1">
+			<p class="MsoTitle" align="right" style="text-align:right"><img width="40%" src="../resources/logo-large-with-subtitle.png" /></p>
+			<br />
+			<p class="MsoTitle" align="right" style="text-align:right">Software Requirements Specification</p>
+			<!-- <p class="MsoTitle" align="right" style="text-align:right">For &lt;Subsystem or
+				Feature&gt;</p> -->
+			<p class="MsoNormal">&nbsp;</p>
+			<p class="MsoNormal">&nbsp;</p>
+			<p class="MsoTitle" align="right" style="text-align:right"><span style="font-size:
+				14.0pt;">Version 1.2</span></p>
+			<p class="MsoTitle"><span style="font-size:14.0pt;">&nbsp;</span></p>
+			<p class="MsoNormal" align="right" style="text-align:right">&nbsp;</p>
+		</div>
+		<i><span style="font-size:10.0pt;font-family:
+			&quot;Times New Roman&quot;;color:blue;"><br clear="all" style="page-break-before:always;">
+		</span></i>
+		<div class="Section2">
+			<p class="MsoTitle">Revision History</p>
+			<table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;
+				border:none;">
+				<tbody>
+					<tr>
+						<td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext" align="center" style="text-align:center"><b>Date</b></p>
+						</td>
+						<td width="77" valign="top" style="width:.8in;border:solid windowtext .75pt;
+							border-left:none;padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext" align="center" style="text-align:center"><b>Version</b></p>
+						</td>
+						<td width="250" valign="top" style="width:2.6in;border:solid windowtext .75pt;
+							border-left:none;padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext" align="center" style="text-align:center"><b>Description</b></p>
+						</td>
+						<td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
+							border-left:none;padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext" align="center" style="text-align:center"><b>Author</b></p>
+						</td>
+					</tr>
+					<tr>
+						<td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
+							border-top:none;padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">17.10.2015</p>
+						</td>
+						<td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">1.0</p>
+						</td>
+						<td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">basic information, general structure of the document</p>
+						</td>
+						<td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">Schreck, David</p>
+						</td>
+					</tr>
+					<tr>
+						<td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
+							border-top:none;padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">18.10.2015</p>
+						</td>
+						<td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">1.1</p>
+						</td>
+						<td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">some improvements</p>
+						</td>
+						<td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">Retkowski, Fabian</p>
+						</td>
+					</tr>
+					<tr>
+						<td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
+							border-top:none;padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">20.10.2015</p>
+						</td>
+						<td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">1.2</p>
+						</td>
+						<td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">some improvements</p>
+						</td>
+						<td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">Parsegyan, Aram</p>
+						</td>
+					</tr>
+					<tr>
+						<td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
+							border-top:none;padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">&nbsp;</p>
+						</td>
+						<td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">&nbsp;</p>
+						</td>
+						<td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">&nbsp;</p>
+						</td>
+						<td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">&nbsp;</p>
+						</td>
+					</tr>
+					<tr>
+						<td width="154" valign="top" style="width:1.6in;border:solid windowtext .75pt;
+							border-top:none;padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">&nbsp;</p>
+						</td>
+						<td width="77" valign="top" style="width:.8in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">&nbsp;</p>
+						</td>
+						<td width="250" valign="top" style="width:2.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">&nbsp;</p>
+						</td>
+						<td width="154" valign="top" style="width:1.6in;border-top:none;border-left:none;
+							border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
+							padding:0in 5.4pt 0in 5.4pt">
+							<p class="Tabletext">&nbsp;</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="MsoNormal">&nbsp;</p>
+			<b><span style="font-size:18.0pt;font-family:Arial;"><br clear="all" style="page-break-before:always">
+			</span></b>
+			<p class="MsoTitle">Table of Contents</p>
+			<p class="MsoToc1"><a href="#Introduction">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Introduction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</p>
+			<p class="MsoToc2"><a href="#Purpose" >1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Purpose</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Scope">1.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scope</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Definitions, Acronyms and Abbreviations">1.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Definitions, Acronyms and Abbreviations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#References">1.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; References</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Overview">1.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Overview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc1"><a href="#Overall Description">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Overall Description</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc1"><a href="#Specific Requirements">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Specific Requirements</a></p>
+			<p class="MsoToc2"><a href="#Functionality">3.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Functionality</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Usability">3.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Usability</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Reliability">3.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reliability</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Performance">3.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Performance</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Supportability">3.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supportability</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Design Constrains">3.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design Constrains</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#On-line User Documentation and Help System Requirements">3.7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On-line User Documentation and Help System Requirements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Purchase Components">3.8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Purchase Components</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Interfaces">3.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#User Interfaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Hardware Interfaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hardware Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Software Interfaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Software Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Communications Interfaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Communications Interfaces</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Licensing Requirements">3.10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Licensing Requirements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Legal, Copyright, and other Notes">3.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Legal, Copyright, and other Notes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc2"><a href="#Applicable Standards">3.12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Applicable Standards</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoToc1"><a href="#Supporting Information">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supporting Information</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p class="MsoTitle"><br clear="all" style="page-break-before:always">Software Requirements Specification </p>
+			<h1><a name="1.                  Introduction" id="Introduction">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Introduction</a>
+			</h1>
+			<p class="Body Text"></p>
+			<h2><a name="1.1               Purpose" id="Purpose">1.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Purpose</a>
+			</h2>
+			<p class="Body Text">This SRS describes the specifications for the social trend board – strebo. The document will
+				provide an overview over the „Use Case Diagram“ and explains the used technologies.
+			</p>
+			<h2><a name="1.2               Scope" id="Scope">1.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Scope</a>
+			</h2>
+			<p class="Body Text">Strebo is a web-based application that combines the trends of various social media networks on
+				one single page. Furthermode the user will be able to connect it's own social media accounts to get access to a
+				personal dashboard, to view it's personally relevant content.<br/><br/>
+			</p>
+
+			<h2><a name="1.3               Definitions, Acronyms and Abbreviations" id="Definitions, Acronyms and Abbreviations">1.3<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Definitions, Acronyms and Abbreviations</a>
+			</h2>
+			<p class="Body Text">strebo – <strong>s</strong>ocial <strong>tre</strong>nd <strong>bo</strong>ard</p>
+
+			<h2><a name="1.4               References" id="References">1.4<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>References</a>
+			</h2>
+			<p class="Body Text">
+				<a href="https://strebo.wordpress.com/" target="_blank" > Wordpress </p>
+			<p class="Body Text"> <a href="https://github.com/strebo/strebo" target="_blank"> GitHub </p>
+			<p class="Body Text"> <a href="http://strebo.herokuapp.com/" target="_blank" > Heroku-Web-App </p>
+			<h2><a name="1.5               Overview" id="Overview">1.5<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Overview</a></h2>
+			<p class="Body Text">First, this document will provide an overall description. Afther that the requirements will be specified and at the end there will be supporting information.</p>
+			<h1><a name="2.                  Overall Description" id="Overall Description">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Overall Description</a>
+			</h1>
+			<p class="Body Text">
+				Strebo is a web based application for showing trends of all the supported social networks and aims to reduce the complexity of staying up to date on ones social networks.</br>
+				To achieve this goal, strebo provides a clear and uniform way to get all the important news of the single networks and give the user the abilities to interact with all of them at once.
+				For example the user is able to search in all of the supported networks for posts spezified by entered keywords.<br/>
+				<br/>
+				One of the two main functions of strebo is the trend board. The trend board gives the user an overview of what actually is going on in the single networks.
+				The other main function of strebo is the personal dash board. After an successfull login procedure to the social networks of the user, all the newsfeeds of the users networks get embedded in his personal dashboard.<br/>
+				The following picture provides an overwiev of the different Use-Cases that display the possible functions of strebo.
+			</p>
+			<!-- Overall-Use-Case-Diagram -->
+			<div class="mxgraph" style="position:relative;overflow:auto;width:100%;background-color:#ffffff;">
+				<div style="width:1px;height:1px;overflow:hidden;">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</div>
+			</div>
+			<h1><a name="3.                  Specific Requirements" id="Specific Requirements">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Specific Requirements</a> 
+			</h1>
+			<p class="Body Text">Strebo requires a modern web browser for full functionality. In addition there are strong
+				dependencies to several APIs. To get information from social media platforms we use APIs like the Twitter API or
+				Facebook API. The support of APIs and their functions are very different, so the integration of these APIs will be also very different and maybe it is also necessary to scrape data from websites.
+			</p>
+			<h2><a name="3.1               Functionality" id="Functionality">3.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Functionality</a>
+			</h2>
+			<p class="Body Text"><b>3.1.1 trend board</b><br/>
+			<ul>
+				<li>show trends depending on specified factors (link to activiti documentation)</li>
+				<li>show trends depending on areas/countires (link to activiti documentation)</li>
+				<li>show trends of supported networks (link to activiti documentation)</li>
+				<li>show statistics about Trends etc. (link to activiti documentation)</li>
+				<li>show worldmap with live posting activities (link to activiti documentation)</li>
+			</ul>
+			<br/>
+			<b>3.1.2 personal dashboard</b><br/>
+			<ul>
+				<li>show newsfeed of your networks (link to activiti documentation)</li>
+			</ul>
+			<br/>
+			<b>3.1.3 Search for topics and hashtags</b><br/>
+			<b>3.1.4 Connect to supported social network accounts</b><br/>
+			<b>3.1.5 Connect to the supported social networks</b><br/>
+			<ul>
+				<li>Connect to Youtube</li>
+				<li>Connect to Twitter</li>
+				<li>Connect to Instagramm</li>
+				<li>Connect to Tumblr</li>
+				<li>Connect to Facebook</li>
+			</ul>
+			</p>
+			<h2><a name="3.2               Usability" id="Usability">3.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Usability</a>
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.3               Reliability" id="Reliability">3.3<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Reliability</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.4               Performance" id="Performance">3.4<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Performance</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.5               Supportability" id="Supportability">3.5<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Supportability</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.6               Design Constrains" id="Design Constrains">3.6<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Design Constrains</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.7               On-line User Documentation and Help System Requirements" id="On-line User Documentation and Help System Requirements">3.7<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>On-line User Documentation and Help System Requirements</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.8               Purchase Components" id="Purchase Components">3.8<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Purchase Components</a> 
+			</h2>
+			<p class="Body Text">not applicable</p>
+			<h2><a name="3.9               Interfaces" id="Interfaces">3.9<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Interfaces</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h3>
+			<a name="3.9.1               User Interfaces" id="User Interfaces">3.9.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>User Interfaces</a> </h3>
+			<p class="Body Text"></p>
+			<h3>
+			<a name="3.9.2               Hardware Interfaces" id="Hardware Interfaces">3.9.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Hardware Interfaces</a> </h3>
+			<p class="Body Text">not applicable</p>
+			<h3>
+			<a name="3.9.3               Software Interfaces" id="Software Interfaces">3.9.3<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Software Interfaces</a> </h3>
+			<p class="Body Text">strebo is going to interact with the different APIs that are provided by the different Social Media Platforms.</p>
+			<h3>
+			<a name="3.9.4               Communications Interfaces" id="Communications Interfaces">3.9.4<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Communications Interfaces</a> </h3>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.10               Licensing Requirements" id="Licensing Requirements">3.10<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Licensing Requirements</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.11               Legal, Copyright, and Other Notes" id="Legal, Copyright, and other Notes">3.11<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Legal, Copyright, and Other Notes</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h2><a name="3.12               Applicable Standards" id="Applicable Standards">3.12<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Applicable Standards</a> 
+			</h2>
+			<p class="Body Text">to be determined</p>
+			<h1><a name="4.                  Supporting Information" id="Supporting Information">4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>Supporting Information</a>
+			</h1>
+			<p class="Body Text">to be determined</p>
+		</div>
+		<script type="text/javascript" src="https://www.draw.io/js/embed-static.min.js"></script>
+	</body>
+</html>
