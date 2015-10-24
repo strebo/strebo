@@ -1,0 +1,1630 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 14">
+<meta name=Originator content="Microsoft Word 14">
+<link rel=File-List href="Use-Dateien/filelist.xml">
+<title>Use-Case Specification: show trends of supported networks</title>
+
+<link rel=themeData href="Use-Dateien/themedata.thmx">
+<link rel=colorSchemeMapping href="Use-Dateien/colorschememapping.xml">
+
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Helvetica;
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536859905 -1073711037 9 0 511 0;}
+@font-face
+	{font-family:Helvetica;
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536859905 -1073711037 9 0 511 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:"Book Antiqua";
+	panose-1:2 4 6 2 5 3 5 3 3 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Standard;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:36.0pt;
+	text-indent:-36.0pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	mso-list:l0 level1 lfo1;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"Überschrift 1";
+	mso-style-next:Standard;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:36.0pt;
+	text-indent:-36.0pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-list:l0 level2 lfo1;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h3
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"Überschrift 1";
+	mso-style-next:Standard;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:36.0pt;
+	text-indent:-36.0pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	mso-list:l0 level3 lfo1;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+h4
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"Überschrift 1";
+	mso-style-next:Standard;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:36.0pt;
+	text-indent:-36.0pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	mso-list:l0 level4 lfo1;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:normal;}
+h5
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Standard;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:144.0pt;
+	text-indent:0cm;
+	line-height:12.0pt;
+	mso-pagination:none;
+	mso-outline-level:5;
+	mso-list:l0 level5 lfo1;
+	font-size:11.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:normal;}
+h6
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Standard;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:144.0pt;
+	text-indent:0cm;
+	line-height:12.0pt;
+	mso-pagination:none;
+	mso-outline-level:6;
+	mso-list:l0 level6 lfo1;
+	font-size:11.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Standard;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:144.0pt;
+	text-indent:0cm;
+	line-height:12.0pt;
+	mso-pagination:none;
+	mso-outline-level:7;
+	mso-list:l0 level7 lfo1;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Standard;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:144.0pt;
+	text-indent:0cm;
+	line-height:12.0pt;
+	mso-pagination:none;
+	mso-outline-level:8;
+	mso-list:l0 level8 lfo1;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Standard;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:144.0pt;
+	text-indent:0cm;
+	line-height:12.0pt;
+	mso-pagination:none;
+	mso-outline-level:9;
+	mso-list:l0 level9 lfo1;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:12.0pt;
+	margin-right:36.0pt;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	line-height:12.0pt;
+	mso-pagination:none;
+	tab-stops:right 468.0pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:0cm;
+	margin-right:36.0pt;
+	margin-bottom:0cm;
+	margin-left:21.6pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	tab-stops:right 468.0pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	tab-stops:72.0pt right 468.0pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:30.0pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:40.0pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.0pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:60.0pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:70.0pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Standard;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:80.0pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:45.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-45.0pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:2.0pt;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	line-height:12.0pt;
+	mso-pagination:lines-together;
+	page-break-after:avoid;
+	border:none;
+	mso-border-bottom-alt:solid black .75pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 0cm 0cm;
+	font-size:8.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Helvetica","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	tab-stops:center 216.0pt right 432.0pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	tab-stops:center 216.0pt right 432.0pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-ansi-font-size:10.0pt;
+	vertical-align:super;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:Standard;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:none;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:12.0pt;
+	mso-pagination:lines-together;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-style:italic;
+	mso-bidi-font-style:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:center;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:none;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-AU;
+	mso-fareast-language:EN-US;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	background:navy;
+	font-size:10.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.Paragraph2, li.Paragraph2, div.Paragraph2
+	{mso-style-name:Paragraph2;
+	mso-style-unhide:no;
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;
+	mso-ansi-language:EN-AU;
+	mso-fareast-language:EN-US;}
+p.Paragraph3, li.Paragraph3, div.Paragraph3
+	{mso-style-name:Paragraph3;
+	mso-style-unhide:no;
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:76.5pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.Paragraph4, li.Paragraph4, div.Paragraph4
+	{mso-style-name:Paragraph4;
+	mso-style-unhide:no;
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:112.5pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.Tabletext, li.Tabletext, div.Tabletext
+	{mso-style-name:Tabletext;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:12.0pt;
+	mso-pagination:lines-together;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.Bullet1, li.Bullet1, div.Bullet1
+	{mso-style-name:Bullet1;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-21.6pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.Bullet2, li.Bullet2, div.Bullet2
+	{mso-style-name:Bullet2;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-18.0pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:navy;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MainTitle, li.MainTitle, div.MainTitle
+	{mso-style-name:"Main Title";
+	mso-style-unhide:no;
+	margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:center;
+	mso-pagination:none;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.Paragraph1, li.Paragraph1, div.Paragraph1
+	{mso-style-name:Paragraph1;
+	mso-style-unhide:no;
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.Body, li.Body, div.Body
+	{mso-style-name:Body;
+	mso-style-unhide:no;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Book Antiqua","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.Bullet, li.Bullet, div.Bullet
+	{mso-style-name:Bullet;
+	mso-style-unhide:no;
+	margin-top:6.0pt;
+	margin-right:18.0pt;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:0cm;
+	mso-pagination:widow-orphan;
+	tab-stops:list 18.0pt left 36.0pt;
+	font-size:10.0pt;
+	font-family:"Book Antiqua","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.InfoBlue, li.InfoBlue, div.InfoBlue
+	{mso-style-name:InfoBlue;
+	mso-style-update:auto;
+	mso-style-unhide:no;
+	mso-style-next:Textkörper;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:12.0pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("Use-Dateien/header.htm") fs;
+	mso-footnote-continuation-separator:url("Use-Dateien/header.htm") fcs;
+	mso-endnote-separator:url("Use-Dateien/header.htm") es;
+	mso-endnote-continuation-separator:url("Use-Dateien/header.htm") ecs;
+	mso-endnote-numbering-style:arabic;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-vertical-page-align:middle;
+	mso-even-header:url("Use-Dateien/header.htm") eh1;
+	mso-header:url("Use-Dateien/header.htm") h1;
+	mso-even-footer:url("Use-Dateien/header.htm") ef1;
+	mso-footer:url("Use-Dateien/header.htm") f1;
+	mso-first-header:url("Use-Dateien/header.htm") fh1;
+	mso-first-footer:url("Use-Dateien/header.htm") ff1;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;
+	mso-endnote-numbering-style:arabic;}
+@page WordSection2
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-even-header:url("Use-Dateien/header.htm") eh1;
+	mso-header:url("Use-Dateien/header.htm") h2;
+	mso-even-footer:url("Use-Dateien/header.htm") ef1;
+	mso-footer:url("Use-Dateien/header.htm") f2;
+	mso-first-header:url("Use-Dateien/header.htm") fh1;
+	mso-first-footer:url("Use-Dateien/header.htm") ff1;
+	mso-paper-source:0;}
+div.WordSection2
+	{page:WordSection2;
+	mso-endnote-numbering-style:arabic;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:-5;
+	mso-list-template-ids:-1;}
+@list l0:level1
+	{mso-level-style-link:"Überschrift 1";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l0:level2
+	{mso-level-style-link:"Überschrift 2";
+	mso-level-text:"%1\.%2";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l0:level3
+	{mso-level-style-link:"Überschrift 3";
+	mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l0:level4
+	{mso-level-style-link:"Überschrift 4";
+	mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l0:level5
+	{mso-level-style-link:"Überschrift 5";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l0:level6
+	{mso-level-style-link:"Überschrift 6";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l0:level7
+	{mso-level-style-link:"Überschrift 7";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l0:level8
+	{mso-level-style-link:"Überschrift 8";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l0:level9
+	{mso-level-style-link:"Überschrift 9";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:0cm;
+	mso-level-legacy-space:7.2pt;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l1
+	{mso-list-id:-2;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l1:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l2
+	{mso-list-id:2246483;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:168915092;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:399207876;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:574896836;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6
+	{mso-list-id:759915342;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l7
+	{mso-list-id:836578373;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:848833361;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l8:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l9
+	{mso-list-id:863324188;
+	mso-list-type:simple;
+	mso-list-template-ids:-428573274;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:916280433;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l11
+	{mso-list-id:1119453051;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l12
+	{mso-list-id:1239511248;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l12:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l13
+	{mso-list-id:1331983147;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l13:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l14
+	{mso-list-id:1390375758;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l14:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l15
+	{mso-list-id:1831828806;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l15:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l16
+	{mso-list-id:1911693098;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l16:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l17
+	{mso-list-id:1949696507;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l17:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l18
+	{mso-list-id:1969311946;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l18:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l19
+	{mso-list-id:2078553303;
+	mso-list-type:simple;
+	mso-list-template-ids:67698689;}
+@list l19:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level1 lfo2
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:18.0pt;
+	mso-level-legacy-space:0cm;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level1 lfo7
+	{mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:18.0pt;
+	mso-level-legacy-space:0cm;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+</head>
+
+<body lang=DE link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=WordSection1>
+
+<p class=MsoTitle align=right style='text-align:right'><span
+lang=EN-US>strebo</span></p>
+
+<p class=MsoTitle align=right style='text-align:right'><span
+lang=EN-US>Show trends of supported networks</span></p>
+
+<p class=MsoTitle align=right style='text-align:right'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoTitle align=right style='text-align:right'><span lang=EN-US
+style='font-size:14.0pt;mso-bidi-font-size:10.0pt'>Version 1.0<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+
+<p class=InfoBlue><span lang=EN-US></span></p>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoBodyText><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoBodyText><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+<span lang=EN-US style='font-size:10.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA'><br clear=all style='page-break-before:always;
+mso-break-type:section-break'>
+</span>
+
+<div class=WordSection2>
+
+<p class=MsoTitle><span lang=EN-US>Revision History</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .75pt;
+ mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:.75pt solid windowtext;
+ mso-border-insidev:.75pt solid windowtext'>
+ <tr>
+  <td width=154 valign=top style='width:115.2pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext align=center style='text-align:center'><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US>Date<o:p></o:p></span></b></p>
+  </td>
+  <td width=77 valign=top style='width:57.6pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .75pt;mso-border-alt:
+  solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext align=center style='text-align:center'><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US>Version<o:p></o:p></span></b></p>
+  </td>
+  <td width=250 valign=top style='width:187.2pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .75pt;mso-border-alt:
+  solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext align=center style='text-align:center'><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US>Description<o:p></o:p></span></b></p>
+  </td>
+  <td width=154 valign=top style='width:115.2pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .75pt;mso-border-alt:
+  solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext align=center style='text-align:center'><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US>Author<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=154 valign=top style='width:115.2pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
+  solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US>23.10.2015</span></p>
+  </td>
+  <td width=77 valign=top style='width:57.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US>1.0</span></p>
+  </td>
+  <td width=250 valign=top style='width:187.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US>Initial release</span></p>
+  </td>
+  <td width=154 valign=top style='width:115.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US>Parsegyan, Aram</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=154 valign=top style='width:115.2pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
+  solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=77 valign=top style='width:57.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=250 valign=top style='width:187.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=154 valign=top style='width:115.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=154 valign=top style='width:115.2pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
+  solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=77 valign=top style='width:57.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=250 valign=top style='width:187.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=154 valign=top style='width:115.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-lastrow:yes'>
+  <td width=154 valign=top style='width:115.2pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
+  solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=77 valign=top style='width:57.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=250 valign=top style='width:187.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=154 valign=top style='width:115.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
+  mso-border-alt:solid windowtext .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=Tabletext><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<b style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:18.0pt;
+mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br clear=all
+style='page-break-before:always'>
+</span></b>
+
+<p class=MsoTitle><span lang=EN-US>Table of Contents</span></p>
+
+<p class=MsoToc1 style='tab-stops:21.6pt right 468.0pt'><span lang=EN-US style='mso-bidi-font-size:
+12.0pt;mso-no-proof:yes'>1.</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'><a href="#UseCase">Show trends of supported networks</a></span><span
+lang=EN-US style='mso-no-proof:yes'><span style='mso-tab-count:1'>                                                                                                                                                                       </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>1.1</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'><a href="#Description">Brief Description</a><span style='mso-tab-count:
+1'>                                                                                                                                                         </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:21.6pt right 468.0pt'><span lang=EN-US
+style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'>2.</span><span lang=EN-US
+style='font-size:12.0pt;mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'><a href="#Flow">Flow of Events</a></span><span
+lang=EN-US style='mso-no-proof:yes'><span style='mso-tab-count:1'>                                                                                                                                                                         </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>2.1</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'><a href="#BasicFlow">Basic Flow</a><span style='mso-tab-count:1'>                                                                                                                                                                    </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>2.2</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'><a href="#AlternativFlows">Alternative Flows</a><span style='mso-tab-count:
+1'>                                                                                                                                                        </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:21.6pt right 468.0pt'><span lang=EN-US
+style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'>3.</span><span lang=EN-US
+style='font-size:12.0pt;mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'><a href="#SpecialRequirements">Special
+Requirements</a></span><span lang=EN-US style='mso-no-proof:yes'><span
+style='mso-tab-count:1'>                                                                                                                                                             </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>3.1</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'><a href="#3.1">Internet access</a><span
+style='mso-tab-count:1'>                                                                                                                                   </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>3.2</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'><a href="#3.2">Avaialability of the social networks</a><span
+style='mso-tab-count:1'>                                                                                                                                   </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>3.2</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'><a href="#3.3">Functions of the APIs</a><span
+style='mso-tab-count:1'>                                                                                                                                   </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:21.6pt right 468.0pt'><span lang=EN-US
+style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'>4.</span><span lang=EN-US
+style='font-size:12.0pt;mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'><a href="#Preconditions">Preconditions</a></span><span
+lang=EN-US style='mso-no-proof:yes'><span style='mso-tab-count:1'>                                                                                                                                                                            </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:21.6pt right 468.0pt'><span lang=EN-US
+style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'>5.</span><span lang=EN-US
+style='font-size:12.0pt;mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'><a href="#Postconditions">Postconditions</a></span><span
+lang=EN-US style='mso-no-proof:yes'><span style='mso-tab-count:1'>                                                                                                                                                                          </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>5.1</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'><a href="#5.1">Showing the trend board</a><span
+style='mso-tab-count:1'>                                                                                                                                                </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+
+<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>5.2</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'><a href="#5.2">Showing failure message</a><span
+style='mso-tab-count:1'>                                                                                                                                                </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+<p class=MsoToc1 style='tab-stops:21.6pt right 468.0pt'><span lang=EN-US
+style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'>6.</span><span lang=EN-US
+style='font-size:12.0pt;mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-bidi-font-size:12.0pt;mso-no-proof:yes'><a href="#ExtensionPoints">Extension Points</a></span><span
+lang=EN-US style='mso-no-proof:yes'><span style='mso-tab-count:1'>                                                                                                                                                                      </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<!--<p class=MsoToc2 style='tab-stops:50.0pt right 468.0pt'><span lang=EN-US
+style='mso-no-proof:yes'>6.1</span><span lang=EN-US style='font-size:12.0pt;
+mso-no-proof:yes'><span style='mso-tab-count:1'>     </span></span><span
+lang=EN-US style='mso-no-proof:yes'>&lt;Name of Extension Point&gt;<span
+style='mso-tab-count:1'>                                                                                                                                     </span></span><span
+lang=EN-US style='mso-no-proof:yes'></span><span
+lang=EN-US style='font-size:12.0pt;mso-no-proof:yes'><o:p></o:p></span></p>-->
+
+<p class=MsoTitle><span
+lang=EN-US><br clear=all style='page-break-before:always'>
+</span><span
+lang=EN-US>Use-Case Specification: Show trends of supported networks</span><span
+lang=EN-US><a name="_Toc425054503"></a><a name="_Toc423410237"><span
+style='mso-bookmark:_Toc425054503'> </span></a></span></p>
+
+<p class=InfoBlue><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<h1 id="UseCase" style='mso-list:l0 level1 lfo1'><a name="_Toc425054504"></a><a
+name="_Toc423410238"></a><a name="_Toc508098429"><span style='mso-bookmark:
+_Toc423410238'><span style='mso-bookmark:_Toc425054504'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Show trends of supported networks</span></span></span></a><span
+style='mso-bookmark:_Toc423410238'><span style='mso-bookmark:_Toc425054504'><span
+lang=EN-US> </span></span></span></h1>
+
+<h2 id="Description" style='mso-list:l0 level2 lfo1'><span style='mso-bookmark:_Toc423410238'><span
+style='mso-bookmark:_Toc425054504'><a name="_Toc508098430"><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Brief Description</span></a></span></span></h2>
+
+<p><span lang=EN-US>Show trends of supported networks is an important Use-Case, because it serve one of the main functions of strebo.<br/>
+  This Use-Case is the main function of the trend  board and it gives the user the possibility to see the trends of all the aviable social networks by using the different specific APIs.</span></p>
+
+<h1 id="Flow" style='mso-pagination:widow-orphan;mso-list:l0 level1 lfo1'><a
+name="_Toc508098431"></a><a name="_Toc425054505"></a><a name="_Toc423410239"><span
+style='mso-bookmark:_Toc425054505'><span style='mso-bookmark:_Toc508098431'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Flow of Events</span></span></span></a></h1>
+
+<h2 id="BasicFlow" style='mso-pagination:widow-orphan;mso-list:l0 level2 lfo1'><a
+name="_Toc508098432"></a><a name="_Toc425054506"></a><a name="_Toc423410240"><span
+style='mso-bookmark:_Toc425054506'><span style='mso-bookmark:_Toc508098432'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Basic Flow</span></span></span></a><span
+lang=EN-US> </span></h2>
+
+<p><span lang=EN-US>The use case starts with the user interacting with the website by opening the trend board by either pressing the button or by opening strebo in his browser. A mockup of the said button as well as of the website containing the trend board can be found in figure 2.1.1.<br/>
+This interaction is the trigger for the system to connect to the single supported networks by using the specific APIs. This login process does not include any credentials of the user.<br/>
+After the successfull connection process, the system automaticly searches for the trending contents based on the single APIs and networks. The found posts, tweets etc. will then be embedded in to the trend board and so be made avaiable for the user to look at.<br/>
+The graphical description of this use case can be found in figure 2.1.2.</span></p>
+
+<p><img src="mockup trend board.png"/><br/>
+Figure 2.1.1</p>
+
+<!--Activiti Diagramm-->
+<p>
+<div class="mxgraph" style="position:relative;overflow:auto;width:100%;background-color:#ffffff;"><div style="width:1px;height:1px;overflow:hidden;">5Vnfc9s2DP5r/JidZUqO85hf63q33eWa3W17pCVK4oUWVYqO7f71BShQP53Ube00S/xgWyAEksCHD6A0Yder7QfDy/wvnQg1mU2T7YTdTGazIAhC+EHJrpbMGQkyIxNSagX38osg4ZSka5mIqqdotVZWln1hrItCxLYnS7XqT1HyzJtvBfcxV2PpPzKxeS1dzOat/A8hs9xPE8wv6pEljx8yo9cFzTeZsdR96uEV97ZoV9tpfRmSM3Z0HTAyWPKit6QvWq96AiOq1le0XdnffsEfe5MqWTz0nbbUJhGmo8RuIZZGazCE/1bba6Ewnj5U52kcxulULDmbRVEUntWmfz9UvXGwEQUt9mdNgi6afORqTe6oBZXd+bCCBYALXFzldqVAFsDfKucljleWG3tvucXxVCp1rZWufcKm7oPK1ugH0RlJUxqh2YWxwmP+gD06HdrgB6FXwpodwqJWv6CAUcoE/nrTYpKRKO/A0cs4BTlrDLf+hD/k0gPdyw5wbwJJRJfa2FxnuuDqtpV23Y6ekpBxl0pmCPGlthahfSWK5NIYvUEjpYAhlBAfLA4IAa7iOwMAu9BrE9Nt+5E1DpIRilv52J9sn8/p1jstYRlNcINp1IvubDEIG+AxE5buGkSuWcaPBZPYphNM52qgVHBV4giBG/gdBNgRm0CjGMFNLq24L7nz2wZYvx9gbmKKWojBGWQUcmL88hkVPuHzTkYFnia7KQVbOH5K0Vpec0qBn83uXxA2F//hxW/Rz6Tb0VNptqBqSWFlvnp+I5XGOTn3dZgMXwwM1TwxMgTe5bgPr1aiQvXMgmfne+d5al1Dfb/BFnn1Co5GEL7reg6b0EYMS6nDke+YwkHWF9rpc0KnEimgZATalUwSB+wKmEUW2d8aeOUGgNNI/nQ33rBW8okSFUVGQwnnS7dIBK3iS6HudCWt1Gjf1LpXFCLYSXQ1iW6cxNhrXcAmODqf3Qhe2Y2oUNtZrQ1AET4NN515kqEgh97nHXKKzveQ0+IE3BTQfjoA8J01Nt74lQvEA7gffA1NprAbbaCvhHskh+/Lu48uA95YBRk2ZcyXi19SQoJDut432pZ5iNbk/pSSK7JHrzgsGuQq7PSQivO9hWI4DyP0PVUovqF/gkKx71wwV8iZqXYra5E4/7zGA6UbOKtPrZegEITlth2Efxn9OitLL/gkPq+BjIFv/BAsthntyOp5vXiQDMAEKO8g3h2gOwVjXBj42kL9cEh3tPR8AbNYsAbVy5VCWJZPQ19dj8pM835vG/hnCh1i8tzV5SXPVcflpfEJ40SwuDM6FhWWof8nLE6BhKYmvQoojI85lYDSnrsHc8YfOl0A8emdhV2/h8YhnI7buxdsHOhR5rtsHF6mJ4gO7AmOUobpfNgJp1gtIV98nz7OMTTnHvm042/1qc8w9ZrI/JrUo/Pau0w9h9OTp978JVOPHhH98IsHjMmreu3AWL+TbLx5/PcOcNm+Zaqj0b4+ZLdfAQ==</div></div><br/>
+Figure 2.1.2
+</p>
+
+<h2 id="AlternativeFlows" style='mso-pagination:widow-orphan;mso-list:l0 level2 lfo1'><a
+name="_Toc508098433"></a><a name="_Toc425054507"></a><a name="_Toc423410241"><span
+style='mso-bookmark:_Toc425054507'><span style='mso-bookmark:_Toc508098433'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Alternative Flows</span></span></span></a></h2>
+
+<p><span lang=EN-US>No Alternative Flows determined</span></p>
+
+<h1 id="SpecialRequirements" style='mso-list:l0 level1 lfo1'><a name="_Toc508098436"></a><a
+name="_Toc425054510"></a><a name="_Toc423410251"><span style='mso-bookmark:
+_Toc425054510'><span style='mso-bookmark:_Toc508098436'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Special Requirements</span></span></span></a></h1>
+
+<h2 id="3.1" style='mso-pagination:widow-orphan;mso-list:l0 level2 lfo1'><a
+name="_Toc508098437"></a><a name="_Toc425054511"></a><a name="_Toc423410252"><span
+style='mso-bookmark:_Toc425054511'><span style='mso-bookmark:_Toc508098437'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Internet access</span></span></span></a></h2>
+
+<p>
+Without access to the internet it is not possible for the system to interact with the social networks. So there is now way to get the trending content.
+</p>
+
+<h2 id="3.2" style='mso-pagination:widow-orphan;mso-list:l0 level2 lfo1'><a
+name="_Toc508098437"></a><a name="_Toc425054511"></a><a name="_Toc423410252"><span
+style='mso-bookmark:_Toc425054511'><span style='mso-bookmark:_Toc508098437'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>3.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Avaialability of the social networks</span></span></span></a></h2>
+
+<p>
+If one or more of the social networks are temporarily not available, the conntent of these networks can not be embedded in the trend board.
+</p>
+
+<h2 id="3.3" style='mso-pagination:widow-orphan;mso-list:l0 level2 lfo1'><a
+name="_Toc508098437"></a><a name="_Toc425054511"></a><a name="_Toc423410252"><span
+style='mso-bookmark:_Toc425054511'><span style='mso-bookmark:_Toc508098437'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>3.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US></span>Functions of the APIs</span></span></a></h2>
+
+<p>
+The single APIs of the different social networks have to enable the possibillity of searching for trending conntent of posts, tweets etc.
+</p>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<h1 id="Preconditions" style='mso-pagination:widow-orphan;mso-list:l0 level1 lfo1'><a
+name="_Toc508098438"></a><a name="_Toc425054512"></a><a name="_Toc423410253"><span
+style='mso-bookmark:_Toc425054512'><span style='mso-bookmark:_Toc508098438'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Preconditions</span></span></span></a></h1>
+
+<p><span lang=EN-US>There are no preconditions for this use case. It can be performed at any state of the application.</span></p>
+
+<h1 id="Postconditions" style='mso-pagination:widow-orphan;mso-list:l0 level1 lfo1'><a
+name="_Toc508098440"></a><a name="_Toc425054514"></a><a name="_Toc423410255"><span
+style='mso-bookmark:_Toc425054514'><span style='mso-bookmark:_Toc508098440'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Postconditions</span></span></span></a></h1>
+
+<h2 id="5.1" style='mso-pagination:widow-orphan;mso-list:l0 level2 lfo1'><a
+name="_Toc508098441"></a><a name="_Toc425054515"></a><a name="_Toc423410256"><span
+style='mso-bookmark:_Toc425054515'><span style='mso-bookmark:_Toc508098441'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>5.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Showing the trend board</span></span></span></a></h2>
+
+<p>
+After this use case the system is showing the user the trend board with the found trending posts of the single social networks.
+ </p>
+
+ <h2 id="5.2" style='mso-pagination:widow-orphan;mso-list:l0 level2 lfo1'><a
+name="_Toc508098441"></a><a name="_Toc425054515"></a><a name="_Toc423410256"><span
+style='mso-bookmark:_Toc425054515'><span style='mso-bookmark:_Toc508098441'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>5.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Showing failure message</span></span></span></a></h2>
+
+<p>
+If an error occurred within the process of the use case, depending of the occuring error the social network or the server shows the user a message with information abotu the occured error.<br/>
+The process than is interrupted and has to be started again.
+ </p>  
+
+<h1 id="ExtensionPoints" style='mso-list:l0 level1 lfo1'><a name="_Toc508098442"><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>Extension Points</span></a></h1>
+
+<p><span lang=EN-US>to be determined</span></p>
+
+<!--<h2 style='mso-list:l0 level2 lfo1'><a name="_Toc508098443"><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span
+style='mso-list:Ignore'>6.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US>&lt;Name of Extension Point&gt;</span></a></h2>
+
+<p class=InfoBlue><span lang=EN-US>[Definition of the location of the extension
+point in the flow of events.]</span></p>
+-->
+</div>
+<script type="text/javascript" src="https://www.draw.io/js/embed-static.min.js"></script>
+</body>
+
+</html>

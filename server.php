@@ -5,9 +5,11 @@ use Strebo\StreboServer;
     $port = '8080';
 
     // Get composer dependencies
-    require __DIR__ . '/vendor/autoload.php';
-    require 'autoload.php';
-    autoload('Strebo\StreboServer');
+    //require __DIR__ . '/vendor/autoload.php';
+    //require 'autoload.php';
+    require_once 'Autoloader.php';
+    spl_autoload_register (array ('Autoloader', 'autoload'));
+    //autoload('Strebo\StreboServer');
 
     echo "\n".'  Welcome at strebo.
               _            _
