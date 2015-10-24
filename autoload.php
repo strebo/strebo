@@ -1,5 +1,8 @@
 <?php
-    function autoload($className)
+
+class Autoloader{
+
+    static function autoload($className)
     {
         $className = ltrim($className, '\\');
         $fileName  = '';
@@ -12,5 +15,7 @@
         $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
         require $fileName;
     }
-    //spl_autoload_register('autoload');
+}
+    //require_once 'autoloader.php';
+    //spl_autoload_register (array ('Autoloader', 'autoload'));
 ?>
