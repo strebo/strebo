@@ -2,7 +2,7 @@
 namespace Strebo;
 
 interface PublicInterface {
-	public search();
-	public getPublicFeed();
+	public function search();
+	public function getPublicFeed();
 }
 ?>

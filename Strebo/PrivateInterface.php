@@ -2,7 +2,7 @@
 namespace Strebo;
 
 interface PrivateInterface {
-	public connect();
-	public getPersonalFeed();
+	public function connect();
+	public function getPersonalFeed();
 }
 ?>
