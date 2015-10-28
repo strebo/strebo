@@ -1,5 +1,6 @@
 {
     "require": {
-        "cboden/ratchet": "^0.3.3"
+        "cboden/ratchet": "^0.3.3",
+		"cosenary/instagram":"*"
     }
 }
