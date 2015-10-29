@@ -11,5 +11,5 @@ before_script:
 script: phpunit tests/Test.php
 
 after_success:
-	"curl strebo.net/pull.php > /dev/null"
+ "curl strebo.net/pull.php > /dev/null"
 
