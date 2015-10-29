@@ -1,7 +1,7 @@
 {
     "require": {
         "cboden/ratchet": "^0.3.3",
-		"cosenary/instagram":"*",
-		"behat/behat":"~3.0.6"
+		"cosenary/instagram":"^2.3",
+		"behat/behat":"^3.0"
     }
 }
