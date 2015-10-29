@@ -9,5 +9,7 @@ before_script:
 - composer self-update
 - composer install --prefer-source --no-interaction --dev
 script: phpunit tests/Test.php
+
 after_success:
 	"curl strebo.net/pull.php > /dev/null"
+
