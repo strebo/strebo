@@ -9,7 +9,5 @@ before_script:
 - composer self-update
 - composer install --prefer-source --no-interaction --dev
 script: phpunit tests/Test.php
-deploy:
-  provider: heroku
-  api_key:
-    secure: k/VN2B/TRwjj9s9UjMdWqZM4iFNA+ON2ZFHWDxBUmMgjQFR9+dHdbW0uhKCDf6ZxSJAs9ad8ppZIXOfrT9VqxdnKOaGWTqLVynqTpOLckWkQSpNQ8rkBH+CpJ1QCWJM3aOEi9noK62TIxX6P9NxhFzwYpNlFatPq0VzuouQMaJMMfHReG9mDiaUHc3WOPiILZl+S7n8hcsssssl7yTxm2KVHD2mAyeGYtvvp6zLej8eIdpf/5TyEQkMMXKu6JyG8sDQcmI7CD2Cy0iHEG9kpHp/BUV2bbubvUhTVw/JMzt1LDEwpqI3MZD1EHBWuK0hrj7KyJKjCArrROH7H9kM+qho13zVBlSPwCkUE5qzMcBkBCOGUXXCUVtpTxy/PjoK/ypIC2MMP6rtYBkSseLB2zXrUr4V489UFATSS01dJbOskKcjGht3kpSDBn/FvoxLdvPgVvK/RfNR33e0hwTIgPYi2nb3NiwQcSb4R9Q+5/9zbjTjOBr1OBJUbdRQ8T9Qi9lcqMaI42qytDXHFRoIEQiwN5UE2rDDdekx6cr+8bHIUzXoBJMJQmsD6+gWh58wUMYMzfhno1XyALS2+p8ty+pwYddZWulkrkM+Zw6StQLr02A9v+vv8y5xZnMcEtNhJim14Q0dAhWCvMbB6FZtQQ/3q1adbWdNBt3kl1n+r1x4=
+after_success:
+	"curl strebo.net/pull.php > /dev/null"
