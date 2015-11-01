@@ -1,4 +1,6 @@
 Feature: Connect to Supported Social Media Network Accounts
+        To make a personal dashboard with personal relevant content for the user available it is
+        needed to connect its social media account from supported social media networks to strebo.
 
   Scenario: Clicking on a Social Network Symbol
     Given The user is already connected to that network
