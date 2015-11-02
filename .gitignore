@@ -5,3 +5,6 @@
 vendor/
 composer.phar
 .idea
+pull.php
+pull.sh
+user.php
