@@ -2,13 +2,13 @@
 namespace Strebo\SocialNetworks;
 use Strebo;
 
-require __DIR__.'/../PublicInterface.php';
-require __DIR__.'/../PrivateInterface.php';
 require __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../Autoloader.php';
+spl_autoload_register (array ('Autoloader', 'autoload'));
 
 use MetzWeb\Instagram\Instagram as InstagramAPI;
 
-class Instagram implements Strebo\PrivateInterface, Strebo\PublicInterface{
+class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface{
 	
 private $instagram;
 private $apiKey;
