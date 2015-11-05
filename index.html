@@ -38,6 +38,7 @@
 
     <!------------------>
     <script src="js/socket.js"></script>
+    <script src="js/NetworkController.js"></script>
 
     <style type="text/css">
         html, body {
@@ -265,7 +266,7 @@
         // Drag'n'Drop :)
     </script>
 </head>
-<body>
+<body ng-app="strebo">
     <div id="container-strebo" class="container-fluid">
         <div id="container-top" class="row">
             <div id="container-menu">
@@ -282,8 +283,9 @@
                     <div class="menu-tooltip box-shadow"><div class="menu-tooltip-text">personal board</div></div>
                 </div>
             </div>
-            <div id="container-board">
-
+            <div id="container-board" ng-controller="NetworkController">
+                <networks></networks>
+                <!--
                 <div class="social-media-content-container box-shadow">
                     <div class="social-media-content-header">
                         <div class="social-media-content-header-x center">
@@ -379,7 +381,7 @@
                         </div>
                     </div>
                 </div>
-
+            -->
             </div>
         </div>
         <div id="container-footer" class="row">
