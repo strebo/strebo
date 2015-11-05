@@ -394,10 +394,64 @@
                     <div class="connector-icon center disconnected"><i class="fa fa-twitter"></i></div>
                     <div class="connector-status box-shadow disconnected"></div>
                 </div>
-                <div class="social-network-connector">
+                <div class="social-network-connector" id="social-network-connector-instagram">
                     <div class="connector-icon center disconnected"><i class="fa fa-instagram"></i></div>
                     <div class="connector-status box-shadow disconnected"></div>
                 </div>
+                <!--Test-->
+                <script type="text/javascript">
+                $(document).ready(function(){
+                 $("#social-network-connector-instagram").click(function(){login()});   
+                });
+                var accessToken = null;
+            var authenticateInstagram = function(instagramClientId, instagramRedirectUri, callback) {
+            
+            var popupWidth = 700,
+                popupHeight = 500,
+                popupLeft = (window.screen.width - popupWidth) / 2,
+                popupTop = (window.screen.height - popupHeight) / 2;
+            
+            var popup = window.open('instagram_auth.php', '', 'width='+popupWidth+',height='+popupHeight+',left='+popupLeft+',top='+popupTop+'');
+            popup.onload = function() {
+        
+                if(window.location.hash.length == 0) {
+                    popup.open('https://instagram.com/oauth/authorize/?client_id='+instagramClientId+'&redirect_uri='+instagramRedirectUri+'&response_type=token', '_self');
+                }
+                
+                var interval = setInterval(function() {
+                    try {
+                        
+                        if(popup.location.hash.length) {
+                            clearInterval(interval);
+                            accessToken = popup.location.hash.slice(14);
+                            document.getElementById('social-network-connector-instagram').innerHTML='<div class="center"><i class="fa fa-instagram"></i></div><div class="connector-status box-shadow connected"></div>';
+                            popup.close();
+                            if(callback != undefined && typeof callback == 'function') callback();
+                        }
+                    }
+                    catch(evt) {
+                        //permission denied
+                    }
+                }, 100);
+            }
+        };
+        function login_callback() {
+            alert("You are successfully logged in to Instagram!");
+        }
+        function login() {
+            authenticateInstagram(
+                'c12bbe37871f443ca257ef54a131a777', //instagram client ID
+                'http://strebo.net', //instagram redirect URI
+                login_callback //optional - a callback function
+            );
+            return false;
+        }
+
+
+
+                </script>
+
+
                 <div class="social-network-connector">
                     <div class="connector-icon center disconnected"><i class="fa fa-tumblr"></i></div>
                     <div class="connector-status box-shadow disconnected"></div>

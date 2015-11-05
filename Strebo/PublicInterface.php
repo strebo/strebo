@@ -2,7 +2,7 @@
 namespace Strebo;
 
 interface PublicInterface {
-	public function search();
+	public function search($tag);
 	public function getPublicFeed();
 }
 ?>
