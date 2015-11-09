@@ -1,5 +1,4 @@
-angular.module('strebo', [])
-    .controller('NetworkController', ['$scope', function($scope) {
+app.controller('DockController', ['$scope', function($scope) {
         $scope.networks = [{
             name: 'Twitter',
             icon: 'twitter',
@@ -18,7 +17,7 @@ angular.module('strebo', [])
             }]
         }];
     }])
-    .directive('networks', function() {
+    .directive('dockView', function() {
         return {
             restrict: 'E',
             template: '<div class="social-media-content-container box-shadow" ng-repeat="socialNetwork in networks">' +

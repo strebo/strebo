@@ -38,241 +38,29 @@
 
     <!------------------>
     <script src="js/socket.js"></script>
-    <script src="js/NetworkController.js"></script>
+    <script type="text/javascript">
 
-    <style type="text/css">
-        html, body {
-            font-size:2vh;
-            color:#424242;
-            font-family: 'Roboto', 'Calibri', sans-serif;
-            overflow:hidden;
-        }
-        #container-strebo {}
-        #container-top {
-            height:90vh;
-        }
-        #container-board {
-            width:95vw;
-            height:90vh;
-            background-color:#FAFAFA;
-            position: absolute;
-            top:0;
-            right:0;
-            white-space: nowrap;
-            overflow-x: scroll;
-        }
-        #container-menu {
-            height:100%;
-            background-color:#EEEEEE;
-            width:5vw;
-            padding-top:5vh;
-        }
-        #container-footer {
-            height:10vh;
-            width:100vw;
-            background-color:#EEEEEE;
-        }
-        #logo {
-            position: relative;
-            height:10vh;
-            width:18vw;
-            background-color:fuchsia;
-            cursor: pointer;
-        }
-        .center {
-            position: absolute;
-            left:50%;
-            top:50%;
-            transform: translate(-50%, -50%);
-        }
-        #logo-image {
-            height:8vh;
-        }
-        #logo-text {
-            text-align:center;
-        }
-        .social-network-connector {
-            height:10vh;
-            width:10vh;
-            position: relative;
-            display: inline-block;
-            font-size:2rem;
-            background-color:#E0E0E0;
-            margin-right:2vh;
-            cursor: pointer;
-        }
-        #social-network-connector-bar {
-            position: absolute;
-            right:0;
-            height:10vh;
-            display: inline-block;
-        }
-        .connector-icon.connected {
-            color:#424242;
-        }
-        .connector-icon.disconnected {
-            color:#9E9E9E;
-        }
-        .connector-status {
-            position: absolute;
-            right:1vh;
-            bottom:1vh;
-            font:normal normal normal 14px/1 FontAwesome;
-            font-size:1.5rem;
-            text-rendering:auto;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-            height:3vh;
-            width:3vh;
-            text-align: center;
-            background-color:#fff;
-            border-radius:50%;
-            padding:0.1vh;
-            opacity:0.8;
-            line-height: 3vh;
-        }
-        .connector-status.connected {
-            color:#00E676;
-        }
-        .connector-status.connected:after {
-            content: "\f00c";
-            display:inline-block;
-        }
-        .connector-status.disconnected:after {
-            content: "\f00d";
-            color:#FF1744;
-        }
-        .menu-item {
-            width:5vw;
-            height:5vw;
-            position: relative;
-            background-color:#E0E0E0;
-            cursor:pointer;
-            font-size:1.5rem;
-            margin-top:5vh;
-        }
+        var app = angular.module('strebo', []);
 
-        .menu-item:first-of-type {
-            margin-top:0;
-        }
-
-        .menu-tooltip {
-            display:none;
-            width:15vw;
-            margin-top:0.5vw;
-            height:4vw;
-            background-color:#fff;
-            position: absolute;
-            left:5.5vw;
-            top:0;
-            z-index:2;
-        }
-        .menu-item:hover .menu-tooltip {
-            display:block;
-        }
-        .menu-tooltip-text {
-            position: absolute;
-            top:50%;
-            transform: translateY(-50%);
-            text-align:center;
-            width:15vw;
-            opacity:0.8;
-        }
-        .box-shadow {
-            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
-        }
-
-        .social-media-content-container {
-            width:18vw;
-            height: 82vh;
-            margin-top:4vh;
-            margin-left:3vw;
-            background-color:#ffffff;
-            display: inline-block;
-        }
-
-        .social-media-content-container:last-of-type {
-            margin-right:3vw;
-        }
-
-        .social-media-content-header {
-            height:10vh;
-            width:100%;
-            background-color:#EEEEEE;
-            position: relative;
-        }
-
-        .social-media-content-header-x {
-            text-align: center;
-            font-size:0.8rem;
-        }
-
-        .social-media-content-header-x i {
-            font-size:2rem;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color:#fff;
-            border: 1px solid #E0E0E0;
-        }
-
-        .social-media-content-body {
-            position:absolute;
-            width:18vw;
-            height:72vh;
-            overflow-y: scroll;
-        }
-
-        .social-media-content-body-entry {
-            position:relative;
-            margin-left:1vw;
-            margin-top:1.5vh;
-            height:14vh;
-            width:16vw;
-        }
-        .social-media-content-body-entry:last-of-type {
-            margin-bottom:1.5vh;
-        }
-        .social-media-content-body-entry-image {
-            position:absolute;
-            width:6vw;
-            height:12vh;
-            top:50%;
-            transform:translateY(-50%);
-        }
-        .social-media-content-body-entry-text {
-            position:absolute;
-            right:1vw;
-            width:8vw;
-            height:12vh;
-            top:50%;
-            transform:translateY(-50%);
-            white-space: normal;
-            font-size:0.9rem;
-            padding:1vh 0;
-        }
-    </style>
-    <script>
-        $(document).ready(function() {
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-            })
-        });
-        // Drag'n'Drop :)
     </script>
+    <script src="js/AppController.js"></script>
+    <script src="js/DockController.js"></script>
+    <script src="js/FeedController.js"></script>
+    <script src="js/ConnectorBarController.js"></script>
+
+    <link rel="stylesheet" href="style/style.css" />
 </head>
-<body ng-app="strebo">
+<body ng-app="strebo" ng-controller="AppController">
     <div id="container-strebo" class="container-fluid">
+        <div id="view-switch" class="box-shadow">
+            <i ng-if="view===1" class="fa fa-compress center"></i>
+            <i ng-if="view===0" class="fa fa-expand center"></i>
+        </div>
         <div id="container-top" class="row">
             <div id="container-menu">
                 <div class="menu-item">
                     <div class="menu-icon center">
-                        <i class="fa fa-thumbs-o-up"></i>
+                        <i class="fa fa-level-up"></i>
                     </div>
                     <div class="menu-tooltip box-shadow"><div class="menu-tooltip-text">trend board</div></div>
                 </div>
@@ -283,109 +71,15 @@
                     <div class="menu-tooltip box-shadow"><div class="menu-tooltip-text">personal board</div></div>
                 </div>
             </div>
-            <div id="container-board" ng-controller="NetworkController">
-                <networks></networks>
-                <!--
-                <div class="social-media-content-container box-shadow">
-                    <div class="social-media-content-header">
-                        <div class="social-media-content-header-x center">
-                            <i class="fa fa-facebook"></i><br />
-                            Facebook
-                        </div>
-                    </div>
-                    <div class="social-media-content-body">
-                        <div class="social-media-content-body-entry box-shadow">
-                            <div class="social-media-content-body-entry-image">
-                                <div class="center" style="font-size:7vh;"><i class="fa fa-picture-o"></i></div>
-                            </div>
-                            <div class="social-media-content-body-entry-text">
-                                <span>Hallo Welt, das ist ein Testbeitrag</span>
-                            </div>
-                        </div>
-                        <div class="social-media-content-body-entry box-shadow">
-                            <div class="social-media-content-body-entry-image">
-                                <div class="center" style="font-size:7vh;"><i class="fa fa-picture-o"></i></div>
-                            </div>
-                            <div class="social-media-content-body-entry-text">
-                                <span>Hallo Welt, das ist ein Testbeitrag</span>
-                            </div>
-                        </div>
-                        <div class="social-media-content-body-entry box-shadow">
-                            <div class="social-media-content-body-entry-image">
-                                <div class="center" style="font-size:7vh;"><i class="fa fa-picture-o"></i></div>
-                            </div>
-                            <div class="social-media-content-body-entry-text">
-                                <span>Hallo Welt, das ist ein Testbeitrag</span>
-                            </div>
-                        </div>
-                        <div class="social-media-content-body-entry box-shadow">
-                            <div class="social-media-content-body-entry-image">
-                                <div class="center" style="font-size:7vh;"><i class="fa fa-picture-o"></i></div>
-                            </div>
-                            <div class="social-media-content-body-entry-text">
-                                <span>Hallo Welt, das ist ein Testbeitrag</span>
-                            </div>
-                        </div>
-                        <div class="social-media-content-body-entry box-shadow">
-                            <div class="social-media-content-body-entry-image">
-                                <div class="center" style="font-size:7vh;"><i class="fa fa-picture-o"></i></div>
-                            </div>
-                            <div class="social-media-content-body-entry-text">
-                                <span>Hallo Welt, das ist ein Testbeitrag</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-media-content-container box-shadow">
-                    <div class="social-media-content-header">
-                        <div class="social-media-content-header-x center">
-                            <i class="fa fa-twitter"></i><br />
-                            Twitter
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-media-content-container box-shadow">
-                    <div class="social-media-content-header">
-                        <div class="social-media-content-header-x center">
-                            <i class="fa fa-instagram"></i><br />
-                            Instagram
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-media-content-container box-shadow">
-                    <div class="social-media-content-header">
-                        <div class="social-media-content-header-x center">
-                            <i class="fa fa-twitter"></i><br />
-                            Twitter
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-media-content-container box-shadow">
-                    <div class="social-media-content-header">
-                        <div class="social-media-content-header-x center">
-                            <i class="fa fa-facebook"></i><br />
-                            Facebook
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-media-content-container box-shadow">
-                    <div class="social-media-content-header">
-                        <div class="social-media-content-header-x center">
-                            <i class="fa fa-twitter"></i><br />
-                            Twitter
-                        </div>
-                    </div>
-                </div>
-            -->
+            <div id="container-board"
+                 style="{{view===1?'overflow-y:scroll;padding-left:3vw;':'white-space: nowrap; overflow-x: scroll;'}}">
+                <dock-view ng-if="view===0" ng-controller="DockController"></dock-view>
+                <feed-view ng-if="view===1" ng-controller="FeedController"></feed-view>
             </div>
         </div>
         <div id="container-footer" class="row">
-            <div id="social-network-connector-bar">
+            <connector-bar ng-controller="ConnectorBarController"></connector-bar>
+            <!--<div id="social-network-connector-bar">
                 <div class="social-network-connector">
                     <div class="center"><i class="fa fa-facebook"></i></div>
                     <div class="connector-status box-shadow connected"></div>
@@ -413,7 +107,7 @@
                     <div class="connector-icon center connected"><i class="fa fa-wikipedia-w"></i></div>
                     <div class="connector-status box-shadow disconnected"></div>
                 </div>
-            </div>
+            </div>-->
             <div id="logo">
                 <!--<div id="logo-text" class="center">
                     <span style="font-size:1.5em; color:#ffffff; font-weight:bold;">strebo</span><br />
