@@ -1,35 +1,5 @@
-app.controller('ConnectorBarController', ['$scope', function($scope) {
-    $scope.networks = [{
-        name: 'YouTube',
-        icon: 'youtube',
-        color: '#e52d27',
-        status: 'connected',
-        feed: [{
-            text: "Cool Vid!"
-        }]
-    },{
-        name: 'Twitter',
-        icon: 'twitter',
-        color: '#4099FF',
-        status: 'disconnected',
-        feed: [{
-            text: "Hallo Welt!"
-        }, {
-            text: "From Twitter!"
-        }]
-    }, {
-        name: 'Facebook',
-        icon: 'facebook',
-        color: '#3B5998',
-        status: 'connected',
-        feed: [{
-            text: "Hallo Welt!"
-        }, {
-            text: "#Hashtag"
-        }, {
-            text: "From Facebook!"
-        }]
-    }];
+app.controller('ConnectorBarController', ['$scope', 'DataService', function($scope, DataService) {
+    $scope.networks = DataService.getNetworks();
 }])
     .directive('connectorBar', function() {
         return {

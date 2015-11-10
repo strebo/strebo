@@ -1,27 +1,11 @@
-app.controller('DockController', ['$scope', function($scope) {
-        $scope.networks = [{
-            name: 'Twitter',
-            icon: 'twitter',
-            feed: [{
-                text: "Hallo Welt!"
-            }, {
-                text: "From Twitter!"
-            }]
-        }, {
-            name: 'Facebook',
-            icon: 'facebook',
-            feed: [{
-                text: "Hallo Welt!"
-            }, {
-                text: "From Facebook!"
-            }]
-        }];
+app.controller('DockController', ['$scope', 'DataService', function($scope, DataService) {
+        $scope.networks = DataService.getPostsByNetwork();
     }])
     .directive('dockView', function() {
         return {
             restrict: 'E',
             template: '<div class="social-media-content-container box-shadow" ng-repeat="socialNetwork in networks">' +
-            '<div class="social-media-content-header">'+
+            '<div class="social-media-content-header" style="background-color:{{socialNetwork.color}};color:#fff;">'+
              '<div class="social-media-content-header-x center">'+
                             '<i class="fa fa-{{socialNetwork.icon}}"></i><br />'+
                             '{{socialNetwork.name}}'+

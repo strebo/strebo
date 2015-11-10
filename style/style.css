@@ -1,3 +1,7 @@
+::selection{ background-color: transparent;}
+::moz-selection{ background-color: transparent;}
+::webkit-selection{ background-color: transparent;}
+
 html, body {
     font-size:0.9vmax;
     color:#424242;
@@ -180,6 +184,7 @@ html, body {
     width:100%;
     background-color:#EEEEEE;
     position: relative;
+    /*background-image: repeating-linear-gradient(45deg, transparent, transparent 0.4vh, rgba(255,255,255,.1) 0.4vh, rgba(255,255,255,.1) 0.8vh);*/
 }
 
 .social-media-content-header-feed {
@@ -201,7 +206,7 @@ html, body {
 
 .social-media-content-header-x {
     text-align: center;
-    font-size:0.7rem;
+    font-size:1rem;
 }
 
 .social-media-content-header-x i {
