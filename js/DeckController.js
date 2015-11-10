@@ -1,7 +1,7 @@
-app.controller('DockController', ['$scope', 'DataService', function($scope, DataService) {
+app.controller('DeckController', ['$scope', 'DataService', function($scope, DataService) {
         $scope.networks = DataService.getPostsByNetwork();
     }])
-    .directive('dockView', function() {
+    .directive('deckView', function() {
         return {
             restrict: 'E',
             template: '<div class="social-media-content-container box-shadow" ng-repeat="socialNetwork in networks">' +

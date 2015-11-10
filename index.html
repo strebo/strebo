@@ -45,7 +45,7 @@
     </script>
     <script src="js/DataService.js"></script>
     <script src="js/AppController.js"></script>
-    <script src="js/DockController.js"></script>
+    <script src="js/DeckController.js"></script>
     <script src="js/FeedController.js"></script>
     <script src="js/ConnectorBarController.js"></script>
 
@@ -74,7 +74,7 @@
             </div>
             <div id="container-board"
                  style="{{view===1?'overflow-y:scroll;padding-left:3vw;':'white-space: nowrap; overflow-x: scroll;'}}">
-                <dock-view ng-if="view===0" ng-controller="DockController"></dock-view>
+                <deck-view ng-if="view===0" ng-controller="DeckController"></deck-view>
                 <feed-view ng-if="view===1" ng-controller="FeedController"></feed-view>
             </div>
         </div>
