@@ -1,9 +1,16 @@
 <?php
 namespace Strebo;
 
+require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../Autoloader.php';
+spl_autoload_register (array ('Autoloader', 'autoload'));
+
 abstract class AbstractSocialNetwork {
 	private $name;
 	private $icon;
+	private $apiKey;
+	private $apiSecret;
+	private $apiCallback;
 
 	public function __construct($name, $icon)
 	{
@@ -29,6 +36,10 @@ abstract class AbstractSocialNetwork {
 	public function setName($name)
 	{
 		$this->name = $name;
+	}
+
+	public function encodeJSON($json){
+		return $json;
 	}
 }
 ?>
