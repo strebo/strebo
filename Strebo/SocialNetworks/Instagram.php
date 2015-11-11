@@ -2,21 +2,17 @@
 namespace Strebo\SocialNetworks;
 use Strebo;
 
-require __DIR__.'/../../vendor/autoload.php';
-require __DIR__.'/../../Autoloader.php';
-spl_autoload_register (array ('Autoloader', 'autoload'));
+require __DIR__.'/../AbstractSocialNetwork.php';
 
 use MetzWeb\Instagram\Instagram as InstagramAPI;
 
 class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface{
-	
-private $instagram;
-private $apiKey;
-private $apiSecret;
-private $apiCallback='http://strebo.net';
+
 private $OAuthToken;
+private $instagram;
 
 public function __construct(){
+		parent::__construct('Instagram','instagram');
 		$this->apiKey=getenv('strebo_instagram_1');
 		$this->instagram=new InstagramAPI ($this->apiKey);
 		
@@ -24,11 +20,9 @@ public function __construct(){
 
 public function connect($code){
 	$this->apiSecret=getenv('strebo_instagram_2');
+	$this->apiCallback='http://strebo.net';
 	$this->instagram=new InstagramAPI(array( 'apiKey' => $this->apiKey, 'apiSecret'=> $this->apiSecret, 'apiCallback'=>$this->apiCallback));
 	$this->OAuthToken=$this->instagram->getOAuthToken($code);
-	echo($code);
-	echo "<br/>";
-	var_dump($this->OAuthToken);
 	$this->instagram->setAccessToken($this->OAuthToken);
 
 	
@@ -37,27 +31,62 @@ public function connect($code){
 public function getPersonalFeed(){
 	
 	$feed=$this->instagram->getUserFeed(35);
-	return $feed;
+	return $this->encodeJSON($feed);
 	
 }
 
 
 public function search($tag) {
 	$response = $this->instagram->getTagMedia($tag,33);
-	$this->getMedia($response);
-	return $response;
+	//$this->getMedia($response);
+	return $this->encodeJSON($response);
 	
 }
 
 public function getPublicFeed() {
 	$popularmedia = $this->instagram->getPopularMedia ();
-	$this->getMedia($popularmedia);
-	return $popularmedia;
+	//$this->getMedia($popularmedia);
+	return $this->encodeJSON($popularmedia);
 	
 }
 
+public function encodeJSON($json){
+
+	$feed;
+	$i=0;
+
+	foreach($json->data as $media){
+
+		$data;
+		$data['mediatype']=$media->type;
+		$data['tags']=$media->tags;
+		$data['created_time']=$media->created_time;
+		if(array_key_exists('caption', $media) && array_key_exists('text', $media->caption)){
+		$data['text']=$media->caption->text;
+		}
+		$data['from']=$media->user->username;
+		$data['from_picture']=$media->user->profile_picture;
+		$data['number_of_likes']=$media->likes->count;
+		if($media->type==='image'){
+			$data['media']=$media->images->standard_resolution->url;
+		}
+		if($media->type==='video'){
+			$data['media']=$media->videos->standard_resolution->url;
+		}
+		$feed[$i]=$data;
+		$i++;
+	}
+
+	$newJSON=array('name'=>'Instagram',
+				'icon'=>'instagram',
+				'color'=>'#2a5b83',
+				'feed'=>$feed);
+
+	return json_encode($newJSON);
+}
+
 //Nur für Testzwecke
-public function getMedia($media){
+/*public function getMedia($media){
 	foreach ( $media->data as $entry ) {
 	
 		echo "<p>{$entry->caption->from->username}<br/>";
@@ -80,7 +109,7 @@ public function getMedia($media){
 		}
 	}
 }
-
+*/
 
 }
 
