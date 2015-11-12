@@ -60,9 +60,24 @@ html, body {
     top:50%;
     transform: translate(-50%, -50%);
 }
-#logo-image {
-    height:8vh;
+
+#logo-image, #logo-image-small {
+    max-height:8vh;
+    max-width:13vw;
 }
+
+@media (min-width: 901px) {
+    #logo-image-small {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    #logo-image {
+        display: none;
+    }
+}
+
 #logo-text {
     text-align:center;
 }
