@@ -24,21 +24,7 @@ $(document).ready(function(){
                             code = popup.location.hash.slice(14);
                             document.getElementById('social-network-connector-instagram').innerHTML='<div class="center"><i class="fa fa-instagram"></i></div><div class="connector-status box-shadow connected"></div>';
                             
-                            jQuery.ajax({
-                                type: "POST",
-                                url: 'http://strebo.net/Strebo/SocialNetworks/Instagram.php',
-                                dataType: 'json',
-                                data: {functionname: 'getPersonalFeed', arguments: [$code]},
-
-                                success: function (obj, textstatus) {
-                                              if( !('error' in obj) ) {
-                                                  yourVariable = obj.result;
-                                              }
-                                              else {
-                                                  console.log(obj.error);
-                                              }
-                                        }
-                            });
+                            $.get("http://strebo.net/Strebo/SocialNetworks/index.php",function(data){alert(data);});
 
                             popup.close();
                             if(callback != undefined && typeof callback == 'function') callback();

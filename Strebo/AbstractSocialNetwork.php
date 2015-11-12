@@ -11,11 +11,13 @@ abstract class AbstractSocialNetwork {
 	private $apiKey;
 	private $apiSecret;
 	private $apiCallback;
+	private $color;
 
-	public function __construct($name, $icon)
+	public function __construct($name, $icon, $color)
 	{
 		$this->name = $name;
 		$this->icon = $icon;
+		$this->color= $color;
 	}
 
 	public function getIcon()
@@ -38,7 +40,18 @@ abstract class AbstractSocialNetwork {
 		$this->name = $name;
 	}
 
-	public function encodeJSON($json){
+	public function getColor()
+	{
+		return $this->color;
+	}
+
+	public function setColor($color)
+	{
+		$this->color=$color;
+	}
+
+	public function encodeJSON($json)
+	{
 		return $json;
 	}
 }

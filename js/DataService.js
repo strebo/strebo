@@ -5,7 +5,7 @@ app.service('DataService', function () {
     var feed = [];
     var networks = [];
 
-    feedByNetwork = [{
+    /*feedByNetwork = [{
         name: 'YouTube',
         icon: 'youtube',
         color: '#e52d27',
@@ -21,7 +21,9 @@ app.service('DataService', function () {
         }, {
             text: "From Twitter!"
         }]
-    }, {
+    }, 
+    $.get("http://localhost/strebo/Strebo/SocialNetworks/index.php",function(data){alert(data);});
+    ,{
         name: 'Facebook',
         icon: 'facebook',
         color: '#3B5998',
@@ -32,8 +34,15 @@ app.service('DataService', function () {
         }, {
             text: "From Facebook!"
         }]
-    }];
+    }];*/
 
+        $.ajax({
+        url: "http://strebo.net/Strebo/SocialNetworks/index.php",
+        success: function (data) {
+            feedByNetwork.push(JSON.parse(data));
+        },
+        async: false
+    });
     extractPosts();
     feed = shuffle(feed);
 
@@ -45,6 +54,7 @@ app.service('DataService', function () {
     };
 
     this.getPostsByNetwork = function () {
+        console.log(feedByNetwork);
         return feedByNetwork;
     };
 
@@ -63,7 +73,14 @@ app.service('DataService', function () {
                         icon: feedByNetwork[i].icon,
                         color: feedByNetwork[i].color
                     },
-                    text: feedByNetwork[i].feed[j].text
+                    text: feedByNetwork[i].feed[j].text,
+                    author: feedByNetwork[i].feed[j].author,
+                    authorPicture: feedByNetwork[i].feed[j].authorPicture,
+                    type: feedByNetwork[i].feed[j].type,
+                    tags: feedByNetwork[i].feed[j].tags,
+                    createdTime: feedByNetwork[i].feed[j].createdTime,
+                    numberOfLikes: feedByNetwork[i].feed[j].numberOfLikes,
+                    media: feedByNetwork[i].feed[j].media,
                 });
             }
         }
