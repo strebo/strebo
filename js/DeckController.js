@@ -5,7 +5,7 @@ app.controller('DeckController', ['$scope', 'DataService', function($scope, Data
         return {
             restrict: 'E',
             template: '<div class="social-media-content-container box-shadow" ng-repeat="socialNetwork in networks">' +
-            '<div class="social-media-content-header" style="background-color:{{socialNetwork.color}};color:#fff;">'+
+            '<div class="social-media-content-header box-shadow" style="background-color:{{socialNetwork.color}};color:#fff;">'+
              '<div class="social-media-content-header-x center">'+
                             '<i class="fa fa-{{socialNetwork.icon}}"></i><br />'+
                             '{{socialNetwork.name}}'+

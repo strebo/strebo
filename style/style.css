@@ -49,7 +49,7 @@ html, body {
 }
 #logo {
     position: relative;
-    height:10vh;
+    height:calc(10vh + 1px);
     width:18vw;
     background-color:#333333;
     cursor: pointer;
@@ -82,6 +82,7 @@ html, body {
     text-align:center;
 }
 .social-network-connector {
+    bottom:1vh;
     height:10vh;
     width:10vh;
     position: relative;
@@ -133,12 +134,14 @@ html, body {
     color:#FF1744;
 }
 .menu-item {
+    z-index:10;
+    margin-left:1vh;
     width:5vw;
     height:5vw;
     position: relative;
     background-color:#E0E0E0;
     cursor:pointer;
-    font-size:1.5rem;
+    font-size:2rem;
     margin-top:5vh;
 }
 
@@ -156,6 +159,7 @@ html, body {
     left:5.5vw;
     top:0;
     z-index:2;
+    font-size:1.5rem;
 }
 .menu-item:hover .menu-tooltip {
     display:block;
@@ -195,8 +199,9 @@ html, body {
 }
 
 .social-media-content-header {
+    margin-left:-1.5%;
     height:10vh;
-    width:100%;
+    width:103%;
     background-color:#EEEEEE;
     position: relative;
     /*background-image: repeating-linear-gradient(45deg, transparent, transparent 0.4vh, rgba(255,255,255,.1) 0.4vh, rgba(255,255,255,.1) 0.8vh);*/
