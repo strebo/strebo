@@ -1,7 +1,6 @@
 app.controller('FeedController', ['$scope', 'DataService', function($scope, DataService) {
     $scope.image = "image";
     $scope.video = "video";
-    $scope.youtube = "https://youtu.be/gHonBC3naj4";
     $scope.feed = DataService.getPosts();
     console.log($scope.feed);
     }])
@@ -21,7 +20,7 @@ app.controller('FeedController', ['$scope', 'DataService', function($scope, Data
         '<div class="social-media-content-body-entry-image-feed">'+
             '<div class="center" style="font-size:7vh;">'+
             '<img ng-if="post.type === image" src="{{post.media}}" style="max-height:9vw; max-width:13vw;" />'+
-            '<video ng-if="post.type === video" controls style="max-height:9vw; max-width:13vw;"><source ng-src="{{youtube}}"></source></video>'+
+            '<video ng-if="post.type === video" src="{{post.media | trustUrl}}" controls type="video/mp4" style="max-height:9vw; max-width:13vw;"></video>'+
             '</div>'+
         '</div>'+
                     '<div class="social-media-content-body-entry-text-feed" style="overflow:hidden;"><div class="center" style="width:13vw; height:3vw; overflow:hidden;">{{post.text}}<br/>Likes: {{post.numberOfLikes}}</div></div></div>'+
