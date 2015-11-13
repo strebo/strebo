@@ -25,8 +25,8 @@
                        src="{{post.media | trustUrl}}" controls type="video/mp4"></video>
             </div>
         </div>
-        <div class="social-media-content-body-entry-text">
-            <div>{{post.text | shortenTo:letterLimitPost}}</div>
+        <div class="social-media-content-body-entry-text" ellipsis>
+            {{post.text}}
         </div>
     </div>
 </div>
