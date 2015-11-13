@@ -16,11 +16,11 @@ html, body {
 #view-switch {
     position:absolute;
     z-index:10;
-    top:1vh;
-    right:1vh;
+    top:2vh;
+    right:2vh;
     background-color:#ffffff;
-    width:5vh;
-    height:5vh;
+    width:6vh;
+    height:6vh;
     font-size:1.65rem;
     cursor: pointer;
 }
@@ -35,6 +35,7 @@ html, body {
     position: absolute;
     top:0;
     right:0;
+    padding-bottom:4vh;
 }
 #container-menu {
     height:100%;
@@ -199,6 +200,7 @@ html, body {
 }
 
 .social-media-content-header {
+    color:#ffffff;
     margin-left:-1.5%;
     height:10vh;
     width:103%;
@@ -221,7 +223,25 @@ html, body {
     top:50%;
     transform:translateY(-50%);
     left:1vh;
-    font-size:1.35rem;
+    font-size:1.15rem;
+}
+
+.social-media-content-title-pic-feed {
+    width:5vh;
+    height:5vh;
+}
+
+.social-media-content-body-entry-media-feed {
+    max-height:9vw;
+    max-width:13vw;
+}
+
+.social-media-content-body-entry-media-extend-feed {
+    max-height:13vw;
+}
+
+.social-media-content-body-entry-media-video-feed {
+    margin-top:3vh;
 }
 
 .social-media-content-header-x {
@@ -260,8 +280,8 @@ html, body {
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 0.5vmax;
+    height: 0.5vmax;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -274,6 +294,7 @@ html, body {
     width:18vw;
     height:72vh;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .social-media-content-body-feed {
@@ -308,16 +329,21 @@ html, body {
     width:14vw;
 }
 
+.social-media-content-body-entry-image-extend-feed {
+    border:none;
+    height:14vw;
+}
+
 .social-media-content-body-entry-text {
     position:absolute;
-    right:1vw;
-    width:8vw;
-    height:12vh;
-    top:50%;
-    transform:translateY(-50%);
+    top:10vw;
     white-space: normal;
     font-size:0.9rem;
-    padding:1vh 0;
+    width:14vw;
+    height:4vw;
+    overflow:hidden;
+    padding:0.75vh;
+    box-sizing: border-box;
 }
 
 .social-media-content-body-entry-text-feed {

@@ -65,6 +65,7 @@ public function encodeJSON($json){
 		else{
 			$data['text']='';
 		}
+		$data['link']=$media->link;
 		$data['author']=$media->user->username;
 		$data['authorPicture']=$media->user->profile_picture;
 		$data['numberOfLikes']=$media->likes->count;

@@ -1,17 +1,32 @@
 <div class="social-media-content-container-feed box-shadow" ng-repeat="post in feed">
     <div class="social-media-content-header-feed">
-        <div class="social-media-content-title-feed">Titel des Beitrags</div>
-        <div class="social-media-content-header-x-feed" ng-style="background-color:{{post.socialNetwork.color}};">
+        <div class="social-media-content-title-feed">
+            <img class="social-media-content-title-pic-feed" src="{{post.authorPicture}}"><div
+                style="display: inline-block; width:calc(14vw - 8vh); position: absolute; left:6vh; top:50%;
+                transform:translateY(-50%);"><a href="{{post.link | trustUrl}}" target="_blank">{{post.author |
+            shortenTo:letterLimitAuthor}}</a>
+            <div style="font-size:0.8rem; color:#999;">&#8226; 3 minutes ago</div></div>
+        </div>
+        <div class="social-media-content-header-x-feed" style="background-color:{{post.socialNetwork.color}};">
             <i class="fa fa-{{post.socialNetwork.icon}} center"></i>
         </div>
         <div class="social-media-content-header-x-triangle-feed"></div>
     </div>
     <div class="social-media-content-body-feed">
-        <div class="social-media-content-body-entry-image-feed">
-            <div class="center" style="font-size:7vh;"><i class="fa fa-picture-o"></i></div>
+        <div
+                class="social-media-content-body-entry-image-feed {{post.text.length == 0 ? 'social-media-content-body-entry-image-extend-feed':''}}">
+            <div class="center" style="font-size:7vh;">
+                <img
+                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'image'"
+                     src="{{post.media}}"/>
+                <video
+                        class="social-media-content-body-entry-media-feed social-media-content-body-entry-media-video-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}"
+                       ng-if="post.type === 'video'"
+                       src="{{post.media | trustUrl}}" controls type="video/mp4"></video>
+            </div>
         </div>
         <div class="social-media-content-body-entry-text">
-            <div class="center">{{post.text}}</div>
+            <div>{{post.text | shortenTo:letterLimitPost}}</div>
         </div>
     </div>
 </div>

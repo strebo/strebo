@@ -37,7 +37,7 @@ app.service('DataService', function () {
     }];*/
 
         $.ajax({
-        url: "http://strebo.net/Strebo/SocialNetworks/index.php",
+        url: "/Strebo/SocialNetworks/index.php",
         success: function (data) {
             feedByNetwork.push(JSON.parse(data));
         },
@@ -76,6 +76,7 @@ app.service('DataService', function () {
                     text: feedByNetwork[i].feed[j].text,
                     author: feedByNetwork[i].feed[j].author,
                     authorPicture: feedByNetwork[i].feed[j].authorPicture,
+                    link: feedByNetwork[i].feed[j].link,
                     type: feedByNetwork[i].feed[j].type,
                     tags: feedByNetwork[i].feed[j].tags,
                     createdTime: feedByNetwork[i].feed[j].createdTime,
