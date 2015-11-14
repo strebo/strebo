@@ -1,4 +1,4 @@
-app.service('DataService', function () {
+app.service('DataService', ['$http', function ($http) {
 
     /* Private Properties */
     var feedByNetwork = [];
@@ -36,17 +36,12 @@ app.service('DataService', function () {
         }]
     }];*/
 
-        $.ajax({
-        url: "/Strebo/SocialNetworks/index.php",
-        success: function (data) {
-            feedByNetwork.push(JSON.parse(data));
-        },
-        async: false
+    var promise = $http.get("/Strebo/SocialNetworks/index.php").then(function(res) {
+        feedByNetwork.push(res.data);
+        extractPosts();
+        feed = shuffle(feed);
+        extractNetworks();
     });
-    extractPosts();
-    feed = shuffle(feed);
-
-    extractNetworks();
 
     // Public method
     this.getNetworks = function () {
@@ -54,7 +49,6 @@ app.service('DataService', function () {
     };
 
     this.getPostsByNetwork = function () {
-        console.log(feedByNetwork);
         return feedByNetwork;
     };
 
@@ -109,4 +103,4 @@ app.service('DataService', function () {
         }
         return array;
     }
-});
+}]);

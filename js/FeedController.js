@@ -1,6 +1,6 @@
 app.controller('FeedController', ['$scope', 'DataService', function($scope, DataService) {
     $scope.letterLimitPost = 59;
-    $scope.letterLimitAuthor = 18;
+    $scope.letterLimitAuthor = 15;
     $scope.feed = DataService.getPosts();
     console.log($scope.feed);
     }])

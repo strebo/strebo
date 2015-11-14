@@ -8,10 +8,20 @@
     <div class="social-media-content-body">
         <div class="social-media-content-body-entry box-shadow" ng-repeat="entry in socialNetwork.feed">
             <div class="social-media-content-body-entry-image">
-                <div class="center" style="font-size:7vh;"><i class="fa fa-picture-o"></i></div>
+                <div class="center" style="font-size:7vh;">
+                    <img style="max-width:5.5vw;max-height:12vh;" ng-if="entry.type === 'image'" src="{{entry.media}}"/>
+                    <video style="max-width:5.5vw;max-height:12vh;margin-top:1vh;" ng-if="entry.type === 'video'"
+                           src="{{entry.media | trustUrl}}" type="video/mp4"></video>
+                </div>
             </div>
-            <div class="social-media-content-body-entry-text">
-                <span>{{entry.text}}</span>
+            <div class="social-media-content-body-entry-author">
+                <a href="{{entry.link | trustUrl}}" target="_blank">{{entry.author}}</a>
+            </div>
+            <div class="social-media-content-body-entry-text" ellipsis>
+                {{entry.text}}
+            </div>
+            <div class="social-media-content-body-entry-time" style="font-size:0.8rem; color:#999;">
+                &#8226; 3 minutes ago
             </div>
         </div>
     </div>

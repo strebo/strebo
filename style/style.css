@@ -35,7 +35,6 @@ html, body {
     position: absolute;
     top:0;
     right:0;
-    padding-bottom:4vh;
 }
 #container-menu {
     height:100%;
@@ -336,6 +335,19 @@ html, body {
 
 .social-media-content-body-entry-text {
     position:absolute;
+    top:2.5vh;
+    left:6vw;
+    white-space: normal;
+    font-size:0.9rem;
+    width:10.2vw;
+    height:4vw;
+    overflow:hidden;
+    padding:0.75vh;
+    box-sizing: border-box;
+}
+
+.social-media-content-body-entry-text-feed {
+    position:absolute;
     top:10vw;
     white-space: normal;
     font-size:0.9rem;
@@ -346,9 +358,14 @@ html, body {
     box-sizing: border-box;
 }
 
-.social-media-content-body-entry-text-feed {
-    height:4vw;
-    width:14vw;
+.social-media-content-body-entry-author {
     position: absolute;
-    bottom:0;
+    top:0.5vh;
+    right:1vh;
+}
+
+.social-media-content-body-entry-time {
+    position: absolute;
+    bottom:0.5vh;
+    right:1vh;
 }

@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div id="container-board"
-                 style="{{view===1?'overflow-y:scroll;padding-left:3vw;':'white-space: nowrap; overflow-x: scroll;'}}">
+                 style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
                 <deck-view ng-if="view===0" ng-controller="DeckController"></deck-view>
                 <feed-view ng-if="view===1" ng-controller="FeedController"></feed-view>
             </div>
