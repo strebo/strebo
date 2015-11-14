@@ -1,4 +1,4 @@
-app.service('DataService', ['$http', function ($http) {
+app.service('DataService', ['$http', '$q', function ($http, $q) {
 
     /* Private Properties */
     var feedByNetwork = [];
@@ -36,12 +36,18 @@ app.service('DataService', ['$http', function ($http) {
         }]
     }];*/
 
-    var promise = $http.get("/Strebo/SocialNetworks/index.php").then(function(res) {
-        feedByNetwork.push(res.data);
+    var instagram = $http.get("/Strebo/SocialNetworks/index.php");
+
+    var soundcloud = $http.get("/Strebo/SocialNetworks/index2.php");
+
+    $q.all([instagram, soundcloud]).then(function(resArr) {
+        feedByNetwork.push(resArr[0].data);
+        feedByNetwork.push(resArr[1].data);
         extractPosts();
         feed = shuffle(feed);
         extractNetworks();
     });
+
 
     // Public method
     this.getNetworks = function () {
