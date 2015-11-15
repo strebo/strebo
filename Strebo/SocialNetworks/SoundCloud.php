@@ -40,7 +40,7 @@ public function getPublicFeed() {
 	echo curl_errno($init) . '<br/>';
 	echo curl_error($init) . '<br/>';*/
 
-	return $this->encodeJSON(file_get_contents('http://api-v2.soundcloud.com/explore/Popular+Music?tag=out-of-experiment&limit=10&offset=0&linked_partitioning=1&client_id=d08c99a67fa0518806f5fe1f4bf36792'));
+	return $this->encodeJSON(file_get_contents('http://api-v2.soundcloud.com/explore/Popular+Music?tag=out-of-experiment&limit=24&offset=0&linked_partitioning=1&client_id=d08c99a67fa0518806f5fe1f4bf36792'));
 	
 }
 
@@ -56,9 +56,10 @@ public function encodeJSON($json){
 		$temp_song["authorPicture"] = $song["user"]["avatar_url"];
 		$temp_song["numberOfLikes"] = $song["likes_count"];
 		$temp_song["link"] = $song["permalink_url"];
-		$temp_song["type"] = "image";
+		$temp_song["type"] = "audio";
 		$temp_song["createdTime"] = $song["created_at"];
-		$temp_song["media"] = $song["artwork_url"];
+		$temp_song["media"] = $song["stream_url"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
+		$temp_song["thumb"] = $song["artwork_url"];
 		$feed[$i] = $temp_song;
 		$temp_song = [];
 		$i++;

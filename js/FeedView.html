@@ -17,6 +17,13 @@
                 class="social-media-content-body-entry-image-feed {{post.text.length == 0 ? 'social-media-content-body-entry-image-extend-feed':''}}">
             <div class="center" style="font-size:7vh;">
                 <img
+                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'audio'" src="{{post.thumb}}" />
+                <audio
+                        class="center"
+                        style="width:13vw;top:initial;"
+                        ng-if="post.type === 'audio'"
+                        src="{{post.media | trustUrl}}" controls></audio>
+                <img
                         class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'image'"
                      src="{{post.media}}"/>
                 <video
@@ -25,7 +32,7 @@
                        src="{{post.media | trustUrl}}" controls type="video/mp4"></video>
             </div>
         </div>
-        <div class="social-media-content-body-entry-text-feed" ellipsis>
+        <div style="{{post.text.length == 0?'display:none;':''}}" class="social-media-content-body-entry-text-feed" ellipsis>
             {{post.text}}
         </div>
     </div>

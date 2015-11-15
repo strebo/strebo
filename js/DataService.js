@@ -82,6 +82,7 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
                     createdTime: feedByNetwork[i].feed[j].createdTime,
                     numberOfLikes: feedByNetwork[i].feed[j].numberOfLikes,
                     media: feedByNetwork[i].feed[j].media,
+                    thumb: feedByNetwork[i].feed[j].thumb
                 });
             }
         }
