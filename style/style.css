@@ -369,3 +369,134 @@ html, body {
     bottom:0.5vh;
     right:1vh;
 }
+
+.container-detailview {
+    position: absolute;
+    top:0;
+    right:0;
+    width:100vw;
+    height:100vh;
+    z-index:1000;
+}
+#detailview-overlay {
+    background-color:#000000;
+    opacity:0.3;
+}
+
+#detailview-content {
+    background-color:#fff;
+    width:70%;
+    height:75%;
+    border:0.2vh solid #eee;
+    z-index:1001;
+}
+
+#detailview-content-media {
+    width:64%;
+    position: absolute;
+    left:0;
+    height:100%;
+}
+
+#detailview-content-meta {
+    box-sizing: border-box;
+    border-left: 0.2vh solid #eee;
+    width:36%;
+    height:100%;
+    position: absolute;
+    right:0;
+}
+
+#detailview-content-network {
+    position: absolute;
+    right:2vmax;
+    top:-1.5vmax;
+    width:5vmax;
+    height:5vmax;
+    background-color:#ff3a00;
+    color:#fff;
+    font-size:2.6vmax;
+}
+
+#detailview-content-network-triangle {
+    position: absolute;
+    right:0.5vmax;
+    top:-1.5vmax;
+    width: 0;
+    height: 0;
+    -webkit-transform:rotate(270deg);
+    border-style: solid;
+    border-width: 1.5vmax 1.5vmax 0 0;
+    border-color: #222 transparent transparent transparent;
+}
+
+#detailview-content-meta-title {
+    position: absolute;
+    left:1vmax;
+    top:1.3vmax;
+    font-size:2rem;
+}
+
+#detailview-content-meta-subtitle {
+    font-size:1.3rem;
+    color:#ccc;
+}
+
+#detailview-content-meta-body {
+    position: absolute;
+    box-sizing: border-box;
+    width:calc(100% - 2.4vmax);
+    top:6vmax;
+    left:1.2vmax;
+    font-size:1.1rem;
+    padding-right:1.2vmax;
+}
+#detailview-content-meta-body-hashtags {
+    margin-top:1.3vmax;
+}
+
+#detailview-content-meta-body-likes {
+    margin-top:1.3vmax;
+    background-color:#eee;
+    text-align:center;
+    padding:0.3vmax;
+    font-weight:700;
+}
+
+.hashtag {
+    display: inline-block;
+    background-color:#eee;
+    border-radius:0.5vmax;
+    padding:0.2vmax 0.4vmax;
+    margin-right:0.2vmax;
+    margin-bottom:0.2vmax;
+}
+
+.fade {
+    transition:0.3s linear all;
+}
+
+.fade.ng-scope {
+    opacity:1;
+}
+
+/* The starting CSS styles for the enter animation */
+.fade.ng-enter {
+    opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+    opacity:1;
+}
+
+.fade.ng-active {
+    opacity:1;
+}
+
+.fade.ng-leave {
+    opacity:1;
+}
+.fade.ng-leave.ng-leave-active {
+    opacity:0;
+}

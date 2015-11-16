@@ -28,6 +28,8 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet'
           type='text/css' />
 
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+
     <!--------------------------------->
     <!----------- JAVASCRIPT ---------->
     <!--------------------------------->
@@ -43,14 +45,17 @@
     <!------------------>
     <script src="js/socket.js"></script>
     <script src="js/Instagram.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-sanitize.min.js"></script>
     <script type="text/javascript">
 
-        var app = angular.module('strebo', []);
+        var app = angular.module('strebo', ['ngAnimate', 'ngSanitize']);
 
     </script>
 
     <script src="js/TrustFilter.js"></script>
     <script src="js/ShortenFilter.js"></script>
+    <script src="js/TrustHTMLFilter.js"></script>
 
     <script src="js/EllipsisDirective.js"></script>
 
@@ -59,6 +64,7 @@
     <script src="js/AppController.js"></script>
     <script src="js/DeckController.js"></script>
     <script src="js/FeedController.js"></script>
+    <script src="js/DetailController.js"></script>
     <script src="js/ConnectorBarController.js"></script>
 
     <link rel="stylesheet" href="style/style.css" />
@@ -89,6 +95,7 @@
                 <deck-view ng-if="view===0" ng-controller="DeckController"></deck-view>
                 <feed-view ng-if="view===1" ng-controller="FeedController"></feed-view>
             </div>
+            <detail-view ng-show="detailview===true" ng-controller="DetailController"></detail-view>
         </div>
         <div id="container-footer" class="row">
             <connector-bar ng-controller="ConnectorBarController"></connector-bar>

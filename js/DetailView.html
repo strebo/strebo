@@ -1,0 +1,33 @@
+<div id="detailview-overlay" ng-click="hideDetailView()" class="container-detailview">
+</div>
+    <div id="detailview-content" class="center">
+        <div id="detailview-content-media">
+            <div id="detailview-content-media-x" class="center" style="width:95%; height:95%;">
+                <div ng-if="currentItem.socialNetwork.name == 'SoundCloud'" style="width:100%;height:100%;" ng-bind-html="media">
+                </div>
+                <img ng-if="currentItem.type === 'image'" class="center" src="{{currentItem.media}}" style="max-height:100%; max-width:100%;" />
+                <video ng-if="currentItem.type === 'video'" class="center" style="max-height:100%; max-width:100%;"
+                       src="{{currentItem.media | trustUrl}}" controls></video>
+            </div>
+        </div>
+        <div id="detailview-content-meta">
+            <div id="detailview-content-meta-title">
+                That's it.
+                <div id="detailview-content-meta-subtitle">{{currentItem.author}} &#8226; 3 minutes ago</div>
+            </div>
+            <div id="detailview-content-meta-body">
+                <div id="detailview-content-meta-body-desc">{{currentItem.text}}</div>
+                <div id="detailview-content-meta-body-likes">
+                    {{currentItem.numberOfLikes}} Likes
+                </div>
+                <div id="detailview-content-meta-body-hashtags">
+                    <span ng-repeat="hashtag in currentItem.tags" class="hashtag">#{{hashtag}}</span>
+                </div>
+            </div>
+
+        </div>
+        <div id="detailview-content-network" style="background-color:{{currentItem.socialNetwork.color}};">
+            <i class="fa fa-{{currentItem.socialNetwork.icon}} center"></i>
+        </div>
+        <div id="detailview-content-network-triangle"></div>
+    </div>
