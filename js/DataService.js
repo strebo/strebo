@@ -40,9 +40,12 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
 
     var soundcloud = $http.get("/Strebo/SocialNetworks/index2.php");
 
-    $q.all([instagram, soundcloud]).then(function(resArr) {
+    var twitter = $http.get("/Strebo/SocialNetworks/index3.php");
+
+    $q.all([instagram, soundcloud, twitter]).then(function(resArr) {
         feedByNetwork.push(resArr[0].data);
         feedByNetwork.push(resArr[1].data);
+        feedByNetwork.push(resArr[2].data);
         extractPosts();
         feed = shuffle(feed);
         extractNetworks();
