@@ -12,8 +12,8 @@
         </div>
         <div id="detailview-content-meta">
             <div id="detailview-content-meta-title">
-                That's it.
-                <div id="detailview-content-meta-subtitle">{{currentItem.author}} &#8226; 3 minutes ago</div>
+                {{}}
+                <div id="detailview-content-meta-subtitle">{{currentItem.author}} &#8226; {{currentItem.createdAt | differenceFilter}}</div>
             </div>
             <div id="detailview-content-meta-body">
                 <div id="detailview-content-meta-body-desc">{{currentItem.text}}</div>

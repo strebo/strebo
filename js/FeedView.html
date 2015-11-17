@@ -14,7 +14,7 @@
         <div class="social-media-content-header-x-triangle-feed"></div>
     </div>
     <div class="social-media-content-body-feed">
-        <div
+        <div ng-if="post.type != 'text'"
                 class="social-media-content-body-entry-image-feed {{post.text.length == 0 ? 'social-media-content-body-entry-image-extend-feed':''}}">
             <div class="center" style="font-size:7vh;">
                 <img
@@ -33,8 +33,11 @@
                        src="{{post.media | trustUrl}}" controls type="video/mp4"></video>
             </div>
         </div>
-        <div style="{{post.text.length == 0?'display:none;':''}}" class="social-media-content-body-entry-text-feed" ellipsis>
+        <div ng-if="post.type != 'text'" style="{{post.text.length == 0?'display:none;':''}}" class="social-media-content-body-entry-text-feed" ellipsis>
             {{post.text}}
+        </div>
+        <div ng-if="post.type == 'text'" class="social-media-content-body-entry-text-feed-extend social-media-content-body-entry-image-extend-feed">
+            <div class=" center">{{post.text}}</div>
         </div>
     </div>
 </div>

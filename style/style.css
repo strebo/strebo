@@ -500,3 +500,7 @@ html, body {
 .fade.ng-leave.ng-leave-active {
     opacity:0;
 }
+
+.social-media-content-body-entry-text-feed-extend {
+    font-size:1.3rem;
+}
