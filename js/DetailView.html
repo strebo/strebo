@@ -18,7 +18,7 @@
             <div id="detailview-content-meta-body">
                 <div id="detailview-content-meta-body-desc">{{currentItem.text}}</div>
                 <div id="detailview-content-meta-body-likes">
-                    {{currentItem.numberOfLikes}} Likes
+                    {{currentItem.numberOfLikes | numberFilter}} Likes
                 </div>
                 <div id="detailview-content-meta-body-hashtags">
                     <span ng-repeat="hashtag in currentItem.tags" class="hashtag">#{{hashtag}}</span>
