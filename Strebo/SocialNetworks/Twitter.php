@@ -1,5 +1,6 @@
 <?php
 namespace Strebo\SocialNetworks;
+
 use Strebo;
 
 require __DIR__ . '/../AbstractSocialNetwork.php';
@@ -60,7 +61,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $trends;
         $i = 0;
 
-        $trendsresult=json_decode($trendsresult);
+        $trendsresult = json_decode($trendsresult);
 
         foreach ($trendsresult[0]->trends as $trend) {
             $trends[$i] = $trend->query;
@@ -71,12 +72,12 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
 
         $trendingTweets;
-        $j=0;
+        $j = 0;
 
         foreach ($trends as $trend) {
             $this->getfield = '?q=' . $trend . '&result_type=popular';
 
-           $trendingTweets[$j]=json_decode($this->twitter->setGetfield($this->getfield)
+            $trendingTweets[$j] = json_decode($this->twitter->setGetfield($this->getfield)
                 ->buildOauth($this->url, $this->requestMethod)
                 ->performRequest());
 
@@ -96,15 +97,24 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
         foreach ($json as $tweets) {
             foreach ($tweets->statuses as $tweet) {
-                    $data;
-                    $data['tags'] = $tweet->entities->hashtags;
-                    $data['createdTime'] = $tweet->created_at;
-                    $data['text'] = $tweet->text;
-                    $data['author'] = $tweet->user->name;
-                    $data['authorPicture'] = $tweet->user->profile_image_url;
-                    $data['numberOfLikes'] = $tweet->favorite_count;
-                    $feed[$i] = $data;
-                    $i++;
+                $data;
+                $data['tags'] = $tweet->entities->hashtags;
+                $data['createdTime'] = $this->formatTime($tweet->created_at);
+                $data['text'] = $tweet->text;
+                $data['type'] = 'text';
+                $data['link'] = $tweet->source;
+                $data['author'] = $tweet->user->name;
+                $data['authorPicture'] = $tweet->user->profile_image_url;
+                $data['numberOfLikes'] = $tweet->favorite_count;
+
+                if (isset($tweet->entities->media)) {
+                    foreach ($tweet->entities->media as $media) {
+                        $data['media'] = $media->media_url;
+                    }
+                }
+
+                $feed[$i] = $data;
+                $i++;
 
             }
         }
@@ -114,6 +124,62 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             'feed' => $feed);
 
         return json_encode($newJSON);
+    }
+
+    public function formatTime($time)
+    {
+
+        $month;
+
+        switch (substr($time, 4, 3)) {
+            case 'Jan':
+                $month = 1;
+                break;
+            case 'Feb':
+                $month = 2;
+                break;
+            case 'Mar':
+                $month = 3;
+                break;
+            case 'Apr':
+                $month = 4;
+                break;
+            case 'May':
+                $month = 5;
+                break;
+            case 'Jun':
+                $month = 6;
+                break;
+            case 'Jul':
+                $month = 7;
+                break;
+            case 'Aug':
+                $month = 8;
+                break;
+            case 'Sep':
+                $month = 9;
+                break;
+            case 'Oct':
+                $month = 10;
+                break;
+            case 'Nov':
+                $month = 11;
+                break;
+            case 'Dec':
+                $month = 12;
+                break;
+        }
+
+        $timeJSON = array('day' => substr($time, 8, 2),
+            'month' => $month,
+            'year' => substr($time, 26),
+            'hour' => substr($time, 11, 2),
+            'minute' => substr($time, 14, 2),
+            'second' => substr($time, 17, 2)
+        );
+
+        return json_encode($timeJSON);
+
     }
 }
 
