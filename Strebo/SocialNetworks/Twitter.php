@@ -45,7 +45,13 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function search($tag)
     {
-        // TODO: Implement search() method.
+        $this->url = 'https://api.twitter.com/1.1/search/tweets.json';
+        $this->requestMethod = "GET";
+        $this->getfield = '?q=' . $tag;
+
+        json_decode($this->twitter->setGetfield($this->getfield)
+            ->buildOauth($this->url, $this->requestMethod)
+            ->performRequest());
     }
 
     public function getPublicFeed()
@@ -72,16 +78,13 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
 
         $trendingTweets;
-        $j = 0;
 
         foreach ($trends as $trend) {
             $this->getfield = '?q=' . $trend . '&result_type=popular&count=5';
 
-            $trendingTweets[$j] = json_decode($this->twitter->setGetfield($this->getfield)
+            $trendingTweets[] = json_decode($this->twitter->setGetfield($this->getfield)
                 ->buildOauth($this->url, $this->requestMethod)
                 ->performRequest());
-
-            $j++;
         }
         return $this->encodeJSON($trendingTweets);
 
@@ -90,20 +93,18 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function encodeJSON($json)
     {
-
         $feed;
-        
+
         foreach ($json as $tweets) {
             foreach ($tweets->statuses as $tweet) {
                 $data = [];
-                $data['tags']=[];
+                $data['tags'] = [];
                 foreach ($tweet->entities->hashtags as $hashtag) {
-                  $data['tags'][]=$hashtag->text;
+                    $data['tags'][] = $hashtag->text;
                 }
                 $data['createdTime'] = $this->formatTime($tweet->created_at);
                 $data['text'] = $tweet->text;
-                if(isset($tweet->entities->url)){
-                $data['link'] = $tweet->entities->url;}
+                $data['link'] = 'https://twitter.com/statuses/' . $tweet->id_str;
                 $data['author'] = $tweet->user->name;
                 $data['authorPicture'] = $tweet->user->profile_image_url;
                 $data['numberOfLikes'] = $tweet->favorite_count;
@@ -112,9 +113,10 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                     foreach ($tweet->entities->media as $media) {
                         $data['media'] = $media->media_url;
                     }
-                    $data['type']='image';
+                    $data['type'] = 'image';
+                } else {
+                    $data['type'] = 'text';
                 }
-                else{$data['type']='text';}
 
                 $feed[] = $data;
             }
