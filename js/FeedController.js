@@ -1,5 +1,5 @@
 app.controller('FeedController', ['$scope', 'DataService', function($scope, DataService) {
-    $scope.letterLimitAuthor = 15;
+    //$scope.letterLimitAuthor = 13;
     $scope.feed = DataService.getPosts();
     $scope.showDetailView = function(post) {
         $scope.$emit('setCurrentItem', post);

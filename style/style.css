@@ -504,3 +504,10 @@ html, body {
 .social-media-content-body-entry-text-feed-extend {
     font-size:1.3rem;
 }
+.social-media-content-title-author-feed {
+    display: block;
+    width: 8vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

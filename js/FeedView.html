@@ -4,8 +4,8 @@
         <div class="social-media-content-title-feed">
             <img class="social-media-content-title-pic-feed" src="{{post.authorPicture}}"><div
                 style="display: inline-block; width:calc(14vw - 8vh); position: absolute; left:6vh; top:50%;
-                transform:translateY(-50%);"><a href="{{post.link | trustUrl}}" target="_blank">{{post.author |
-            shortenTo:letterLimitAuthor}}</a>
+                transform:translateY(-50%);">
+            <a class="social-media-content-title-author-feed" href="{{post.link | trustUrl}}" target="_blank">{{post.author}}</a>
             <div style="font-size:0.8rem; color:#999;">&#8226; 3 minutes ago</div></div>
         </div>
         <div class="social-media-content-header-x-feed" style="background-color:{{post.socialNetwork.color}};">
@@ -37,7 +37,7 @@
             {{post.text}}
         </div>
         <div ng-if="post.type == 'text'" class="social-media-content-body-entry-text-feed-extend social-media-content-body-entry-image-extend-feed">
-            <div class=" center">{{post.text}}</div>
+            <div class="center" style="width:12vw;max-height:12vw;" ellipsis>{{post.text}}</div>
         </div>
     </div>
 </div>
