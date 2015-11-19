@@ -75,7 +75,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $j = 0;
 
         foreach ($trends as $trend) {
-            $this->getfield = '?q=' . $trend . '&result_type=popular';
+            $this->getfield = '?q=' . $trend . '&result_type=popular&count=5';
 
             $trendingTweets[$j] = json_decode($this->twitter->setGetfield($this->getfield)
                 ->buildOauth($this->url, $this->requestMethod)
@@ -83,7 +83,6 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
             $j++;
         }
-
         return $this->encodeJSON($trendingTweets);
 
 
@@ -93,16 +92,18 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     {
 
         $feed;
-        $i = 0;
-
+        
         foreach ($json as $tweets) {
             foreach ($tweets->statuses as $tweet) {
-                $data;
-                $data['tags'] = $tweet->entities->hashtags;
+                $data = [];
+                $data['tags']=[];
+                foreach ($tweet->entities->hashtags as $hashtag) {
+                  $data['tags'][]=$hashtag->text;
+                }
                 $data['createdTime'] = $this->formatTime($tweet->created_at);
                 $data['text'] = $tweet->text;
-                $data['type'] = 'text';
-                $data['link'] = $tweet->source;
+                if(isset($tweet->entities->url)){
+                $data['link'] = $tweet->entities->url;}
                 $data['author'] = $tweet->user->name;
                 $data['authorPicture'] = $tweet->user->profile_image_url;
                 $data['numberOfLikes'] = $tweet->favorite_count;
@@ -111,11 +112,11 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                     foreach ($tweet->entities->media as $media) {
                         $data['media'] = $media->media_url;
                     }
+                    $data['type']='image';
                 }
+                else{$data['type']='text';}
 
-                $feed[$i] = $data;
-                $i++;
-
+                $feed[] = $data;
             }
         }
         $newJSON = array('name' => parent::getName(),
