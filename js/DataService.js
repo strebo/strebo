@@ -63,10 +63,7 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
 
     function extractPosts() {
         for (var i in feedByNetwork) {
-          console.log(i);
-          console.log(feedByNetwork[i].feed[1]);
             for (var j in feedByNetwork[i].feed) {
-              console.log(j);
                 feed.push({
                     socialNetwork: {
                         name: feedByNetwork[i].name,
@@ -84,7 +81,6 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
                     media: feedByNetwork[i].feed[j].media,
                     thumb: feedByNetwork[i].feed[j].thumb
                 });
-                console.log(feed);
             }
         }
     }
