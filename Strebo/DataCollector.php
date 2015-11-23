@@ -13,7 +13,7 @@ class DataCollector
     {
         $this->instagram = new SocialNetworks\Instagram();
         $this->twitter = new SocialNetworks\Twitter();
-        $this->soundcloud = new SocialNetworks\Soundcloud();
+        $this->soundcloud = new SocialNetworks\SoundCloud();
     }
 
     public function collectPublicFeed()
