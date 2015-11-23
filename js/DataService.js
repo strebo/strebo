@@ -21,7 +21,7 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
         }, {
             text: "From Twitter!"
         }]
-    }, 
+    },
     $.get("http://localhost/strebo/Strebo/SocialNetworks/index.php",function(data){alert(data);});
     ,{
         name: 'Facebook',
@@ -36,16 +36,10 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
         }]
     }];*/
 
-    var instagram = $http.get("/Strebo/SocialNetworks/index.php");
+    var data = $http.get("/Strebo/index.php");
 
-    var soundcloud = $http.get("/Strebo/SocialNetworks/index2.php");
-
-    var twitter = $http.get("/Strebo/SocialNetworks/index3.php");
-
-    $q.all([instagram, soundcloud, twitter]).then(function(resArr) {
-        feedByNetwork.push(resArr[0].data);
-        feedByNetwork.push(resArr[1].data);
-        feedByNetwork.push(resArr[2].data);
+    data.then(function(res) {
+        feedByNetwork =res.data;
         extractPosts();
         feed = shuffle(feed);
         extractNetworks();
@@ -69,7 +63,10 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
 
     function extractPosts() {
         for (var i in feedByNetwork) {
+          console.log(i);
+          console.log(feedByNetwork[i].feed[1]);
             for (var j in feedByNetwork[i].feed) {
+              console.log(j);
                 feed.push({
                     socialNetwork: {
                         name: feedByNetwork[i].name,
@@ -87,6 +84,7 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
                     media: feedByNetwork[i].feed[j].media,
                     thumb: feedByNetwork[i].feed[j].thumb
                 });
+                console.log(feed);
             }
         }
     }

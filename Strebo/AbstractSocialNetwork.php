@@ -1,10 +1,6 @@
 <?php
 namespace Strebo;
 
-require __DIR__.'/../vendor/autoload.php';
-require __DIR__.'/../Autoloader.php';
-spl_autoload_register (array ('Autoloader', 'autoload'));
-
 abstract class AbstractSocialNetwork {
 	private $name;
 	private $icon;

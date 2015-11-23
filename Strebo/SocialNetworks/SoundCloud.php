@@ -2,8 +2,6 @@
 namespace Strebo\SocialNetworks;
 use Strebo;
 
-require __DIR__.'/../AbstractSocialNetwork.php';
-
 class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PublicInterface{
 
 public function __construct(){
@@ -15,15 +13,15 @@ public function connect($code){
 }
 
 public function getPersonalFeed(){
-	
+
 	$feed;
 	return $this->encodeJSON($feed);
-	
+
 }
 
 
 public function search($tag) {
-	
+
 }
 
 public function getPublicFeed() {
@@ -39,7 +37,7 @@ public function getPublicFeed() {
 	echo curl_error($init) . '<br/>';*/
 
 	return $this->encodeJSON(file_get_contents('http://api-v2.soundcloud.com/explore/Popular+Music?tag=out-of-experiment&limit=24&offset=0&linked_partitioning=1&client_id=d08c99a67fa0518806f5fe1f4bf36792'));
-	
+
 }
 
 public function encodeJSON($json){

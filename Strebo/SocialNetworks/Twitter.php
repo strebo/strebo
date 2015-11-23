@@ -3,8 +3,6 @@ namespace Strebo\SocialNetworks;
 
 use Strebo;
 
-require __DIR__ . '/../AbstractSocialNetwork.php';
-
 use TwitterAPIExchange;
 
 class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface
