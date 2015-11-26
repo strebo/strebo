@@ -1,5 +1,6 @@
 app.filter('numberFilter', function ($sce) {
     return function (number) {
-        return number.toLocaleString();
+        if (number != undefined) {return number.toLocaleString()};
+        return "";
     };
 });
