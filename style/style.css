@@ -472,6 +472,10 @@ html, body {
     margin-bottom:0.2vmax;
 }
 
+.hashcolor {
+   color: #1de600;
+}
+
 .fade {
     transition:0.3s linear all;
 }
