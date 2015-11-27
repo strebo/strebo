@@ -308,6 +308,7 @@ html, body {
     margin-top:1.5vh;
     height:14vh;
     width:16vw;
+    cursor:pointer;
 }
 .social-media-content-body-entry:last-of-type {
     margin-bottom:1.5vh;
@@ -435,6 +436,10 @@ html, body {
     left:1vmax;
     top:1.3vmax;
     font-size:2rem;
+    width:65%;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 #detailview-content-meta-subtitle {
@@ -450,6 +455,8 @@ html, body {
     left:1.2vmax;
     font-size:1.1rem;
     padding-right:1.2vmax;
+    overflow:scroll;
+    height:80%;
 }
 #detailview-content-meta-body-hashtags {
     margin-top:1.3vmax;
@@ -473,7 +480,10 @@ html, body {
 }
 
 .hashcolor {
-   color: #1de600;
+   display: inline-block;
+   background-color: #ffeeee;
+    padding:0.25vh 0.4vh;
+    border-radius:1vh;
 }
 
 .fade {

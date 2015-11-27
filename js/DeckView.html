@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="social-media-content-body">
-        <div class="social-media-content-body-entry box-shadow" ng-repeat="entry in socialNetwork.feed">
+        <div class="social-media-content-body-entry box-shadow" ng-repeat="entry in socialNetwork.feed" ng-click="showDetailView(entry, socialNetwork)">
             <div class="social-media-content-body-entry-image">
                 <div class="center" style="font-size:7vh;" ng-if="entry.type != 'text'">
                     <img style="max-width:5.5vw;max-height:12vh;" ng-if="entry.type === 'audio'" src="{{entry.thumb}}"/>

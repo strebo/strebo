@@ -8,15 +8,24 @@
                 <img ng-if="currentItem.type === 'image'" class="center" src="{{currentItem.media}}" style="max-height:100%; max-width:100%;" />
                 <video ng-if="currentItem.type === 'video'" class="center" style="max-height:100%; max-width:100%;"
                        src="{{currentItem.media | trustUrl}}" controls></video>
+                <div class="center" style="font-size:2rem;width:80%;padding:2vh;border:0.2vh solid #eee;"
+                     ng-if="currentItem.type === 'text'"
+                     ng-bind-html="currentItem.text | urlFilter | hashFilter">
+                </div>
             </div>
         </div>
         <div id="detailview-content-meta">
             <div id="detailview-content-meta-title">
-                {{}}
-                <div id="detailview-content-meta-subtitle">{{currentItem.author}} &#8226; {{currentItem.createdAt | differenceFilter}}</div>
+                <a href="{{currentItem.link | trustUrl}}" target="_blank">{{currentItem.author}}</a>
+                <div id="detailview-content-meta-subtitle">&#8226; 3 minutes ago {{currentItem.createdAt |
+                    differenceFilter}}</div>
             </div>
             <div id="detailview-content-meta-body">
-                <div id="detailview-content-meta-body-desc" ng-bind-html="currentItem.text | urlFilter | hashFilter"></div>
+                <div ng-if="currentItem.authorPicture != ''" id="detailview-content-meta-body-author-pic"  style="height:14vh;position: relative;">
+                    <a href="{{currentItem.link | trustUrl}}" target="_blank"><img class="center" style="height:12vh;border-radius:50%;" src="{{currentItem.authorPicture}}" /></a>
+                </div>
+                <div id="detailview-content-meta-body-desc" ng-if="currentItem.type != 'text'"
+                     ng-bind-html="currentItem.text | urlFilter | hashFilter"></div>
                 <div id="detailview-content-meta-body-likes">
                     {{currentItem.numberOfLikes | numberFilter}} Likes
                 </div>
