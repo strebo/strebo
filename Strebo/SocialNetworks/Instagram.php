@@ -94,6 +94,8 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function formatTime($time)
     {
+        date_default_timezone_set('Europe/Berlin');
+        
         $formattedTime = date('d m Y H i s', $time);
 
         $timeJSON=array('day'=>substr($formattedTime, 0,2),
