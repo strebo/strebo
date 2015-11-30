@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>\Autoloader</OriginalElement>
+  <nodes>
+    <node x="189.83333333333331" y="0.0">\Strebo\AbstractSocialNetwork</node>
+    <node x="440.0" y="509.5">\Strebo\DataCollector</node>
+    <node x="245.0" y="543.0">\Autoloader</node>
+    <node x="452.93333333333334" y="56.0">\Strebo\PublicInterface</node>
+    <node x="9.516666666666652" y="246.0">\Strebo\SocialNetworks\Instagram</node>
+    <node x="-8.0" y="56.0">\Strebo\PrivateInterface</node>
+    <node x="336.51666666666665" y="301.5">\Strebo\SocialNetworks\Twitter</node>
+    <node x="0.0" y="543.0">\Strebo\StreboServer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\Strebo\SocialNetworks\Twitter" target="\Strebo\PrivateInterface">
+      <point x="-74.0" y="-70.5" />
+      <point x="373.51666666666665" y="216.0" />
+      <point x="96.75" y="216.0" />
+      <point x="32.25" y="37.0" />
+    </edge>
+    <edge source="\Strebo\SocialNetworks\Twitter" target="\Strebo\PublicInterface">
+      <point x="74.0" y="-70.5" />
+      <point x="521.5166666666667" y="226.0" />
+      <point x="563.6833333333334" y="226.0" />
+      <point x="34.25" y="37.0" />
+    </edge>
+    <edge source="\Strebo\SocialNetworks\Instagram" target="\Strebo\AbstractSocialNetwork">
+      <point x="-2.8421709430404007E-14" y="-126.0" />
+      <point x="163.01666666666662" y="226.0" />
+      <point x="245.83333333333331" y="226.0" />
+      <point x="-56.0" y="93.0" />
+    </edge>
+    <edge source="\Strebo\SocialNetworks\Instagram" target="\Strebo\PublicInterface">
+      <point x="102.33333333333329" y="-126.0" />
+      <point x="265.3499999999999" y="226.0" />
+      <point x="495.18333333333334" y="226.0" />
+      <point x="-34.25" y="37.0" />
+    </edge>
+    <edge source="\Strebo\SocialNetworks\Instagram" target="\Strebo\PrivateInterface">
+      <point x="-102.33333333333334" y="-126.0" />
+      <point x="60.68333333333331" y="226.0" />
+      <point x="32.25" y="226.0" />
+      <point x="-32.25" y="37.0" />
+    </edge>
+    <edge source="\Strebo\SocialNetworks\Twitter" target="\Strebo\AbstractSocialNetwork">
+      <point x="0.0" y="-70.5" />
+      <point x="447.51666666666665" y="206.0" />
+      <point x="357.8333333333333" y="206.0" />
+      <point x="56.0" y="93.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="212.0" y="340.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constants</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
