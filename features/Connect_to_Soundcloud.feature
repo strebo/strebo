@@ -4,5 +4,5 @@ Feature: Connect to SoundCloud
   Using it's API
 
   Scenario: Connect to SoundCloud
-    When I connect to SoundCloud
-    Then I should be able to perform requests
+    When |I connect to SoundCloud
+    Then |I should be able to perform requests to SoundCloud
