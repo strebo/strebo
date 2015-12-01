@@ -88,7 +88,7 @@
 </head>
 <body ng-app="strebo" ng-controller="AppController">
     <div id="container-strebo" class="container-fluid">
-        <div id="view-switch" class="box-shadow">
+        <div id="view-switch" ng-click="switchView()" class="box-shadow">
             <i ng-if="view===1" class="fa fa-compress center"></i>
             <i ng-if="view===0" class="fa fa-expand center"></i>
         </div>
@@ -109,8 +109,8 @@
             </div>
             <div id="container-board"
                  style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
-                <deck-view ng-show="view===0" ng-controller="DeckController"></deck-view>
-                <feed-view ng-show="view===1" ng-controller="FeedController"></feed-view>
+                <deck-view ng-if="view===0" ng-controller="DeckController"></deck-view>
+                <feed-view ng-if="view===1" ng-controller="FeedController"></feed-view>
             </div>
             <detail-view ng-show="detailview===true" ng-controller="DetailController"></detail-view>
         </div>
