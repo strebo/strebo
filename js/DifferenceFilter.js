@@ -3,6 +3,7 @@ app.filter('differenceFilter', function ($sce) {
             var dateGet = new Date();
             if (time != undefined) {
                 var matches = time.match(/(?!":")[0-9]+/g);
+                console.log(time);
                 var postDay = matches[0];
                 var postMonth = matches[1];
                 postMonth = parseInt(postMonth);
@@ -18,19 +19,21 @@ app.filter('differenceFilter', function ($sce) {
                 var timeDiffDay = Math.round(Math.abs(timeDiffHour) / 24);
                 var timeDiffMonth = (Math.round(Math.abs(timeDiffDay) / 30));
                 var timeDiffYear = Math.round(Math.abs(timeDiffMonth) / 12);
-                if (timeDiffSec <= 60) {
-                    return time = "just now";
-                } else if (timeDiffMin <= 60) {
-                    return time = timeDiffMin + " m ago";
-                } else if (timeDiffHour <= 24) {
-                    return time = timeDiffHour + " h ago";
-                } else if (timeDiffDay <= 30) {
-                    return time = timeDiffDay + " days ago";
-                } else if (timeDiffMonth <= 12) {
-                    return time = timeDiffMonth + " months ago";
+                var formattedTime = '';
+                if (timeDiffSec < 60) {
+                    formattedTime = "just now";
+                } else if (timeDiffMin < 60) {
+                    formattedTime = timeDiffMin + ( timeDiffMin==1 ? " minute " : " minutes " ) + "ago";
+                } else if (timeDiffHour < 24) {
+                    formattedTime = timeDiffHour + ( timeDiffHour==1 ? " hour " : " hours " ) + "ago";
+                } else if (timeDiffDay < 30) {
+                    formattedTime = timeDiffDay + ( timeDiffDay==1 ? " day " : " days " ) + "ago";
+                } else if (timeDiffMonth < 12) {
+                    formattedTime = timeDiffMonth + ( timeDiffMonth==1 ? " month " : " months " ) + "ago";
                 } else {
-                    return time = timeDiffYear + " years ago";
+                    formattedTime = timeDiffYear + ( timeDiffYear==1 ? " year " : " years " ) + "ago";
                 }
+                return formattedTime;
             }
 
         }
