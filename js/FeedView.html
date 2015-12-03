@@ -6,7 +6,7 @@
                 style="display: inline-block; width:calc(14vw - 8vh); position: absolute; left:6vh; top:50%;
                 transform:translateY(-50%);">
             <a class="social-media-content-title-author-feed" href="{{post.link | trustUrl}}" target="_blank">{{post.author}}</a>
-            <div style="font-size:0.8rem; color:#999;">&#8226; 3 minutes ago</div></div>
+            <div style="font-size:0.8rem; color:#999;">&#8226; {{post.createdTime | differenceFilter}}</div></div>
         </div>
         <div class="social-media-content-header-x-feed" style="background-color:{{post.socialNetwork.color}};">
             <i class="fa fa-{{post.socialNetwork.icon}} center"></i>
