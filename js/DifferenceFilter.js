@@ -2,17 +2,8 @@ app.filter('differenceFilter', function ($sce) {
         return function (time) {
             var dateGet = new Date();
             if (time != undefined) {
-                var matches = time.match(/(?!":")[0-9]+/g);
-                console.log(time);
-                var postDay = matches[0];
-                var postMonth = matches[1];
-                postMonth = parseInt(postMonth);
-                postMonth = postMonth -1;
-                var postYear = matches[2];
-                var postHour = matches[3];
-                var postMinute = matches[4];
-                var postSecond = matches[5];
-                var postDate = new Date(postYear, postMonth, postDay, postHour, postMinute, postSecond);
+                time = JSON.parse(time);
+                var postDate = new Date(time.year, time.month-1, time.day, time.hour, time.minute, time.second);
                 var timeDiffSec = Math.round(Math.abs((dateGet - postDate)) / 1000);
                 var timeDiffMin = Math.round(Math.abs(timeDiffSec) / 60);
                 var timeDiffHour = Math.round(Math.abs(timeDiffMin) / 60);
@@ -30,8 +21,10 @@ app.filter('differenceFilter', function ($sce) {
                     formattedTime = timeDiffDay + ( timeDiffDay==1 ? " day " : " days " ) + "ago";
                 } else if (timeDiffMonth < 12) {
                     formattedTime = timeDiffMonth + ( timeDiffMonth==1 ? " month " : " months " ) + "ago";
-                } else {
+                } else if (timeDiffYear != 0) {
                     formattedTime = timeDiffYear + ( timeDiffYear==1 ? " year " : " years " ) + "ago";
+                } else {
+                    formattedTime = '';
                 }
                 return formattedTime;
             }
