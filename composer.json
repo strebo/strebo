@@ -10,6 +10,6 @@
         "behat/mink": "^1.7"
     },
     "config": {
-        "bin-dir": "bin/"
+        "bin-dir": "vendor/bin/"
     }
 }

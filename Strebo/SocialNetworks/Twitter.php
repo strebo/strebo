@@ -78,7 +78,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $trendingTweets;
 
         foreach ($trends as $trend) {
-            $this->getfield = '?q=' . $trend . '&result_type=popular&count=5';
+            $this->getfield = '?q=' . $trend . '&result_type=popular&count=2';
 
             $trendingTweets[] = json_decode($this->twitter->setGetfield($this->getfield)
                 ->buildOauth($this->url, $this->requestMethod)
