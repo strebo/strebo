@@ -4,9 +4,7 @@ app.filter('urlFilter', ['$sce', function ($sce) {
 
         if (matches == null) return text;
         else {
-            console.log(matches);
             matches.forEach(function (match) {
-                console.log(match);
                 var link = encodeURI(match);
                 link = '<a target="_blank" href="' + link + '">' + link.toString() + '</a>';
                 text = text.replace(match, link);
