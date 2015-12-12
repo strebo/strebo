@@ -4,6 +4,7 @@
 .env
 vendor/
 composer.phar
+composer.lock
 .idea
 pull.php
 pull.sh
