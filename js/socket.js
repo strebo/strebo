@@ -1,4 +1,4 @@
-var conn = new WebSocket('ws://localhost:8080/strebo');
+var conn = new WebSocket('ws://strebo.net:8080/echobot');
 
 conn.onmessage = function(e) {
     console.log(e.data);
