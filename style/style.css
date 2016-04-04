@@ -486,6 +486,26 @@ html, body {
     border-radius:1vh;
 }
 
+#detailview-content-arrow-right {
+    position: absolute;
+    top:50%;
+    right:-3vw;
+    transform: translateY(-50%);
+    font-size:15vh;
+    color:#fff;
+    cursor:pointer;
+}
+
+#detailview-content-arrow-left {
+    position: absolute;
+    top:50%;
+    left:-3vw;
+    transform: translateY(-50%);
+    font-size:15vh;
+    color:#fff;
+    cursor:pointer;
+}
+
 .fade {
     transition:0.3s linear all;
 }

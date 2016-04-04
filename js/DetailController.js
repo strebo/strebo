@@ -13,6 +13,14 @@ app.controller('DetailController', ['$scope', 'DataService', '$sce', function($s
         $scope.$emit('setDetailView',false);
     };
 
+    $scope.nextItem = function() {
+        $scope.$emit('nextItem');
+    };
+
+    $scope.previousItem = function() {
+        $scope.$emit('previousItem');
+    };
+
 }])
     .directive('detailView', function() {
         return {
