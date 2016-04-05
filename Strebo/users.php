@@ -1,4 +1,5 @@
 <?php
+
 class WebSocketUser {
   public $socket;
   public $id;
