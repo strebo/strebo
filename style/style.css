@@ -51,7 +51,7 @@ html, body {
     position: relative;
     height:calc(10vh + 1px);
     width:18vw;
-    background-color:#333333;
+    background-color:transparent;
     cursor: pointer;
 }
 .center {
