@@ -4,6 +4,11 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
     var feed = DataService.getPosts();
     var index = 0;
 
+    var networks;
+    var networkIndex = 0;
+
+    var mode = 0;
+
     $scope.switchView = function() {
         $scope.view = ($scope.view + 1) % 2;
     };
@@ -26,25 +31,47 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
         $scope.detailview = state;
     });
 
+    $scope.$on('setCurrentItemByNetwork', function(post, data) {
+        mode = 1;
+        networks = DataService.getPostsByNetwork();
+        index = data.index;
+        networkIndex = data.networkIndex;
+        setFeedByNetworkItemAsDetail();
+    });
+
     $scope.$on('setCurrentItem', function(post, data) {
+        mode = 0;
         index = data;
         $scope.currentItem = feed[index];
-        console.log(data);
     });
 
     function updateDetailView() {
         $scope.$apply(function () {
-            $scope.currentItem = feed[index];
+            if(mode == 0) $scope.currentItem = feed[index];
+            else if(mode == 1) setFeedByNetworkItemAsDetail();
         });
     }
 
     function previousItem() {
         index = Math.max(0, index-1);
-        $scope.currentItem = feed[index];
+        if(mode == 0) $scope.currentItem = feed[index];
+        else if(mode == 1) setFeedByNetworkItemAsDetail();
     }
 
     function nextItem() {
-        index = Math.min(feed.length-1, index+1);
-        $scope.currentItem = feed[index];
+        if(mode == 0) {
+            index = Math.min(feed.length-1, index+1);
+            $scope.currentItem = feed[index];
+        } else if(mode == 1) {
+            index = Math.min(networks[networkIndex].feed.length-1, index+1);
+            setFeedByNetworkItemAsDetail();
+        }
+    }
+
+    function setFeedByNetworkItemAsDetail() {
+        networks[networkIndex].feed[index].socialNetwork = {};
+        networks[networkIndex].feed[index].socialNetwork.color = networks[networkIndex].color;
+        networks[networkIndex].feed[index].socialNetwork.icon = networks[networkIndex].icon;
+        $scope.currentItem = networks[networkIndex].feed[index];
     }
 }]);
