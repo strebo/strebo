@@ -1,40 +1,49 @@
+#!/usr/bin/env php
 <?php
-namespace Strebo;
 
-use Guzzle\Http\Client;
-use Ratchet\MessageComponentInterface;
-use Ratchet\ConnectionInterface;
+require './server.php';
 
-    class StreboServer implements MessageComponentInterface {
+class StreboServer extends WebSocketServer
+{
 
-        protected $clients;
+    protected $users;
 
-        public function __construct() {
-            $this->clients = new \SplObjectStorage;
-        }
+    protected function process($user, $message)
+    {
+        $this->send($user, "Hi! Here is Server. I got something from you: " . $message);
 
-        public function onOpen(ConnectionInterface $conn) {
-            $conn->send("Happy Welcome!");
-            $this->clients->attach($conn);
-        }
-
-        public function onMessage(ConnectionInterface $from, $msg) {
-            $from->send("Hi! Here is Server. I got something from you: " . $msg);
-
-            foreach ($this->clients as $client) {
-                if ($from != $client) {
-                    $client->send($msg);
-                }
+        foreach ($this->users as $client) {
+            if ($user != $client) {
+                $client->send($client, $message);
             }
-
-        }
-
-        public function onClose(ConnectionInterface $conn) {
-            $this->clients->detach($conn);
-        }
-
-        public function onError(ConnectionInterface $conn, \Exception $e) {
-            $conn->close();
         }
     }
+
+    protected function connected($user)
+    {
+        $this->users[] = $user;
+        $this->send($user, "Happy Welcome!");
+
+
+    }
+
+    protected function closed($user)
+    {
+        for ($i = 0; i < count($this->users); $i++) {
+            if ($user == $this->users[$i]) {
+                unset($this->users[$i]);
+                break;
+            }
+        }
+    }
+}
+
+$strebo = new StreboServer("0.0.0.0", "8080");
+
+try {
+    $strebo->run();
+} catch (Exception $e) {
+    $strebo->stdout($e->getMessage());
+}
+
 ?>
