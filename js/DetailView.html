@@ -39,10 +39,10 @@
             <i class="fa fa-{{currentItem.socialNetwork.icon}} center"></i>
         </div>
         <div id="detailview-content-network-triangle"></div>
-        <div id="detailview-content-arrow-right" ng-click="nextItem()">
+        <div id="detailview-content-arrow-right" ng-click="nextItem()" ng-if="showL">
             <i class="fa fa-angle-right"></i>
         </div>
-        <div id="detailview-content-arrow-left" ng-click="previousItem()">
+        <div id="detailview-content-arrow-left" ng-click="previousItem()" ng-if="showF">
             <i class="fa fa-angle-left"></i>
         </div>
     </div>
