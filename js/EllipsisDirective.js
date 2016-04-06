@@ -8,7 +8,8 @@ app.directive('ellipsis', [
                 // let the angular data binding run first
                 $timeout(function() {
                     element.dotdotdot({
-                        watch: "window"
+                        watch: "window",
+                        wrap: 'letter'
                     });
                 });
             }
