@@ -1,6 +1,7 @@
 app.controller('AppController', ['$scope', 'DataService', function($scope, DataService) {
     $scope.detailview = false;
     $scope.view = 1;
+    $scope.locationSetting = 0;
     var feed = DataService.getPosts();
     var index = 0;
 
@@ -12,7 +13,24 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
     $scope.showF = true;
     $scope.showL = true;
 
-    $scope.switchView = function() {
+    $scope.locations = [
+        {name:"Worldwide",abbreviation:"W"},
+        {name:"USA",abbreviation:"US"},
+        {name:"Germany",abbreviation:"DE"}
+    ];
+
+    $scope.location =  $scope.locations[0];
+
+    $scope.openLocationSettings = function() {
+        $scope.locationSetting = ($scope.locationSetting + 1) % 2;
+    };
+
+    $scope.setLocation = function(index) {
+        $scope.location =  $scope.locations[index];
+        $scope.locationSetting = 0;
+    };
+
+        $scope.switchView = function() {
         $scope.view = ($scope.view + 1) % 2;
     };
 

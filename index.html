@@ -92,6 +92,15 @@
             <i ng-if="view===1" class="fa fa-compress center"></i>
             <i ng-if="view===0" class="fa fa-expand center"></i>
         </div>
+        <div id="location-setting" ng-click="openLocationSettings()" class="box-shadow">
+            <i class="fa fa-globe center"></i>
+            <div id="location-setting-info"><div class="center">{{location.abbreviation}}</div></div>
+        </div>
+        <div id="location-setting-options" ng-if="locationSetting == 1">
+            <div class="location-setting-option"
+                 ng-repeat="location in locations"
+                 ng-click="setLocation($index)"><div class="center">{{location.name}}</div></div>
+        </div>
         <div id="container-top" class="row">
             <div id="container-menu">
                 <div class="menu-item box-shadow">

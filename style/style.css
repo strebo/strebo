@@ -25,6 +25,55 @@ html, body {
     cursor: pointer;
 }
 
+#location-setting {
+    position:absolute;
+    z-index:10;
+    top:10vh;
+    right:2vh;
+    background-color:#ffffff;
+    width:6vh;
+    height:6vh;
+    font-size:1.65rem;
+    cursor: pointer;
+}
+
+#location-setting-options {
+    position:absolute;
+    z-index:10;
+    top:10vh;
+    right:9vh;
+    width:15vh;
+    height:6vh;
+}
+
+.location-setting-option {
+    position:relative;
+    width:15vh;
+    height:6vh;
+    background-color:#ffffff;
+    border:1px solid #eee;
+    z-index:10;
+    font-size:1.1rem;
+    cursor:pointer;
+    margin-top:1vh;
+    box-sizing: border-box;
+}
+
+#location-setting-info {
+    position: absolute;
+    bottom:0.5vh;
+    right:0.5vh;
+    width:2vh;
+    background-color:#ffffff;
+    height:2vh;
+    font-size:0.8rem;
+    border-radius:50%;
+}
+
+.location-setting-option:first-of-type {
+    margin-top:0;
+}
+
 #container-top {
     height:90vh;
 }
