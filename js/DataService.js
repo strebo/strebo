@@ -10,7 +10,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 	var data;
 	
 	conn.onopen = function () {
-	data = conn.send(JSON.stringify({command : 'getPublicFeed', param : 'World'}));
+	data = conn.send(JSON.stringify({command : 'getPublicFeed', param : 'W'}));
 	
 	};
     

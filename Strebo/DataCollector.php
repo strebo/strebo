@@ -15,7 +15,7 @@ class DataCollector extends \Thread
     private $locations;
     private $publicFeedUS = [];
     private $publicFeedDE = [];
-    private $publicFeedWORLD = [];
+    private $publicFeedW = [];
 
 
     public function __construct()
@@ -23,7 +23,7 @@ class DataCollector extends \Thread
         $this->instagram = new SocialNetworks\Instagram();
         $this->twitter = new SocialNetworks\Twitter();
         $this->soundcloud = new SocialNetworks\SoundCloud();
-        $this->locations = ["Instagram" => ["DE" => [51.1656910, 10.4515260], "US" => [37.0902400, -95.7128910], "WORLD" => [null, null]], "Twitter" => ["DE" => 23424829, "US" => 23424977, "WORLD" => 1], "SoundCloud" => ["DE" => null, "US" => null, "WORLD" => null]];
+        $this->locations = ["Instagram" => ["DE" => [51.1656910, 10.4515260], "US" => [37.0902400, -95.7128910], "W" => [null, null]], "Twitter" => ["DE" => 23424829, "US" => 23424977, "W" => 1], "SoundCloud" => ["DE" => null, "US" => null, "W" => null]];
         $this->start();
     }
 
@@ -35,9 +35,9 @@ class DataCollector extends \Thread
         $this->publicFeedDE[0] = json_decode($this->instagram->getPublicFeed($this->locations->Instagram->DE));
         $this->publicFeedDE[1] = json_decode($this->twitter->getPublicFeed($this->locations->Twitter->DE));
         $this->publicFeedDE[2] = json_decode($this->soundcloud->getPublicFeed(null));
-        $this->publicFeedWORLD[0] = json_decode($this->instagram->getPublicFeed($this->locations->Instagram->WORLD));
-        $this->publicFeedWORLD[1] = json_decode($this->twitter->getPublicFeed($this->locations->Twitter->WORLD));
-        $this->publicFeedWORLD[2] = json_decode($this->soundcloud->getPublicFeed(null));
+        $this->publicFeedW[0] = json_decode($this->instagram->getPublicFeed($this->locations->Instagram->W));
+        $this->publicFeedW[1] = json_decode($this->twitter->getPublicFeed($this->locations->Twitter->W));
+        $this->publicFeedW[2] = json_decode($this->soundcloud->getPublicFeed(null));
 
     }
 
@@ -52,8 +52,8 @@ class DataCollector extends \Thread
             case 'DE':
                 return json_encode(["type" => "data", "json" => $this->publicFeedDE]);
                 break;
-            case 'WORLD':
-                return json_encode(["type" => "data", "json" => $this->publicFeedWORLD]);
+            case 'W':
+                return json_encode(["type" => "data", "json" => $this->publicFeedW]);
                 break;
         }
 
