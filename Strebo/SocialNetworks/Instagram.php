@@ -46,9 +46,9 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     }
 
-    public function getPublicFeed()
+    public function getPublicFeed($location)
     {
-        $popularmedia = $this->instagram->getPopularMedia();
+        $popularmedia = $this->instagram->getPopularMedia($location[0],$location[1]);
         return $this->encodeJSON($popularmedia);
 
     }

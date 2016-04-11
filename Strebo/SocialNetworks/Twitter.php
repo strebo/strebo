@@ -52,11 +52,11 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             ->performRequest());
     }
 
-    public function getPublicFeed()
+    public function getPublicFeed($location)
     {
         $this->url = 'https://api.twitter.com/1.1/trends/place.json';
         $this->requestMethod = "GET";
-        $this->getfield = '?id=1';
+        $this->getfield = '?id='.$location;
 
         $trendsresult = $this->twitter->setGetfield($this->getfield)
             ->buildOauth($this->url, $this->requestMethod)

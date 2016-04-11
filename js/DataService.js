@@ -1,50 +1,35 @@
-app.service('DataService', ['$http', '$q', function ($http, $q) {
+app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
 
     /* Private Properties */
     var feedByNetwork = [];
     var feed = [];
     var networks = [];
 
-    /*feedByNetwork = [{
-        name: 'YouTube',
-        icon: 'youtube',
-        color: '#e52d27',
-        feed: [{
-            text: "Cool Vid!"
-        }]
-    }, {
-        name: 'Twitter',
-        icon: 'twitter',
-        color: '#4099FF',
-        feed: [{
-            text: "Hallo Welt!"
-        }, {
-            text: "From Twitter!"
-        }]
-    },
-    $.get("http://localhost/strebo/Strebo/SocialNetworks/index.php",function(data){alert(data);});
-    ,{
-        name: 'Facebook',
-        icon: 'facebook',
-        color: '#3B5998',
-        feed: [{
-            text: "Hallo Welt!"
-        }, {
-            text: "#Hashtag"
-        }, {
-            text: "From Facebook!"
-        }]
-    }];*/
-
-    var data = $http.get("/Strebo/index.php");
-
-    data.then(function(res) {
-        feedByNetwork =res.data;
+    var conn = new WebSocket('ws://localhost:8080/echobot');
+	
+	var data;
+	
+	conn.onopen = function () {
+	data = conn.send(JSON.stringify({command : 'getPublicFeed', param : 'World'}));
+	
+	};
+    
+	conn.onmessage = function(e) {
+		
+		var message=JSON.parse(e.data);
+		
+		if(message.type=="data") {
+				feedByNetwork =message.json;
         extractPosts();
         feed = shuffle(feed);
         extractNetworks();
-    });
-
+		$rootScope.$apply();
+		}
+		if(message.type=="message"){
+			console.log(message.message);
+		}
+   
+    };
 
     // Public method
     this.getNetworks = function () {
@@ -52,7 +37,7 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
     };
 
     this.getPostsByNetwork = function () {
-        return feedByNetwork;
+	   return feedByNetwork;
     };
 
     this.getPosts = function () {
@@ -64,7 +49,7 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
     function extractPosts() {
         for (var i in feedByNetwork) {
             for (var j in feedByNetwork[i].feed) {
-                feed.push({
+				feed.push({
                     socialNetwork: {
                         name: feedByNetwork[i].name,
                         icon: feedByNetwork[i].icon,
@@ -81,6 +66,7 @@ app.service('DataService', ['$http', '$q', function ($http, $q) {
                     media: feedByNetwork[i].feed[j].media,
                     thumb: feedByNetwork[i].feed[j].thumb
                 });
+				
             }
         }
     }
