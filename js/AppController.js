@@ -2,6 +2,15 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
     $scope.detailview = false;
     $scope.view = 1;
     $scope.locationSetting = 0;
+
+    var sections = ["trend board", "personal board", "search"];
+
+    $scope.sectionName = sections[0];
+
+    $scope.switchToSection = function(sectionIndex) {
+        $scope.sectionName = sections[sectionIndex];
+    };
+
     var feed = DataService.getPosts();
     var index = 0;
 
