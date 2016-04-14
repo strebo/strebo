@@ -3,8 +3,6 @@ namespace Strebo;
 use Strebo;
 
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../Autoloader.php';
-spl_autoload_register(array('Autoloader', 'autoload'));
 
 class DataCollector extends \Thread
 {

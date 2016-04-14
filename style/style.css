@@ -606,3 +606,40 @@ html, body {
     width:14vw;
     left:1vw;
 }
+
+#searchview-queryfield {
+    width:38vw;
+    z-index:1001;
+    padding-bottom:10vh;
+}
+
+#searchview-label {
+    color:#ffffff;
+    font-size:2rem;
+}
+
+input {
+    display: block;
+    margin: 0.3em 0 0 0;
+    padding: 0.5em 1em 0.5em 0.7em;
+    width: 100%;
+    border: none;
+    background: #ffffff;
+    font-size: 2rem;
+    line-height: 1;
+    outline:none !important;
+    border-radius: 10%;
+}
+
+#searchview-trigger {
+    position:absolute;
+    right:1.65rem;
+    top:5.9rem;
+    font-size:3.5rem;
+    color:#727272;
+    cursor:pointer;
+}
+
+input::selection{ background-color: #424242; color:#fff;}
+input::moz-selection{ background-color: #424242; color:#fff;}
+input::webkit-selection{ background-color: #424242; color:#fff;}

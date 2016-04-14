@@ -1,5 +1,5 @@
 <?php
-
+namespace Strebo;
 class WebSocketUser {
   public $socket;
   public $id;

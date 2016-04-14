@@ -52,6 +52,18 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
         $scope.detailview = state;
     });
 
+    $scope.$on('setSearchView', function (event, state) {
+        $scope.searchview = state;
+    });
+
+    $scope.setSearchView = function (state) {
+        $scope.searchview = state;
+        if(state) setTimeout(function() {
+           angular.element('#searchview-query').focus();
+        },0);
+        console.log(angular.element('#searchview-query'));
+    };
+
     $scope.$on('setCurrentItemByNetwork', function(post, data) {
         mode = 1;
         networks = DataService.getPostsByNetwork();
