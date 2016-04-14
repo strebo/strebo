@@ -10,6 +10,10 @@ html, body {
     font-weight:100;
 }
 
+.icon {
+    font-weight:100 !important;
+}
+
 label {
     font-weight:100;
 }
@@ -653,7 +657,7 @@ input {
 #searchview-trigger {
     position:absolute;
     right:1.65rem;
-    top:5.9rem;
+    top:6.1rem;
     font-size:3.5rem;
     color:#727272;
     cursor:pointer;
@@ -662,3 +666,35 @@ input {
 input::selection{ background-color: #424242; color:#fff;}
 input::moz-selection{ background-color: #424242; color:#fff;}
 input::webkit-selection{ background-color: #424242; color:#fff;}
+
+.circle {
+    position: relative;
+    border-radius:50%;
+    width:10vw;
+    height:10vw;
+    border:0.2vw solid #eee;
+    transform: translate(0, -5vh);
+}
+
+.min-rechteck {
+    width:0.2vw;
+    height:4.5vw;
+    background-color:#727272;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform-origin: 50% 0;
+    animation-name: spin;
+    animation-duration: 2500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    border-radius:5px;
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, 0) rotate(0deg);
+    } to {
+          transform: translate(-50%, 0) rotate(360deg);
+      }
+}
