@@ -10,6 +10,8 @@ putenv('strebo_twitter_3=BspGfBzzXbBKtdWpl0eL1cihi');
 putenv('strebo_twitter_4=I3ht3hDmG0vY2uTb32WaupyKQq7Rv0htaGW8x2DDhd5ExrNij9');
 putenv('strebo_soundcloud_1=b44373de55ef0a0048ff5de51c143db6');
 putenv('strebo_soundcloud_2=9b305fb370cf50d4a8d63d745c894d44');
+putenv('strebo_youtube_1=AIzaSyAH6n3wcnku2Ah3qZZrgWbXcxVgiAwF-Xk');
+putenv('strebo_youtube_2=AIzaSyA8OMzoY6nuaQyQyp3nDSqVpMbjL6juT8U');
 
 echo "\n".'  Welcome at strebo.
               _            _

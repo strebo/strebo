@@ -17,16 +17,13 @@ class StreboServer extends WebSocketServer
 
     protected function process($user, $message)
     {
-        echo(var_dump($message));
         if ($this->isJson($message)) {
             $data=json_decode($message);
-            echo(var_dump($data));
             $function = "\$this->dataCollector->" . $data->command;
 
             switch ($data->command){
                 case 'getPublicFeed':
                     $this->send($user,$this->dataCollector->getPublicFeed($data->param));
-                    echo(var_dump($this->dataCollector->getPublicFeed($data->param)));
                     break;
             }
 
