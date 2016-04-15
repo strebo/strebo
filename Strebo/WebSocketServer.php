@@ -1,7 +1,7 @@
 <?php
 namespace Strebo;
 abstract class WebSocketServer {
-  protected $userClass = 'WebSocketUser'; // redefine this if you want a custom user class.  The custom user class should inherit from WebSocketUser.
+  protected $userClass = 'Strebo\WebSocketUser'; // redefine this if you want a custom user class.  The custom user class should inherit from WebSocketUser.
   protected $maxBufferSize;        
   protected $master;
   protected $sockets                              = array();
