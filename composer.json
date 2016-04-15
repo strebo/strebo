@@ -14,7 +14,8 @@
         "behat/mink-selenium2-driver": "^v1.3.0",
         "j7mbo/twitter-api-php": "dev-master",
         "behat/mink": "^1.7",
-		"glenscott/soundcloud": "dev-psr-4"
+		"glenscott/soundcloud": "dev-psr-4",
+		"google/apiclient": "1.0.*@beta"
     },
     "config": {
         "bin-dir": "vendor/bin/"
