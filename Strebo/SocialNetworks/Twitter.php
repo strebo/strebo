@@ -107,6 +107,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                 }
                 $data['createdTime'] = $this->formatTime($tweet->created_at);
                 $data['text'] = $tweet->text;
+                $data['title'] = null;
                 $data['link'] = 'https://twitter.com/statuses/' . $tweet->id_str;
                 $data['author'] = $tweet->user->name;
                 $data['authorPicture'] = $tweet->user->profile_image_url;
