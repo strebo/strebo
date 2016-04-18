@@ -4,31 +4,37 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     var feedByNetwork = [];
     var feed = [];
     var networks = [];
+    var mode = ['getPublicFeed', 'getPrivateFeed', 'search'];
+    var currentMode = 0;
+    var currentLocation = 0;
 
-    var conn = new WebSocket('ws://localhost:8080/echobot');
-	
-	var data;
+    $rootScope.locations = [
+        {name:"Worldwide",abbreviation:"W"},
+        {name:"USA",abbreviation:"US"},
+        {name:"Germany",abbreviation:"DE"}
+    ];
+
+    var conn = new WebSocket('ws://localhost:8080/echobot'); // Echobot?
 	
 	conn.onopen = function () {
-	data = conn.send(JSON.stringify({command : 'getPublicFeed', param : 'W'}));
-	
+        updateData();
 	};
     
 	conn.onmessage = function(e) {
-		
+
 		var message=JSON.parse(e.data);
 		
 		if(message.type=="data") {
-				feedByNetwork =message.json;
-        extractPosts();
-        feed = shuffle(feed);
-        extractNetworks();
-		$rootScope.$apply();
-		}
-		if(message.type=="message"){
+            feedByNetwork =message.json;
+            extractPosts();
+            feed = shuffle(feed);
+            networks.splice(0, networks.length);
+            extractNetworks();
+            $rootScope.loaderview = false;
+            $rootScope.$apply();
+		} else if(message.type=="message"){
 			console.log(message.message);
 		}
-   
     };
 
     // Public method
@@ -92,5 +98,28 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
             array[randomIndex] = temporaryValue;
         }
         return array;
+    }
+
+    this.getLocation = function(index) {
+        return currentLocation;
+    };
+
+    this.getMode = function(index) {
+        return currentMode;
+    };
+
+    this.setMode = function(index) {
+        currentMode = index;
+        updateData();
+    };
+
+    this.setLocation = function(index) {
+        currentLocation = index;
+        updateData();
+    };
+
+    function updateData() {
+        $rootScope.loaderview = true;
+        conn.send(JSON.stringify({command : mode[currentMode], param : $rootScope.locations[currentLocation].abbreviation}));
     }
 }]);

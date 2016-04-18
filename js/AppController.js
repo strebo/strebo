@@ -1,8 +1,9 @@
-app.controller('AppController', ['$scope', 'DataService', function($scope, DataService) {
+app.controller('AppController', ['$scope', 'DataService', '$rootScope', function($scope, DataService, $rootScope) {
 
     $scope.detailview = false;
     $scope.view = 1;
     $scope.locationSetting = 0;
+    $rootScope.loaderview = true;
 
     var sections = ["trend board", "personal board", "search"];
 
@@ -10,6 +11,7 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
 
     $scope.switchToSection = function(sectionIndex) {
         $scope.sectionName = sections[sectionIndex];
+        DataService.setMode(sectionIndex);
     };
 
     var feed = DataService.getPosts();
@@ -23,21 +25,16 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
     $scope.showF = true;
     $scope.showL = true;
 
-    $scope.locations = [
-        {name:"Worldwide",abbreviation:"W"},
-        {name:"USA",abbreviation:"US"},
-        {name:"Germany",abbreviation:"DE"}
-    ];
-
-    $scope.location =  $scope.locations[0];
+    $scope.location =  $rootScope.locations[DataService.getLocation()];
 
     $scope.openLocationSettings = function() {
         $scope.locationSetting = ($scope.locationSetting + 1) % 2;
     };
 
     $scope.setLocation = function(index) {
-        $scope.location =  $scope.locations[index];
+        $scope.location =  $rootScope.locations[index];
         $scope.locationSetting = 0;
+        DataService.setLocation(index);
     };
 
         $scope.switchView = function() {
@@ -71,7 +68,6 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
         if(state) setTimeout(function() {
            angular.element('#searchview-query').focus();
         },0);
-        console.log(angular.element('#searchview-query'));
     };
 
     $scope.$on('setCurrentItemByNetwork', function(post, data) {
@@ -131,7 +127,7 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
         else $scope.showL = true;
     }
 
-    setInterval(function(){$scope.apply();}, 60000);
+    setInterval(function(){$scope.$apply();}, 60000);
     
     $scope.isAdBlockActive=isAdBlockActive || false;
 }]);
