@@ -3,7 +3,10 @@
     <div id="detailview-content" class="center">
         <div id="detailview-content-media">
             <div id="detailview-content-media-x" class="center" style="width:95%; height:95%;">
-                <div ng-if="currentItem.socialNetwork.name == 'SoundCloud'" style="width:100%;height:100%;" ng-bind-html="media">
+                <div ng-if="currentItem.socialNetwork.name == 'SoundCloud' && isAdBlockActive == true" style="width:100%;height:100%;" ng-bind-html="media">
+                </div>
+                <div ng-if="currentItem.socialNetwork.name == 'SoundCloud' && isAdBlockActive == false" style="width:100%;height:100%;">
+                    <img class="center" src="http://thewindowsclub.thewindowsclubco.netdna-cdn.com/wp-content/uploads/2013/09/adblocker-detected.jpg" />
                 </div>
                 <img ng-if="currentItem.type === 'image'" class="center" src="{{currentItem.media}}" style="max-height:100%; max-width:100%;" />
                 <video ng-if="currentItem.type === 'video'" class="center" style="max-height:100%; max-width:100%;"

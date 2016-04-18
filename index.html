@@ -2,32 +2,32 @@
 <html>
 <head>
     <title>strebo | social trend board</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="description"
           content="With strebo you can see all trendy content from different social media platforms at a glance.">
 
 
     <!------------ FAVICON ------------>
-    <link rel="icon" href="resources/logo-small.ico" type="image/x-icon" />
+    <link rel="icon" href="resources/logo-small.ico" type="image/x-icon"/>
 
     <!--------------------------------->
     <!---------- STYLESHEETS ---------->
     <!--------------------------------->
 
     <!---- Normalize.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"/>
     <!---- Icon Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
     <!---- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
     <!---- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'/>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet'
-          type='text/css' />
+          type='text/css'/>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet'
-          type='text/css' />
+          type='text/css'/>
     <link href='https://fonts.googleapis.com/css?family=Antic+Slab' rel='stylesheet' type='text/css'>
 
     <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
@@ -38,10 +38,17 @@
 
     <!-- Google Analytics -->
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-70858018-1', 'auto');
         ga('send', 'pageview');
@@ -72,7 +79,7 @@
     <script src="js/ShortenFilter.js"></script>
     <script src="js/TrustHTMLFilter.js"></script>
     <script src="js/DifferenceFilter.js"></script>
-	<script src="js/NumberFilter.js"></script>
+    <script src="js/NumberFilter.js"></script>
     <script src="js/UrlFilter.js"></script>
     <script src="js/HashtagFilter.js"></script>
     <script src="js/EllipsisDirective.js"></script>
@@ -88,71 +95,86 @@
     <script src="js/SearchController.js"></script>
     <script src="js/LoaderController.js"></script>
 
-    <link rel="stylesheet" href="style/style.css" />
+    <script>var isAdBlockActive = false;</script>
+    <script src="js/ads.js"></script>
+
+    <link rel="stylesheet" href="style/style.css"/>
 </head>
 <body ng-app="strebo" ng-controller="AppController">
-    <div id="container-strebo" class="container-fluid">
-        <div id="view-switch" ng-click="switchView()" class="box-shadow">
-            <i ng-if="view===1" class="icon ion-ios-keypad-outline center"></i>
-            <i ng-if="view===0" class="icon ion-ios-photos-outline center"></i>
-        </div>
-        <div id="location-setting" ng-click="openLocationSettings()" class="box-shadow">
-            <i class="icon ion-ios-world-outline center"></i>
-            <div id="location-setting-info"><div class="center">{{location.abbreviation}}</div></div>
-        </div>
-        <div id="location-setting-options" ng-if="locationSetting == 1">
-            <div class="location-setting-option"
-                 ng-repeat="location in locations"
-                 ng-click="setLocation($index)"><div class="center">{{location.name}}</div></div>
-        </div>
-        <div id="container-top" class="row">
-            <div id="container-menu">
-                <div class="menu-item box-shadow" ng-click="switchToSection(0)">
-                    <div class="menu-icon center">
-                        <i class="icon ion-ios-list-outline"></i>
-                    </div>
-                    <div class="menu-tooltip box-shadow"><div class="menu-tooltip-text">trend board</div></div>
-                </div>
-                <div class="menu-item box-shadow" ng-click="switchToSection(1)">
-                    <div class="menu-icon center">
-                        <i class="icon ion-ios-person-outline"></i>
-                    </div>
-                    <div class="menu-tooltip box-shadow"><div class="menu-tooltip-text">personal board</div></div>
-                </div>
-				<div class="menu-item box-shadow">
-                    <a class="menu-link" href="http://strebo.wordpress.com" target="__blank">
-						<div class="menu-icon center">
-                            <i class="icon ion-ios-help-outline"></i>
-						</div>
-					</a>
-                    <div class="menu-tooltip box-shadow"><div class="menu-tooltip-text">blog</div></div>
-                </div>
-                <div class="menu-item box-shadow" ng-click="setSearchView(true)">
-                    <div class="menu-icon center">
-                        <i class="icon ion-ios-search"></i>
-                    </div>
-                    <div class="menu-tooltip box-shadow"><div class="menu-tooltip-text">search</div></div>
-                </div>
-            </div>
-            <div id="container-board"
-                 style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
-                <deck-view ng-if="view===0" ng-controller="DeckController"></deck-view>
-                <feed-view ng-if="view===1" ng-controller="FeedController"></feed-view>
-            </div>
-            <detail-view ng-show="detailview===true" ng-controller="DetailController"></detail-view>
-            <search-view ng-show="searchview===true" ng-controller="SearchController"></search-view>
-            <loader-view class="center" ng-controller="LoaderController"></loader-view>
-        </div>
-        <div id="container-footer" class="row">
-            <connector-bar ng-controller="ConnectorBarController"></connector-bar>
-            <div id="logo">
-                <img id="logo-image" class="center" src="resources/logo-with-subtitle.svg" />
-                <img id="logo-image-small" class="center" src="resources/logo-small.svg" />
-            </div>
-            <div id="sectionName">
-                {{sectionName}}
-            </div>
+<div id="container-strebo" class="container-fluid">
+    <div id="view-switch" ng-click="switchView()" class="box-shadow">
+        <i ng-if="view===1" class="icon ion-ios-keypad-outline center"></i>
+        <i ng-if="view===0" class="icon ion-ios-photos-outline center"></i>
+    </div>
+    <div id="location-setting" ng-click="openLocationSettings()" class="box-shadow">
+        <i class="icon ion-ios-world-outline center"></i>
+        <div id="location-setting-info">
+            <div class="center">{{location.abbreviation}}</div>
         </div>
     </div>
+    <div id="location-setting-options" ng-if="locationSetting == 1">
+        <div class="location-setting-option"
+             ng-repeat="location in locations"
+             ng-click="setLocation($index)">
+            <div class="center">{{location.name}}</div>
+        </div>
+    </div>
+    <div id="container-top" class="row">
+        <div id="container-menu">
+            <div class="menu-item box-shadow" ng-click="switchToSection(0)">
+                <div class="menu-icon center">
+                    <i class="icon ion-ios-list-outline"></i>
+                </div>
+                <div class="menu-tooltip box-shadow">
+                    <div class="menu-tooltip-text">trend board</div>
+                </div>
+            </div>
+            <div class="menu-item box-shadow" ng-click="switchToSection(1)">
+                <div class="menu-icon center">
+                    <i class="icon ion-ios-person-outline"></i>
+                </div>
+                <div class="menu-tooltip box-shadow">
+                    <div class="menu-tooltip-text">personal board</div>
+                </div>
+            </div>
+            <div class="menu-item box-shadow">
+                <a class="menu-link" href="http://strebo.wordpress.com" target="__blank">
+                    <div class="menu-icon center">
+                        <i class="icon ion-ios-help-outline"></i>
+                    </div>
+                </a>
+                <div class="menu-tooltip box-shadow">
+                    <div class="menu-tooltip-text">blog</div>
+                </div>
+            </div>
+            <div class="menu-item box-shadow" ng-click="setSearchView(true)">
+                <div class="menu-icon center">
+                    <i class="icon ion-ios-search"></i>
+                </div>
+                <div class="menu-tooltip box-shadow">
+                    <div class="menu-tooltip-text">search</div>
+                </div>
+            </div>
+        </div>
+        <div id="container-board"
+             style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
+            <deck-view ng-if="view===0" ng-controller="DeckController"></deck-view>
+            <feed-view ng-if="view===1" ng-controller="FeedController"></feed-view>
+        </div>
+        <detail-view ng-show="detailview===true" ng-controller="DetailController"></detail-view>
+        <search-view ng-show="searchview===true" ng-controller="SearchController"></search-view>
+        <loader-view class="center" ng-controller="LoaderController"></loader-view>
+    </div>
+    <div id="container-footer" class="row">
+        <connector-bar ng-controller="ConnectorBarController"></connector-bar>
+        <div id="logo">
+            <img id="logo-image" class="center" src="resources/logo-with-subtitle.svg"/>
+            <img id="logo-image-small" class="center" src="resources/logo-small.svg"/>
+        </div>
+        <div id="sectionName">
+            {{sectionName}}
+        </div>
+    </div>
+</div>
 </body>
 </html>

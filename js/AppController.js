@@ -1,4 +1,5 @@
 app.controller('AppController', ['$scope', 'DataService', function($scope, DataService) {
+
     $scope.detailview = false;
     $scope.view = 1;
     $scope.locationSetting = 0;
@@ -129,4 +130,8 @@ app.controller('AppController', ['$scope', 'DataService', function($scope, DataS
         if((mode == 0 && index == (feed.length - 1)) || (mode == 1 && index == (networks[networkIndex].feed.length - 1))) $scope.showL = false;
         else $scope.showL = true;
     }
+
+    setInterval(function(){$scope.apply();}, 60000);
+    
+    $scope.isAdBlockActive=isAdBlockActive || false;
 }]);
