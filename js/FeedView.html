@@ -31,7 +31,7 @@
                 <video
                         class="social-media-content-body-entry-media-feed social-media-content-body-entry-media-video-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}"
                        ng-if="post.type === 'video'"
-                       src="{{post.media | trustUrl}}" controls type="video/mp4"></video>
+                       src="{{post.media | trustUrl}}" type="video/mp4"></video>
             </div>
         </div>
         <div ng-if="post.type != 'text'" style="{{post.text.length == 0?'display:none;':''}}" class="social-media-content-body-entry-text-feed" ellipsis>

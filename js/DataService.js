@@ -23,6 +23,8 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 	conn.onmessage = function(e) {
 
 		var message=JSON.parse(e.data);
+
+        console.log(message);
 		
 		if(message.type=="data") {
             feedByNetwork =message.json;
