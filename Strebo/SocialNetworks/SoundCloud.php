@@ -14,7 +14,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
         $this->apiKey = getenv('strebo_soundcloud_1');
         $this->apiSecret = getenv('strebo_soundcloud_2');
         $this->apiCallback = 'http://strebo.net';
-        $this->client=new SoundCloudAPI($this->apiKey,$this->apiSecret,$this->apiCallback);
+        $this->client = new SoundCloudAPI($this->apiKey, $this->apiSecret, $this->apiCallback);
     }
 
     public function connect($code)
@@ -48,7 +48,6 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
         echo curl_getinfo($init) . '<br/>';
         echo curl_errno($init) . '<br/>';
         echo curl_error($init) . '<br/>';*/
-
         return $this->encodeJSON(file_get_contents('http://api-v2.soundcloud.com/explore/Popular+Music?tag=out-of-experiment&limit=24&offset=0&linked_partitioning=1&client_id=d08c99a67fa0518806f5fe1f4bf36792'));
 
     }
@@ -62,7 +61,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
         foreach ($data["tracks"] as $song) {
             $temp_song["text"] = $song["description"];
-            $temp_song["title"]=null;
+            $temp_song["title"] = $song["title"];
             $temp_song["author"] = $song["user"]["username"];
             $temp_song["authorPicture"] = $song["user"]["avatar_url"];
             $temp_song["numberOfLikes"] = $song["likes_count"];
