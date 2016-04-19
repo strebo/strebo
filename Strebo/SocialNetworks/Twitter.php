@@ -70,6 +70,10 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
             $trendsresult = json_decode($trendsresult);
 
+            if (array_key_exists("errors", $trendsresult)) {
+                return null;
+            }
+
             foreach ($trendsresult[0]->trends as $trend) {
                 $trends[$i] = $trend->query;
                 $i++;
