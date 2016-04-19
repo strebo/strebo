@@ -28,9 +28,12 @@
                 <img
                         class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'image'"
                      src="{{post.media}}"/>
+                <img
+                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'video' && post.thumb"
+                        src="{{post.thumb}}"/>
                 <video
                         class="social-media-content-body-entry-media-feed social-media-content-body-entry-media-video-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}"
-                       ng-if="post.type === 'video'"
+                       ng-if="post.type === 'video' && !post.thumb"
                        src="{{post.media | trustUrl}}" type="video/mp4"></video>
             </div>
         </div>

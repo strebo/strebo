@@ -66,10 +66,10 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
             $data['authorPicture'] = $profile->image->url;
             $data['numberOfLikes'] = $item->statistics->likeCount;
-            $match = '@[/][/]www.youtube.com[/]embed[/][a-zA-Z0-9]*@';
+            $match = '@[/][/]www.youtube.com[/]embed[/][a-zA-Z0-9-]*@';
             $treffer = [];
             preg_match($match, $item->player->embedHtml, $treffer);
-            $data['media'] = $treffer[0];
+            $data['media'] = "http:" . $treffer[0];
             $data['thumb'] = $item->snippet->thumbnails->standard->url;
             $data['title'] = $item->snippet->title;
             $data['text'] = $item->snippet->description;
