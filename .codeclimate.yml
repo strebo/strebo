@@ -36,3 +36,5 @@ exclude_paths:
 - "composer.lock"
 - "config.json"
 - "composer.json"
+- "README.md"
+- "codeclimate.sh"
