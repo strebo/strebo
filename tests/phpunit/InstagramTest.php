@@ -1,10 +1,7 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: PARSEA
- * Date: 20.04.2016
- * Time: 17:45
+* @coversDefaultClass Strebo\SocialNetworks\Instagram
  */
 
 require __DIR__ .'/../../vendor/autoload.php';
