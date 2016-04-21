@@ -15,7 +15,7 @@ script:
 - phpunit tests/phpunit/InstagramTest.php
 
 after_script:
-- vendor/bin/test-reporter --stdout > codeclimate.json
+- CODECLIMATE_REPO_TOKEN=25eb1f1fdac5cc4d6589928b3f0ffbbd98c86605440efc526f7ff0eadf4112e4 ./vendor/bin/test-reporter --stdout > codeclimate.json
 - "sh -c curl -X POST -d @codeclimate.json -H \"Content-Type: application/json\" -H \"User-Agent: Code Climate (PHP Test Reporter v0.1.1)\" https://codeclimate.com/test_reports"
 
 env:
