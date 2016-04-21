@@ -29,3 +29,10 @@ ratings:
 exclude_paths:
 - features/
 - tests/
+- "Strebo/WebSocketServer.php"
+- documentation/
+- libs/
+- resources/
+- "composer.lock"
+- "config.json"
+- "composer.json"
