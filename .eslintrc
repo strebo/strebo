@@ -46,7 +46,7 @@ rules:
   block-scoped-var: 1
   complexity: [2, 6]
   consistent-return: 1
-  curly: 1
+  curly: 0
   default-case: 1
   dot-location: 1
   dot-notation: 1
