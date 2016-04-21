@@ -9,10 +9,15 @@ before_script:
 - composer self-update
 - composer install --prefer-source --no-interaction --dev
 
-script: phpunit tests/Test.php
+script:
+- phpunit --coverage-clover build/logs/clover.xml
+- phpunit --testsuite=unit --coverage-text --coverage-clover build/logs/clover.xml
+- phpunit tests/Test.php
+- phpunit tests/phpunit/MoneyTest.php
+- phpunit tests/phpunit/InstagramTest.php
 
-after_script: ./codeclimate.sh
-
+after_script:
+- php /vendor/bin/test-reporter
 env:
   global:
   - secure: Q8ba3/NQla4He9NSj7Y4ZNQU6oR4X5k/Pl+WowhYnje+skzbEJCxryuBDNMDfXCR/ebSumKP2Up2/eal4pfjVmu9W0GI+Yz4qael+1YYdHyxfBIjCbbIryTuDKNbDDs21lel57lZWQ9cBf2XoRj5XfcoOmq6jfgUG7MT57rANLm33qZnv5bEuGZCwmAWT/4deRY1bdMpoVkhVe9+y/Wj5IqM9EN7JcYi6uPtEpGDTTm6ov0aF1TOEh5/7Rr25tLxoE8xZoT6p+VQXT2AUUVj5kpGzZ/Dlwp59SSHqJPtcCcMV/yPWXNroXYGCaAp/0/tyeHb0gx0FIrbG6eJ89qDbC9VeWOe1cuS4x8WM/6W9THck9QOkOmXd/I/ECEoAob7TnWerdcfijvpVBQqki9t6YIDnQPoFJoZAMO17PauKIvukj4p/g15wOfCR5ypyktOx0sZ6NaG8sHop6SX8WBww0n/oWoUBwlUthxxH27qXKLZB6ar94SqCJ+v2VXH7oOXbij3wtNgCz5HwYWZpL8pJtLpP2SrGUXvYkkRmLhPN7dFL2UHeRIcWEEUBDLdtLivWYtsKFVO4XmgNAFAjQrUfTWaky1fyey78T9EltCHfXjYA7i1g7LaEU0OZtgvsi1SHm8hRMns70DlPbUFIxbtzlvtSQxBKAV40U8tM23OfBc=
