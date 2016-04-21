@@ -23,19 +23,18 @@ class InstagramTest extends PHPUnit_Framework_TestCase
         putenv('strebo_instagram_1=c12bbe37871f443ca257ef54a131a777');
         $instagram=new \Strebo\SocialNetworks\Instagram();
         $result=json_decode($instagram->getPublicFeed([null,null]));
-        echo(var_dump($result));
         $this->assertEquals("Instagram",$result->name);
         $this->assertEquals("instagram",$result->icon);
         $this->assertEquals("#2a5b83",$result->color);
-        $this->assertArrayHasKey("type",$result->feed[0]);
-        $this->assertArrayHasKey("tags",$result->feed[0]);
-        $this->assertArrayHasKey("title",$result->feed[0]);
-        $this->assertArrayHasKey("createdTime",$result->feed[0]);
-        $this->assertArrayHasKey("link",$result->feed[0]);
-        $this->assertArrayHasKey("author",$result->feed[0]);
-        $this->assertArrayHasKey("authorPicture",$result->feed[0]);
-        $this->assertArrayHasKey("numberOfLikes",$result->feed[0]);
-        $this->assertArrayHasKey("media",$result->feed[0]);
+        $this->assertObjectHasAttribute("type",$result->feed[0]);
+        $this->assertObjectHasAttribute("tags",$result->feed[0]);
+        $this->assertObjectHasAttribute("title",$result->feed[0]);
+        $this->assertObjectHasAttribute("createdTime",$result->feed[0]);
+        $this->assertObjectHasAttribute("link",$result->feed[0]);
+        $this->assertObjectHasAttribute("author",$result->feed[0]);
+        $this->assertObjectHasAttribute("authorPicture",$result->feed[0]);
+        $this->assertObjectHasAttribute("numberOfLikes",$result->feed[0]);
+        $this->assertObjectHasAttribute("media",$result->feed[0]);
     }
 
     public function testGetPersonalFeed(){
