@@ -15,9 +15,7 @@ script:
 - phpunit tests/phpunit/InstagramTest.php
 
 after_script:
--  php vendor/bin/test-reporter --stdout > codeclimate.json
-- cat codeclimate.json
-- "curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
+-  php vendor/bin/test-reporter
 
 env:
   global:
