@@ -11,11 +11,12 @@ before_script:
 
 script:
 - phpunit tests/Test.php
-- phpunit tests/phpunit/Moneytest.php
+- phpunit tests/phpunit/MoneyTest.php
+- phpunit tests/phpunit/InstagramTest.php
 
 after_script:
 -  php vendor/bin/test-reporter --stdout > codeclimate.json
-- echo codeclimate.json
+- cat codeclimate.json
 - "curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
 
 env:
