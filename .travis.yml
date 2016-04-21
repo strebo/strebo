@@ -15,7 +15,7 @@ script:
 - phpunit tests/phpunit/InstagramTest.php
 
 after_script:
--  vendor/bin/test-reporter
+- ./vendor/bin/test-reporter
 
 env:
   global:
