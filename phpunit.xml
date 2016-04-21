@@ -2,7 +2,11 @@
 	<testsuite name="unit">
 		<directory>./tests/phpunit</directory>
 	</testsuite>
-	/filter>
+	<filter>
+	<whitelist>
+	<directory>./Strebo</directory>
+	</whitelist>
+	</filter>
 	<logging>
 		<log type="coverage-clover" target="build/logs/clover.xml"/>
 	</logging>
