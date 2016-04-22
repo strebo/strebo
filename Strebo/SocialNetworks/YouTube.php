@@ -37,15 +37,15 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function search($tag)
     {
-        return $this->encodeJSON($this->youtube->search->listSearch("player,snippet,statistics", ["maxResults" => 20, "q" => $tag]));
+        return $this->encodeJSON($this->youtube->search->listSearch("snippet,statistics", ["maxResults" => 20, "q" => $tag]));
     }
 
     public function getPublicFeed($location)
     {
         if ($location != null) {
-            $popularMedia = $this->youtube->videos->listVideos("player,snippet,statistics", ["chart" => "mostPopular", "regionCode" => $location, "maxResults" => 20]);
+            $popularMedia = $this->youtube->videos->listVideos("snippet,statistics", ["chart" => "mostPopular", "regionCode" => $location, "maxResults" => 20]);
         } else {
-            $popularMedia = $this->youtube->videos->listVideos("player,snippet,statistics", ["chart" => "mostPopular", "maxResults" => 20]);
+            $popularMedia = $this->youtube->videos->listVideos("snippet,statistics", ["chart" => "mostPopular", "maxResults" => 20]);
         }
         return $this->encodeJSON($popularMedia);
     }
@@ -66,10 +66,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
             $data['authorPicture'] = $profile->image->url;
             $data['numberOfLikes'] = $item->statistics->likeCount;
-            $match = '@[/][/]www.youtube.com[/]embed[/][a-zA-Z0-9-]*@';
-            $treffer = [];
-            preg_match($match, $item->player->embedHtml, $treffer);
-            $data['media'] = "http:" . $treffer[0];
+            $data['media'] = "https://www.youtube.com/embed/" . $item->id;
             $data['thumb'] = $item->snippet->thumbnails->standard->url;
             $data['title'] = $item->snippet->title;
             $data['text'] = $item->snippet->description;
