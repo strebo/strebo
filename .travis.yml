@@ -1,26 +1,30 @@
 language: php
+
 php:
-- 5.5
-- 5.6
-- 7.0
-- hhvm
+	- 5.5
+	- 5.6
+	- 7.0
+	- hhvm
 
-before_script:
-- composer self-update
-- composer install --prefer-source --no-interaction --dev
-
-script:
-- phpunit --coverage-clover build/logs/clover.xml
-- phpunit --testsuite=unit --coverage-text --coverage-clover build/logs/clover.xml
-- phpunit tests/Test.php
-- phpunit tests/phpunit/MoneyTest.php
-- phpunit tests/phpunit/InstagramTest.php
-
-after_script:
-- php /vendor/bin/test-reporter
 env:
   global:
-  - secure: Q8ba3/NQla4He9NSj7Y4ZNQU6oR4X5k/Pl+WowhYnje+skzbEJCxryuBDNMDfXCR/ebSumKP2Up2/eal4pfjVmu9W0GI+Yz4qael+1YYdHyxfBIjCbbIryTuDKNbDDs21lel57lZWQ9cBf2XoRj5XfcoOmq6jfgUG7MT57rANLm33qZnv5bEuGZCwmAWT/4deRY1bdMpoVkhVe9+y/Wj5IqM9EN7JcYi6uPtEpGDTTm6ov0aF1TOEh5/7Rr25tLxoE8xZoT6p+VQXT2AUUVj5kpGzZ/Dlwp59SSHqJPtcCcMV/yPWXNroXYGCaAp/0/tyeHb0gx0FIrbG6eJ89qDbC9VeWOe1cuS4x8WM/6W9THck9QOkOmXd/I/ECEoAob7TnWerdcfijvpVBQqki9t6YIDnQPoFJoZAMO17PauKIvukj4p/g15wOfCR5ypyktOx0sZ6NaG8sHop6SX8WBww0n/oWoUBwlUthxxH27qXKLZB6ar94SqCJ+v2VXH7oOXbij3wtNgCz5HwYWZpL8pJtLpP2SrGUXvYkkRmLhPN7dFL2UHeRIcWEEUBDLdtLivWYtsKFVO4XmgNAFAjQrUfTWaky1fyey78T9EltCHfXjYA7i1g7LaEU0OZtgvsi1SHm8hRMns70DlPbUFIxbtzlvtSQxBKAV40U8tM23OfBc=
-  - secure: LmSuiDd4VrbgPAfFrYVKTQGfVsxptKjMqIwPdSy3ib94TK6cRS50qZXlNpRHfT+NqieF0dK9luFT3Lj9dF/uWm53v5692euyo3m/N9jy6S3ILcJ+4EBHe9RLaHupcZ2mRRLjR+eUAegbmXbag+kkodNEZ9uFVnjsrzKSwaCph0Y2vee0u8afj15t+28DFrFEOyAor6njdtIoZ4TDMQQudQ1vSEjTrJq2bILdHXeqfe/amDBGtLyx4a23OMHUrGjdg2E3uDFRVsCw6gOltK3OzMyIHgzopLiGy5i64A9eOzl+kb2tMWS5PekM0vXpL1ksI6FBKPC/XgFhx0imOmwydHi7wOjQ7uwCaCNyojx5SFFRQmT9FAUWGr2qXy42LtTumQfCRdP0MEIEcsE0GqUFLaaZh3idlVsi363ie+txUkUy5i3x/HinTi6QKQtUcCt2FHFb9AvExv7Sx0oW4u1UKAHHV0nJOWhcZZW0/iYkXN+pa3s8axiM401XnzKemd6DQMunsvq9jw1Ql7lTVJ3/YXi08LzZ/KyfZOYCHuVi0LKqzpXCSAS8RnCQ3K0GKA2WwfjRmtGk3MhqlupG4Ej651JZ4Sqf6HGRedN7JWF9aIqHUASEQ0oMLgbqLPwfQ4N3tBRU++t4dJUQchm/uXB/VTOZqHSzf+IipbQrD9ifED4=
+	- secure: Q8ba3/NQla4He9NSj7Y4ZNQU6oR4X5k/Pl+WowhYnje+skzbEJCxryuBDNMDfXCR/ebSumKP2Up2/eal4pfjVmu9W0GI+Yz4qael+1YYdHyxfBIjCbbIryTuDKNbDDs21lel57lZWQ9cBf2XoRj5XfcoOmq6jfgUG7MT57rANLm33qZnv5bEuGZCwmAWT/4deRY1bdMpoVkhVe9+y/Wj5IqM9EN7JcYi6uPtEpGDTTm6ov0aF1TOEh5/7Rr25tLxoE8xZoT6p+VQXT2AUUVj5kpGzZ/Dlwp59SSHqJPtcCcMV/yPWXNroXYGCaAp/0/tyeHb0gx0FIrbG6eJ89qDbC9VeWOe1cuS4x8WM/6W9THck9QOkOmXd/I/ECEoAob7TnWerdcfijvpVBQqki9t6YIDnQPoFJoZAMO17PauKIvukj4p/g15wOfCR5ypyktOx0sZ6NaG8sHop6SX8WBww0n/oWoUBwlUthxxH27qXKLZB6ar94SqCJ+v2VXH7oOXbij3wtNgCz5HwYWZpL8pJtLpP2SrGUXvYkkRmLhPN7dFL2UHeRIcWEEUBDLdtLivWYtsKFVO4XmgNAFAjQrUfTWaky1fyey78T9EltCHfXjYA7i1g7LaEU0OZtgvsi1SHm8hRMns70DlPbUFIxbtzlvtSQxBKAV40U8tM23OfBc=
+	- secure: LmSuiDd4VrbgPAfFrYVKTQGfVsxptKjMqIwPdSy3ib94TK6cRS50qZXlNpRHfT+NqieF0dK9luFT3Lj9dF/uWm53v5692euyo3m/N9jy6S3ILcJ+4EBHe9RLaHupcZ2mRRLjR+eUAegbmXbag+kkodNEZ9uFVnjsrzKSwaCph0Y2vee0u8afj15t+28DFrFEOyAor6njdtIoZ4TDMQQudQ1vSEjTrJq2bILdHXeqfe/amDBGtLyx4a23OMHUrGjdg2E3uDFRVsCw6gOltK3OzMyIHgzopLiGy5i64A9eOzl+kb2tMWS5PekM0vXpL1ksI6FBKPC/XgFhx0imOmwydHi7wOjQ7uwCaCNyojx5SFFRQmT9FAUWGr2qXy42LtTumQfCRdP0MEIEcsE0GqUFLaaZh3idlVsi363ie+txUkUy5i3x/HinTi6QKQtUcCt2FHFb9AvExv7Sx0oW4u1UKAHHV0nJOWhcZZW0/iYkXN+pa3s8axiM401XnzKemd6DQMunsvq9jw1Ql7lTVJ3/YXi08LzZ/KyfZOYCHuVi0LKqzpXCSAS8RnCQ3K0GKA2WwfjRmtGk3MhqlupG4Ej651JZ4Sqf6HGRedN7JWF9aIqHUASEQ0oMLgbqLPwfQ4N3tBRU++t4dJUQchm/uXB/VTOZqHSzf+IipbQrD9ifED4=
+
+	
+before_install:
+	- composer self-update
+	
+install:
+		- composer install --prefer-dist
+
+script:
+	- vendor/bin/phpunit
+	- phpunit tests/Test.php
+	- phpunit tests/phpunit/MoneyTest.php
+	- phpunit tests/phpunit/InstagramTest.php
+
+after_script:
+	- php /vendor/bin/test-reporter
   
 after_success: "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp://strebo.net/"
