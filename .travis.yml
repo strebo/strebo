@@ -12,7 +12,7 @@ install:
 - composer install --prefer-dist
 
 script:
-- vendor/bin/phpunit --coverage-clover build/logs/clover.xml tests/phpunit
+- vendor/bin/phpunit --coverage-clover build/logs/clover.xml tests/phpunit/
 
 after_script:
 - vendor/bin/test-reporter
