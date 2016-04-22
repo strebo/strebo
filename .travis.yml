@@ -12,9 +12,7 @@ install:
 - composer install --prefer-dist
 
 script:
-- vendor/bin/phpunit --coverage-clover tests/Test.php
-- vendor/bin/phpunit --coverage-clover tests/phpunit/MoneyTest.php
-- vendor/bin/phpunit --coverage-clover tests/phpunit/InstagramTest.php
+- vendor/bin/phpunit --coverage-clover tests/phpunit
 
 after_script:
 - vendor/bin/test-reporter
