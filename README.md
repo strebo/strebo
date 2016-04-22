@@ -1,4 +1,5 @@
-[![Code Climate](https://codeclimate.com/github/strebo/strebo/badges/gpa.svg)](https://codeclimate.com/github/strebo/strebo) [![Build Status](https://travis-ci.org/strebo/strebo.svg?branch=master)](https://travis-ci.org/strebo/strebo) [![Test Coverage](https://codeclimate.com/github/strebo/strebo/badges/coverage.svg)](https://codeclimate.com/github/strebo/strebo/coverage) [![Issue Count](https://codeclimate.com/github/strebo/strebo/badges/issue_count.svg)](https://codeclimate.com/github/strebo/strebo)
+[![Code Climate](https://codeclimate.com/github/strebo/strebo/badges/gpa.svg)](https://codeclimate.com/github/strebo/strebo) [![Build Status](https://semaphoreci.com/api/v1/strebo/strebo/branches/master/badge.svg)](https://semaphoreci.com/strebo/strebo)
+ [![Test Coverage](https://codeclimate.com/github/strebo/strebo/badges/coverage.svg)](https://codeclimate.com/github/strebo/strebo/coverage) [![Issue Count](https://codeclimate.com/github/strebo/strebo/badges/issue_count.svg)](https://codeclimate.com/github/strebo/strebo)
 
 # strebo – social trend board ❤
 ![strebo - social trend board](/resources/logo-large-with-subtitle.png "strebo - social trend board")
