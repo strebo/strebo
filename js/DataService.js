@@ -17,14 +17,13 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     var conn = new WebSocket('ws://localhost:8080/echobot'); // Echobot?
 	
 	conn.onopen = function () {
+		conn.send('Ping'); // Send the message 'Ping' to the server
         updateData();
 	};
     
 	conn.onmessage = function(e) {
 
 		var message=JSON.parse(e.data);
-
-        console.log(message);
 		
 		if(message.type=="data") {
             feedByNetwork =message.json;
