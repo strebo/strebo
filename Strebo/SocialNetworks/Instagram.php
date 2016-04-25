@@ -72,7 +72,9 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             $data['createdTime'] = $this->formatTime($media->created_time);
             if (isset($media->caption, $media->caption->text)) {
                 $data['text'] = $media->caption->text;
-            } else {
+            }
+            //kein else
+            else {
                 $data['text'] = '';
             }
             $data['link'] = $media->link;

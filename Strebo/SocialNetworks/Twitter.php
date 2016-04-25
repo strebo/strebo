@@ -142,6 +142,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
         $month = 0;
 
+        //Timestamp oder Array
         switch (substr($time, 4, 3)) {
             case 'Jan':
                 $month = 1;

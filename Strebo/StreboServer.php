@@ -12,6 +12,7 @@ class StreboServer extends WebSocketServer
     function __construct($ip, $port)
     {
         parent::__construct($ip, $port);
+        //timezone here
         $this->dataCollector = new Strebo\DataCollector();
     }
 

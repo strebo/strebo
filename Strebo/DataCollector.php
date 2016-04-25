@@ -6,12 +6,13 @@ require __DIR__ . '/../vendor/autoload.php';
 
 class DataCollector extends \Thread
 {
-
+    //Array statt einzelner Variablen der Netzwerke
     private $instagram;
     private $twitter;
     private $soundcloud;
 	private $youtube;
     private $locations;
+    //Array für Public Feed mit Location als Key
     private $publicFeedUS = [];
     private $publicFeedDE = [];
     private $publicFeedW = [];
@@ -19,16 +20,18 @@ class DataCollector extends \Thread
 
     public function __construct()
     {
+        //dynamisch Code erzeugen anhand vorhandener Klassen
         $this->instagram = new SocialNetworks\Instagram();
         $this->twitter = new SocialNetworks\Twitter();
         $this->soundcloud = new SocialNetworks\SoundCloud();
 		$this->youtube = new SocialNetworks\YouTube();
+        //variablen in Netzwerkklassen
         $this->locations = ["YouTube" => ["DE" => "DE", "US" => "US", "W" => null], "Instagram" => ["DE" => ["51.1656910", "10.4515260"], "US" => ["37.0902400", "-95.7128910"], "W" => [null, null]], "Twitter" => ["DE" => "23424829", "US" => "23424977", "W" => "1"], "SoundCloud" => ["DE" => null, "US" => null, "W" => null]];
         $this->start();
     }
 
     public function collectPublicFeed()
-    {
+    {//Schleife
         $this->publicFeedUS[0] = json_decode($this->instagram->getPublicFeed($this->locations["Instagram"]["US"]));
         $this->publicFeedUS[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["US"]));
         $this->publicFeedUS[2] = json_decode($this->soundcloud->getPublicFeed(null));
@@ -47,7 +50,7 @@ class DataCollector extends \Thread
     public function getPublicFeed($location)
     {
         $geo = strtoupper($location);
-
+//siehe oberer Lösungen
         switch ($geo) {
             case 'US':
                 return json_encode(["type" => "data", "json" => $this->publicFeedUS]);
@@ -63,7 +66,7 @@ class DataCollector extends \Thread
     }
 
     public function collectPersonalFeed()
-    {
+    {//Schleife
         $personalFeed = [];
         $personalFeed[] = json_decode($this->instagram->getPersonalFeed());
         $personalFeed[] = json_decode($this->twitter->getPersonalFeed());
@@ -74,7 +77,7 @@ class DataCollector extends \Thread
 
     public function searchNetworks($tag)
     {
-
+//schleife
         $results = [];
         $results[] = json_decode($this->instagram->search($tag));
         $results[] = json_decode($this->twitter->search($tag));
