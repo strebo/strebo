@@ -52,7 +52,7 @@ class YouTubeTest extends PHPUnit_Framework_TestCase
     public function testFormatTime(){
         putenv('strebo_youtube_1=AIzaSyAH6n3wcnku2Ah3qZZrgWbXcxVgiAwF-Xk');
         putenv('strebo_youtube_2=AIzaSyA8OMzoY6nuaQyQyp3nDSqVpMbjL6juT8U');
-        $youtube=new \Strebo\SocialNetworks\();
+        $youtube=new \Strebo\SocialNetworks\YouTube();
         $time=json_decode($youtube->formatTime("1296656006"));
 
         $this->assertEquals("02",$time->day);
