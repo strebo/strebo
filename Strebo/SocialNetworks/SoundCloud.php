@@ -10,7 +10,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
     public function __construct()
     {
-        parent::__construct('SoundCloud', 'soundcloud', '#ff3a00');
+        parent::__construct('SoundCloud', 'soundcloud', '#ff3a00', null, null, null);
         $this->apiKey = getenv('strebo_soundcloud_1');
         $this->apiSecret = getenv('strebo_soundcloud_2');
         $this->apiCallback = 'http://strebo.net';
