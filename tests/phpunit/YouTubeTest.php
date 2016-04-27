@@ -5,9 +5,6 @@
  */
 
 require __DIR__ . '/../../vendor/autoload.php';
-require __DIR__ . '/../../Autoloader.php';
-
-spl_autoload_register(array('Autoloader', 'autoload'));
 
 class YouTubeTest extends PHPUnit_Framework_TestCase
 {

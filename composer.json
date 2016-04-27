@@ -21,5 +21,11 @@
     },
     "config": {
         "bin-dir": "vendor/bin/"
-    }
+    },
+	"autoload": {
+		"psr-4": {
+			"Strebo\\": "Strebo/",
+			"Strebo\\SocialNetworks\\": "Strebo/SocialNetworks/"
+		}
+	}
 }

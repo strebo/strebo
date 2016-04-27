@@ -3,8 +3,6 @@ namespace Strebo;
 
 use Strebo;
 
-require __DIR__ . '/../vendor/autoload.php';
-
 class DataCollector extends \Thread
 {
     private $socialNetworks = [];
