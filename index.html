@@ -159,12 +159,11 @@
              style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
             <deck-view ng-if="view===0 && loaderview === false" ng-controller="DeckController"></deck-view>
             <feed-view ng-if="view===1 && loaderview === false" ng-controller="FeedController"></feed-view>
+            <loader-view ng-show="loaderview===true" class="center" ng-controller="LoaderController"></loader-view>
+            <div id="error-message" class="center" ng-if="serverError"><i id="error-icon" class="icon ion-ios-close-outline"></i><div style="position: relative;top:-3vh;">Server Not Found</div></div>
         </div>
         <detail-view ng-show="detailview===true" ng-controller="DetailController"></detail-view>
-        <search-view ng-show="searchview===true" ng-controller="SearchController"></search-view>
-        <loader-view ng-show="loaderview===true" class="center" ng-controller="LoaderController"></loader-view>
-        <div class="center" style="top:47%;font-size:4vh;text-align:center;color:#bbb;" ng-if="serverError"><i style="font-size:16vh;color:#eeeeee;" class="icon ion-ios-close-outline"></i><div style="position: relative;top:-3vh;">Server Not Found</div></div>
-    </div>
+        <search-view ng-show="searchview===true" ng-controller="SearchController"></search-view></div>
     <div id="container-footer" class="row">
         <connector-bar ng-controller="ConnectorBarController"></connector-bar>
         <div id="logo">

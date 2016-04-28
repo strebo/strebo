@@ -669,7 +669,13 @@ input::webkit-selection{ background-color: #424242; color:#fff;}
     width:10vw;
     height:10vw;
     border:0.2vw solid #eee;
-    transform: translate(0, -5vh);
+    transform:translateY(-1rem);
+}
+
+.loading-label {
+    font-size:1.4rem;
+    position: absolute;
+    top:120%;
 }
 
 .min-rechteck {
@@ -693,4 +699,15 @@ input::webkit-selection{ background-color: #424242; color:#fff;}
     } to {
           transform: translate(-50%, 0) rotate(360deg);
       }
+}
+
+#error-message {
+    font-size:4vh;
+    text-align:center;
+    color:#bbb;
+}
+
+#error-icon {
+    font-size:16vh;
+    color:#eeeeee;
 }
