@@ -2,7 +2,7 @@
 
 <div id="searchview-queryfield" class="center">
     <span id="searchview-label"><label for="searchview-query">Your Search Query.</label></span>
-    <input id="searchview-query" name="searchview-query" placeholder="#SearchingCanBeThisGreat" type="text">
+    <input id="searchview-query" name="searchview-query" placeholder="#SearchingCanBeThisGreat" type="text" ng-keyup="enterSearch($event)" />
     <div id="searchview-trigger">
         <i class="icon ion-ios-arrow-right center" aria-hidden="true" ng-click="search()"></i>
     </div>
