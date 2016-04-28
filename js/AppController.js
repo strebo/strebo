@@ -4,6 +4,7 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     $scope.view = 1;
     $scope.locationSetting = 0;
     $rootScope.loaderview = true;
+    $rootScope.serverError = false;
 
     var sections = ["trend board", "personal board", "search"];
 

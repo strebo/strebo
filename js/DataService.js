@@ -20,6 +20,12 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 		conn.send('Ping'); // Send the message 'Ping' to the server
         updateData();
 	};
+
+    conn.onerror = function() {
+        $rootScope.loaderview = false;
+        $rootScope.serverError = true;
+        $rootScope.$apply();
+    };
     
 	conn.onmessage = function(e) {
 

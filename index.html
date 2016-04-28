@@ -163,6 +163,7 @@
         <detail-view ng-show="detailview===true" ng-controller="DetailController"></detail-view>
         <search-view ng-show="searchview===true" ng-controller="SearchController"></search-view>
         <loader-view ng-show="loaderview===true" class="center" ng-controller="LoaderController"></loader-view>
+        <div class="center" style="top:47%;font-size:4vh;text-align:center;color:#bbb;" ng-if="serverError"><i style="font-size:16vh;color:#eeeeee;" class="icon ion-ios-close-outline"></i><div style="position: relative;top:-3vh;">Server Not Found</div></div>
     </div>
     <div id="container-footer" class="row">
         <connector-bar ng-controller="ConnectorBarController"></connector-bar>
