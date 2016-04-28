@@ -59,6 +59,15 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
         $scope.detailview = state;
     });
 
+    $scope.$on('search', function (event, state) {
+        if(state) search();
+    });
+
+    function search() {
+        $scope.switchToSection(2);
+        $scope.setSearchView(false);
+    }
+
     $scope.$on('setSearchView', function (event, state) {
         $scope.searchview = state;
     });

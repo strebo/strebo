@@ -121,6 +121,6 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     function updateData() {
         $rootScope.loaderview = true;
-        conn.send(JSON.stringify({command : mode[currentMode], param : $rootScope.locations[currentLocation].abbreviation}));
+        conn.send(JSON.stringify({command : mode[currentMode], param : $rootScope.locations[currentLocation].abbreviation, query : angular.element("#searchview-query").val()}));
     }
 }]);
