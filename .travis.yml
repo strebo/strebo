@@ -11,17 +11,17 @@ before_install:
 - composer update
 
 install:
-- composer install --prefer-dist
 - travis_retry wget -q https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.6.zip
- - unzip -qq sonar-scanner-2.6.zip
+- unzip -qq sonar-scanner-2.6.zip
+- composer install --prefer-dist
 
 before_script:
- - echo "sonar.host.url=http://sonarqube.it.dh-karlsruhe.de" >> sonar-scanner-2.6/conf/sonar-scanner.properties
+- echo "sonar.host.url=http://sonarqube.it.dh-karlsruhe.de" >> sonar-scanner-2.6/conf/sonar-scanner.properties
 
 script:
 - vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist Strebo/ tests/
 - vendor/bin/behat --config behat.yml
- - sonar-scanner-2.6/bin/sonar-scanner
+- sonar-scanner-2.6/bin/sonar-scanner
 
 after_script:
 - vendor/bin/test-reporter
