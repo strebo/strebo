@@ -14,12 +14,18 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         {name:"Germany",abbreviation:"DE"}
     ];
 
-    var conn = new WebSocket('ws://localhost:8080/echobot'); // Echobot?
+    var conn = new WebSocket('ws://' + location.hostname + ':8080/echobot'); // Echobot?
 	
 	conn.onopen = function () {
 		conn.send('Ping'); // Send the message 'Ping' to the server
         updateData();
 	};
+
+    conn.onerror = function() {
+        $rootScope.loaderview = false;
+        $rootScope.serverError = true;
+        $rootScope.$apply();
+    };
     
 	conn.onmessage = function(e) {
 
@@ -121,6 +127,6 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     function updateData() {
         $rootScope.loaderview = true;
-        conn.send(JSON.stringify({command : mode[currentMode], param : $rootScope.locations[currentLocation].abbreviation}));
+        conn.send(JSON.stringify({command : mode[currentMode], param : $rootScope.locations[currentLocation].abbreviation, query : angular.element("#searchview-query").val()}));
     }
 }]);

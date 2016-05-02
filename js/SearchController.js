@@ -3,6 +3,14 @@ app.controller('SearchController', ['$scope', 'DataService', '$sce', function($s
        $scope.$emit('setSearchView',false);
     };
 
+        $scope.search = function() {
+            $scope.$emit('search',true);
+        };
+
+        $scope.enterSearch = function(e) {
+            if (e.keyCode == 13) $scope.$emit('search',true);
+        }
+
 }])
     .directive('searchView', function() {
         return {

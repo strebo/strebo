@@ -16,7 +16,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function __construct()
     {
-        parent::__construct('Twitter', 'twitter', '#4099FF');
+        parent::__construct('Twitter', 'twitter', '#4099FF', "23424829", "23424977", "1");
         $oauth_access_token = getenv('strebo_twitter_1');
         $oauth_access_token_secret = getenv('strebo_twitter_2');
         $consumer_key = getenv('strebo_twitter_3');
@@ -66,35 +66,30 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $trends = [];
         $i = 0;
 
-        try {
+        $trendsresult = json_decode($trendsresult);
 
-            $trendsresult = json_decode($trendsresult);
-
-            if (array_key_exists("errors", $trendsresult)) {
-                return null;
-            }
-
-            foreach ($trendsresult[0]->trends as $trend) {
-                $trends[$i] = $trend->query;
-                $i++;
-            }
-
-            $this->url = 'https://api.twitter.com/1.1/search/tweets.json';
-
-
-            $trendingTweets = [];
-
-            foreach ($trends as $trend) {
-                $this->getfield = '?q=' . $trend . '&result_type=popular&count=2';
-
-                $trendingTweets[] = json_decode($this->twitter->setGetfield($this->getfield)
-                    ->buildOauth($this->url, $this->requestMethod)
-                    ->performRequest());
-            }
-            return $this->encodeJSON($trendingTweets);
-        } catch (Exception $e) {
+        if (array_key_exists("errors", $trendsresult)) {
             return null;
         }
+
+        foreach ($trendsresult[0]->trends as $trend) {
+            $trends[$i] = $trend->query;
+            $i++;
+        }
+
+        $this->url = 'https://api.twitter.com/1.1/search/tweets.json';
+
+
+        $trendingTweets = [];
+
+        foreach ($trends as $trend) {
+            $this->getfield = '?q=' . $trend . '&result_type=popular&count=2';
+
+            $trendingTweets[] = json_decode($this->twitter->setGetfield($this->getfield)
+                ->buildOauth($this->url, $this->requestMethod)
+                ->performRequest());
+        }
+        return $this->encodeJSON($trendingTweets);
 
     }
 
@@ -103,6 +98,9 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $feed = [];
 
         foreach ($json as $tweets) {
+            if (!isset($tweets->statuses)) {
+                return null;
+            }
             foreach ($tweets->statuses as $tweet) {
                 $data = [];
                 $data['tags'] = [];

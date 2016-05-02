@@ -13,7 +13,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function __construct()
     {
-        parent::__construct('Instagram', 'instagram', '#2a5b83');
+        parent::__construct('Instagram', 'instagram', '#2a5b83', ["51.1656910", "10.4515260"], ["37.0902400", "-95.7128910"], [null, null]);
         $this->apiKey = getenv('strebo_instagram_1');
         $this->instagram = new InstagramAPI ($this->apiKey);
 
@@ -72,8 +72,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             $data['createdTime'] = $this->formatTime($media->created_time);
             if (isset($media->caption, $media->caption->text)) {
                 $data['text'] = $media->caption->text;
-            }
-            //kein else
+            } //kein else
             else {
                 $data['text'] = '';
             }

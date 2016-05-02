@@ -13,7 +13,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function __construct()
     {
-        parent::__construct('YouTube', 'youtube', '#e62117');
+        parent::__construct('YouTube', 'youtube', '#e62117', 'DE', 'US', null);
         $this->apiKey = getenv('strebo_youtube_1');
         $this->client = new \Google_Client();
         $this->client->setApplicationName("strebo_youtube");
@@ -64,10 +64,13 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $data['author'] = $item->snippet->channelTitle;
             $channel = $this->youtube->channels->listChannels("contentDetails", ["id" => $item->snippet->channelId]);
             $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
-            $data['authorPicture'] = $profile->image->url;
+            $data['authorPicture'] = null;
+            if (isset($profile->image)) {
+                $data['authorPicture'] = $profile->image->url;
+            }
             $data['numberOfLikes'] = $item->statistics->likeCount;
             $data['media'] = "https://www.youtube.com/embed/" . $item->id;
-            $data['thumb'] = $item->snippet->thumbnails->standard->url;
+            $data['thumb'] = $item->snippet->thumbnails->default->url;
             $data['title'] = $item->snippet->title;
             $data['text'] = $item->snippet->description;
 

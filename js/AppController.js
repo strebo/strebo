@@ -4,6 +4,7 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     $scope.view = 1;
     $scope.locationSetting = 0;
     $rootScope.loaderview = true;
+    $rootScope.serverError = false;
 
     var sections = ["trend board", "personal board", "search"];
 
@@ -58,6 +59,15 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     $scope.$on('setDetailView', function (event, state) {
         $scope.detailview = state;
     });
+
+    $scope.$on('search', function (event, state) {
+        if(state) search();
+    });
+
+    function search() {
+        $scope.switchToSection(2);
+        $scope.setSearchView(false);
+    }
 
     $scope.$on('setSearchView', function (event, state) {
         $scope.searchview = state;
