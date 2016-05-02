@@ -21,8 +21,17 @@ class StreboServer extends WebSocketServer
     {
         if ($this->isJson($message)) {
             $data = json_decode($message);
-            $function = "\$this->dataCollector->" . $data->command;
-            $this->send($user, json_encode(["type" => "data", "json" => $function($data->param)]));
+
+            switch ($data->command){
+                case 'getPublicFeed':
+                    $this->send($user,$this->dataCollector->getPublicFeed($data->param));
+                    break;
+                case 'search':
+                    $this->send($user,$this->dataCollector->search($data->param));
+                    break;
+                case 'getPersonalFeed':
+                    break;
+            }
 
         } else {
 
