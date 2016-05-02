@@ -12,7 +12,8 @@ install:
 - composer install --prefer-dist
 
 script:
-- vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist Strebo/ tests/phpunit/
+- vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist Strebo/ tests/
+- vendor/bin/behat --config behat.yml
 
 after_script:
 - vendor/bin/test-reporter
