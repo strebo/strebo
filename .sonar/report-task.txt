@@ -1,0 +1,5 @@
+projectKey=strebo.net:strebo
+serverUrl=http://sonarqube.it.dh-karlsruhe.de
+dashboardUrl=http://sonarqube.it.dh-karlsruhe.de/dashboard/index/strebo.net:strebo
+ceTaskId=AVRw3JHfByBA63aaFfmA
+ceTaskUrl=http://sonarqube.it.dh-karlsruhe.de/api/ce/task?id=AVRw3JHfByBA63aaFfmA
