@@ -4,7 +4,7 @@
  * @coversDefaultClass Strebo\SocialNetworks\YouTube
  */
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 class YouTubeTest extends PHPUnit_Framework_TestCase
 {

@@ -4,7 +4,7 @@
  * @coversDefaultClass Strebo\SocialNetworks\Instagram
  */
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 class InstagramTest extends PHPUnit_Framework_TestCase
 {

@@ -4,7 +4,7 @@
  * @coversDefaultClass Strebo\SocialNetworks\SoundCloud
  */
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 class SoundCloudTest extends PHPUnit_Framework_TestCase
 {
