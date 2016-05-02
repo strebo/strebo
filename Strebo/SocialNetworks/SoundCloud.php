@@ -33,23 +33,12 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
     public function search($tag)
     {
-
+        $this->encodeJSON($this->client->get('/tracks', [$tag]));
     }
 
     public function getPublicFeed($location)
     {
-        /*$ch = curl_init('http://api-v2.soundcloud.com/explore/Popular+Music?tag=out-of-experiment&limit=10&offset=0&linked_partitioning=1&client_id=d08c99a67fa0518806f5fe1f4bf36792');
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $data = curl_exec($ch);
-        curl_close($ch);*/
-        /*echo $curl;
-        var_dump($curl);
-        echo curl_getinfo($init) . '<br/>';
-        echo curl_errno($init) . '<br/>';
-        echo curl_error($init) . '<br/>';*/
         return $this->encodeJSON(file_get_contents('http://api-v2.soundcloud.com/explore/Popular+Music?tag=out-of-experiment&limit=24&offset=0&linked_partitioning=1&client_id=d08c99a67fa0518806f5fe1f4bf36792'));
-
     }
 
     public function encodeJSON($json)

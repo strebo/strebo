@@ -54,7 +54,7 @@ class DataCollector extends \Thread
         return json_encode($personalFeed);
     }
 
-    public function searchNetworks($tag)
+    public function search($tag)
     {
         $results = [];
         foreach ($this->socialNetworks as $network) {
