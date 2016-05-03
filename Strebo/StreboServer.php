@@ -32,10 +32,7 @@ class StreboServer extends WebSocketServer
                     break;
 
                 case 'search':
-                    while ($socialData == null) {
-                        $socialData = $this->dataCollector->search($data->param);
-                    }
-                    $this->send($user, $socialData);
+                    $this->send($user, $this->dataCollector->search($data->query));
                     break;
 
                 case 'getPersonalFeed':

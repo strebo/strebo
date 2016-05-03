@@ -72,12 +72,19 @@ class DataCollector extends \Thread
     {
         $results = [];
         foreach ($this->socialNetworks as $network => $instance) {
-            $results[] = json_decode($instance->search($tag));
+
+            $data = json_decode($instance->search($tag));
+
+            if ($data != null) {
+                $results[$network] = $data;
+            } else {
+                next;
+            }
         }
 
-        return json_encode($results);
-
+        return json_encode(["type" => "data", "json" => $results]);
     }
+
 
     public function run()
     {

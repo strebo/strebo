@@ -37,7 +37,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function search($tag)
     {
-        return $this->encodeJSON($this->youtube->search->listSearch("snippet,statistics", ["maxResults" => 20, "q" => $tag]));
+        return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 20, "q" => $tag]));
     }
 
     public function getPublicFeed($location)
@@ -60,7 +60,14 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $data['type'] = "video";
             $data['tags'] = $item->snippet->tags;
             $data['createdTime'] = $this->formatTime($item->snippet->publishedAt);
-            $data['link'] = "https://www.youtube.com/watch?v=" . $item->id;
+
+            if (isset($item->id->videoId)) {
+                $id = $item->id->videoId;
+            } else {
+                $id = $item->id;
+            }
+
+            $data['link'] = "https://www.youtube.com/watch?v=" . $id;
             $data['author'] = $item->snippet->channelTitle;
             $channel = $this->youtube->channels->listChannels("contentDetails", ["id" => $item->snippet->channelId]);
             $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
@@ -68,8 +75,12 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             if (isset($profile->image)) {
                 $data['authorPicture'] = $profile->image->url;
             }
-            $data['numberOfLikes'] = $item->statistics->likeCount;
-            $data['media'] = "https://www.youtube.com/embed/" . $item->id;
+            $data['numberOfLikes'] = null;
+            if (isset($item->statistics)) {
+                $data['numberOfLikes'] = $item->statistics->likeCount;
+            }
+
+            $data['media'] = "https://www.youtube.com/embed/" . $id;
             $data['thumb'] = $item->snippet->thumbnails->default->url;
             $data['title'] = $item->snippet->title;
             $data['text'] = $item->snippet->description;
