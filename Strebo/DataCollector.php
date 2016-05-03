@@ -24,16 +24,17 @@ class DataCollector extends \Thread
             $createInstance = "Strebo\\SocialNetworks\\" . $network;
             $this->socialNetworks[$network] = new $createInstance();
         }
-        $this->publicFeed = (array)["DE" => (array)[], "US" => (array)[], "W" => (array)[]];
+        $this->publicFeed = ["DE" => [], "US" => [], "W" => []];
+
         $this->start();
     }
 
     public function collectPublicFeed()
     {
         foreach ($this->publicFeed as $location => $value) {
-            foreach ($this->socialNetworks as $network) {
+            foreach ($this->socialNetworks as $network => $instance) {
                 $locationString = "getLocation" . $location;
-                $value = json_decode($network->getPublicFeed($network->$locationString()));
+                $this->publicFeed[$location][$network] = json_decode($instance->getPublicFeed($instance->$locationString()));
             }
         }
     }
