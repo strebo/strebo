@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ .'/../../vendor/autoload.php';
+require __DIR__ .'/../vendor/autoload.php';
 require 'Money.php';
 
 class MoneyTest extends PHPUnit_Framework_TestCase
