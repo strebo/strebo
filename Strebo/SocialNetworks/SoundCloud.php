@@ -33,7 +33,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
     public function search($tag)
     {
-        $this->encodeJSON($this->client->get('/tracks', [$tag]));
+        $this->encodeJSON($this->client->get('https://api.soundcloud.com/tracks', [$tag]));
     }
 
     public function getPublicFeed($location)
@@ -45,7 +45,6 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
     {
 
         $data = json_decode($json, true);
-        $i = 0;
         $temp_song = [];
 
         foreach ($data["tracks"] as $song) {
@@ -60,9 +59,8 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
             $temp_song["media"] = $song["stream_url"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
             $temp_song["thumb"] = $song["artwork_url"];
             $temp_song["tags"] = null;
-            $feed[$i] = $temp_song;
+            $feed[] = $temp_song;
             $temp_song = [];
-            $i++;
         }
 
         $newJSON = array('name' => parent::getName(),
