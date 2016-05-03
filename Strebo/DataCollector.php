@@ -7,11 +7,13 @@ class DataCollector extends \Thread
 {
     private $socialNetworks = [];
     private $publicFeed;
+    private $collectingData;
 
     public function __construct()
     {
         $pattern = '/[A-Za-z]*/';
         $match = [];
+        $this->collectingData = true;
         foreach (scandir(__DIR__ . '/SocialNetworks') as $file) {
             preg_match($pattern, $file, $match);
 
@@ -43,11 +45,16 @@ class DataCollector extends \Thread
                 }
             }
         }
+        $this->collectingData = false;
     }
 
     public function getPublicFeed($location)
     {
-        return json_encode(["type" => "data", "json" => $this->publicFeed[$location]]);
+        if ($this->collectingData) {
+            return null;
+        } else {
+            return json_encode(["type" => "data", "json" => $this->publicFeed[$location]]);
+        }
     }
 
     public function collectPersonalFeed()
@@ -64,8 +71,8 @@ class DataCollector extends \Thread
     public function search($tag)
     {
         $results = [];
-        foreach ($this->socialNetworks as $network) {
-            $results[] = json_decode($network->search($tag));
+        foreach ($this->socialNetworks as $network => $instance) {
+            $results[] = json_decode($instance->search($tag));
         }
 
         return json_encode($results);
