@@ -15,6 +15,10 @@
         <div class="social-media-content-header-x-triangle-feed"></div>
     </div>
     <div class="social-media-content-body-feed">
+        <div ng-if="post.title || post.titel"
+             style="position:absolute;padding:1vh;background-color:#ffffff;opacity:1;z-index:2;font-size:0.9rem;">
+            {{post.title}}
+        </div>
         <div ng-if="post.type != 'text'"
                 class="social-media-content-body-entry-image-feed {{post.text.length == 0 ? 'social-media-content-body-entry-image-extend-feed':''}}">
             <div class="center" style="font-size:7vh;">
@@ -37,7 +41,8 @@
                        src="{{post.media | trustUrl}}" type="video/mp4"></video>
             </div>
         </div>
-        <div ng-if="post.type != 'text'" style="{{post.text.length == 0?'display:none;':''}}" class="social-media-content-body-entry-text-feed" ellipsis>
+        <div ng-if="post.type != 'text'" style="{{post.text.length == 0?'display:none;':''}}"
+             class="social-media-content-body-entry-text-feed" ellipsis>
             {{post.text}}
         </div>
         <div ng-if="post.type == 'text'" class="social-media-content-body-entry-text-feed-extend social-media-content-body-entry-image-extend-feed">

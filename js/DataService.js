@@ -24,6 +24,8 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 	conn.onmessage = function(e) {
 
 		var message=JSON.parse(e.data);
+
+        console.log(message);
 		
 		if(message.type=="data") {
             feedByNetwork =message.json;
@@ -62,7 +64,8 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
                         icon: feedByNetwork[i].icon,
                         color: feedByNetwork[i].color
                     },
-                    text: feedByNetwork[i].feed[j].text,
+                    text: feedByNetwork[i].feed[j].text || "",
+                    title: feedByNetwork[i].feed[j].title,
                     author: feedByNetwork[i].feed[j].author,
                     authorPicture: feedByNetwork[i].feed[j].authorPicture,
                     link: feedByNetwork[i].feed[j].link,

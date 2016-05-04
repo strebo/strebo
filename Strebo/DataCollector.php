@@ -33,17 +33,17 @@ class DataCollector extends \Thread
     public function collectPublicFeed()
     {//Schleife
         $this->publicFeedUS[0] = json_decode($this->instagram->getPublicFeed($this->locations["Instagram"]["US"]));
-        $this->publicFeedUS[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["US"]));
+        //$this->publicFeedUS[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["US"]));
         $this->publicFeedUS[2] = json_decode($this->soundcloud->getPublicFeed(null));
-        $this->publicFeedUS[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["US"]));
+        //$this->publicFeedUS[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["US"]));
         $this->publicFeedDE[0] = json_decode($this->instagram->getPublicFeed($this->locations["Instagram"]["DE"]));
-        $this->publicFeedDE[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["DE"]));
+        //$this->publicFeedDE[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["DE"]));
         $this->publicFeedDE[2] = json_decode($this->soundcloud->getPublicFeed(null));
-        $this->publicFeedDE[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["DE"]));
+        //$this->publicFeedDE[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["DE"]));
         $this->publicFeedW[0] = json_decode($this->instagram->getPublicFeed($this->locations["Instagram"]["W"]));
-        $this->publicFeedW[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["W"]));
+        //$this->publicFeedW[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["W"]));
         $this->publicFeedW[2] = json_decode($this->soundcloud->getPublicFeed(null));
-        $this->publicFeedW[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["W"]));
+        //$this->publicFeedW[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["W"]));
 
     }
 
