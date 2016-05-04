@@ -36,9 +36,11 @@ class StreboServer extends WebSocketServer
                     break;
 
                 case 'getPersonalFeed':
-                    while ($socialData == null) {
+                    $this->send($user, $this->dataCollector->collectPersonalFeed($user->getTokens));
+                    break;
 
-                    }
+                case 'connect':
+                    $user->addToken($data->network, $data->token);
                     break;
             }
 

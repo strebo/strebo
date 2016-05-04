@@ -8,7 +8,6 @@ use MetzWeb\Instagram\Instagram as InstagramAPI;
 class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface
 {
 
-    private $OAuthToken;
     private $instagram;
 
     public function __construct()
@@ -23,17 +22,18 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
     {
         $this->apiSecret = getenv('strebo_instagram_2');
         $this->apiCallback = 'http://strebo.net';
-        $this->instagram = new InstagramAPI(array('apiKey' => $this->apiKey, 'apiSecret' => $this->apiSecret, 'apiCallback' => $this->apiCallback));
-        $this->OAuthToken = $this->instagram->getOAuthToken($code);
-        $this->instagram->setAccessToken($this->OAuthToken);
+        $privateInstagram = new InstagramAPI(array('apiKey' => $this->apiKey, 'apiSecret' => $this->apiSecret, 'apiCallback' => $this->apiCallback));
+        $OAuthToken = $privateInstagram->getOAuthToken($code);
+        $privateInstagram->setAccessToken($OAuthToken);
+        return $privateInstagram;
 
 
     }
 
-    public function getPersonalFeed()
+    public function getPersonalFeed($token)
     {
-
-        $feed = $this->instagram->getUserFeed(35);
+        $privateInstagram = $this->connect($token);
+        $feed = $privateInstagram->getUserFeed(35);
         return $this->encodeJSON($feed);
 
     }

@@ -57,15 +57,15 @@ class DataCollector extends \Thread
         }
     }
 
-    public function collectPersonalFeed()
+    public function collectPersonalFeed($tokens)
     {
         $personalFeed = [];
 
-        foreach ($this->socialNetworks as $network) {
-            $personalFeed[] = json_decode($this->$network->getPersonalFeed());
+        foreach ($tokens as $network => $token) {
+            $personalFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($token));
         }
 
-        return json_encode($personalFeed);
+        return json_encode(["type" => "data", "json" => $personalFeed]);
     }
 
     public function search($tag)

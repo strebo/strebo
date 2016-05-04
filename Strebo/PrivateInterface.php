@@ -3,6 +3,6 @@ namespace Strebo;
 
 interface PrivateInterface {
 	public function connect($code);
-	public function getPersonalFeed();
+	public function getPersonalFeed($token);
 }
 ?>

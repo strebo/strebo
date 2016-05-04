@@ -34,11 +34,18 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function connect($code)
     {
-        // TODO: Implement connect() method.
+
     }
 
-    public function getPersonalFeed()
+    public function getPersonalFeed($token)
     {
+        $this->url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
+        $this->requestMethod = "GET";
+        $this->getfield = '?user_id' . $token;
+        
+        return json_decode($this->twitter->setGetfield($this->getfield)
+            ->buildOauth($this->url, $this->requestMethod)
+            ->performRequest());
 
     }
 
@@ -48,7 +55,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $this->requestMethod = "GET";
         $this->getfield = '?q=' . $tag;
 
-        json_decode($this->twitter->setGetfield($this->getfield)
+        return json_decode($this->twitter->setGetfield($this->getfield)
             ->buildOauth($this->url, $this->requestMethod)
             ->performRequest());
     }

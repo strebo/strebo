@@ -22,7 +22,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
     }
 
-    public function getPersonalFeed()
+    public function getPersonalFeed($token)
     {
 
         $feed;
