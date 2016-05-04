@@ -1,7 +1,6 @@
 <?php
 
-require_once 'Autoloader.php';
-spl_autoload_register (array ('Autoloader', 'autoload'));
+require __DIR__ . '/vendor/autoload.php';
 
 putenv('strebo_instagram_1=c12bbe37871f443ca257ef54a131a777');
 putenv('strebo_twitter_1=3872089625-xRvrn2Qb8QG5GDtrskVFy1E1wQAgQPpX5xsFKZa');

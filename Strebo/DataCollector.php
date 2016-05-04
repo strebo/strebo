@@ -1,100 +1,88 @@
 <?php
 namespace Strebo;
-use Strebo;
 
-require __DIR__ . '/../vendor/autoload.php';
+use Strebo;
 
 class DataCollector extends \Thread
 {
-    //Array statt einzelner Variablen der Netzwerke
-    private $instagram;
-    private $twitter;
-    private $soundcloud;
-	private $youtube;
-    private $locations;
-    //Array für Public Feed mit Location als Key
-    private $publicFeedUS = [];
-    private $publicFeedDE = [];
-    private $publicFeedW = [];
-
+    private $socialNetworks;
+    private $publicFeed;
+    private $collectingData;
 
     public function __construct()
     {
-        //dynamisch Code erzeugen anhand vorhandener Klassen
-        $this->instagram = new SocialNetworks\Instagram();
-        $this->twitter = new SocialNetworks\Twitter();
-        $this->soundcloud = new SocialNetworks\SoundCloud();
-		$this->youtube = new SocialNetworks\YouTube();
-        //variablen in Netzwerkklassen
-        $this->locations = ["YouTube" => ["DE" => "DE", "US" => "US", "W" => null], "Instagram" => ["DE" => ["51.1656910", "10.4515260"], "US" => ["37.0902400", "-95.7128910"], "W" => [null, null]], "Twitter" => ["DE" => "23424829", "US" => "23424977", "W" => "1"], "SoundCloud" => ["DE" => null, "US" => null, "W" => null]];
+        $pattern = '/[A-Za-z]*/';
+        $match = [];
+        $this->collectingData = true;
+        $this->socialNetworks = (new SocialNetworkFactory())->getInstances();
+        $this->publicFeed = ["DE" => [], "US" => [], "W" => []];
         $this->start();
     }
 
     public function collectPublicFeed()
-    {//Schleife
-        $this->publicFeedUS[0] = json_decode($this->instagram->getPublicFeed($this->locations["Instagram"]["US"]));
-        //$this->publicFeedUS[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["US"]));
-        $this->publicFeedUS[2] = json_decode($this->soundcloud->getPublicFeed(null));
-        //$this->publicFeedUS[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["US"]));
-        $this->publicFeedDE[0] = json_decode($this->instagram->getPublicFeed($this->locations["Instagram"]["DE"]));
-        //$this->publicFeedDE[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["DE"]));
-        $this->publicFeedDE[2] = json_decode($this->soundcloud->getPublicFeed(null));
-        //$this->publicFeedDE[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["DE"]));
-        $this->publicFeedW[0] = json_decode($this->instagram->getPublicFeed($this->locations["Instagram"]["W"]));
-        //$this->publicFeedW[1] = json_decode($this->twitter->getPublicFeed($this->locations["Twitter"]["W"]));
-        $this->publicFeedW[2] = json_decode($this->soundcloud->getPublicFeed(null));
-        //$this->publicFeedW[3] = json_decode($this->youtube->getPublicFeed($this->locations["YouTube"]["W"]));
+    {
+        echo "public";
+        foreach ($this->publicFeed as $location => $value) {
+            echo $location;
+            foreach ($this->socialNetworks as $network => $instance) {
+                echo $network;
+                $locationString = "getLocation" . $location;
+                $data = json_decode($instance->getPublicFeed($instance->$locationString()));
 
+                if ($data != null) {
+                    $this->publicFeed[$location][$network] = $data;
+                } else {
+                    next;
+                }
+            }
+        }
+        $this->collectingData = false;
     }
 
     public function getPublicFeed($location)
     {
-        $geo = strtoupper($location);
-//siehe oberer Lösungen
-        switch ($geo) {
-            case 'US':
-                return json_encode(["type" => "data", "json" => $this->publicFeedUS]);
-                break;
-            case 'DE':
-                return json_encode(["type" => "data", "json" => $this->publicFeedDE]);
-                break;
-            case 'W':
-                return json_encode(["type" => "data", "json" => $this->publicFeedW]);
-                break;
+        if ($this->collectingData) {
+            return null;
+        } else {
+            return json_encode(["type" => "data", "json" => $this->publicFeed[$location]]);
+        }
+    }
+
+    public function collectPersonalFeed($tokens)
+    {
+        $personalFeed = [];
+
+        foreach ($tokens as $network => $token) {
+            $personalFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($token));
         }
 
+        return json_encode(["type" => "data", "json" => $personalFeed]);
     }
 
-    public function collectPersonalFeed()
-    {//Schleife
-        $personalFeed = [];
-        $personalFeed[] = json_decode($this->instagram->getPersonalFeed());
-        $personalFeed[] = json_decode($this->twitter->getPersonalFeed());
-        $personalFeed[] = json_decode($this->soundcloud->getPersonalFeed());
-
-        return json_encode($personalFeed);
-    }
-
-    public function searchNetworks($tag)
+    public function search($tag)
     {
-//schleife
         $results = [];
-        $results[] = json_decode($this->instagram->search($tag));
-        $results[] = json_decode($this->twitter->search($tag));
-        $results[] = json_decode($this->soundcloud->search($tag));
+        foreach ($this->socialNetworks as $network => $instance) {
 
-        return json_encode($results);
+            $data = json_decode($instance->search($tag));
 
+            if ($data != null) {
+                $results[$network] = $data;
+            } else {
+                next;
+            }
+        }
+
+        return json_encode(["type" => "data", "json" => $results]);
     }
+
 
     public function run()
     {
         while (true) {
             $this->collectPublicFeed();
-			sleep(60);
+            sleep(90);
         }
     }
 
 }
-
-?>

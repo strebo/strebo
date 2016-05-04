@@ -4,10 +4,10 @@
 .env
 vendor/
 composer.phar
-composer.lock
 .idea
 pull.php
 pull.sh
 user.php
 laravel
 nohup.out
+.sonar/

@@ -8,12 +8,11 @@ use MetzWeb\Instagram\Instagram as InstagramAPI;
 class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface
 {
 
-    private $OAuthToken;
     private $instagram;
 
     public function __construct()
     {
-        parent::__construct('Instagram', 'instagram', '#2a5b83');
+        parent::__construct('Instagram', 'instagram', '#2a5b83', ["51.1656910", "10.4515260"], ["37.0902400", "-95.7128910"], [null, null]);
         $this->apiKey = getenv('strebo_instagram_1');
         $this->instagram = new InstagramAPI ($this->apiKey);
 
@@ -23,17 +22,18 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
     {
         $this->apiSecret = getenv('strebo_instagram_2');
         $this->apiCallback = 'http://strebo.net';
-        $this->instagram = new InstagramAPI(array('apiKey' => $this->apiKey, 'apiSecret' => $this->apiSecret, 'apiCallback' => $this->apiCallback));
-        $this->OAuthToken = $this->instagram->getOAuthToken($code);
-        $this->instagram->setAccessToken($this->OAuthToken);
+        $privateInstagram = new InstagramAPI(array('apiKey' => $this->apiKey, 'apiSecret' => $this->apiSecret, 'apiCallback' => $this->apiCallback));
+        $OAuthToken = $privateInstagram->getOAuthToken($code);
+        $privateInstagram->setAccessToken($OAuthToken);
+        return $privateInstagram;
 
 
     }
 
-    public function getPersonalFeed()
+    public function getPersonalFeed($token)
     {
-
-        $feed = $this->instagram->getUserFeed(35);
+        $privateInstagram = $this->connect($token);
+        $feed = $privateInstagram->getUserFeed(35);
         return $this->encodeJSON($feed);
 
     }
@@ -72,8 +72,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             $data['createdTime'] = $this->formatTime($media->created_time);
             if (isset($media->caption, $media->caption->text)) {
                 $data['text'] = $media->caption->text;
-            }
-            //kein else
+            } //kein else
             else {
                 $data['text'] = '';
             }

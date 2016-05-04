@@ -1,5 +1,6 @@
 <?php
 namespace Strebo;
+
 use Strebo;
 
 class StreboServer extends WebSocketServer
@@ -19,18 +20,33 @@ class StreboServer extends WebSocketServer
     protected function process($user, $message)
     {
         if ($this->isJson($message)) {
-            $data=json_decode($message);
-            $function = "\$this->dataCollector->" . $data->command;
+            $data = json_decode($message);
+            $socialData = null;
 
-            switch ($data->command){
+            switch ($data->command) {
                 case 'getPublicFeed':
-                    $this->send($user,$this->dataCollector->getPublicFeed($data->param));
+                    while ($socialData == null) {
+                        $socialData = $this->dataCollector->getPublicFeed($data->param);
+                    }
+                    $this->send($user, $socialData);
+                    break;
+
+                case 'search':
+                    $this->send($user, $this->dataCollector->search($data->query));
+                    break;
+
+                case 'getPersonalFeed':
+                    $this->send($user, $this->dataCollector->collectPersonalFeed($user->getTokens));
+                    break;
+
+                case 'connect':
+                    $user->addToken($data->network, $data->token);
                     break;
             }
 
         } else {
 
-            $this->send($user, json_encode(["type"=>"message", "message"=>"Hi! Here is Server. I got something from you: " . $message]));
+            $this->send($user, json_encode(["type" => "message", "message" => "Hi! Here is Server. I got something from you: " . $message]));
 
             foreach ($this->users as $client) {
                 if ($user != $client) {
@@ -39,7 +55,6 @@ class StreboServer extends WebSocketServer
             }
 
         }
-
 
     }
 
@@ -52,24 +67,14 @@ class StreboServer extends WebSocketServer
 
     protected function connected($user)
     {
-        for ($j = 0; $j <= count($this->users); $j++) {
-            if (!isset($this->users[$j])) {
-                $this->users[$j] = $user;
-                $this->send($user, json_encode(["type"=>"message","message"=>"Happy Welcome!"]));
-                break;
-            }
-        }
-
+        $this->users[] = $user;
+        $this->send($user, json_encode(["type" => "message", "message" => "Happy Welcome!"]));
     }
 
     protected function closed($user)
     {
-        for ($i = 0; $i < count($this->users); $i++) {
-            if ($user == $this->users[$i]) {
-                unset($this->users[$i]);
-                break;
-            }
-        }
+        unset($this->users[array_keys($this->users, $user)]);
     }
 }
+
 ?>
