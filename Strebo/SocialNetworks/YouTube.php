@@ -30,7 +30,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     }
 
-    public function getPersonalFeed()
+    public function getPersonalFeed($token)
     {
         // TODO: Implement getPersonalFeed() method.
     }
