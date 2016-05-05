@@ -32,7 +32,7 @@ class DataCollector extends \Thread
                 if ($data != null) {
                     $this->publicFeed[$location][$network] = $data;
                 } else {
-                    next;
+                   // next;
                 }
             }
         }

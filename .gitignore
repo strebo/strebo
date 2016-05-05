@@ -11,3 +11,4 @@ user.php
 laravel
 nohup.out
 .sonar/
+node_modules

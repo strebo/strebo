@@ -93,7 +93,8 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
                 name: feedByNetwork[i].name,
                 icon: feedByNetwork[i].icon,
                 color: feedByNetwork[i].color,
-                status: 'disconnected'
+                status: 'disconnected',
+                connect: connectors[feedByNetwork[i].name.toLowerCase()] ? connectors.connect : null
             });
         }
     }
