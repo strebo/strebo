@@ -62,8 +62,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-sanitize.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <!---- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
 
     <!------------------>
     <script src="js/Instagram.js"></script>
@@ -94,6 +96,9 @@
     <script src="js/ConnectorBarController.js"></script>
     <script src="js/SearchController.js"></script>
     <script src="js/LoaderController.js"></script>
+	
+	<script src="js/auth.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 
     <script>var isAdBlockActive = false;</script>
     <script src="js/ads.js"></script>
@@ -155,6 +160,17 @@
                     <div class="menu-tooltip-text">search</div>
                 </div>
             </div>
+			<div class="menu-item box-shadow">
+                <a class="menu-link" href="#" id="login-link">
+                    <div class="menu-icon center">
+                        <i class="icon ion-social-youtube"></i>
+                    </div>
+                </a>
+                <div class="menu-tooltip box-shadow">
+                    <div class="menu-tooltip-text">YouTube</div>
+                </div>
+            </div>
+			
         </div>
         <div id="container-board"
              style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
