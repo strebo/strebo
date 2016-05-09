@@ -54,7 +54,7 @@
         ga('send', 'pageview');
 
     </script>
-
+    <script>  var conn = new WebSocket('ws://' + location.hostname + ':8080/echobot'); // Echobot?</script>
     <!---- jQuery -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="libs/jquery.dotdotdot.min.js"></script>
@@ -64,6 +64,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-sanitize.min.js"></script>
     <!---- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!---- Google -->
+    <script src="js/auth.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 
     <!------------------>
     <script src="js/Instagram.js"></script>
@@ -94,6 +98,9 @@
     <script src="js/ConnectorBarController.js"></script>
     <script src="js/SearchController.js"></script>
     <script src="js/LoaderController.js"></script>
+
+	<script src="js/auth.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 
     <script>var isAdBlockActive = false;</script>
     <script src="js/ads.js"></script>

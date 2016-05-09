@@ -11,8 +11,6 @@ class DataCollector extends \Thread
 
     public function __construct()
     {
-        $pattern = '/[A-Za-z]*/';
-        $match = [];
         $this->collectingData = true;
         $this->socialNetworks = (new SocialNetworkFactory())->getInstances();
         $this->publicFeed = ["DE" => [], "US" => [], "W" => []];
