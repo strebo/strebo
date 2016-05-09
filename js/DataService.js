@@ -31,7 +31,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
         console.log(message);
 
-        if (message.type == "data") {
+        if (message.type === "data") {
             feedByNetwork = message.json;
             extractPosts();
             feed = shuffle(feed);
@@ -39,7 +39,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
             extractNetworks();
             $rootScope.loaderview = false;
             $rootScope.$apply();
-        } else if (message.type == "message") {
+        } else if (message.type === "message") {
             console.log(message.message);
         }
     };
