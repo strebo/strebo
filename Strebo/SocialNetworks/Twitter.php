@@ -59,6 +59,8 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             ->buildOauth($this->url, $this->requestMethod)
             ->performRequest();
 
+        $result = json_decode($result);
+
         if (array_key_exists("errors", $result)) {
             return null;
         }
