@@ -31,7 +31,7 @@ var connectors = {
         connect: function () {
             handleAuthResult(null, function () {
                     conn.send(JSON.stringify({
-                        command: mode[currentMode],
+                        command: "connect",
                         network: YouTube,
                         token: a.access_token
                     }));
