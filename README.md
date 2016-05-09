@@ -5,6 +5,28 @@
 # strebo – social trend board ❤
 ![strebo - social trend board](/resources/logo-large-with-subtitle.png "strebo - social trend board")
 
+## installation
+Please make sure you have **PHP7** (**thread-safe** version) installed and you have enabled the required extensions. An additional extension you have to download is **pthreads**. Follow the instruction of http://tzfrs.de/2014/07/fix-it-the-right-way-ssl-error-unable-to-get-local-issuer-certificate/ to enable HTTPS calls to social network APIs.
+
+To install the required frameworks we use the **Composer**. Execute the following commands in the shell in the directory of the project:
+
+``composer install``
+
+``composer update``
+
+The authentification server requires ``node.js``.
+You can install the dependencies here with ``npm install``.
+
+In addition need a Webserver like ``Apache``.
+
+## start
+
+Execute the following commands in the shell:
+``php start.php``
+and
+``node server.js``
+to start the servers.
+
 ## team
 We are Aram Parsegyan, Fabian Retkowski and David Schreck and we are students of Applied Computer Science at the Cooperative State University in Karlsruhe.
 
