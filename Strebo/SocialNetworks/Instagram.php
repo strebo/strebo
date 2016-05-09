@@ -59,12 +59,8 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function encodeJSON($json)
     {
-
         $feed = [];
-        $i = 0;
-
         foreach ($json->data as $media) {
-
             $data = [];
             $data['type'] = $media->type;
             $data['tags'] = $media->tags;
@@ -86,8 +82,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             } elseif ($media->type === 'video') {
                 $data['media'] = $media->videos->standard_resolution->url;
             }
-            $feed[$i] = $data;
-            $i++;
+            array_push($feed,$data);
         }
 
         $newJSON = array('name' => parent::getName(),
