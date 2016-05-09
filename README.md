@@ -8,7 +8,7 @@
 ## installation
 Please make sure you have **PHP7** (**thread-safe** version) installed and you have enabled the required extensions. An additional extension you have to download is **pthreads**. Follow the instruction of http://tzfrs.de/2014/07/fix-it-the-right-way-ssl-error-unable-to-get-local-issuer-certificate/ to enable HTTPS calls to social network APIs.
 
-To install the required frameworks we use the **Composer**. Execute the following commands in the shell in the directory of the project:
+To install the required frameworks we use **Composer**. Execute the following commands in the shell in the directory of the project:
 
 ``composer install``
 
@@ -17,7 +17,7 @@ To install the required frameworks we use the **Composer**. Execute the followin
 The authentification server requires ``node.js``.
 You can install the dependencies here with ``npm install``.
 
-In addition need a Webserver like ``Apache``.
+In addition there is a need of a Webserver like ``Apache``.
 
 ## start
 
