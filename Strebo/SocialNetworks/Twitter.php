@@ -55,7 +55,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $this->requestMethod = "GET";
         $this->getfield = '?q=' . $tag;
 
-        return json_decode($this->twitter->setGetfield($this->getfield)
+        return $this->encodeJSON($this->twitter->setGetfield($this->getfield)
             ->buildOauth($this->url, $this->requestMethod)
             ->performRequest());
     }
