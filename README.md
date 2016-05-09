@@ -14,10 +14,10 @@ To install the required frameworks we use **Composer**. Execute the following co
 
 ``composer update``
 
-The authentification server requires ``node.js``.
+The authentification server requires **node.js**.
 You can install the dependencies here with ``npm install``.
 
-In addition there is a need of a Webserver like ``Apache``.
+In addition there is a need of a Webserver like **Apache**.
 
 ## start
 
