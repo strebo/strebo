@@ -9,39 +9,39 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     var currentLocation = 0;
 
     $rootScope.locations = [
-        {name:"Worldwide",abbreviation:"W"},
-        {name:"USA",abbreviation:"US"},
-        {name:"Germany",abbreviation:"DE"}
+        {name: "Worldwide", abbreviation: "W"},
+        {name: "USA", abbreviation: "US"},
+        {name: "Germany", abbreviation: "DE"}
     ];
 
-	conn.onopen = function () {
-		conn.send('Ping'); // Send the message 'Ping' to the server
+    conn.onopen = function () {
+        conn.send('Ping'); // Send the message 'Ping' to the server
         updateData();
-	};
+    };
 
-    conn.onerror = function() {
+    conn.onerror = function () {
         $rootScope.loaderview = false;
         $rootScope.serverError = true;
         $rootScope.$apply();
     };
 
-	conn.onmessage = function(e) {
+    conn.onmessage = function (e) {
 
-		var message=JSON.parse(e.data);
+        var message = JSON.parse(e.data);
 
         console.log(message);
 
-		if(message.type=="data") {
-            feedByNetwork =message.json;
+        if (message.type == "data") {
+            feedByNetwork = message.json;
             extractPosts();
             feed = shuffle(feed);
             networks.splice(0, networks.length);
             extractNetworks();
             $rootScope.loaderview = false;
             $rootScope.$apply();
-		} else if(message.type=="message"){
-			console.log(message.message);
-		}
+        } else if (message.type == "message") {
+            console.log(message.message);
+        }
     };
 
     // Public method
@@ -50,7 +50,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     };
 
     this.getPostsByNetwork = function () {
-	   return feedByNetwork;
+        return feedByNetwork;
     };
 
     this.getPosts = function () {
@@ -62,7 +62,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     function extractPosts() {
         for (var i in feedByNetwork) {
             for (var j in feedByNetwork[i].feed) {
-				feed.push({
+                feed.push({
                     socialNetwork: {
                         name: feedByNetwork[i].name,
                         icon: feedByNetwork[i].icon,
@@ -92,7 +92,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
                 icon: feedByNetwork[i].icon,
                 color: feedByNetwork[i].color,
                 status: 'disconnected',
-                connect: connectors[feedByNetwork[i].name.toLowerCase()] ? connectors.connect : null
+                connect: connectors[feedByNetwork[i].name.toLowerCase()] ? connectors[feedByNetwork[i].name.toLowerCase()].connect : null
             });
         }
     }
@@ -109,26 +109,30 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         return array;
     }
 
-    this.getLocation = function(index) {
+    this.getLocation = function (index) {
         return currentLocation;
     };
 
-    this.getMode = function(index) {
+    this.getMode = function (index) {
         return currentMode;
     };
 
-    this.setMode = function(index) {
+    this.setMode = function (index) {
         currentMode = index;
         updateData();
     };
 
-    this.setLocation = function(index) {
+    this.setLocation = function (index) {
         currentLocation = index;
         updateData();
     };
 
     function updateData() {
         $rootScope.loaderview = true;
-        conn.send(JSON.stringify({command : mode[currentMode], param : $rootScope.locations[currentLocation].abbreviation, query : angular.element("#searchview-query").val()}));
+        conn.send(JSON.stringify({
+            command: mode[currentMode],
+            param: $rootScope.locations[currentLocation].abbreviation,
+            query: angular.element("#searchview-query").val()
+        }));
     }
 }]);
