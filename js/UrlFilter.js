@@ -1,8 +1,10 @@
-app.filter('urlFilter', ['$sce', function ($sce) {
+app.filter('urlFilter', ['$sce', function () {
     return function (text) {
-        if (text != null) var matches = text.match(/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/g);
+        if (text != null)
+            var matches = text.match(/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/g);
 
-        if (matches == null) return text;
+        if (matches == null)
+            return text;
         else {
             matches.forEach(function (match) {
                 var link = encodeURI(match);

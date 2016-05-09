@@ -5,5 +5,4 @@ module.exports = function(app, passport) {
     // =====================================
     // route for twitter authentication and login
     app.get('/auth/twitter', passport.authenticate('twitter'));
-    
 };

@@ -14,7 +14,7 @@ var authenticateInstagram = function (callback) {
     var popup = window.open('instagram_auth.php', '', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupLeft + ',top=' + popupTop + '');
     popup.onload = function () {
 
-        if (window.location.hash.length == 0) {
+        if (window.location.hash.length === 0) {
             popup.open('https://api.instagram.com/oauth/authorize/?client_id=c12bbe37871f443ca257ef54a131a777&redirect_uri=http://strebo.net&response_type=code', '_self');
         }
 
@@ -31,7 +31,7 @@ var authenticateInstagram = function (callback) {
                     });
 
                     popup.close();
-                    if (callback != undefined && typeof callback == 'function') callback();
+                    if (callback !== undefined && typeof callback === 'function') callback();
                 }
             }
             catch (evt) {
