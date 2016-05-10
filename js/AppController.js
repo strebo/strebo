@@ -129,6 +129,7 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
         networks[network_keys[networkIndex]].feed[index].socialNetwork = {};
         networks[network_keys[networkIndex]].feed[index].socialNetwork.color = networks[network_keys[networkIndex]].color;
         networks[network_keys[networkIndex]].feed[index].socialNetwork.icon = networks[network_keys[networkIndex]].icon;
+        networks[network_keys[networkIndex]].feed[index].socialNetwork.name = networks[network_keys[networkIndex]].name;
         $scope.currentItem = networks[network_keys[networkIndex]].feed[index];
     }
 
