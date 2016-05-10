@@ -20,7 +20,7 @@ before_script:
 
 script:
 - vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist Strebo/ tests/
-- vendor/bin/behat --config behat.yml
+#- vendor/bin/behat --config behat.yml
 - sonar-scanner-2.6/bin/sonar-scanner
 
 after_script:
