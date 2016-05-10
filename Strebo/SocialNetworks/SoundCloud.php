@@ -58,7 +58,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
             $temp_song["createdTime"] = $this->formatTime($song["track"]["created_at"]);
             $temp_song["media"] = $song["track"]["uri"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
             $temp_song["thumb"] = $song["track"]["artwork_url"];
-            $temp_song["tags"] = null;
+            $temp_song["tags"] = $song["track"]["tag_list"];
             $feed[] = $temp_song;
             $temp_song = [];
         }
