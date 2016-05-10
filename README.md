@@ -5,11 +5,6 @@
 # strebo – social trend board ❤
 ![strebo - social trend board](/resources/logo-large-with-subtitle.png "strebo - social trend board")
 
-## team
-We are Aram Parsegyan, Fabian Retkowski and David Schreck and we are students of Applied Computer Science at the Cooperative State University in Karlsruhe.
-
-This GitHub repository is created for the project that we will be working on in our Software Engineering course, in our third and fourth semester.
-
 ## vision
 
 Have you ever wished of a web-based application where you can see ALL the trendy stuff and all your relevant content from different social-media platforms at a glance?
@@ -18,24 +13,43 @@ Your journey will end here!
 
 strebo is the project that we will work on, while we are in our third and fourth semester at the Cooperative State University in Karlsruhe.
 
-Enjoy!
-
-## possible features
-
-The following features are thinkable options for strebo:
-
 Core features:
-* Showing trending content (text, images, videos, …) from social media platforms like Twitter, Facebook, Google+, Instagram, YouTube, …
+* Showing trending content (text, images, videos, …) from social media platforms
+* Current implementation of: Instagram, Twitter, YouTube, SoundCloud and Bing News
 * Connecting your social media accounts with strebo and show your personal relevant content from social media platforms
 * Searching for content across several social media platforms
+* Showing trends in single countries/regions (current Worldwide, Germany, US) or trends depending on other factors
 
-Additional features:
-* Diagrams about trends, how they grow/how they fall
-* World map that shows live posting activities
-* Showing trends in single countries/regions or trends depending on other factors
-* Mobile solution
-* ...
+Enjoy!
 
-## technology
+## installation
+Please make sure you have **PHP7** (**thread-safe** version) installed and you have enabled the required extensions. An additional extension you have to download is **pthreads**. Follow the instruction of http://tzfrs.de/2014/07/fix-it-the-right-way-ssl-error-unable-to-get-local-issuer-certificate/ to enable HTTPS calls to social network APIs.
 
-For this project we will use PHP on serverside. Furthermore, we assume that we can use APIs of these social media networks to obtain the information needed for the different strebo features.
+To install the required frameworks we use **Composer**. Execute the following commands in the shell in the directory of the project:
+
+``composer install``
+
+``composer update``
+
+The authentification server requires **node.js**.
+You can install the dependencies here with ``npm install``.
+
+In addition there is a need of a Webserver like **Apache**.
+
+## start
+
+Execute the following commands in the shell:
+``php start.php``
+and
+``node server.js``
+to start the servers.
+
+##extensions
+
+The extensions are located in **Strebo/SocialNetworks**. If you want to add a social network please fork our project and make a pull request. It's sufficient to add a class there which inhertis from the AbstractSocialNetwork and implements the PublicInterface or PrivateInterface (or both). The new social network will be automatically and dynamically included.
+
+## team
+
+We are Aram Parsegyan, Fabian Retkowski and David Schreck and we are students of Applied Computer Science at the Cooperative State University in Karlsruhe.
+
+This GitHub repository is created for the project that we will be working on in our Software Engineering course, in our third and fourth semester.
