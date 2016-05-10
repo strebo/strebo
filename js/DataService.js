@@ -29,10 +29,12 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
         var message = JSON.parse(e.data);
 
-        console.log(message);
+        //console.log(message);
 
         if (message.type === "data") {
+            //console.log(message.json["Instagram"].feed[0].text);
             feedByNetwork = message.json;
+            feed.splice(0, feed.length);
             extractPosts();
             feed = shuffle(feed);
             networks.splice(0, networks.length);
