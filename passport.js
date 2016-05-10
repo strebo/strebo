@@ -44,8 +44,8 @@ module.exports = function(passport) {
     // =========================================================================
     passport.use(new InstagramStrategy({
 
-            consumerKey     : configAuth.instagramAuth.consumerKey,
-            consumerSecret  : configAuth.instagramAuth.consumerSecret,
+            clientID     : configAuth.instagramAuth.clientID,
+            clientSecret  : configAuth.instagramAuth.clientSecret,
             callbackURL     : configAuth.instagramAuth.callbackURL
 
         },
@@ -60,8 +60,8 @@ module.exports = function(passport) {
     // =========================================================================
     passport.use(new SoundCloudStrategy({
 
-            consumerKey     : configAuth.soundcloudAuth.consumerKey,
-            consumerSecret  : configAuth.soundcloudAuth.consumerSecret,
+            clientID     : configAuth.soundcloudAuth.clientID,
+            clientSecret  : configAuth.soundcloudAuth.clientSecret,
             callbackURL     : configAuth.soundcloudAuth.callbackURL
 
         },
