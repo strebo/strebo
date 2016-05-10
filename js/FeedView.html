@@ -3,7 +3,7 @@
      ng-repeat="post in feed">
     <div class="social-media-content-header-feed">
         <div class="social-media-content-title-feed">
-            <img class="social-media-content-title-pic-feed" src="{{post.authorPicture}}"><div
+            <img class="social-media-content-title-pic-feed" ng-src="{{post.authorPicture}}"><div
                 style="display: inline-block; width:calc(14vw - 8vh); position: absolute; left:6vh; top:50%;
                 transform:translateY(-50%);">
             <a class="social-media-content-title-author-feed" href="{{post.link | trustUrl}}" target="_blank">{{post.author}}</a>
@@ -23,7 +23,7 @@
                 class="social-media-content-body-entry-image-feed {{post.text.length == 0 ? 'social-media-content-body-entry-image-extend-feed':''}}">
             <div class="center" style="font-size:7vh;">
                 <img
-                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'audio'" src="{{post.thumb}}" />
+                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'audio'" ng-src="{{post.thumb}}" />
                 <!--<audio
                         class="center"
                         style="width:13vw;top:initial;"
@@ -31,14 +31,14 @@
                         src="{{post.media | trustUrl}}" controls></audio>-->
                 <img
                         class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'image'"
-                     src="{{post.media}}"/>
+                     ng-src="{{post.media}}"/>
                 <img
                         class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'video' && post.thumb"
-                        src="{{post.thumb}}"/>
+                        ng-src="{{post.thumb}}"/>
                 <video
                         class="social-media-content-body-entry-media-feed social-media-content-body-entry-media-video-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}"
                        ng-if="post.type === 'video' && !post.thumb"
-                       src="{{post.media | trustUrl}}" type="video/mp4"></video>
+                       ng-src="{{post.media | trustUrl}}" type="video/mp4"></video>
             </div>
         </div>
         <div ng-if="post.type != 'text'" style="{{post.text.length == 0?'display:none;':''}}"
