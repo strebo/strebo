@@ -20,6 +20,7 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
 
     var networks;
     var networkIndex = 0;
+    var network_keys = [];
 
     var mode = 0;
 
@@ -83,6 +84,7 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     $scope.$on('setCurrentItemByNetwork', function(post, data) {
         mode = 1;
         networks = DataService.getPostsByNetwork();
+        network_keys = Object.keys( networks );
         index = data.index;
         networkIndex = data.networkIndex;
         setFeedByNetworkItemAsDetail();
@@ -92,6 +94,7 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     $scope.$on('setCurrentItem', function(post, data) {
         mode = 0;
         index = data;
+        feed = DataService.getPosts();
         $scope.currentItem = feed[index];
         check();
     });
@@ -116,24 +119,24 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
             index = Math.min(feed.length-1, index+1);
             $scope.currentItem = feed[index];
         } else if(mode === 1) {
-            index = Math.min(networks[networkIndex].feed.length-1, index+1);
+            index = Math.min(networks[network_keys[networkIndex]].feed.length-1, index+1);
             setFeedByNetworkItemAsDetail();
         }
         check();
     }
 
     function setFeedByNetworkItemAsDetail() {
-        networks[networkIndex].feed[index].socialNetwork = {};
-        networks[networkIndex].feed[index].socialNetwork.color = networks[networkIndex].color;
-        networks[networkIndex].feed[index].socialNetwork.icon = networks[networkIndex].icon;
-        $scope.currentItem = networks[networkIndex].feed[index];
+        networks[network_keys[networkIndex]].feed[index].socialNetwork = {};
+        networks[network_keys[networkIndex]].feed[index].socialNetwork.color = networks[network_keys[networkIndex]].color;
+        networks[network_keys[networkIndex]].feed[index].socialNetwork.icon = networks[network_keys[networkIndex]].icon;
+        $scope.currentItem = networks[network_keys[networkIndex]].feed[index];
     }
 
     function check() {
         if(index === 0) $scope.showF = false;
         else $scope.showF = true;
 
-        if((mode === 0 && index === (feed.length - 1)) || (mode === 1 && index === (networks[networkIndex].feed.length - 1))) $scope.showL = false;
+        if((mode === 0 && index === (feed.length - 1)) || (mode === 1 && index === (networks[network_keys[networkIndex]].feed.length - 1))) $scope.showL = false;
         else $scope.showL = true;
     }
 
