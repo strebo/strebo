@@ -2,14 +2,15 @@ Feature: Switch between different Views
   As a User
   I want to switch views
 
+  @javascript
   Scenario: Click on the Button for view switch
-    Given |I am on |the homepage strebo.net
-    And |I am on "Deck View"
-    When |I press "switch View"
-    Then |I am on "Feed View"
+    Given I am on "http://strebo.net"
+    When I press "view-switch"
+    Then I should see "Feed View"
 
+  @javascript
   Scenario: Click on the Button for view switch
-    Given |I am on |the homepage strebo.net
-    And |I am on "Feed View"
-    When |I press "switch View"
-    Then |I am on "Deck View"
+    Given I am on "http://strebo.net"
+    And I press "view-switch"
+    When I press "view-switch"
+    Then I should see "Deck View"
