@@ -38,7 +38,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
     public function getPublicFeed($location)
     {
-        return $this->encodeJSON(file_get_contents('http://api-v2.soundcloud.com/explore/Popular+Music?tag=out-of-experiment&limit=24&offset=0&linked_partitioning=1&client_id=d08c99a67fa0518806f5fe1f4bf36792'));
+        return $this->encodeJSON(file_get_contents('https://api-v2.soundcloud.com/charts?genre=soundcloud%3Agenres%3Aall-music&query_urn=soundcloud%3Acharts%3A5cbb6b10abdd41f3beec23c6c5b886da&offset=20&kind=top&limit=20&client_id=02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea&app_version=1460122160'));
     }
 
     public function encodeJSON($json)
@@ -47,17 +47,17 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
         $data = json_decode($json, true);
         $temp_song = [];
 
-        foreach ($data["tracks"] as $song) {
-            $temp_song["text"] = $song["description"];
-            $temp_song["title"] = $song["title"];
-            $temp_song["author"] = $song["user"]["username"];
-            $temp_song["authorPicture"] = $song["user"]["avatar_url"];
-            $temp_song["numberOfLikes"] = $song["likes_count"];
-            $temp_song["link"] = $song["permalink_url"];
+        foreach ($data["collection"] as $song) {
+            $temp_song["text"] = $song["track"]["description"];
+            $temp_song["title"] = $song["track"]["title"];
+            $temp_song["author"] = $song["track"]["user"]["username"];
+            $temp_song["authorPicture"] = $song["track"]["user"]["avatar_url"];
+            $temp_song["numberOfLikes"] = $song["track"]["likes_count"];
+            $temp_song["link"] = $song["track"]["permalink_url"];
             $temp_song["type"] = "audio";
-            $temp_song["createdTime"] = $this->formatTime($song["created_at"]);
-            $temp_song["media"] = $song["stream_url"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
-            $temp_song["thumb"] = $song["artwork_url"];
+            $temp_song["createdTime"] = $this->formatTime($song["track"]["created_at"]);
+            $temp_song["media"] = $song["track"]["uri"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
+            $temp_song["thumb"] = $song["track"]["artwork_url"];
             $temp_song["tags"] = null;
             $feed[] = $temp_song;
             $temp_song = [];
