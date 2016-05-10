@@ -5,11 +5,11 @@ Feature: Show Trends of supported Networks
   @javascript
   Scenario: Server is avaiable
     Given I am on the homepage "http://strebo.net"
-    When I press "Trend Board"
-    Then I should see "loading..."
+    When I press "trend-board-button"
+    Then I should see "loading-view"
 
   @javascript
-  Scenario: Server is not avaiable
+  Scenario: Server is not available
     Given I am on the homepage "http://strebo.net"
-    When I press "Trend Board"
-    Then I should see "Server Not Found"
+    When I press "trend-board-button"
+    Then I should see "error-message"

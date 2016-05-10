@@ -3,9 +3,9 @@ Feature: Show Items by Social Networks as Decks
   I want to show Posts as Deck
 
   @javascript
-  Scenario: Successful: show Posts as Decks
+  Scenario: Successful: Show Posts as Decks
     Given I am on the homepage "http://strebo.net"
-    Then I should see "Posts as Decks"
+    Then I should see "deck-view"
 
   Scenario: Unsuccessful: show Posts as Decks
     Given |I am on |the homepage strebo.net

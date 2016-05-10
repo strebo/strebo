@@ -5,5 +5,5 @@ Feature: Show Item in a Details View
   @javascript
   Scenario: Klick on a single Post
     Given I am on the homepage "http://strebo.net"
-    When I press on a "post"
-    Then I should see "Likes"
+    When I press on a "social-media-content-container-feed"
+    Then I should see "deck-view"

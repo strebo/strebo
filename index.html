@@ -128,7 +128,7 @@
     </div>
     <div id="container-top" class="row">
         <div id="container-menu">
-            <div class="menu-item box-shadow" ng-click="switchToSection(0)">
+            <div id="trend-board-button" class="menu-item box-shadow" ng-click="switchToSection(0)">
                 <div class="menu-icon center">
                     <i class="icon ion-ios-list-outline"></i>
                 </div>
@@ -136,7 +136,7 @@
                     <div class="menu-tooltip-text">trend board</div>
                 </div>
             </div>
-            <div class="menu-item box-shadow" ng-click="switchToSection(1)">
+            <div id="personal-board-button" class="menu-item box-shadow" ng-click="switchToSection(1)">
                 <div class="menu-icon center">
                     <i class="icon ion-ios-person-outline"></i>
                 </div>
@@ -154,7 +154,7 @@
                     <div class="menu-tooltip-text">blog</div>
                 </div>
             </div>
-            <div class="menu-item box-shadow" ng-click="setSearchView(true)">
+            <div id="search-button" class="menu-item box-shadow" ng-click="setSearchView(true)">
                 <div class="menu-icon center">
                     <i class="icon ion-ios-search"></i>
                 </div>
@@ -165,15 +165,15 @@
         </div>
         <div id="container-board"
              style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
-            <deck-view ng-if="view===0 && loaderview === false" ng-controller="DeckController"></deck-view>
-            <feed-view ng-if="view===1 && loaderview === false" ng-controller="FeedController"></feed-view>
-            <loader-view ng-show="loaderview===true" class="center" ng-controller="LoaderController"></loader-view>
+            <deck-view id="deck-view" ng-if="view===0 && loaderview === false" ng-controller="DeckController"></deck-view>
+            <feed-view id="feed-view" ng-if="view===1 && loaderview === false" ng-controller="FeedController"></feed-view>
+            <loader-view id="loading-view" ng-show="loaderview===true" class="center" ng-controller="LoaderController"></loader-view>
             <div id="error-message" class="center" ng-if="serverError"><i id="error-icon" class="icon ion-ios-close-outline"></i><div style="position: relative;top:-3vh;">Server Not Found</div></div>
         </div>
-        <detail-view ng-show="detailview===true" ng-controller="DetailController"></detail-view>
-        <search-view ng-show="searchview===true" ng-controller="SearchController"></search-view></div>
+        <detail-view id="detail-view" ng-show="detailview===true" ng-controller="DetailController"></detail-view>
+        <search-view id="search-view" ng-show="searchview===true" ng-controller="SearchController"></search-view></div>
     <div id="container-footer" class="row">
-        <connector-bar ng-controller="ConnectorBarController"></connector-bar>
+        <connector-bar id="connector-bar" ng-controller="ConnectorBarController"></connector-bar>
         <div id="logo">
             <img id="logo-image" class="center" src="resources/logo-with-subtitle.svg"/>
             <img id="logo-image-small" class="center" src="resources/logo-small.svg"/>

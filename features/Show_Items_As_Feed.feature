@@ -6,7 +6,7 @@ Feature: Show Items as Feed
   Scenario: Successful: show Posts as Feed
     Given I am on the homepage "http://strebo.net"
     When I press "view-switch"
-    Then I should see "Posts by Decks"
+    Then I should see "feed-view"
 
  Scenario: Unsuccessful: show Posts as Feed
     Given |I am on |the homepage strebo.net

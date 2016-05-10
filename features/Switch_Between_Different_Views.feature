@@ -5,12 +5,13 @@ Feature: Switch between different Views
   @javascript
   Scenario: Click on the Button for view switch
     Given I am on "http://strebo.net"
+    Given I see "deck-view"
     When I press "view-switch"
-    Then I should see "Feed View"
+    Then I should see "feed-view"
 
   @javascript
   Scenario: Click on the Button for view switch
     Given I am on "http://strebo.net"
-    And I press "view-switch"
+    Given I see "feed-view"
     When I press "view-switch"
-    Then I should see "Deck View"
+    Then I should see "deck-view"
