@@ -7,6 +7,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 {
 
     private $client = null;
+    private $search = false;
 
     public function __construct()
     {
@@ -33,7 +34,8 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
     public function search($tag)
     {
-        $this->encodeJSON($this->client->get('https://api.soundcloud.com/tracks', [$tag]));
+        $this->search = true;
+        return $this->encodeJSON($this->client->get('https://api.soundcloud.com/tracks', [$tag]));
     }
 
     public function getPublicFeed($location)
@@ -46,21 +48,41 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
         $data = json_decode($json, true);
         $temp_song = [];
+        $feed = [];
 
-        foreach ($data["collection"] as $song) {
-            $temp_song["text"] = $song["track"]["description"];
-            $temp_song["title"] = $song["track"]["title"];
-            $temp_song["author"] = $song["track"]["user"]["username"];
-            $temp_song["authorPicture"] = $song["track"]["user"]["avatar_url"];
-            $temp_song["numberOfLikes"] = $song["track"]["likes_count"];
-            $temp_song["link"] = $song["track"]["permalink_url"];
-            $temp_song["type"] = "audio";
-            $temp_song["createdTime"] = $this->formatTime($song["track"]["created_at"]);
-            $temp_song["media"] = $song["track"]["uri"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
-            $temp_song["thumb"] = $song["track"]["artwork_url"];
-            $temp_song["tags"] = $song["track"]["tag_list"];
-            $feed[] = $temp_song;
-            $temp_song = [];
+        if (!$this->search) {
+            foreach ($data["collection"] as $song) {
+                $temp_song["text"] = $song["track"]["description"];
+                $temp_song["title"] = $song["track"]["title"];
+                $temp_song["author"] = $song["track"]["user"]["username"];
+                $temp_song["authorPicture"] = $song["track"]["user"]["avatar_url"];
+                $temp_song["numberOfLikes"] = $song["track"]["likes_count"];
+                $temp_song["link"] = $song["track"]["permalink_url"];
+                $temp_song["type"] = "audio";
+                $temp_song["createdTime"] = $this->formatTime($song["track"]["created_at"]);
+                $temp_song["media"] = $song["track"]["uri"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
+                $temp_song["thumb"] = $song["track"]["artwork_url"];
+                $temp_song["tags"] = $song["track"]["tag_list"];
+                $feed[] = $temp_song;
+                $temp_song = [];
+            }
+        } else {
+            foreach ($data as $song) {
+                $temp_song["text"] = $song["description"];
+                $temp_song["title"] = $song["title"];
+                $temp_song["author"] = $song["user"]["username"];
+                $temp_song["authorPicture"] = $song["user"]["avatar_url"];
+                $temp_song["numberOfLikes"] = null;
+                $temp_song["link"] = $song["permalink_url"];
+                $temp_song["type"] = "audio";
+                $temp_song["createdTime"] = $this->formatTime($song["created_at"]);
+                $temp_song["media"] = $song["stream_url"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
+                $temp_song["thumb"] = $song["artwork_url"];
+                $temp_song["tags"] = null;
+                $feed[] = $temp_song;
+                $temp_song = [];
+            }
+            $this->search = false;
         }
 
         $newJSON = array('name' => parent::getName(),
