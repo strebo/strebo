@@ -1,9 +1,8 @@
 app.filter('numberFilter', function () {
     return function (number) {
-        if (number !== undefined) {
+        if (Number.isInteger(number)) {
             return number.toLocaleString();
         }
-        ;
         return "";
     };
 });
