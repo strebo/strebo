@@ -38,7 +38,7 @@
                     {{currentItem.numberOfLikes | numberFilter}} Likes
                 </div>
                 <div id="detailview-content-meta-body-hashtags">
-                    <span ng-repeat="hashtag in currentItem.tags" class="hashtag">#{{hashtag}}</span>
+                    <span ng-repeat="hashtag in currentItem.tags track by $index" class="hashtag">#{{hashtag}}</span>
                 </div>
             </div>
 
