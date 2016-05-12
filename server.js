@@ -4,7 +4,7 @@
 // get all the tools we need
 var express  = require('express');
 var app      = express();
-var port     = process.env.PORT || 8081;
+var port     = process.env.PORT || 443;
 var passport = require('passport');
 var flash    = require('connect-flash');
 

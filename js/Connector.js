@@ -19,7 +19,7 @@ var connectors = {
     twitter: {
         name: "Twitter",
         connect: function () {
-            window.location.href = 'http://' + location.hostname + ':8081/auth/twitter';
+            window.location.href = 'http://' + location.hostname + ':443/auth/twitter';
         },
         success: function () {
             if (Url.get.Twitter && Url.get.oauth_token && Url.get.oauth_verifier) {
@@ -42,10 +42,10 @@ var connectors = {
     instagram: {
         name: "Instagram",
         connect: function () {
-            window.location.href = 'http://' + location.hostname + ':8081/auth/instagram';
+            window.location.href = 'http://' + location.hostname + ':443/auth/instagram';
         },
         success: function () {
-            if (Url.get.Instagram && Url.get.oauth_token && Url.get.oauth_verifier) {
+            if (Url.get.Instagram && Url.get.code) {
                 alert("Instagram connected");
             }
         }
@@ -53,10 +53,10 @@ var connectors = {
     soundcloud: {
         name: "SoundCloud",
         connect: function () {
-            window.location.href = 'http://' + location.hostname + ':8081/auth/soundcloud';
+            window.location.href = 'http://' + location.hostname + ':443/auth/soundcloud';
         },
         success: function () {
-            if (Url.get.SoundCloud && Url.get.oauth_token && Url.get.oauth_verifier) {
+            if (Url.get.SoundCloud && Url.get.code) {
                 alert("SoundCloud connected");
             }
         }
