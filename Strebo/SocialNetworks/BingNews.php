@@ -45,15 +45,16 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
             foreach($data->items as $index => $value) {
                 $item = [];
                 $item['type'] = 'image';
-                $item['thumb'] = $value->getTag('News:Image')[0];
+                $item['media'] = $value->getTag('News:Image')[0];
                 $item['author'] = $value->getTag('News:Source')[0];
                 $item['title'] = $value->getTag('title')[0];
-                $item['description'] = $value->getTag('description')[0];
+                $item['text'] = $value->getTag('description')[0];
                 $item['createdTime'] = $value->getTag('pubDate')[0];
                 $item['link'] = $value->getTag('link')[0];
                 array_push($feed,$item);
             }
         }
+        var_dump($feed);
         return json_encode(array('name' => parent::getName(),
             'icon' => parent::getIcon(),
             'color' => parent::getColor(),

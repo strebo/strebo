@@ -80,7 +80,7 @@ class DataCollector extends \Thread
         require __DIR__ . '/../vendor/autoload.php';
         while (true) {
             $this->collectPublicFeed();
-            sleep(90);
+            sleep(240);
         }
     }
 
