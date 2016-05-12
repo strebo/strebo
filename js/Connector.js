@@ -57,7 +57,7 @@ var connectors = {
             redirectTo('soundcloud');
         },
         success: function () {
-            if (Url.get.SoundCloud && Url.get.code) {
+            if (Url.get.SoundCloud && Url.get.code)
                 alert("SoundCloud connected");
             else
                 alert("SoundCloud not connected");
