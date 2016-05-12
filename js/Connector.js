@@ -1,4 +1,4 @@
-Url = {
+var Url = {
     get get() {
         var vars = {};
         if (window.location.search.length !== 0)
@@ -19,46 +19,48 @@ var connectors = {
     twitter: {
         name: "Twitter",
         connect: function () {
-            window.location.href = 'http://' + location.hostname + ':443/auth/twitter';
+            redirectTo('twitter');
         },
         success: function () {
-            if (Url.get.Twitter && Url.get.oauth_token && Url.get.oauth_verifier) {
+            if (Url.get.Twitter && Url.get.oauth_token && Url.get.oauth_verifier)
                 alert("Twitter connected");
-            }
+            else
+                alert("Twitter not connected");
         }
     }, youtube: {
         name: "YouTube",
         connect: function () {
-            handleAuthResult(null, function () {
+            handleAuthResult(null, function (token) {
                     conn.send(JSON.stringify({
                         command: "connect",
-                        network: YouTube,
-                        token: a.access_token
+                        network: "YouTube",
+                        token: token
                     }));
+                    alert("YouTube connected");
                 }
             );
         }
-    },
-    instagram: {
+    }, instagram: {
         name: "Instagram",
         connect: function () {
-            window.location.href = 'http://' + location.hostname + ':443/auth/instagram';
+            redirectTo('instagram');
         },
         success: function () {
-            if (Url.get.Instagram && Url.get.code) {
+            if (Url.get.Instagram && Url.get.code)
                 alert("Instagram connected");
-            }
+            else
+                alert("Instagram not connected");
         }
-    },
-    soundcloud: {
+    }, soundcloud: {
         name: "SoundCloud",
         connect: function () {
-            window.location.href = 'http://' + location.hostname + ':443/auth/soundcloud';
+            redirectTo('soundcloud');
         },
         success: function () {
             if (Url.get.SoundCloud && Url.get.code) {
                 alert("SoundCloud connected");
-            }
+            else
+                alert("SoundCloud not connected");
         }
     }
 };
@@ -66,3 +68,7 @@ var connectors = {
 connectors.twitter.success();
 connectors.instagram.success();
 connectors.soundcloud.success();
+
+function redirectTo(a) {
+    window.location.href = 'http://' + location.hostname + ':443/auth/'+a;
+}

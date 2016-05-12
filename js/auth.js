@@ -44,7 +44,7 @@ function handleAuthResult(authResult, callback) {
             immediate: false
         }, function (a) {
             handleAuthResult(a);
-            callback();
+            callback(a.access_token);
         });
     }
 }
