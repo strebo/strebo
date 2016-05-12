@@ -14,7 +14,7 @@ class DataCollector extends \Thread
         $this->collectingData = true;
         $this->socialNetworks = (new SocialNetworkFactory())->getInstances();
         $this->publicFeed = ["DE" => [], "US" => [], "W" => []];
-        $this->start();
+        $this->start(PTHREADS_INHERIT_NONE);
     }
 
     public function collectPublicFeed()
@@ -77,6 +77,7 @@ class DataCollector extends \Thread
 
     public function run()
     {
+        require __DIR__ . '/../vendor/autoload.php';
         while (true) {
             $this->collectPublicFeed();
             sleep(90);
