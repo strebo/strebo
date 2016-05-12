@@ -38,7 +38,31 @@ var connectors = {
                 }
             );
         }
+    },
+    instagram: {
+        name: "Instagram",
+        connect: function () {
+            window.location.href = 'http://' + location.hostname + ':8081/auth/instagram';
+        },
+        success: function () {
+            if (Url.get.Instagram && Url.get.oauth_token && Url.get.oauth_verifier) {
+                alert("Instagram connected");
+            }
+        }
+    },
+    soundcloud: {
+        name: "SoundCloud",
+        connect: function () {
+            window.location.href = 'http://' + location.hostname + ':8081/auth/soundcloud';
+        },
+        success: function () {
+            if (Url.get.SoundCloud && Url.get.oauth_token && Url.get.oauth_verifier) {
+                alert("SoundCloud connected");
+            }
+        }
     }
 };
 
 connectors.twitter.success();
+connectors.instagram.success();
+connectors.soundcloud.success();
