@@ -64,9 +64,9 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 $temp_song["thumb"] = $song["track"]["artwork_url"];
                 $match=[];
                 preg_match_all('/(\\"[A-Za-z0-9\s]+\\"|[A-Za-z0-9]+)/',$song["track"]["tag_list"],$match);
-                $temp_song["tags"] = [];
+                $temp_song["tags"] = null;
                 for($i=1;$i<count($match);$i++){
-                    $temp_song["tags"][]=$match[$i];
+                    $temp_song["tags"]=$match[$i];
                 }
                 $feed[] = $temp_song;
                 $temp_song = [];
@@ -84,6 +84,12 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 $temp_song["media"] = $song["stream_url"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
                 $temp_song["thumb"] = $song["artwork_url"];
                 $temp_song["tags"] = null;
+                $match=[];
+                preg_match_all('/(\\"[A-Za-z0-9\s]+\\"|[A-Za-z0-9]+)/',$song["track"]["tag_list"],$match);
+                $temp_song["tags"] = null;
+                for($i=1;$i<count($match);$i++){
+                    $temp_song["tags"]=$match[$i];
+                }
                 $feed[] = $temp_song;
                 $temp_song = [];
             }
