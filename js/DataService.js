@@ -16,6 +16,9 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     conn.onopen = function () {
         conn.send('Ping'); // Send the message 'Ping' to the server
+        conn.send(JSON.stringify({
+            command: 'getNetworks'
+        }));
         updateData();
     };
 
@@ -41,6 +44,9 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
             extractNetworks();
             $rootScope.loaderview = false;
             $rootScope.$apply();
+        } else if(message.type === "networks") {
+            networks.splice(0, networks.length);
+            networks = message.json;
         } else if (message.type === "message") {
             console.log(message.message);
         }
@@ -93,8 +99,9 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
                 name: feedByNetwork[i].name,
                 icon: feedByNetwork[i].icon,
                 color: feedByNetwork[i].color,
-                status: 'disconnected',
-                connect: connectors[feedByNetwork[i].name.toLowerCase()] ? connectors[feedByNetwork[i].name.toLowerCase()].connect : null
+                status: 'disconnected'
+                //,
+                //connect: connectors[feedByNetwork[i].name.toLowerCase()] ? connectors[feedByNetwork[i].name.toLowerCase()].connect : null
             });
         }
     }
