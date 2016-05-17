@@ -19,7 +19,6 @@ class DataCollector extends \Thread
 
     public function collectPublicFeed()
     {
-        echo "public";
         foreach ($this->publicFeed as $location => $value) {
             echo $location;
             foreach ($this->socialNetworks as $network => $instance) {
@@ -72,6 +71,22 @@ class DataCollector extends \Thread
         }
 
         return json_encode(["type" => "data", "json" => $results]);
+    }
+
+    public function getNetworksPrivate($user)
+    {
+        $networks = [];
+
+        foreach ($this->socialNetworks as $key => $instance) {
+            if ($instance instanceof PrivateInterface) {
+                $status = "disconnected";
+                if (array_key_exists($instance->getName(), $user->getTokens())) {
+                    $status = "connected";
+                }
+                $networks[] = ["name" => $instance->getName(), "icon" => $instance->getIcon(), "color" => $instance->getColor(), "status" => $status];
+            }
+        }
+        return json_encode(["type" => "networks", "json" => $networks]);
     }
 
 

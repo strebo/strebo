@@ -40,6 +40,10 @@ class StreboServer extends WebSocketServer
                 case 'connect':
                     $user->addToken($data->network, $data->token);
                     break;
+
+                case 'getNetworks':
+                    $this->send($user, $this->dataCollector->getNetworksPrivate($user));
+                    break;
             }
 
         } else {
