@@ -5,8 +5,6 @@ use Strebo;
 
 class StreboServer extends WebSocketServer
 {
-
-    protected $users;
     private $dataCollector;
 
 
@@ -67,13 +65,11 @@ class StreboServer extends WebSocketServer
 
     protected function connected($user)
     {
-        $this->users[] = $user;
         $this->send($user, json_encode(["type" => "message", "message" => "Happy Welcome!"]));
     }
 
     protected function closed($user)
     {
-        unset($this->users[array_keys($this->users, $user)]);
     }
 }
 
