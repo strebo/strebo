@@ -3,6 +3,7 @@
 namespace Strebo\SocialNetworks;
 
 use Strebo;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface
 {
@@ -72,7 +73,12 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $channel = $this->youtube->channels->listChannels("contentDetails", ["id" => $item->snippet->channelId]);
             $profile = null;
             if (isset($channel->items[0]->contentDetails->googlePlusUserId)) {
-                $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
+                try {
+                    $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
+                } catch (\Google_Service_Exception $e) {
+                    var_dump($channel);
+                    $profile = null;
+                }
             }
             $data['authorPicture'] = null;
             if (isset($profile->image)) {
