@@ -23,9 +23,9 @@ var connectors = {
         },
         success: function () {
             if (Url.get.Twitter && Url.get.oauth_token && Url.get.oauth_verifier)
-                alert("Twitter connected");
+                console.log("Twitter connected");
             else
-                alert("Twitter not connected");
+                console.log("Twitter not connected");
         }
     }, youtube: {
         name: "YouTube",
@@ -36,7 +36,7 @@ var connectors = {
                         network: "YouTube",
                         token: token
                     }));
-                    alert("YouTube connected");
+                console.log("YouTube connected");
                 }
             );
         }
@@ -47,9 +47,9 @@ var connectors = {
         },
         success: function () {
             if (Url.get.Instagram && Url.get.code)
-                alert("Instagram connected");
+                console.log("Instagram connected");
             else
-                alert("Instagram not connected");
+                console.log("Instagram not connected");
         }
     }, soundcloud: {
         name: "SoundCloud",
@@ -58,9 +58,9 @@ var connectors = {
         },
         success: function () {
             if (Url.get.SoundCloud && Url.get.code)
-                alert("SoundCloud connected");
+                console.log("SoundCloud connected");
             else
-                alert("SoundCloud not connected");
+                console.log("SoundCloud not connected");
         }
     }
 };
