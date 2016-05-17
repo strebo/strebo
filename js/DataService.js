@@ -32,21 +32,20 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
         var message = JSON.parse(e.data);
 
-        //console.log(message);
-
         if (message.type === "data") {
             //console.log(message.json["Instagram"].feed[0].text);
             feedByNetwork = message.json;
             feed.splice(0, feed.length);
             extractPosts();
             feed = shuffle(feed);
-            networks.splice(0, networks.length);
-            extractNetworks();
+            //networks.splice(0, networks.length);
+            //extractNetworks();
             $rootScope.loaderview = false;
             $rootScope.$apply();
         } else if(message.type === "networks") {
             networks.splice(0, networks.length);
-            networks = message.json;
+            for(var i = 0, len = message.json.length; i < len; ++i) networks.push(message.json[i]);
+            $rootScope.$apply();
         } else if (message.type === "message") {
             console.log(message.message);
         }
@@ -93,7 +92,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         }
     }
 
-    function extractNetworks() {
+    /*function extractNetworks() {
         for (var i in feedByNetwork) {
             networks.push({
                 name: feedByNetwork[i].name,
@@ -104,7 +103,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
                 //connect: connectors[feedByNetwork[i].name.toLowerCase()] ? connectors[feedByNetwork[i].name.toLowerCase()].connect : null
             });
         }
-    }
+    }*/
 
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;

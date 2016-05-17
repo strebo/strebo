@@ -2,7 +2,7 @@ app.controller('ConnectorBarController', ['$scope', 'DataService', function($sco
     $scope.networks = DataService.getNetworks();
     $scope.connectors = connectors;
 
-    console.log($scope.connectors);
+    console.log($scope.networks);
 }])
     .directive('connectorBar', function() {
         return {

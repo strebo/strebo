@@ -22,10 +22,16 @@ var connectors = {
             redirectTo('twitter');
         },
         success: function () {
-            if (Url.get.Twitter && Url.get.oauth_token && Url.get.oauth_verifier)
-                console.log("Twitter connected");
-            else
-                console.log("Twitter not connected");
+            if (Url.get.Twitter && Url.get.oauth_token && Url.get.oauth_verifier) {
+                conn.send(JSON.stringify({
+                    command: "connect",
+                    network: "Twitter",
+                    tokens: [Url.get.oauth_token, Url.get.oauth_verifier]
+                }));
+            console.log("SoundCloud connected");
+        } else {
+            console.log("SoundCloud not connected");
+}
         }
     }, youtube: {
         name: "YouTube",
@@ -34,7 +40,7 @@ var connectors = {
                     conn.send(JSON.stringify({
                         command: "connect",
                         network: "YouTube",
-                        token: token
+                        tokens: [token]
                     }));
                 console.log("YouTube connected");
                 }
@@ -46,10 +52,16 @@ var connectors = {
             redirectTo('instagram');
         },
         success: function () {
-            if (Url.get.Instagram && Url.get.code)
+            if (Url.get.Instagram && Url.get.code) {
+                conn.send(JSON.stringify({
+                    command: "connect",
+                    network: "Instagram",
+                    tokens: [Url.get.code]
+                }));
                 console.log("Instagram connected");
-            else
+            } else {
                 console.log("Instagram not connected");
+            }
         }
     }, soundcloud: {
         name: "SoundCloud",
@@ -57,10 +69,16 @@ var connectors = {
             redirectTo('soundcloud');
         },
         success: function () {
-            if (Url.get.SoundCloud && Url.get.code)
+            if (Url.get.SoundCloud && Url.get.code) {
+                conn.send(JSON.stringify({
+                    command: "connect",
+                    network: "SoundCloud",
+                    tokens: [Url.get.code]
+                }));
                 console.log("SoundCloud connected");
-            else
+            } else {
                 console.log("SoundCloud not connected");
+            }
         }
     }
 };
