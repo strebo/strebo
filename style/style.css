@@ -247,9 +247,9 @@ label {
     width:15vw;
     opacity:0.8;
 }
-.box-shadow {
-    /*box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);*/
-}
+/*.box-shadow {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}*/
 
 .social-media-content-container {
     width:18vw;
@@ -347,7 +347,11 @@ label {
     top:6vh;
     width: 0;
     height: 0;
+    -o-transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
     -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    transform:rotate(360deg);
     border-style: solid;
     border-width: 1.5vh 1.5vh 0 0;
     border-color: #222 transparent transparent transparent;
@@ -500,7 +504,11 @@ label {
     top:-1.5vmax;
     width: 0;
     height: 0;
+    -o-transform:rotate(270deg);
+    -ms-transform:rotate(270deg);
     -webkit-transform:rotate(270deg);
+    -moz-transform:rotate(270deg);
+    transform:rotate(270deg);
     border-style: solid;
     border-width: 1.5vmax 1.5vmax 0 0;
     border-color: #222 transparent transparent transparent;
@@ -667,9 +675,9 @@ input {
     cursor:pointer;
 }
 
-input::selection{ background-color: #424242; color:#fff;}
 input::moz-selection{ background-color: #424242; color:#fff;}
 input::webkit-selection{ background-color: #424242; color:#fff;}
+input::selection{ background-color: #424242; color:#fff;}
 
 .circle {
     position: relative;
