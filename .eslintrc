@@ -9,6 +9,13 @@ env:
   jquery: true
   node: true
 
+globals:
+  conn: true
+  angular: true
+  connectors: true
+  app: true
+  SC: true
+
 # http://eslint.org/docs/rules/
 rules:
   # Possible Errors
