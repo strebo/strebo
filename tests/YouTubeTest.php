@@ -54,12 +54,12 @@ class YouTubeTest extends PHPUnit_Framework_TestCase
         putenv('strebo_youtube_1=AIzaSyAH6n3wcnku2Ah3qZZrgWbXcxVgiAwF-Xk');
         putenv('strebo_youtube_2=AIzaSyA8OMzoY6nuaQyQyp3nDSqVpMbjL6juT8U');
         $youtube = new \Strebo\SocialNetworks\YouTube();
-        $time = json_decode($youtube->formatTime("2016-04-25T13:00:09.000Z"));
+        $time = json_decode($youtube->formatTime(strtotime("2016-04-25T13:00:09.000Z")));
 
         $this->assertEquals("25", $time->day);
         $this->assertEquals("04", $time->month);
         $this->assertEquals("2016", $time->year);
-        $this->assertEquals("15", $time->hour);
+        $this->assertEquals("13", $time->hour);
         $this->assertEquals("00", $time->minute);
         $this->assertEquals("09", $time->second);
     }
