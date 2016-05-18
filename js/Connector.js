@@ -32,10 +32,8 @@ var connectors = {
                     network: "Twitter",
                     tokens: [Url.get.oauth_token, Url.get.oauth_verifier]
                 }));
-            console.log("Twitter connected");
-        } else {
-            console.log("Twitter not connected");
-}
+            //console.log("Twitter connected");
+            }
         }
     }, youtube: {
         name: "YouTube",
@@ -46,7 +44,6 @@ var connectors = {
                         network: "YouTube",
                         tokens: [token]
                     }));
-                console.log("YouTube connected");
                 }
             );
         }
@@ -62,9 +59,6 @@ var connectors = {
                     network: "Instagram",
                     tokens: [Url.get.code]
                 }));
-                console.log("Instagram connected");
-            } else {
-                console.log("Instagram not connected");
             }
         }
     }, soundcloud: {
@@ -79,9 +73,6 @@ var connectors = {
                     network: "SoundCloud",
                     tokens: [Url.get.code]
                 }));
-                console.log("SoundCloud connected");
-            } else {
-                console.log("SoundCloud not connected");
             }
         }
     }
