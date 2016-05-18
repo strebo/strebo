@@ -45,6 +45,10 @@ class StreboServer extends WebSocketServer
                 case 'getNetworks':
                     $this->send($user, $this->dataCollector->getNetworksPrivate($user));
                     break;
+
+                default:
+                    $this->send($user, json_encode(["type" => "error",
+                        "message" => "Not defined"]));
             }
 
         }

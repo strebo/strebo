@@ -75,7 +75,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             $data['type'] = $media->type;
             $data['tags'] = $media->tags;
             $data['title'] = null;
-            $data['createdTime'] = $this->formatTime($media->created_time);
+            $data['createdTime'] = parent::formatTime($media->created_time);
             if (isset($media->caption, $media->caption->text)) {
                 $data['text'] = $media->caption->text;
             }
@@ -101,20 +101,5 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             'feed' => $feed);
 
         return json_encode($newJSON);
-    }
-
-    public function formatTime($time)
-    {
-        $formattedTime = date('d m Y H i s', $time);
-
-        $timeJSON = array('day' => substr($formattedTime, 0, 2),
-            'month' => substr($formattedTime, 3, 2),
-            'year' => substr($formattedTime, 5, 5),
-            'hour' => substr($formattedTime, 11, 2),
-            'minute' => substr($formattedTime, 14, 2),
-            'second' => substr($formattedTime, 17)
-        );
-
-        return json_encode($timeJSON);
     }
 }

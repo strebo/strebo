@@ -36,6 +36,7 @@ ratings:
   - "**.rb"
 exclude_paths:
 - features/
+- "features/bootstrap/FeatureContext.php"
 - tests/
 - "Strebo/WebSocketServer.php"
 - documentation/

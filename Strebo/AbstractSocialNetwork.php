@@ -90,4 +90,19 @@ abstract class AbstractSocialNetwork
     {
         return $this->apiCallback;
     }
+
+    public function formatTime($time)
+    {
+        $formattedTime = date('d m Y H i s', $time);
+
+        $timeJSON = array('day' => substr($formattedTime, 0, 2),
+            'month' => substr($formattedTime, 3, 2),
+            'year' => substr($formattedTime, 5, 5),
+            'hour' => substr($formattedTime, 11, 2),
+            'minute' => substr($formattedTime, 14, 2),
+            'second' => substr($formattedTime, 17)
+        );
+
+        return json_encode($timeJSON);
+    }
 }

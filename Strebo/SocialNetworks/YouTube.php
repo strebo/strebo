@@ -69,7 +69,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $data = [];
             $data['type'] = "video";
             $data['tags'] = $item->snippet->tags;
-            $data['createdTime'] = $this->formatTime($item->snippet->publishedAt);
+            $data['createdTime'] = parent::formatTime(strtotime($item->snippet->publishedAt));
 
             if (isset($item->id->videoId)) {
                 $id = $item->id->videoId;
@@ -113,20 +113,5 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             'feed' => $feed);
 
         return json_encode($newJSON);
-    }
-
-    public function formatTime($time)
-    {
-        $formattedTime = date('d m Y H i s', strtotime($time));
-
-        $timeJSON = array('day' => substr($formattedTime, 0, 2),
-            'month' => substr($formattedTime, 3, 2),
-            'year' => substr($formattedTime, 5, 5),
-            'hour' => substr($formattedTime, 11, 2),
-            'minute' => substr($formattedTime, 14, 2),
-            'second' => substr($formattedTime, 17)
-        );
-
-        return json_encode($timeJSON);
     }
 }
