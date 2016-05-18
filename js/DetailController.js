@@ -5,10 +5,10 @@ app.controller('DetailController', ['$scope', 'DataService', '$sce', function($s
 
         $scope.$watch(
             "currentItem",
-            function( newValue, oldValue ) {
+            function( newValue ) {
                 if(newValue && newValue.socialNetwork && newValue.socialNetwork.name === "SoundCloud") {
-                    track_url = newValue.link;
-                    SC.oEmbed(track_url, { auto_play: false }).then(function(oEmbed) {
+                    var trackUrl = newValue.link;
+                    SC.oEmbed(trackUrl, { auto_play: false }).then(function(oEmbed) {
                         $scope.media = $sce.trustAsHtml($(oEmbed.html).attr('class','center')[0].outerHTML);
                         setTimeout(function() {
                             $scope.$apply();
@@ -30,8 +30,7 @@ app.controller('DetailController', ['$scope', 'DataService', '$sce', function($s
         $scope.$emit('previousItem');
     };
 
-}])
-    .directive('detailView', function() {
+}]).directive('detailView', function() {
         return {
             restrict: 'E',
             templateUrl: '/js/DetailView.html'

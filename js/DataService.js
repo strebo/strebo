@@ -66,6 +66,15 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     /* Private Functions */
 
+    function updateData() {
+        $rootScope.loaderview = true;
+        conn.send(JSON.stringify({
+            command: mode[currentMode],
+            param: $rootScope.locations[currentLocation].abbreviation,
+            query: angular.element("#searchview-query").val()
+        }));
+    }
+
     function extractPosts() {
         for (var i in feedByNetwork) {
             for (var j in feedByNetwork[i].feed) {
@@ -107,7 +116,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
-        while (0 !== currentIndex) {
+        while (currentIndex !== 0) {
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
             temporaryValue = array[currentIndex];
@@ -117,11 +126,11 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         return array;
     }
 
-    this.getLocation = function (index) {
+    this.getLocation = function () {
         return currentLocation;
     };
 
-    this.getMode = function (index) {
+    this.getMode = function () {
         return currentMode;
     };
 
@@ -134,13 +143,4 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         currentLocation = index;
         updateData();
     };
-
-    function updateData() {
-        $rootScope.loaderview = true;
-        conn.send(JSON.stringify({
-            command: mode[currentMode],
-            param: $rootScope.locations[currentLocation].abbreviation,
-            query: angular.element("#searchview-query").val()
-        }));
-    }
 }]);

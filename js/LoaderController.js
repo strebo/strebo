@@ -1,7 +1,6 @@
-app.controller('LoaderController', ['$scope', 'DataService', '$sce', function($scope, DataService, $sce) {
+app.controller('LoaderController', ['$scope', function($scope) {
 
-}])
-    .directive('loaderView', function() {
+}]).directive('loaderView', function() {
         return {
             restrict: 'E',
             templateUrl: '/js/LoaderView.html'

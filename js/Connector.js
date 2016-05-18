@@ -15,6 +15,10 @@ var Url = {
     }
 };
 
+function redirectTo(a) {
+    window.location.href = 'http://' + location.hostname + ':443/auth/'+a;
+}
+
 var connectors = {
     twitter: {
         name: "Twitter",
@@ -86,7 +90,3 @@ var connectors = {
 connectors.twitter.success();
 connectors.instagram.success();
 connectors.soundcloud.success();
-
-function redirectTo(a) {
-    window.location.href = 'http://' + location.hostname + ':443/auth/'+a;
-}

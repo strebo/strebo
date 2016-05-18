@@ -1,5 +1,5 @@
 // config/passport.js
-var TwitterStrategy  = require('passport-twitter').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var SoundCloudStrategy = require('passport-soundcloud').Strategy;
 

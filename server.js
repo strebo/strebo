@@ -2,16 +2,16 @@
 
 // set up ======================================================================
 // get all the tools we need
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 443;
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 443;
 var passport = require('passport');
-var flash    = require('connect-flash');
+var flash = require('connect-flash');
 
-var morgan       = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
+var bodyParser = require('body-parser');
+var session = require('express-session');
 
 require('./passport')(passport); // pass passport for configuration
 

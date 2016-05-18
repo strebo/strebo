@@ -11,8 +11,7 @@ app.controller('SearchController', ['$scope', 'DataService', '$sce', function ($
             if (e.keyCode === 13) $scope.$emit('search', true);
         }
 
-    }])
-    .directive('searchView', function () {
+    }]).directive('searchView', function () {
         return {
             restrict: 'E',
             templateUrl: '/js/SearchView.html'
