@@ -28,9 +28,9 @@ var connectors = {
                     network: "Twitter",
                     tokens: [Url.get.oauth_token, Url.get.oauth_verifier]
                 }));
-            console.log("SoundCloud connected");
+            console.log("Twitter connected");
         } else {
-            console.log("SoundCloud not connected");
+            console.log("Twitter not connected");
 }
         }
     }, youtube: {

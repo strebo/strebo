@@ -533,6 +533,14 @@ label {
     overflow:scroll;
     height:80%;
 }
+
+#detailview-content-meta-body-title {
+    text-align:center;
+    padding:1vh 0.5vh;
+    font-size:1.3rem;
+    font-weight:400;
+}
+
 #detailview-content-meta-body-hashtags {
     margin-top:1.3vmax;
 }

@@ -20,9 +20,7 @@ class DataCollector extends \Thread
     public function collectPublicFeed()
     {
         foreach ($this->publicFeed as $location => $value) {
-            echo $location;
             foreach ($this->socialNetworks as $network => $instance) {
-                echo $network;
                 $locationString = "getLocation" . $location;
                 $data = json_decode($instance->getPublicFeed($instance->$locationString()));
 
