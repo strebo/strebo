@@ -12,19 +12,28 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function __construct()
     {
-        parent::__construct('Instagram', 'instagram', '#2a5b83', ["51.1656910", "10.4515260"], ["37.0902400", "-95.7128910"], [null, null]);
-        $this->apiKey = getenv('strebo_instagram_1');
-        $this->instagram = new InstagramAPI ($this->apiKey);
+        parent::__construct(
+            'Instagram',
+            'instagram',
+            '#2a5b83',
+            ["51.1656910", "10.4515260"],
+            ["37.0902400", "-95.7128910"],
+            [null, null],
+            getenv('strebo_instagram_1'),
+            getenv('strebo_instagram_2'),
+            'http://strebo.net'
+        );
+        $this->instagram = new InstagramAPI($this->getApiKey());
 
     }
 
     public function connect($code)
     {
-        $this->apiSecret = getenv('strebo_instagram_2');
-        $this->apiCallback = 'http://strebo.net';
-        $privateInstagram = new InstagramAPI(array('apiKey' => $this->apiKey, 'apiSecret' => $this->apiSecret, 'apiCallback' => $this->apiCallback));
-        $OAuthToken = $privateInstagram->getOAuthToken($code);
-        $privateInstagram->setAccessToken($OAuthToken);
+        $privateInstagram = new InstagramAPI(array('apiKey' => $this->getApiKey(),
+            'apiSecret' => $this->getApiSecret(),
+            'apiCallback' => $this->getApiCallback()));
+        $oAuthToken = $privateInstagram->getOAuthToken($code);
+        $privateInstagram->setAccessToken($oAuthToken);
         return $privateInstagram;
 
 
@@ -50,7 +59,8 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
     {
         if (!is_null($location[0])) {
             $popularmedia = $this->instagram->searchMedia($location[0], $location[1], 5000);
-        } else {
+        }
+        if (is_null($location[0])) {
             $popularmedia = $this->instagram->getPopularMedia();
         }
         return $this->encodeJSON($popularmedia);
@@ -68,8 +78,8 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             $data['createdTime'] = $this->formatTime($media->created_time);
             if (isset($media->caption, $media->caption->text)) {
                 $data['text'] = $media->caption->text;
-            } //kein else
-            else {
+            }
+            if (!isset($media->caption, $media->caption->text)) {
                 $data['text'] = '';
             }
             $data['link'] = $media->link;
@@ -82,7 +92,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             } elseif ($media->type === 'video') {
                 $data['media'] = $media->videos->standard_resolution->url;
             }
-            array_push($feed,$data);
+            $feed[] = $data;
         }
 
         $newJSON = array('name' => parent::getName(),
@@ -95,8 +105,6 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function formatTime($time)
     {
-        date_default_timezone_set('Europe/Berlin');
-
         $formattedTime = date('d m Y H i s', $time);
 
         $timeJSON = array('day' => substr($formattedTime, 0, 2),
@@ -110,5 +118,3 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
         return json_encode($timeJSON);
     }
 }
-
-?>

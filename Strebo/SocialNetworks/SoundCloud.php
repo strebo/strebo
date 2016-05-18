@@ -1,5 +1,6 @@
 <?php
 namespace Strebo\SocialNetworks;
+
 use Strebo;
 use SoundCloud\Client as SoundCloudAPI;
 
@@ -11,11 +12,16 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
     public function __construct()
     {
-        parent::__construct('SoundCloud', 'soundcloud', '#ff3a00', null, null, null);
-        $this->apiKey = getenv('strebo_soundcloud_1');
-        $this->apiSecret = getenv('strebo_soundcloud_2');
-        $this->apiCallback = 'http://strebo.net';
-        $this->client = new SoundCloudAPI($this->apiKey, $this->apiSecret, $this->apiCallback);
+        parent::__construct('SoundCloud',
+            'soundcloud',
+            '#ff3a00',
+            null,
+            null,
+            null,
+            getenv('strebo_soundcloud_1'),
+            getenv('strebo_soundcloud_2'),
+            'http://strebo.net');
+        $this->client = new SoundCloudAPI($this->getApiKey(), $this->getApiSecret(), $this->getApiCallback());
     }
 
     public function connect($code)
@@ -47,51 +53,52 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
     {
 
         $data = json_decode($json, true);
-        $temp_song = [];
+        $tempSong = [];
         $feed = [];
 
         if (!$this->search) {
             foreach ($data["collection"] as $song) {
-                $temp_song["text"] = $song["track"]["description"];
-                $temp_song["title"] = $song["track"]["title"];
-                $temp_song["author"] = $song["track"]["user"]["username"];
-                $temp_song["authorPicture"] = $song["track"]["user"]["avatar_url"];
-                $temp_song["numberOfLikes"] = $song["track"]["likes_count"];
-                $temp_song["link"] = $song["track"]["permalink_url"];
-                $temp_song["type"] = "audio";
-                $temp_song["createdTime"] = $this->formatTime($song["track"]["created_at"]);
-                $temp_song["media"] = $song["track"]["uri"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
-                $temp_song["thumb"] = $song["track"]["artwork_url"];
-                $match=[];
-                preg_match_all('/(\\"[A-Za-z0-9\s]+\\"|[A-Za-z0-9]+)/',$song["track"]["tag_list"],$match);
-                $temp_song["tags"] = null;
-                for($i=1;$i<count($match);$i++){
-                    $temp_song["tags"]=$match[$i];
+                $tempSong["text"] = $song["track"]["description"];
+                $tempSong["title"] = $song["track"]["title"];
+                $tempSong["author"] = $song["track"]["user"]["username"];
+                $tempSong["authorPicture"] = $song["track"]["user"]["avatar_url"];
+                $tempSong["numberOfLikes"] = $song["track"]["likes_count"];
+                $tempSong["link"] = $song["track"]["permalink_url"];
+                $tempSong["type"] = "audio";
+                $tempSong["createdTime"] = $this->formatTime($song["track"]["created_at"]);
+                $tempSong["media"] = $song["track"]["uri"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
+                $tempSong["thumb"] = $song["track"]["artwork_url"];
+                $match = [];
+                preg_match_all('/(\\"[A-Za-z0-9\s]+\\"|[A-Za-z0-9]+)/', $song["track"]["tag_list"], $match);
+                $tempSong["tags"] = null;
+                for ($i = 1; $i < count($match); $i++) {
+                    $tempSong["tags"] = $match[$i];
                 }
-                $feed[] = $temp_song;
-                $temp_song = [];
+                $feed[] = $tempSong;
+                $tempSong = [];
             }
-        } else {
+        }
+        if ($this->search) {
             foreach ($data as $song) {
-                $temp_song["text"] = $song["description"];
-                $temp_song["title"] = $song["title"];
-                $temp_song["author"] = $song["user"]["username"];
-                $temp_song["authorPicture"] = $song["user"]["avatar_url"];
-                $temp_song["numberOfLikes"] = null;
-                $temp_song["link"] = $song["permalink_url"];
-                $temp_song["type"] = "audio";
-                $temp_song["createdTime"] = $this->formatTime($song["created_at"]);
-                $temp_song["media"] = $song["stream_url"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
-                $temp_song["thumb"] = $song["artwork_url"];
-                $temp_song["tags"] = null;
-                $match=[];
-                preg_match_all('/(\\"[A-Za-z0-9\s]+\\"|[A-Za-z0-9]+)/',$song["track"]["tag_list"],$match);
-                $temp_song["tags"] = null;
-                for($i=1;$i<count($match);$i++){
-                    $temp_song["tags"]=$match[$i];
+                $tempSong["text"] = $song["description"];
+                $tempSong["title"] = $song["title"];
+                $tempSong["author"] = $song["user"]["username"];
+                $tempSong["authorPicture"] = $song["user"]["avatar_url"];
+                $tempSong["numberOfLikes"] = null;
+                $tempSong["link"] = $song["permalink_url"];
+                $tempSong["type"] = "audio";
+                $tempSong["createdTime"] = $this->formatTime($song["created_at"]);
+                $tempSong["media"] = $song["stream_url"] . '?client_id=d08c99a67fa0518806f5fe1f4bf36792';
+                $tempSong["thumb"] = $song["artwork_url"];
+                $tempSong["tags"] = null;
+                $match = [];
+                preg_match_all('/(\\"[A-Za-z0-9\s]+\\"|[A-Za-z0-9]+)/', $song["track"]["tag_list"], $match);
+                $tempSong["tags"] = null;
+                for ($i = 1; $i < count($match); $i++) {
+                    $tempSong["tags"] = $match[$i];
                 }
-                $feed[] = $temp_song;
-                $temp_song = [];
+                $feed[] = $tempSong;
+                $tempSong = [];
             }
             $this->search = false;
         }
@@ -118,5 +125,3 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 
     }
 }
-
-?>

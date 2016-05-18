@@ -26,7 +26,8 @@ class DataCollector extends \Thread
 
                 if ($data != null) {
                     $this->publicFeed[$location][$network] = $data;
-                } else {
+                }
+                if ($data == null) {
                     continue;
                 }
             }
@@ -38,7 +39,8 @@ class DataCollector extends \Thread
     {
         if ($this->collectingData) {
             return null;
-        } else {
+        }
+        if (!$this->collectingData) {
             return json_encode(["type" => "data", "json" => $this->publicFeed[$location]]);
         }
     }
@@ -63,7 +65,8 @@ class DataCollector extends \Thread
 
             if ($data != null) {
                 $results[$network] = $data;
-            } else {
+            }
+            if ($data == null) {
                 continue;
             }
         }
@@ -81,7 +84,10 @@ class DataCollector extends \Thread
                 if (array_key_exists($instance->getName(), $user->getTokens())) {
                     $status = "connected";
                 }
-                $networks[] = ["name" => $instance->getName(), "icon" => $instance->getIcon(), "color" => $instance->getColor(), "status" => $status];
+                $networks[] = ["name" => $instance->getName(),
+                    "icon" => $instance->getIcon(),
+                    "color" => $instance->getColor(),
+                    "status" => $status];
             }
         }
         return json_encode(["type" => "networks", "json" => $networks]);
@@ -96,5 +102,4 @@ class DataCollector extends \Thread
             sleep(240);
         }
     }
-
 }

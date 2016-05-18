@@ -8,10 +8,10 @@ class StreboServer extends WebSocketServer
     private $dataCollector;
 
 
-    function __construct($ip, $port)
+    public function __construct($ipAddress, $port)
     {
-        parent::__construct($ip, $port);
-        //timezone here
+        parent::__construct($ipAddress, $port);
+        date_default_timezone_set('Europe/Berlin');
         $this->dataCollector = new Strebo\DataCollector();
     }
 
@@ -39,6 +39,7 @@ class StreboServer extends WebSocketServer
 
                 case 'connect':
                     $user->addToken($data->network, $data->token);
+                    $this->send($user, $this->dataCollector->getNetworksPrivate($user));
                     break;
 
                 case 'getNetworks':
@@ -46,9 +47,11 @@ class StreboServer extends WebSocketServer
                     break;
             }
 
-        } else {
+        }
+        if (!$this->isJson($message)) {
 
-            $this->send($user, json_encode(["type" => "message", "message" => "Hi! Here is Server. I got something from you: " . $message]));
+            $this->send($user, json_encode(["type" => "message",
+                "message" => "Hi! Here is Server. I got something from you: " . $message]));
 
             foreach ($this->users as $client) {
                 if ($user != $client) {
@@ -74,7 +77,6 @@ class StreboServer extends WebSocketServer
 
     protected function closed($user)
     {
+        session_write_close();
     }
 }
-
-?>

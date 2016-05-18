@@ -11,7 +11,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
 
     public function __construct()
     {
-        parent::__construct('Bing News', 'newspaper-o', '#008273', null, null, null);
+        parent::__construct('Bing News', 'newspaper-o', '#008273', null, null, null, null, null, null);
         $this->reader = new Reader;
     }
 
@@ -19,16 +19,16 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
     {
         try {
             return $this->encode($this->reader->download('https://www.bing.com/news?q=' . $tag . 'format=RSS'));
+        } catch (Exception $e) {
         }
-        catch (Exception $e) {}
     }
 
     public function getPublicFeed($location)
     {
         try {
             return $this->encode($this->reader->download('https://www.bing.com/news?format=RSS'));
+        } catch (Exception $e) {
         }
-        catch (Exception $e) {}
     }
 
     public function encode($resource)
@@ -42,7 +42,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
         $data = $parser->execute();
         $feed = [];
         if ($data->items[0]->hasNamespace('News')) {
-            foreach($data->items as $index => $value) {
+            foreach ($data->items as $index => $value) {
                 $item = [];
                 $item['type'] = 'image';
                 $item['media'] = $value->getTag('News:Image')[0];
@@ -51,7 +51,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
                 $item['text'] = $value->getTag('description')[0];
                 $item['createdTime'] = $value->getTag('pubDate')[0];
                 $item['link'] = $value->getTag('link')[0];
-                array_push($feed,$item);
+                $feed[] = $item;
             }
         }
         var_dump($feed);
@@ -65,5 +65,4 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
     {
 
     }
-
 }

@@ -16,17 +16,17 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function __construct()
     {
-        parent::__construct('Twitter', 'twitter', '#4099FF', "23424829", "23424977", "1");
-        $oauth_access_token = getenv('strebo_twitter_1');
-        $oauth_access_token_secret = getenv('strebo_twitter_2');
-        $consumer_key = getenv('strebo_twitter_3');
-        $consumer_secret = getenv('strebo_twitter_4');
+        parent::__construct('Twitter', 'twitter', '#4099FF', "23424829", "23424977", "1", null, null, null);
+        $oauthAccessToken = getenv('strebo_twitter_1');
+        $oauthAccessTokenSecret = getenv('strebo_twitter_2');
+        $consumerKey = getenv('strebo_twitter_3');
+        $consumerSecret = getenv('strebo_twitter_4');
 
         $settings = array(
-            'oauth_access_token' => $oauth_access_token,
-            'oauth_access_token_secret' => $oauth_access_token_secret,
-            'consumer_key' => $consumer_key,
-            'consumer_secret' => $consumer_secret
+            'oauth_access_token' => $oauthAccessToken,
+            'oauth_access_token_secret' => $oauthAccessTokenSecret,
+            'consumer_key' => $consumerKey,
+            'consumer_secret' => $consumerSecret
         );
 
         $this->twitter = new TwitterAPIExchange($settings);
@@ -79,7 +79,6 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             ->performRequest();
 
         $trends = [];
-        $i = 0;
 
         $trendsresult = json_decode($trendsresult);
 
@@ -88,8 +87,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         }
 
         foreach ($trendsresult[0]->trends as $trend) {
-            $trends[$i] = $trend->query;
-            $i++;
+            $trends[] = $trend->query;
         }
 
         $this->url = 'https://api.twitter.com/1.1/search/tweets.json';
@@ -135,7 +133,8 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                         $data['media'] = $media->media_url;
                     }
                     $data['type'] = 'image';
-                } else {
+                }
+                if (!isset($tweet->entities->media)) {
                     $data['type'] = 'text';
                 }
 
@@ -152,51 +151,21 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function formatTime($time)
     {
-
-        $month = 0;
-
-        //Timestamp oder Array
-        switch (substr($time, 4, 3)) {
-            case 'Jan':
-                $month = 1;
-                break;
-            case 'Feb':
-                $month = 2;
-                break;
-            case 'Mar':
-                $month = 3;
-                break;
-            case 'Apr':
-                $month = 4;
-                break;
-            case 'May':
-                $month = 5;
-                break;
-            case 'Jun':
-                $month = 6;
-                break;
-            case 'Jul':
-                $month = 7;
-                break;
-            case 'Aug':
-                $month = 8;
-                break;
-            case 'Sep':
-                $month = 9;
-                break;
-            case 'Oct':
-                $month = 10;
-                break;
-            case 'Nov':
-                $month = 11;
-                break;
-            case 'Dec':
-                $month = 12;
-                break;
-        }
+        $month = ["Jan" => 1,
+            "Feb" => 2,
+            "Mar" => 3,
+            "Apr" => 4,
+            "May" => 5,
+            "Jun" => 6,
+            "Jul" => 7,
+            "Aug" => 8,
+            "Sep" => 9,
+            "Oct" => 10,
+            "Nov" => 11,
+            "Dec" => 12];
 
         $timeJSON = array('day' => substr($time, 8, 2),
-            'month' => $month,
+            'month' => $month[substr($time, 4, 3)],
             'year' => substr($time, 26),
             'hour' => substr($time, 11, 2),
             'minute' => substr($time, 14, 2),
@@ -207,5 +176,3 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     }
 }
-
-?>

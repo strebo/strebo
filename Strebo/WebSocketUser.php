@@ -1,5 +1,6 @@
 <?php
 namespace Strebo;
+
 class WebSocketUser
 {
     public $socket;
@@ -14,18 +15,22 @@ class WebSocketUser
 
     private $tokens = [];
 
-    function __construct($id, $socket)
+    public function __construct($id, $socket)
     {
         $this->id = $id;
         $this->socket = $socket;
+        if (isset($_SESSION["tokens"])) {
+            $this->tokens = $_SESSION["tokens"];
+        }
     }
 
-    function addToken($network, $token)
+    public function addToken($network, $token)
     {
         $this->tokens[$network] = $token;
+        $_SESSION["tokens"] = $this->tokens;
     }
 
-    function getTokens()
+    public function getTokens()
     {
         return $this->tokens;
     }

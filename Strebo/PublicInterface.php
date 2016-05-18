@@ -1,8 +1,9 @@
 <?php
 namespace Strebo;
 
-interface PublicInterface {
+interface PublicInterface
+{
     public function search($tag);
+
     public function getPublicFeed($location);
 }
-?>
