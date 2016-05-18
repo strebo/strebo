@@ -56,7 +56,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("02", $time->day);
         $this->assertEquals("02", $time->month);
         $this->assertEquals("2011", $time->year);
-        $this->assertEquals("15", $time->hour);
+        $this->assertEquals("14", $time->hour);
         $this->assertEquals("13", $time->minute);
         $this->assertEquals("26", $time->second);
     }
