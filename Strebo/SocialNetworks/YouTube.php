@@ -43,15 +43,19 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     public function getPublicFeed($location)
     {
         if ($location != null) {
-            $popularMedia = $this->youtube->videos->listVideos("snippet,statistics",
+            $popularMedia = $this->youtube->videos->listVideos(
+                "snippet,statistics",
                 ["chart" => "mostPopular",
                     "regionCode" => $location,
-                    "maxResults" => 20]);
+                    "maxResults" => 20]
+            );
         }
         if ($location == null) {
-            $popularMedia = $this->youtube->videos->listVideos("snippet,statistics",
+            $popularMedia = $this->youtube->videos->listVideos(
+                "snippet,statistics",
                 ["chart" => "mostPopular",
-                    "maxResults" => 20]);
+                    "maxResults" => 20]
+            );
         }
         return $this->encodeJSON($popularMedia);
     }

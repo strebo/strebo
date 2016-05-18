@@ -12,7 +12,8 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function __construct()
     {
-        parent::__construct('Instagram',
+        parent::__construct(
+            'Instagram',
             'instagram',
             '#2a5b83',
             ["51.1656910", "10.4515260"],
@@ -20,7 +21,8 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             [null, null],
             getenv('strebo_instagram_1'),
             getenv('strebo_instagram_2'),
-            'http://strebo.net');
+            'http://strebo.net'
+        );
         $this->instagram = new InstagramAPI($this->getApiKey());
 
     }
