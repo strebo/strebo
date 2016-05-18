@@ -12,20 +12,18 @@ putenv('strebo_soundcloud_2=9b305fb370cf50d4a8d63d745c894d44');
 putenv('strebo_youtube_1=AIzaSyAH6n3wcnku2Ah3qZZrgWbXcxVgiAwF-Xk');
 putenv('strebo_youtube_2=AIzaSyA8OMzoY6nuaQyQyp3nDSqVpMbjL6juT8U');
 
-echo "\n".'  Welcome at strebo.
+echo "\n" . '  Welcome at strebo.
               _            _
              | |          | |
           ___| |_ _ __ ___| |__   ___
          / __| __| \'__/ _ \ \'_ \ / _ \
          \__ \ |_| | |  __/ |_) | (_) |
-         |___/\__|_|  \___|_.__/ \___/'."\n\n\n";
+         |___/\__|_|  \___|_.__/ \___/' . "\n\n\n";
 
 $strebo = new \Strebo\StreboServer("0.0.0.0", "8080");
 
 try {
-$strebo->run();
+    $strebo->run();
 } catch (Exception $e) {
-$strebo->stdout($e->getMessage());
+    $strebo->stdout($e->getMessage());
 }
-
-?>

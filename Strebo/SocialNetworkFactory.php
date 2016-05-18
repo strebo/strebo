@@ -1,12 +1,14 @@
 <?php
 namespace Strebo;
+
 use Strebo;
 
 class SocialNetworkFactory
 {
     private $socialNetworks = array();
 
-    function __construct(){
+    public function __construct()
+    {
         $pattern = '/[A-Za-z]*/';
         $match = [];
         foreach (scandir(__DIR__ . '/SocialNetworks') as $file) {
@@ -17,13 +19,15 @@ class SocialNetworkFactory
                 $this->socialNetworks[$match[0]] = new $createInstance();
             }
         }
-     }
+    }
 
-    function getInstances() {
+    public function getInstances()
+    {
         return $this->socialNetworks;
     }
 
-    function getInstanceOf($network) {
+    public function getInstanceOf($network)
+    {
         return $this->socialNetworks[$network];
     }
 }

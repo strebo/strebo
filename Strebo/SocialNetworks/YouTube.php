@@ -14,11 +14,10 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function __construct()
     {
-        parent::__construct('YouTube', 'youtube', '#e62117', 'DE', 'US', null);
-        $this->apiKey = getenv('strebo_youtube_1');
+        parent::__construct('YouTube', 'youtube', '#e62117', 'DE', 'US', null, getenv('strebo_youtube_1'), null, null);
         $this->client = new \Google_Client();
         $this->client->setApplicationName("strebo_youtube");
-        $this->client->setDeveloperKey($this->apiKey);
+        $this->client->setDeveloperKey($this->getApiKey());
         $this->youtube = new \Google_Service_YouTube($this->client);
         $this->client2 = new \Google_Client();
         $this->client2->setApplicationName("strebo_google_plus");
@@ -44,9 +43,15 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     public function getPublicFeed($location)
     {
         if ($location != null) {
-            $popularMedia = $this->youtube->videos->listVideos("snippet,statistics", ["chart" => "mostPopular", "regionCode" => $location, "maxResults" => 20]);
-        } else {
-            $popularMedia = $this->youtube->videos->listVideos("snippet,statistics", ["chart" => "mostPopular", "maxResults" => 20]);
+            $popularMedia = $this->youtube->videos->listVideos("snippet,statistics",
+                ["chart" => "mostPopular",
+                    "regionCode" => $location,
+                    "maxResults" => 20]);
+        }
+        if ($location == null) {
+            $popularMedia = $this->youtube->videos->listVideos("snippet,statistics",
+                ["chart" => "mostPopular",
+                    "maxResults" => 20]);
         }
         return $this->encodeJSON($popularMedia);
     }
@@ -64,7 +69,8 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
             if (isset($item->id->videoId)) {
                 $id = $item->id->videoId;
-            } else {
+            }
+            if (!isset($item->id->videoId)) {
                 $id = $item->id;
             }
 
@@ -107,9 +113,6 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function formatTime($time)
     {
-
-        date_default_timezone_set('Europe/Berlin');
-
         $formattedTime = date('d m Y H i s', strtotime($time));
 
         $timeJSON = array('day' => substr($formattedTime, 0, 2),
@@ -122,5 +125,4 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
         return json_encode($timeJSON);
     }
-
 }

@@ -1,8 +1,9 @@
 <?php
 namespace Strebo;
 
-interface PrivateInterface {
+interface PrivateInterface
+{
     public function connect($code);
+
     public function getPersonalFeed($token);
 }
-?>
