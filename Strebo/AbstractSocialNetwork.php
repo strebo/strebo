@@ -13,7 +13,17 @@ abstract class AbstractSocialNetwork
     private $locationUS;
     private $locationW;
 
-    public function __construct($name, $icon, $color, $locationDE, $locationUS, $locationW, $apiKey, $apiSecret, $apiCallback)
+    public function __construct(
+        $name,
+        $icon,
+        $color,
+        $locationDE,
+        $locationUS,
+        $locationW,
+        $apiKey,
+        $apiSecret,
+        $apiCallback
+    )
     {
         $this->name = $name;
         $this->icon = $icon;
