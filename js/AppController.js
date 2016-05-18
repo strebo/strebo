@@ -44,8 +44,10 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     };
 
     var handler = function(e){
-        if(e.keyCode === 39) nextItem(); // Right Arrow
-        else if(e.keyCode === 37) previousItem(); // Left Arrow
+        if(e.keyCode === 39)
+            nextItem(); // Right Arrow
+        else if(e.keyCode === 37)
+            previousItem(); // Left Arrow
         updateDetailView();
     };
     var $doc = angular.element(document);
@@ -62,7 +64,8 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     });
 
     $scope.$on('search', function (event, state) {
-        if(state) search();
+        if(state)
+            search();
     });
 
     function search() {
@@ -76,9 +79,10 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
 
     $scope.setSearchView = function (state) {
         $scope.searchview = state;
-        if(state) setTimeout(function() {
-           angular.element('#searchview-query').focus();
-        },0);
+        if(state)
+            setTimeout(function() {
+                angular.element('#searchview-query').focus();
+            },0);
     };
 
     $scope.$on('setCurrentItemByNetwork', function(post, data) {
@@ -101,16 +105,20 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
 
     function updateDetailView() {
         $scope.$apply(function () {
-            if(mode === 0) $scope.currentItem = feed[index];
-            else if(mode === 1) setFeedByNetworkItemAsDetail();
+            if(mode === 0)
+                $scope.currentItem = feed[index];
+            else if(mode === 1)
+                setFeedByNetworkItemAsDetail();
             check();
         });
     }
 
     function previousItem() {
         index = Math.max(0, index-1);
-        if(mode === 0) $scope.currentItem = feed[index];
-        else if(mode === 1) setFeedByNetworkItemAsDetail();
+        if(mode === 0)
+            $scope.currentItem = feed[index];
+        else if(mode === 1)
+            setFeedByNetworkItemAsDetail();
         check();
     }
 
@@ -134,11 +142,15 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     }
 
     function check() {
-        if(index === 0) $scope.showF = false;
-        else $scope.showF = true;
+        if(index === 0)
+            $scope.showF = false;
+        else
+            $scope.showF = true;
 
-        if((mode === 0 && index === (feed.length - 1)) || (mode === 1 && index === (networks[network_keys[networkIndex]].feed.length - 1))) $scope.showL = false;
-        else $scope.showL = true;
+        if((mode === 0 && index === (feed.length - 1)) || (mode === 1 && index === (networks[network_keys[networkIndex]].feed.length - 1)))
+            $scope.showL = false;
+        else
+            $scope.showL = true;
     }
 
     setInterval(function(){$scope.$apply();}, 60000);

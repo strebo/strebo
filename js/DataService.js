@@ -15,7 +15,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     ];
 
     conn.onopen = function () {
-        conn.send('Ping'); // Send the message 'Ping' to the server
+        conn.send('Ping');
         conn.send(JSON.stringify({
             command: 'getNetworks'
         }));
@@ -33,18 +33,16 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         var message = JSON.parse(e.data);
 
         if (message.type === "data") {
-            //console.log(message.json["Instagram"].feed[0].text);
             feedByNetwork = message.json;
             feed.splice(0, feed.length);
             extractPosts();
             feed = shuffle(feed);
-            //networks.splice(0, networks.length);
-            //extractNetworks();
             $rootScope.loaderview = false;
             $rootScope.$apply();
         } else if(message.type === "networks") {
             networks.splice(0, networks.length);
-            for(var i = 0, len = message.json.length; i < len; ++i) networks.push(message.json[i]);
+            for(var i = 0, len = message.json.length; i < len; ++i)
+                networks.push(message.json[i]);
             $rootScope.$apply();
         } else if (message.type === "message") {
             console.log(message.message);
@@ -100,19 +98,6 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
             }
         }
     }
-
-    /*function extractNetworks() {
-        for (var i in feedByNetwork) {
-            networks.push({
-                name: feedByNetwork[i].name,
-                icon: feedByNetwork[i].icon,
-                color: feedByNetwork[i].color,
-                status: 'disconnected'
-                //,
-                //connect: connectors[feedByNetwork[i].name.toLowerCase()] ? connectors[feedByNetwork[i].name.toLowerCase()].connect : null
-            });
-        }
-    }*/
 
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;

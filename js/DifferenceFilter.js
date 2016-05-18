@@ -1,7 +1,7 @@
 app.filter('differenceFilter', function () {
         return function (time) {
             var dateGet = new Date();
-            if (time !== undefined) {
+            if (time) {
                 time = JSON.parse(time);
                 var postDate = new Date(time.year, time.month-1, time.day, time.hour, time.minute, time.second);
                 var timeDiffSec = Math.round(Math.abs(dateGet - postDate) / 1000);
@@ -10,7 +10,7 @@ app.filter('differenceFilter', function () {
                 var timeDiffDay = Math.round(Math.abs(timeDiffHour) / 24);
                 var timeDiffMonth = Math.round(Math.abs(timeDiffDay) / 30);
                 var timeDiffYear = Math.round(Math.abs(timeDiffMonth) / 12);
-                var formattedTime = '';
+                var formattedTime;
                 if (timeDiffSec < 60) {
                     formattedTime = "just now";
                 } else if (timeDiffMin < 60) {
@@ -29,7 +29,7 @@ app.filter('differenceFilter', function () {
                 return formattedTime;
             }
 
-        }
+        };
     }
 )
 ;
