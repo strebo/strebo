@@ -15,7 +15,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
             'Bing News',
             'newspaper-o',
             '#008273',
-            ["DE" => null, "US" => null, "W" => null],
+            ["DE" => "de", "US" => "en", "W" => "en"],
             null,
             null,
             null
@@ -36,7 +36,8 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
     public function getPublicFeed($location)
     {
         try {
-            return $this->encode($this->reader->download('https://www.bing.com/news?format=RSS'));
+            echo 'https://www.bing.com/news?cc=' . $location . '&format=RSS';
+            return $this->encode($this->reader->download('https://www.bing.com/news?cc=' . $location . '&format=RSS'));
         } catch (Exception $e) {
             $e->getMessage();
             return null;
