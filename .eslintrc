@@ -16,6 +16,7 @@ globals:
   app: true
   SC: true
   Url: true
+  handleAuthResult: true
 
 # http://eslint.org/docs/rules/
 rules:
