@@ -26,7 +26,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
     public function search($tag)
     {
         try {
-            return $this->encode($this->reader->download('https://www.bing.com/news?q=' . $tag . 'format=RSS'));
+            return $this->encode($this->reader->download('https://www.bing.com/news?q=' . $tag . '&format=RSS'));
         } catch (Exception $e) {
             $e->getMessage();
         }
