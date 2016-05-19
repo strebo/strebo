@@ -47,6 +47,8 @@ connectors.twitter = getDefaultConfig("Twitter", "twitter", "Twitter", ["oauth_t
 connectors.instagram = getDefaultConfig("Instagram", "instagram", "Instagram", ["code"]);
 connectors.soundcloud = getDefaultConfig("SoundCloud", "soundcloud", "SoundCloud", ["code"]);
 
-connectors.twitter.success();
-connectors.instagram.success();
-connectors.soundcloud.success();
+function checkConnections() {
+    for(var c in connectors) {
+        if(connectors.hasOwnProperty(c)) connectors[c].success && connectors[c].success();
+    }
+}

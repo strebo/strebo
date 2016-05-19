@@ -26,6 +26,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
             command: 'identify',
             id: Cookies.get('id')
         }));
+        checkConnections();
         updateData();
     };
 
