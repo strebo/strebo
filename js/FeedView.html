@@ -3,7 +3,7 @@
      ng-repeat="post in feed">
     <div class="social-media-content-header-feed">
         <div class="social-media-content-title-feed">
-            <img class="social-media-content-title-pic-feed" ng-src="{{post.authorPicture}}" alt="Author Picture"><div
+            <img class="social-media-content-title-pic-feed" ng-src="{{post.authorPicture ? post.authorPicture : 'resources/author-default.png'}}" alt="Author Picture"><div
                 style="display: inline-block; width:calc(14vw - 8vh); position: absolute; left:6vh; top:50%;
                 transform:translateY(-50%);">
             <a class="social-media-content-title-author-feed" href="{{post.link | trustUrl}}" target="_blank">{{post.author}}</a>

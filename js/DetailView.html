@@ -30,8 +30,8 @@
             </div>
             <div id="detailview-content-meta-body">
                 <div ng-if="currentItem.title" id="detailview-content-meta-body-title">{{currentItem.title}}</div>
-                <div ng-if="currentItem.authorPicture && currentItem.authorPicture != ''" id="detailview-content-meta-body-author-pic"  style="height:14vh;position: relative;">
-                    <a href="{{currentItem.link | trustUrl}}" target="_blank"><img alt="Author Picture" class="center" style="height:12vh;border-radius:50%;" ng-src="{{currentItem.authorPicture}}" /></a>
+                <div id="detailview-content-meta-body-author-pic"  style="height:14vh;position: relative;">
+                    <a href="{{currentItem.link | trustUrl}}" target="_blank"><img alt="Author Picture" class="center" style="height:12vh;border-radius:50%;" ng-src="{{currentItem.authorPicture ? currentItem.authorPicture : 'resources/author-default.png'}}" /></a>
                 </div>
                 <div id="detailview-content-meta-body-desc" ng-if="currentItem.type != 'text'"
                      ng-bind-html="currentItem.text | urlFilter | hashFilter"></div>

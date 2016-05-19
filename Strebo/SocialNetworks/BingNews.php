@@ -15,7 +15,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
             'Bing News',
             'newspaper-o',
             '#008273',
-            ["DE" => "de", "US" => "en", "W" => "en"],
+            ["DE" => "de", "US" => "us", "W" => "us"],
             null,
             null,
             null
@@ -61,6 +61,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
                 $item['media'] = $value->getTag('News:Image')[0];
                 $item['author'] = $value->getTag('News:Source')[0];
                 $item['title'] = $value->getTag('title')[0];
+                $item['text'] = $value->getTag('description')[0];
                 $item['createdTime'] = $this->formatTimeBing($value->getTag('pubDate')[0]);
                 $item['link'] = $value->getTag('link')[0];
                 $feed[] = $item;
