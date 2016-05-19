@@ -2,22 +2,34 @@ function redirectTo(a) {
     window.location.href = 'http://' + location.hostname + ':443/auth/'+a;
 }
 
-var connectors = {
-    twitter: {
-        name: "Twitter",
-        connect: function () {
-            redirectTo('twitter');
+function getDefaultConfig(name, path, url, tokens) {
+    return {
+        name: name,
+        connect: function() {
+            redirectTo(path);
         },
-        success: function () {
-            if (Url.get.Twitter && Url.get.oauth_token && Url.get.oauth_verifier) {
+        success: function() {
+            if(Url.get[url]) {
+                var x = false;
+                var ltokens = [];
+                for(var i in tokens) {
+                    if(!Url.get[tokens[i]]) return;
+                    ltokens.push(Url.get[tokens[i]]);
+                }
+                console.debug(name + " is connected.");
                 conn.send(JSON.stringify({
                     command: "connect",
-                    network: "Twitter",
-                    tokens: [Url.get.oauth_token, Url.get.oauth_verifier]
+                    network: name,
+                    tokens: ltokens
                 }));
+                return;
             }
         }
-    }, youtube: {
+    };
+}
+
+var connectors = {
+    youtube: {
         name: "YouTube",
         connect: function () {
             handleAuthResult(null, function (token) {
@@ -29,36 +41,12 @@ var connectors = {
                 }
             );
         }
-    }, instagram: {
-        name: "Instagram",
-        connect: function () {
-            redirectTo('instagram');
-        },
-        success: function () {
-            if (Url.get.Instagram && Url.get.code) {
-                conn.send(JSON.stringify({
-                    command: "connect",
-                    network: "Instagram",
-                    tokens: [Url.get.code]
-                }));
-            }
-        }
-    }, soundcloud: {
-        name: "SoundCloud",
-        connect: function () {
-            redirectTo('soundcloud');
-        },
-        success: function () {
-            if (Url.get.SoundCloud && Url.get.code) {
-                conn.send(JSON.stringify({
-                    command: "connect",
-                    network: "SoundCloud",
-                    tokens: [Url.get.code]
-                }));
-            }
-        }
     }
 };
+
+connectors.twitter = getDefaultConfig("Twitter", "twitter", "Twitter", ["oauth_token", "oauth_verifier"]);
+connectors.instagram = getDefaultConfig("Instagram", "instagram", "Instagram", ["code"]);
+connectors.soundcloud = getDefaultConfig("SoundCloud", "soundcloud", "SoundCloud", ["code"]);
 
 connectors.twitter.success();
 connectors.instagram.success();
