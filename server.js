@@ -13,21 +13,29 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-require('./passport')(passport); // pass passport for configuration
+// pass passport for configuration
+require('./passport')(passport);
 
 // set up our express application
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser()); // get information from html forms
+// log every request to the console
+app.use(morgan('dev'));
+// read cookies (needed for auth)
+app.use(cookieParser());
+// get information from html forms
+app.use(bodyParser());
 
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+// session secret
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' }));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+// persistent login sessions
+app.use(passport.session());
+// use connect-flash for flash messages stored in session
+app.use(flash());
 
 // routes ======================================================================
-require('./routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+// load our routes and pass in our app and fully configured passport
+require('./routes.js')(app, passport)
 
 // launch ======================================================================
 app.listen(port);

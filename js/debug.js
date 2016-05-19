@@ -3,4 +3,4 @@ if(Url.get.debug)
 
 console.debug = function(a) {
     debug && console.log(a);
-}
+};

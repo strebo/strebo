@@ -3,7 +3,7 @@ app.directive('ellipsis', [
         return {
             restrict: 'A',
             scope: false,
-            link: function (scope, element, attrs) {
+            link: function (scope, element) {
 
                 // let the angular data binding run first
                 $timeout(function() {
@@ -13,7 +13,6 @@ app.directive('ellipsis', [
                     });
                 });
             }
-        }
-
+        };
     }
 ]);

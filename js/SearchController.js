@@ -1,4 +1,4 @@
-app.controller('SearchController', ['$scope', 'DataService', '$sce', function ($scope, DataService, $sce) {
+app.controller('SearchController', ['$scope', 'DataService', function ($scope, DataService) {
         $scope.hideSearchView = function () {
             $scope.$emit('setSearchView', false);
         };

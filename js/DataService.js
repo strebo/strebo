@@ -52,7 +52,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
                 networks.push(message.json[i]);
             $rootScope.$apply();
         } else if (message.type === "message") {
-            console.log(message.message);
+            console.debug(message.message);
         }
     };
 
@@ -82,26 +82,29 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     function extractPosts() {
         for (var i in feedByNetwork) {
-            for (var j in feedByNetwork[i].feed) {
-                feed.push({
-                    socialNetwork: {
-                        name: feedByNetwork[i].name,
-                        icon: feedByNetwork[i].icon,
-                        color: feedByNetwork[i].color
-                    },
-                    text: feedByNetwork[i].feed[j].text || "",
-                    title: feedByNetwork[i].feed[j].title,
-                    author: feedByNetwork[i].feed[j].author,
-                    authorPicture: feedByNetwork[i].feed[j].authorPicture,
-                    link: feedByNetwork[i].feed[j].link,
-                    type: feedByNetwork[i].feed[j].type,
-                    tags: feedByNetwork[i].feed[j].tags,
-                    createdTime: feedByNetwork[i].feed[j].createdTime,
-                    numberOfLikes: feedByNetwork[i].feed[j].numberOfLikes,
-                    media: feedByNetwork[i].feed[j].media,
-                    thumb: feedByNetwork[i].feed[j].thumb
-                });
-
+            if(feedByNetwork.hasOwnProperty(i)) {
+                for (var j in feedByNetwork[i].feed) {
+                    if(feedByNetwork[i].feed.hasOwnProperty(j)) {
+                        feed.push({
+                            socialNetwork: {
+                                name: feedByNetwork[i].name,
+                                icon: feedByNetwork[i].icon,
+                                color: feedByNetwork[i].color
+                            },
+                            text: feedByNetwork[i].feed[j].text || "",
+                            title: feedByNetwork[i].feed[j].title,
+                            author: feedByNetwork[i].feed[j].author,
+                            authorPicture: feedByNetwork[i].feed[j].authorPicture,
+                            link: feedByNetwork[i].feed[j].link,
+                            type: feedByNetwork[i].feed[j].type,
+                            tags: feedByNetwork[i].feed[j].tags,
+                            createdTime: feedByNetwork[i].feed[j].createdTime,
+                            numberOfLikes: feedByNetwork[i].feed[j].numberOfLikes,
+                            media: feedByNetwork[i].feed[j].media,
+                            thumb: feedByNetwork[i].feed[j].thumb
+                        });
+                    }
+                }
             }
         }
     }

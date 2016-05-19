@@ -56,7 +56,6 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
                 $feed[] = $item;
             }
         }
-        var_dump($feed);
         return json_encode(array('name' => parent::getName(),
             'icon' => parent::getIcon(),
             'color' => parent::getColor(),
