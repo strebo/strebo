@@ -60,8 +60,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
                 $item['media'] = $value->getTag('News:Image')[0];
                 $item['author'] = $value->getTag('News:Source')[0];
                 $item['title'] = $value->getTag('title')[0];
-                $item['text'] = $value->getTag('description')[0];
-                $item['createdTime'] = $value->getTag('pubDate')[0];
+                $item['createdTime'] = $this->formatTimeBing($value->getTag('pubDate')[0]);
                 $item['link'] = $value->getTag('link')[0];
                 $feed[] = $item;
             }
@@ -70,5 +69,33 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
             'icon' => parent::getIcon(),
             'color' => parent::getColor(),
             'feed' => $feed));
+    }
+
+    public function formatTimeBing($time)
+    {
+
+        $month = ["Jan" => "01",
+            "Feb" => "02",
+            "Mar" => "03",
+            "Apr" => "04",
+            "May" => "05",
+            "Jun" => "06",
+            "Jul" => "07",
+            "Aug" => "08",
+            "Sep" => "09",
+            "Oct" => "10",
+            "Nov" => "11",
+            "Dec" => "12"];
+
+        $timeJSON = array(
+            'day' => substr($time, 5, 2),
+            'month' => $month[substr($time, 8, 3)],
+            'year' => substr($time, 12, 4),
+            'hour' => substr($time, 17, 2),
+            'minute' => substr($time, 20, 2),
+            'second' => substr($time, 23, 2)
+        );
+
+        return json_encode($timeJSON);
     }
 }
