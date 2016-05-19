@@ -6,6 +6,7 @@ use Strebo;
 class StreboServer extends WebSocketServer
 {
     private $dataCollector;
+    private $streboUsers;
 
 
     public function __construct($ipAddress, $port)
@@ -13,6 +14,7 @@ class StreboServer extends WebSocketServer
         parent::__construct($ipAddress, $port);
         date_default_timezone_set('Europe/Berlin');
         $this->dataCollector = new Strebo\DataCollector();
+        $this->streboUsers = [];
     }
 
     protected function process($user, $message)
@@ -47,7 +49,20 @@ class StreboServer extends WebSocketServer
                     break;
 
                 case 'identify':
-                    
+                    $userExisting = false;
+                    foreach ($this->streboUsers as $streboUser) {
+                        if ($streboUser->getId() == $data->id) {
+                            $userExisting = true;
+                            $streboUser->setSocketId($user->id);
+                            $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
+                            break;
+                        }
+                    }
+                    if (!$userExisting) {
+                        $newUser = new User($data->id, $user->id);
+                        $this->streboUsers[] = $newUser;
+                        $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
+                    }
                     break;
 
                 default:
@@ -85,6 +100,6 @@ class StreboServer extends WebSocketServer
 
     protected function closed($user)
     {
-        
+
     }
 }

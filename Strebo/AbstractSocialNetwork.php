@@ -23,7 +23,7 @@ abstract class AbstractSocialNetwork
         $apiKey,
         $apiSecret,
         $apiCallback
-    ){
+    ) {
         $this->name = $name;
         $this->icon = $icon;
         $this->color = $color;

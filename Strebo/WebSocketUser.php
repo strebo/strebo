@@ -13,21 +13,9 @@ class WebSocketUser
     public $partialMessage = "";
     public $hasSentClose = false;
 
-    private $tokens = [];
-
     public function __construct($id, $socket)
     {
         $this->id = $id;
         $this->socket = $socket;
-    }
-
-    public function addToken($network, $token)
-    {
-        $this->tokens[$network] = $token;
-    }
-
-    public function getTokens()
-    {
-        return $this->tokens;
     }
 }
