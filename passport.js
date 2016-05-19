@@ -10,13 +10,13 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        console.log(user);
+        //console.log(user);
         done(null, user.id);
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-       console.log(id);
+    passport.deserializeUser(function(/*id, done*/) {
+       //console.log(id);
     });
 
     // code for login (use('local-login', new LocalStategy))
@@ -33,9 +33,9 @@ module.exports = function(passport) {
             callbackURL     : configAuth.twitterAuth.callbackURL
 
         },
-        function(token, tokenSecret, profile, done) {
+        function(/*token, tokenSecret, profile, done*/) {
 
-            console.log(profile);
+            //console.log(profile);
 
         }));
 		
@@ -49,9 +49,9 @@ module.exports = function(passport) {
             callbackURL     : configAuth.instagramAuth.callbackURL
 
         },
-        function(token, tokenSecret, profile, done) {
+        function(/*token, tokenSecret, profile, done*/) {
 
-            console.log(profile);
+            //console.log(profile);
 
         }));
 		
@@ -65,9 +65,9 @@ module.exports = function(passport) {
             callbackURL     : configAuth.soundcloudAuth.callbackURL
 
         },
-        function(token, tokenSecret, profile, done) {
+        function(/*token, tokenSecret, profile, done*/) {
 
-            console.log(profile);
+            //console.log(profile);
 
         }));
 

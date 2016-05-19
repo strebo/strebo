@@ -15,7 +15,6 @@ var connectors = {
                     network: "Twitter",
                     tokens: [Url.get.oauth_token, Url.get.oauth_verifier]
                 }));
-            //console.log("Twitter connected");
             }
         }
     }, youtube: {

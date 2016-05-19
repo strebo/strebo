@@ -1,4 +1,4 @@
-app.controller('LoaderController', ['$scope', function($scope) {
+app.controller('LoaderController', [function() {
 
 }]).directive('loaderView', function() {
         return {
