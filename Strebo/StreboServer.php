@@ -42,12 +42,14 @@ class StreboServer extends WebSocketServer
                     break;
 
                 case 'connect':
-                    $user->addToken($data->network, $data->token);
-                    $this->send($user, $this->dataCollector->getNetworksPrivate($user));
+                    $streboUser = $this->getStreboUser($user);
+                    $streboUser->addToken($data->network, $data->tokens);
+                    $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
                     break;
 
                 case 'getNetworks':
-                    $this->send($user, $this->dataCollector->getNetworksPrivate($user));
+                    $streboUser = $this->getStreboUser($user);
+                    $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
                     break;
 
                 case 'identify':
@@ -108,10 +110,8 @@ class StreboServer extends WebSocketServer
             if ($streboUser->getUserId() == $userId) {
                 return true;
             }
-            if (!$streboUser->getUserId() == $userId) {
-                return false;
-            }
         }
+        return false;
     }
 
     public function handleNewSocketConnection($userId, $socketUser)
@@ -122,7 +122,9 @@ class StreboServer extends WebSocketServer
             return $this->getStreboUser($socketUser);
         }
         if (!$this->streboUserIsExisting($userId)) {
-            return new StreboUser($userId, $socketUser->id);
+            $currentUser = new StreboUser($userId, $socketUser->id);
+            $this->streboUsers[] = $currentUser;
+            return $currentUser;
         }
 
     }
