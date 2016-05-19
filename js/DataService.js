@@ -16,6 +16,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     if(!Cookies.get('id')) {
         Cookies.set('id', GUID());
+        $rootScope.connectorTooltip = true;
     }
 
     console.debug("Your ID: " + Cookies.get('id'));

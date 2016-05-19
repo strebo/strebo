@@ -101,6 +101,7 @@
     <script src="js/ConnectorBarController.js"></script>
     <script src="js/SearchController.js"></script>
     <script src="js/LoaderController.js"></script>
+    <script src="js/ConnectorTooltipController.js"></script>
 
 	<script src="js/auth.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
@@ -174,7 +175,9 @@
             <div id="error-message" class="center" ng-if="serverError"><i id="error-icon" class="icon ion-ios-close-outline"></i><div style="position: relative;top:-3vh;">Server Not Found</div></div>
         </div>
         <detail-view id="detail-view" ng-show="detailview===true" ng-controller="DetailController"></detail-view>
-        <search-view id="search-view" ng-show="searchview===true" ng-controller="SearchController"></search-view></div>
+        <search-view id="search-view" ng-show="searchview===true" ng-controller="SearchController"></search-view>
+        <connector-tooltip id="connector-tooltip" ng-controller="ConnectorTooltipController"></connector-tooltip>
+    </div>
     <div id="container-footer" class="row">
         <connector-bar id="connector-bar" ng-controller="ConnectorBarController"></connector-bar>
         <div id="logo">
