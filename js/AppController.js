@@ -95,30 +95,17 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
         network_keys = Object.keys( networks );
         index = data.index;
         networkIndex = data.networkIndex;
-        setFeedByNetworkItemAsDetail();
-        check();
+        updateDetailViewWA();
     });
 
     $scope.$on('setCurrentItem', function(post, data) {
         mode = 0;
         index = data;
         feed = DataService.getPosts();
-        $scope.currentItem = feed[index];
-        check();
+        updateDetailViewWA();
     });
 
-    function updateDetailView() {
-        $scope.$apply(function () {
-            if(mode === 0)
-                $scope.currentItem = feed[index];
-            else if(mode === 1)
-                setFeedByNetworkItemAsDetail();
-            check();
-        });
-    }
-
-    function previousItem() {
-        index = Math.max(0, index-1);
+    function updateDetailViewWA() {
         if(mode === 0)
             $scope.currentItem = feed[index];
         else if(mode === 1)
@@ -126,36 +113,33 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
         check();
     }
 
+    function updateDetailView() {
+        $scope.$apply(function () {
+            updateDetailViewWA();
+        });
+    }
+
+    function previousItem() {
+        index = Math.max(0, index-1);
+        updateDetailView();
+    }
+
     function nextItem() {
-        if(mode === 0) {
+        if(mode === 0)
             index = Math.min(feed.length-1, index+1);
-            $scope.currentItem = feed[index];
-        } else if(mode === 1) {
+        else if(mode === 1)
             index = Math.min(networks[network_keys[networkIndex]].feed.length-1, index+1);
-            setFeedByNetworkItemAsDetail();
-        }
-        check();
+        updateDetailView();
     }
 
     function setFeedByNetworkItemAsDetail() {
-        networks[network_keys[networkIndex]].feed[index].socialNetwork = {};
-        networks[network_keys[networkIndex]].feed[index].socialNetwork.color = networks[network_keys[networkIndex]].color;
-        networks[network_keys[networkIndex]].feed[index].socialNetwork.icon = networks[network_keys[networkIndex]].icon;
-        networks[network_keys[networkIndex]].feed[index].socialNetwork.name = networks[network_keys[networkIndex]].name;
+        networks[network_keys[networkIndex]].feed[index].socialNetwork = networks[network_keys[networkIndex]];
         $scope.currentItem = networks[network_keys[networkIndex]].feed[index];
     }
 
     function check() {
         (index === 0) ? $scope.showF = false : $scope.showF = true;
-        /*if(index === 0)
-            $scope.showF = false;
-        else
-            $scope.showF = true;*/
-
-        if((mode === 0 && index === (feed.length - 1)) || (mode === 1 && index === (networks[network_keys[networkIndex]].feed.length - 1)))
-            $scope.showL = false;
-        else
-            $scope.showL = true;
+        ((mode === 0 && index === (feed.length - 1)) || (mode === 1 && index === (networks[network_keys[networkIndex]].feed.length - 1))) ?  $scope.showL = false : $scope.showL = true;
     }
 
     $scope.isAdBlockActive = isAdBlockActive || false;
