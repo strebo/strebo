@@ -59,7 +59,7 @@ class StreboServer extends WebSocketServer
                         }
                     }
                     if (!$userExisting) {
-                        $newUser = new User($data->id, $user->id);
+                        $newUser = new StreboUser($data->id, $user->id);
                         $this->streboUsers[] = $newUser;
                         $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
                     }
