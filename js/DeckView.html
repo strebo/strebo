@@ -11,9 +11,9 @@
              ng-click="showDetailView($index, networkIndex)">
             <div class="social-media-content-body-entry-image">
                 <div class="center" style="font-size:7vh;" ng-if="entry.type != 'text'">
-                    <img style="max-width:5.5vw;max-height:12vh;" ng-if="entry.type === 'audio'" ng-src="{{entry.thumb}}"/>
+                    <img style="max-width:5.5vw;max-height:12vh;" ng-if="entry.type === 'audio' || socialNetwork.name === 'YouTube'" ng-src="{{entry.thumb}}"/>
                     <img style="max-width:5.5vw;max-height:12vh;" ng-if="entry.type === 'image'" ng-src="{{entry.media}}"/>
-                    <video style="max-width:5.5vw;max-height:12vh;margin-top:1vh;" ng-if="entry.type === 'video'"
+                    <video style="max-width:5.5vw;max-height:12vh;margin-top:1vh;" ng-if="entry.type === 'video' && socialNetwork.name !== 'YouTube'"
                            ng-src="{{entry.media | trustUrl}}" type="video/mp4"></video>
                 </div>
             </div>

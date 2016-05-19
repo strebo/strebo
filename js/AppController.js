@@ -61,6 +61,8 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
 
     $scope.$on('setDetailView', function (event, state) {
         $scope.detailview = state;
+        if(!state)
+            $scope.currentItem = undefined;
     });
 
     $scope.$on('search', function (event, state) {

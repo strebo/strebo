@@ -14,10 +14,17 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         {name: "Germany", abbreviation: "DE"}
     ];
 
+    if(!Cookies.get('id')) {
+        Cookies.set('id', GUID());
+    }
+
+    console.debug("Your ID: " + Cookies.get('id'));
+
     conn.onopen = function () {
         conn.send('Ping');
         conn.send(JSON.stringify({
-            command: 'getNetworks'
+            command: 'identify',
+            id: Cookies.get('id')
         }));
         updateData();
     };
