@@ -9,17 +9,13 @@ abstract class AbstractSocialNetwork
     private $apiSecret;
     private $apiCallback;
     private $color;
-    private $locationDE;
-    private $locationUS;
-    private $locationW;
+    private $locations;
 
     public function __construct(
         $name,
         $icon,
         $color,
-        $locationDE,
-        $locationUS,
-        $locationW,
+        $locations,
         $apiKey,
         $apiSecret,
         $apiCallback
@@ -27,9 +23,7 @@ abstract class AbstractSocialNetwork
         $this->name = $name;
         $this->icon = $icon;
         $this->color = $color;
-        $this->locationDE = $locationDE;
-        $this->locationUS = $locationUS;
-        $this->locationW = $locationW;
+        $this->locations = $locations;
         $this->apiKey = $apiKey;
         $this->apiSecret = $apiSecret;
         $this->apiCallback = $apiCallback;
@@ -70,19 +64,9 @@ abstract class AbstractSocialNetwork
         return $json;
     }
 
-    public function getLocationDE()
+    public function getLocation($location)
     {
-        return $this->locationDE;
-    }
-
-    public function getLocationUS()
-    {
-        return $this->locationUS;
-    }
-
-    public function getLocationW()
-    {
-        return $this->locationW;
+        return $this->locations[$location];
     }
 
     public function getApiKey()

@@ -14,7 +14,15 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function __construct()
     {
-        parent::__construct('YouTube', 'youtube', '#e62117', 'DE', 'US', null, getenv('strebo_youtube_1'), null, null);
+        parent::__construct(
+            'YouTube',
+            'youtube',
+            '#e62117',
+            ["DE" => 'DE', "US" => 'US', "W" => null],
+            getenv('strebo_youtube_1'),
+            null,
+            null
+        );
         $this->client = new \Google_Client();
         $this->client->setApplicationName("strebo_youtube");
         $this->client->setDeveloperKey($this->getApiKey());

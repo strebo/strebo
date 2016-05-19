@@ -16,9 +16,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
             'SoundCloud',
             'soundcloud',
             '#ff3a00',
-            null,
-            null,
-            null,
+            ["DE" => null, "US" => null, "W" => null],
             getenv('strebo_soundcloud_1'),
             getenv('strebo_soundcloud_2'),
             'http://strebo.net'
