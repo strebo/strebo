@@ -21,8 +21,8 @@ class DataCollector extends \Thread
     {
         foreach (array_keys($this->publicFeed) as $location) {
             foreach ($this->socialNetworks as $network => $instance) {
-                $locationString = "getLocation" . $location;
-                $data = json_decode($instance->getPublicFeed($instance->$locationString()));
+                $locationString = "getLocation";
+                $data = json_decode($instance->getPublicFeed($instance->$locationString($location)));
                 if ($data != null) {
                     $this->publicFeed[$location][$network] = $data;
                 }

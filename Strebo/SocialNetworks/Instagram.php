@@ -16,9 +16,9 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             'Instagram',
             'instagram',
             '#2a5b83',
-            ["51.1656910", "10.4515260"],
-            ["37.0902400", "-95.7128910"],
-            [null, null],
+            ["DE" => ["51.1656910", "10.4515260"],
+                "US" => ["37.0902400", "-95.7128910"],
+                "W" => [null, null]],
             getenv('strebo_instagram_1'),
             getenv('strebo_instagram_2'),
             'http://strebo.net'

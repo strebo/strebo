@@ -51,7 +51,7 @@ class StreboServer extends WebSocketServer
                 case 'identify':
                     $userExisting = false;
                     foreach ($this->streboUsers as $streboUser) {
-                        if ($streboUser->getId() == $data->id) {
+                        if ($streboUser->getUserId() == $data->id) {
                             $userExisting = true;
                             $streboUser->setSocketId($user->id);
                             $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
@@ -61,7 +61,7 @@ class StreboServer extends WebSocketServer
                     if (!$userExisting) {
                         $newUser = new StreboUser($data->id, $user->id);
                         $this->streboUsers[] = $newUser;
-                        $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
+                        $this->send($user, $this->dataCollector->getNetworksPrivate($newUser));
                     }
                     break;
 

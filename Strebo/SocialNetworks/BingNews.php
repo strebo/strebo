@@ -11,7 +11,15 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
 
     public function __construct()
     {
-        parent::__construct('Bing News', 'newspaper-o', '#008273', null, null, null, null, null, null);
+        parent::__construct(
+            'Bing News',
+            'newspaper-o',
+            '#008273',
+            ["DE" => null, "US" => null, "W" => null],
+            null,
+            null,
+            null
+        );
         $this->reader = new Reader;
     }
 
