@@ -36,7 +36,6 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
     public function getPublicFeed($location)
     {
         try {
-            echo 'https://www.bing.com/news?cc=' . $location . '&format=RSS';
             return $this->encode($this->reader->download('https://www.bing.com/news?cc=' . $location . '&format=RSS'));
         } catch (Exception $e) {
             $e->getMessage();
