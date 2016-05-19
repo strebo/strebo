@@ -10,7 +10,7 @@ class StreboUser
 
     public function __construct($userId, $socketId)
     {
-        $this->$userId = $userId;
+        $this->userId = $userId;
         $this->socketId = $socketId;
         $this->tokens = [];
     }

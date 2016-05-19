@@ -15,6 +15,9 @@ globals:
   connectors: true
   app: true
   SC: true
+  Url: true
+  handleAuthResult: true
+  isAdBlockActive: true
 
 # http://eslint.org/docs/rules/
 rules:

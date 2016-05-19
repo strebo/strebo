@@ -27,27 +27,29 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     $scope.showF = true;
     $scope.showL = true;
 
-    $scope.location =  $rootScope.locations[DataService.getLocation()];
+    $scope.location = $rootScope.locations[DataService.getLocation()];
 
     $scope.openLocationSettings = function() {
         $scope.locationSetting = ($scope.locationSetting + 1) % 2;
     };
 
-    $scope.setLocation = function(index) {
-        $scope.location =  $rootScope.locations[index];
+    $scope.setLocation = function(lindex) {
+        $scope.location = $rootScope.locations[lindex];
         $scope.locationSetting = 0;
-        DataService.setLocation(index);
+        DataService.setLocation(lindex);
     };
 
-        $scope.switchView = function() {
+    $scope.switchView = function() {
         $scope.view = ($scope.view + 1) % 2;
     };
 
     var handler = function(e){
+        // Right Arrow
         if(e.keyCode === 39)
-            nextItem(); // Right Arrow
+            nextItem();
+        // Left Arrow
         else if(e.keyCode === 37)
-            previousItem(); // Left Arrow
+            previousItem();
         updateDetailView();
     };
     var $doc = angular.element(document);
@@ -144,10 +146,11 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     }
 
     function check() {
-        if(index === 0)
+        (index === 0) ? $scope.showF = false : $scope.showF = true;
+        /*if(index === 0)
             $scope.showF = false;
         else
-            $scope.showF = true;
+            $scope.showF = true;*/
 
         if((mode === 0 && index === (feed.length - 1)) || (mode === 1 && index === (networks[network_keys[networkIndex]].feed.length - 1)))
             $scope.showL = false;
@@ -155,7 +158,5 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
             $scope.showL = true;
     }
 
-    setInterval(function(){$scope.$apply();}, 60000);
-
-    $scope.isAdBlockActive=isAdBlockActive || false;
+    $scope.isAdBlockActive = isAdBlockActive || false;
 }]);

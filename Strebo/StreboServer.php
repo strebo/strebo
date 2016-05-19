@@ -36,33 +36,25 @@ class StreboServer extends WebSocketServer
                     break;
 
                 case 'getPersonalFeed':
-                    $this->send($user, $this->dataCollector->collectPersonalFeed($user->getTokens));
+                    $currentUser = null;
+
+                    $this->send($user, $this->dataCollector->collectPersonalFeed($currentUser->getTokens));
                     break;
 
                 case 'connect':
-                    $user->addToken($data->network, $data->token);
-                    $this->send($user, $this->dataCollector->getNetworksPrivate($user));
+                    $streboUser = $this->getStreboUser($user);
+                    $streboUser->addToken($data->network, $data->tokens);
+                    $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
                     break;
 
                 case 'getNetworks':
-                    $this->send($user, $this->dataCollector->getNetworksPrivate($user));
+                    $streboUser = $this->getStreboUser($user);
+                    $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
                     break;
 
                 case 'identify':
-                    $userExisting = false;
-                    foreach ($this->streboUsers as $streboUser) {
-                        if ($streboUser->getUserId() == $data->id) {
-                            $userExisting = true;
-                            $streboUser->setSocketId($user->id);
-                            $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
-                            break;
-                        }
-                    }
-                    if (!$userExisting) {
-                        $newUser = new StreboUser($data->id, $user->id);
-                        $this->streboUsers[] = $newUser;
-                        $this->send($user, $this->dataCollector->getNetworksPrivate($newUser));
-                    }
+                    $streboUser = $this->handleNewSocketConnection($data->id, $user);
+                    $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
                     break;
 
                 default:
@@ -100,6 +92,40 @@ class StreboServer extends WebSocketServer
 
     protected function closed($user)
     {
+
+    }
+
+    public function getStreboUser($user)
+    {
+        foreach ($this->streboUsers as $streboUser) {
+            if ($streboUser->getSocketId() == $user->id) {
+                return $streboUser;
+            }
+        }
+    }
+
+    public function streboUserIsExisting($userId)
+    {
+        foreach ($this->streboUsers as $streboUser) {
+            if ($streboUser->getUserId() == $userId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function handleNewSocketConnection($userId, $socketUser)
+    {
+        if ($this->streboUserIsExisting($userId)) {
+            $currentUser = $this->getStreboUser($socketUser);
+            $currentUser->setSocketId($socketUser->id);
+            return $this->getStreboUser($socketUser);
+        }
+        if (!$this->streboUserIsExisting($userId)) {
+            $currentUser = new StreboUser($userId, $socketUser->id);
+            $this->streboUsers[] = $currentUser;
+            return $currentUser;
+        }
 
     }
 }
