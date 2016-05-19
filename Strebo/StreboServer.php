@@ -46,6 +46,10 @@ class StreboServer extends WebSocketServer
                     $this->send($user, $this->dataCollector->getNetworksPrivate($user));
                     break;
 
+                case 'identify':
+                    
+                    break;
+
                 default:
                     $this->send($user, json_encode(["type" => "error",
                         "message" => "Not defined"]));
@@ -81,6 +85,6 @@ class StreboServer extends WebSocketServer
 
     protected function closed($user)
     {
-        session_write_close();
+        
     }
 }

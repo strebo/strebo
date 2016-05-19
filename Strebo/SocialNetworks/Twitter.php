@@ -18,13 +18,13 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     {
         parent::__construct('Twitter', 'twitter', '#4099FF', "23424829", "23424977", "1", null, null, null);
         $oauthAccessToken = getenv('strebo_twitter_1');
-        $oauthAccessTokenSecret = getenv('strebo_twitter_2');
+        $accessTokenSecret = getenv('strebo_twitter_2');
         $consumerKey = getenv('strebo_twitter_3');
         $consumerSecret = getenv('strebo_twitter_4');
 
         $settings = array(
             'oauth_access_token' => $oauthAccessToken,
-            'oauth_access_token_secret' => $oauthAccessTokenSecret,
+            'oauth_access_token_secret' => $accessTokenSecret,
             'consumer_key' => $consumerKey,
             'consumer_secret' => $consumerSecret
         );

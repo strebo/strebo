@@ -13,17 +13,16 @@ class DataCollector extends \Thread
     {
         $this->collectingData = true;
         $this->socialNetworks = (new SocialNetworkFactory())->getInstances();
-        $this->publicFeed = ["DE" => [], "US" => [], "W" => []];
+        $this->publicFeed = (array)["DE" => [], "US" => [], "W" => []];
         $this->start(PTHREADS_INHERIT_NONE);
     }
 
     public function collectPublicFeed()
     {
-        foreach ($this->publicFeed as $location => $value) {
+        foreach (array_keys($this->publicFeed) as $location) {
             foreach ($this->socialNetworks as $network => $instance) {
                 $locationString = "getLocation" . $location;
                 $data = json_decode($instance->getPublicFeed($instance->$locationString()));
-
                 if ($data != null) {
                     $this->publicFeed[$location][$network] = $data;
                 }
@@ -78,7 +77,7 @@ class DataCollector extends \Thread
     {
         $networks = [];
 
-        foreach ($this->socialNetworks as $key => $instance) {
+        foreach ($this->socialNetworks as $instance) {
             if ($instance instanceof PrivateInterface) {
                 $status = "disconnected";
                 if (array_key_exists($instance->getName(), $user->getTokens())) {

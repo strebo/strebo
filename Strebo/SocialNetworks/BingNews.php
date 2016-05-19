@@ -20,7 +20,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
         try {
             return $this->encode($this->reader->download('https://www.bing.com/news?q=' . $tag . 'format=RSS'));
         } catch (Exception $e) {
-            echo($e->getMessage());
+            $e->getMessage();
         }
     }
 
@@ -29,7 +29,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
         try {
             return $this->encode($this->reader->download('https://www.bing.com/news?format=RSS'));
         } catch (Exception $e) {
-            echo($e->getMessage());
+            $e->getMessage();
         }
     }
 
@@ -44,7 +44,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
         $data = $parser->execute();
         $feed = [];
         if ($data->items[0]->hasNamespace('News')) {
-            foreach ($data->items as $index => $value) {
+            foreach ($data->items as $value) {
                 $item = [];
                 $item['type'] = 'image';
                 $item['media'] = $value->getTag('News:Image')[0];
@@ -61,10 +61,5 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
             'icon' => parent::getIcon(),
             'color' => parent::getColor(),
             'feed' => $feed));
-    }
-
-    public function formatTime($time)
-    {
-
     }
 }

@@ -19,15 +19,11 @@ class WebSocketUser
     {
         $this->id = $id;
         $this->socket = $socket;
-        if (isset($_SESSION["tokens"])) {
-            $this->tokens = $_SESSION["tokens"];
-        }
     }
 
     public function addToken($network, $token)
     {
         $this->tokens[$network] = $token;
-        $_SESSION["tokens"] = $this->tokens;
     }
 
     public function getTokens()
