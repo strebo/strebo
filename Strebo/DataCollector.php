@@ -13,13 +13,13 @@ class DataCollector extends \Thread
     {
         $this->collectingData = true;
         $this->socialNetworks = (new SocialNetworkFactory())->getInstances();
-        $this->publicFeed = (array)["DE" => [], "US" => [], "W" => []];
+        $this->publicFeed = ["DE" => [], "US" => [], "W" => []];
         $this->start(PTHREADS_INHERIT_NONE);
     }
 
     public function collectPublicFeed()
     {
-        foreach (array_keys($this->publicFeed) as $location) {
+        foreach (array_keys((array)$this->publicFeed) as $location) {
             foreach ($this->socialNetworks as $network => $instance) {
                 $locationString = "getLocation";
                 $data = json_decode($instance->getPublicFeed($instance->$locationString($location)));
