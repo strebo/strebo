@@ -19,7 +19,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
             ["DE" => null, "US" => null, "W" => null],
             getenv('strebo_soundcloud_1'),
             getenv('strebo_soundcloud_2'),
-            'http://strebo.net'
+            'http://strebo.net?SoundCloud=1'
         );
         $this->client = new SoundCloudAPI($this->getApiKey(), $this->getApiSecret(), $this->getApiCallback());
     }
@@ -28,11 +28,11 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
     {
         $response = json_decode($this->client->post(
             "https://api.soundcloud.com/oauth2/token",
-            ["-F 'client_id=YOUR_CLIENT_ID'",
-                "-F 'client_secret=YOUR_CLIENT_SECRET'",
+            ["-F 'client_id=" . $this->getApiKey(),
+                "-F 'client_secret='" . $this->getApiSecret(),
                 "-F 'grant_type=authorization_code'",
-                "-F 'redirect_uri=http://yourapp.com/soundcloud/oauth-callback'",
-                "-F 'code=0000000EYAA1CRGodSoKJ9WsdhqVQr3g'"]
+                "-F 'redirect_uri='" . $this->getApiCallback(),
+                "-F 'code='" . $code]
         ));
 
         return $response->access_token;
