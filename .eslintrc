@@ -17,6 +17,7 @@ globals:
   SC: true
   Url: true
   handleAuthResult: true
+  isAdBlockActive: true
 
 # http://eslint.org/docs/rules/
 rules:

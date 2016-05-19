@@ -27,16 +27,16 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
     $scope.showF = true;
     $scope.showL = true;
 
-    $scope.location =  $rootScope.locations[DataService.getLocation()];
+    $scope.location = $rootScope.locations[DataService.getLocation()];
 
     $scope.openLocationSettings = function() {
         $scope.locationSetting = ($scope.locationSetting + 1) % 2;
     };
 
-    $scope.setLocation = function(index) {
-        $scope.location =  $rootScope.locations[index];
+    $scope.setLocation = function(lindex) {
+        $scope.location = $rootScope.locations[lindex];
         $scope.locationSetting = 0;
-        DataService.setLocation(index);
+        DataService.setLocation(lindex);
     };
 
     $scope.switchView = function() {

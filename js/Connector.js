@@ -10,7 +10,6 @@ function getDefaultConfig(name, path, url, tokens) {
         },
         success: function() {
             if(Url.get[url]) {
-                var x = false;
                 var ltokens = [];
                 for(var i in tokens) {
                     if(!Url.get[tokens[i]]) return;
