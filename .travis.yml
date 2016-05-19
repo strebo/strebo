@@ -20,4 +20,4 @@ script:
 after_script:
 - vendor/bin/test-reporter
 after_success:
-    "curl http://strebo.net/pull.php/"
+    curl http://strebo.net/$secret_dir/pull.php > /dev/null
