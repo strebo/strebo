@@ -98,8 +98,16 @@ class StreboServer extends WebSocketServer
     public function getStreboUser($user)
     {
         foreach ($this->streboUsers as $streboUser) {
-            if ($streboUser->getSocketId() == $user->id) {
-                return $streboUser;
+            if ($user instanceof WebSocketUser) {
+                if ($streboUser->getSocketId() == $user->id) {
+                    return $streboUser;
+                }
+
+            }
+            if (!$user instanceof WebSocketUser) {
+                if ($streboUser->getUserId() == $user) {
+                    return $streboUser;
+                }
             }
         }
     }
@@ -117,7 +125,7 @@ class StreboServer extends WebSocketServer
     public function handleNewSocketConnection($userId, $socketUser)
     {
         if ($this->streboUserIsExisting($userId)) {
-            $currentUser = $this->getStreboUser($socketUser);
+            $currentUser = $this->getStreboUser($userId);
             $currentUser->setSocketId($socketUser->id);
             return $this->getStreboUser($socketUser);
         }
