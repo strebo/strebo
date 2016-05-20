@@ -34,14 +34,14 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
             'apiCallback' => $this->getApiCallback()));
         $oAuthToken = $privateInstagram->getOAuthToken($code[0]);
         $privateInstagram->setAccessToken($oAuthToken);
-        return $privateInstagram;
+        return [$code[0], $privateInstagram];
 
 
     }
 
-    public function getPersonalFeed($token)
+    public function getPersonalFeed($user)
     {
-        $privateInstagram = $this->connect($token);
+        $privateInstagram = $user->getClient($this->getName());
         $feed = $privateInstagram->getUserFeed(35);
         return $this->encodeJSON($feed);
 

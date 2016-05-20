@@ -40,13 +40,13 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $oauthClient->setDeveloperKey($this->getApiKey());
         $oauthClient->setAccessToken($code[0]);
         $oauthYoutube = new \Google_Service_YouTube($oauthClient);
-        return $oauthYoutube;
+        return [$code[0], $oauthYoutube];
 
     }
 
-    public function getPersonalFeed($token)
+    public function getPersonalFeed($user)
     {
-        $youtube = $this->connect($token);
+        $youtube = $user->getClient($this->getName());
         return $this->encodeJSON(
             $youtube->videos->listVideos(
                 "snippet,statistics",

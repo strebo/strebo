@@ -92,6 +92,12 @@ class DataCollector extends \Thread
         return json_encode(["type" => "networks", "json" => $networks]);
     }
 
+    public function connect($user, $network)
+    {
+        $oauth = $this->socialNetworks[$network]->connect();
+        $user->addAthorizedToken($oauth[0]);
+        $user->addClient($oauth[1]);
+    }
 
     public function run()
     {

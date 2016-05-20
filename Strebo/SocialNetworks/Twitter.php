@@ -32,8 +32,8 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $settings = array(
             'oauth_access_token' => $acessToken,
             'oauth_access_token_secret' => $tokenSecret,
-            'consumer_key' => parent::getApiKey(),
-            'consumer_secret' => parent::getApiSecret()
+            'consumer_key' => $this->getApiKey(),
+            'consumer_secret' => $this->getApiSecret()
         );
 
         $this->twitter = new TwitterAPIExchange($settings);
@@ -43,18 +43,18 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     {
         $settings = ['oauth_access_token' => $code[0],
             'oauth_access_token_secret' => $code[1],
-            'consumer_key' => parent::getApiKey(),
-            'consumer_secret' => parent::getApiSecret()];
+            'consumer_key' => $this->getApiKey(),
+            'consumer_secret' => $this->getApiSecret()];
 
-        return new TwitterAPIExchange($settings);
+        return [$code, new TwitterAPIExchange($settings)];
     }
 
-    public function getPersonalFeed($token)
+    public function getPersonalFeed($user)
     {
-        $oauthTwitter=$this->connect($token);
+        $oauthTwitter = $user->getClient($this->getName());
         $this->url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
         $this->requestMethod = "GET";
-        $this->getfield = '?user_id' . $token[0];
+        $this->getfield = '?user_id' . $user->getAuthorizedToken($this->getName());
 
         return $this->encodeJSON($oauthTwitter->setGetfield($this->getfield)
             ->buildOauth($this->url, $this->requestMethod)

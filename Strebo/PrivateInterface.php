@@ -5,5 +5,5 @@ interface PrivateInterface
 {
     public function connect($code);
 
-    public function getPersonalFeed($token);
+    public function getPersonalFeed($user);
 }

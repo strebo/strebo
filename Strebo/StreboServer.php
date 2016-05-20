@@ -44,6 +44,7 @@ class StreboServer extends WebSocketServer
                     $streboUser = $this->getStreboUser($user);
                     $streboUser->addToken($data->network, $data->tokens);
                     $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
+                    $this->dataCollector->connect($streboUser, $data->network);
                     break;
 
                 case 'getNetworks':
