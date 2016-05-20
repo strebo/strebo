@@ -63,4 +63,9 @@ class StreboUser
     {
         $this->authorizedTokens[$network] = $authorizedToken;
     }
+
+    public function getToken($network)
+    {
+        return $this->tokens[$network];
+    }
 }
