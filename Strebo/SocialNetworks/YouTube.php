@@ -50,14 +50,14 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         return $this->encodeJSON(
             $youtube->videos->listVideos(
                 "snippet,statistics",
-                ["myRating" => "like", "maxResults" => 25]
+                ["myRating" => "like", "maxResults" => 50]
             )
         );
     }
 
     public function search($tag)
     {
-        return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 25, "q" => $tag]));
+        return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 50, "q" => $tag]));
     }
 
     public function getPublicFeed($location)
@@ -68,14 +68,14 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                     "snippet,statistics",
                     ["chart" => "mostPopular",
                         "regionCode" => $location,
-                        "maxResults" => 25]
+                        "maxResults" => 50]
                 );
             }
             if ($location == null) {
                 $popularMedia = $this->youtube->videos->listVideos(
                     "snippet,statistics",
                     ["chart" => "mostPopular",
-                        "maxResults" => 25]
+                        "maxResults" => 50]
                 );
             }
             return $this->encodeJSON($popularMedia);

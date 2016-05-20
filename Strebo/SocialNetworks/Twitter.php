@@ -52,9 +52,9 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     public function getPersonalFeed($user)
     {
         $oauthTwitter = $user->getClient($this->getName());
-        $this->url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
+        $this->url = 'https://api.twitter.com/1.1/statuses/home_timeline.json';
         $this->requestMethod = "GET";
-        $this->getfield = '?user_id' . $user->getAuthorizedToken($this->getName());
+        $this->getfield = '?count=50';
 
         return $this->encodeJSON($oauthTwitter->setGetfield($this->getfield)
             ->buildOauth($this->url, $this->requestMethod)

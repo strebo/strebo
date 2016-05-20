@@ -42,7 +42,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
     public function getPersonalFeed($user)
     {
         $privateInstagram = $user->getClient(parent::getName());
-        $feed = $privateInstagram->getUserFeed(35);
+        $feed = $privateInstagram->getUserFeed(50);
         return $this->encodeJSON($feed);
 
     }
@@ -50,7 +50,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function search($tag)
     {
-        $response = $this->instagram->getTagMedia($tag, 33);
+        $response = $this->instagram->getTagMedia($tag, 50);
         return $this->encodeJSON($response);
 
     }

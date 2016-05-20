@@ -48,7 +48,7 @@ class DataCollector extends \Thread
     {
         $personalFeed = [];
 
-        foreach (array_keys($user->getClients) as $network) {
+        foreach (array_keys($user->getClients()) as $network) {
             $personalFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($user));
         }
 
