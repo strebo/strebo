@@ -46,7 +46,6 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
     {
         $oauthSoundCloud = $this->connect($token);
         $this->public = false;
-        $this->client->set
         return $this->encodeJSON(json_decode($oauthSoundCloud->get("https://api.soundcloud.com/me/favorites")));
     }
 
