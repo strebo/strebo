@@ -35,16 +35,19 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 "code" => $code[0]]
         ));
 
-        return $response->access_token;
+        $oauthSoundCloud = new SoundCloudAPI($this->getApiKey(), $this->getApiSecret(), $this->getApiCallback());
+        $oauthSoundCloud->setAccessToken($response->access_token);
+        return $oauthSoundCloud;
 
 
     }
 
     public function getPersonalFeed($token)
     {
-        $accessToken = $this->connect($token);
+        $oauthSoundCloud = $this->connect($token);
         $this->public = false;
-        return $this->encodeJSON($this->client->get("https://api.soundcloud.com/me/favorites", [$accessToken]));
+        $this->client->set
+        return $this->encodeJSON(json_decode($oauthSoundCloud->get("https://api.soundcloud.com/me/favorites")));
     }
 
 
