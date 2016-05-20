@@ -32,7 +32,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 "-F 'client_secret='" . $this->getApiSecret(),
                 "-F 'grant_type=authorization_code'",
                 "-F 'redirect_uri='" . $this->getApiCallback(),
-                "-F 'code='" . $code]
+                "-F 'code='" . $code[0]]
         ));
 
         return $response->access_token;

@@ -32,7 +32,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
         $privateInstagram = new InstagramAPI(array('apiKey' => $this->getApiKey(),
             'apiSecret' => $this->getApiSecret(),
             'apiCallback' => $this->getApiCallback()));
-        $oAuthToken = $privateInstagram->getOAuthToken($code);
+        $oAuthToken = $privateInstagram->getOAuthToken($code[0]);
         $privateInstagram->setAccessToken($oAuthToken);
         return $privateInstagram;
 
