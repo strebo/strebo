@@ -36,8 +36,7 @@ class StreboServer extends WebSocketServer
                     break;
 
                 case 'getPersonalFeed':
-                    $currentUser = null;
-
+                    $currentUser = $this->getStreboUser($user);
                     $this->send($user, $this->dataCollector->collectPersonalFeed($currentUser->getTokens));
                     break;
 

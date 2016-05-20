@@ -35,17 +35,29 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function connect($code)
     {
+        $oauthClient = new \Google_Client();
+        $oauthClient->setApplicationName("strebo_youtube");
+        $oauthClient->setDeveloperKey($this->getApiKey());
+        $oauthClient->setAccessToken($code);
+        $oauthYoutube = new \Google_Service_YouTube($oauthClient);
+        return $oauthYoutube;
 
     }
 
     public function getPersonalFeed($token)
     {
-        // TODO: Implement getPersonalFeed() method.
+        $youtube = $this->connect($token);
+        return $this->encodeJSON(
+            $youtube->videos->listVideos(
+                "snippet,statistics",
+                ["myRating" => "like", "maxResults" => 25]
+            )
+        );
     }
 
     public function search($tag)
     {
-        return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 20, "q" => $tag]));
+        return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 25, "q" => $tag]));
     }
 
     public function getPublicFeed($location)
@@ -56,14 +68,14 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                     "snippet,statistics",
                     ["chart" => "mostPopular",
                         "regionCode" => $location,
-                        "maxResults" => 20]
+                        "maxResults" => 25]
                 );
             }
             if ($location == null) {
                 $popularMedia = $this->youtube->videos->listVideos(
                     "snippet,statistics",
                     ["chart" => "mostPopular",
-                        "maxResults" => 20]
+                        "maxResults" => 25]
                 );
             }
             return $this->encodeJSON($popularMedia);
@@ -98,7 +110,6 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                 try {
                     $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
                 } catch (\Google_Service_Exception $e) {
-                    var_dump($channel);
                     $profile = null;
                 }
             }
