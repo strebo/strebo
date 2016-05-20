@@ -44,12 +44,12 @@ class DataCollector extends \Thread
         }
     }
 
-    public function collectPersonalFeed($tokens)
+    public function collectPersonalFeed($user)
     {
         $personalFeed = [];
 
-        foreach ($tokens as $network => $token) {
-            $personalFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($token));
+        foreach (array_keys($user->getClients) as $network) {
+            $personalFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($user));
         }
 
         return json_encode(["type" => "data", "json" => $personalFeed]);
@@ -95,8 +95,8 @@ class DataCollector extends \Thread
     public function connect($user, $network)
     {
         $oauth = $this->socialNetworks[$network]->connect($user->getToken($network));
-        $user->addAthorizedToken($oauth[0]);
-        $user->addClient($oauth[1]);
+        $user->addAuthorizedToken($network, $oauth[0]);
+        $user->addClient($network, $oauth[1]);
     }
 
     public function run()

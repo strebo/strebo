@@ -54,12 +54,17 @@ class StreboUser
         return $this->clients[$network];
     }
 
+    public function getClients()
+    {
+        return $this->clients;
+    }
+
     public function getAuthorizedToken($network)
     {
         return $this->authorizedTokens[$network];
     }
 
-    public function setAuthorizedToken($network, $authorizedToken)
+    public function addAuthorizedToken($network, $authorizedToken)
     {
         $this->authorizedTokens[$network] = $authorizedToken;
     }

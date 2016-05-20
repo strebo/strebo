@@ -41,7 +41,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function getPersonalFeed($user)
     {
-        $privateInstagram = $user->getClient($this->getName());
+        $privateInstagram = $user->getClient(parent::getName());
         $feed = $privateInstagram->getUserFeed(35);
         return $this->encodeJSON($feed);
 
