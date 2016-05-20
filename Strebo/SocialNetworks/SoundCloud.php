@@ -34,7 +34,6 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 "redirect_uri" => $this->getApiCallback(),
                 "code" => $code[0]]
         ));
-        $this->client->setCurlOptions();
 
         return $response->access_token;
 
