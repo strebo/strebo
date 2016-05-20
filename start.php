@@ -3,6 +3,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 putenv('strebo_instagram_1=c12bbe37871f443ca257ef54a131a777');
+putenv('strebo_instagram_2=036f0eeacf054448a7c31e58860e453e');
 putenv('strebo_twitter_1=3872089625-xRvrn2Qb8QG5GDtrskVFy1E1wQAgQPpX5xsFKZa');
 putenv('strebo_twitter_2=rnGWYxMdQJmj4Q5YdddNC2EUPhKffSvcj3WhBzOjSiO8a');
 putenv('strebo_twitter_3=BspGfBzzXbBKtdWpl0eL1cihi');
