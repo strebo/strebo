@@ -21,7 +21,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
                 "W" => [null, null]],
             getenv('strebo_instagram_1'),
             getenv('strebo_instagram_2'),
-            'http://strebo.net'
+            'http://strebo.net?Instagram=1'
         );
         $this->instagram = new InstagramAPI($this->getApiKey());
 
