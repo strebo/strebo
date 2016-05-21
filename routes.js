@@ -1,20 +1,26 @@
 module.exports = function(app, passport) {
 
-    // =====================================
-    // TWITTER ROUTES ======================
-    // =====================================
+    // =======================================
+    // TWITTER ROUTES ========================
+    // =======================================
     // route for twitter authentication and login
     app.get('/auth/twitter', passport.authenticate('twitter'));
 	
-	// =====================================
+	// =======================================
     // INSTAGRAM ROUTES ======================
-    // =====================================
-    // route for twitter authentication and login
+    // =======================================
+    // route for instagram authentication and login
     app.get('/auth/instagram', passport.authenticate('instagram'));
 	
-	// =====================================
-    // SOUNDCLOUD ROUTES ======================
-    // =====================================
-    // route for twitter authentication and login
+	// =======================================
+    // SOUNDCLOUD ROUTES =====================
+    // =======================================
+    // route for soundcloud authentication and login
     app.get('/auth/soundcloud', passport.authenticate('soundcloud'));
+
+    // =======================================
+    // YOUTUBE ROUTES ========================
+    // =======================================
+    // route for youtube authentication and login
+    app.get('/auth/youtube', passport.authenticate('youtube'));
 };
