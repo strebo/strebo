@@ -119,7 +119,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             }
             $data['numberOfLikes'] = null;
             if (isset($item->statistics)) {
-                $data['numberOfLikes'] = $item->statistics->likeCount;
+                $data['numberOfLikes'] = intval($item->statistics->likeCount);
             }
 
             $data['media'] = "https://www.youtube.com/embed/" . $id;
