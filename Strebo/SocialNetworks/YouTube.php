@@ -36,11 +36,13 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     public function connect($code)
     {
         $oauthClient = new \Google_Client();
-        $oauthClient->setApplicationName("strebo_youtube");
-        $oauthClient->setDeveloperKey($this->getApiKey());
-        $oauthClient->setAccessToken($code[0]);
+        $oauthClient->setApplicationName("strebo");
+        $oauthClient->setClientId(getenv("strebo_youtube_3"));
+        $oauthClient->setClientSecret(getenv("strebo_youtube_4"));
+        $oauthClient->fetchAccessTokenWithAuthCode($code[0]);
+        var_dump($oauthClient->getAccessToken());
         $oauthYoutube = new \Google_Service_YouTube($oauthClient);
-        return [$code[0], $oauthYoutube];
+        return [$oauthClient->getAccessToken(), $oauthYoutube];
 
     }
 
