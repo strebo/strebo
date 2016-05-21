@@ -13,7 +13,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
     {
         parent::__construct(
             'Bing News',
-            'newspaper-o',
+            'Bing_logo_2016',
             '#008273',
             ["DE" => "de", "US" => "us", "W" => "us"],
             null,
@@ -69,6 +69,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
         return json_encode(array('name' => parent::getName(),
             'icon' => parent::getIcon(),
             'color' => parent::getColor(),
+            'customIcon' => true,
             'feed' => $feed));
     }
 
