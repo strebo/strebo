@@ -35,6 +35,7 @@ ratings:
   - "**.py"
   - "**.rb"
 exclude_paths:
+- fonts/
 - features/
 - "features/bootstrap/FeatureContext.php"
 - tests/
