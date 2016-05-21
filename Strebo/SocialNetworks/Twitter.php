@@ -5,6 +5,7 @@ use Strebo;
 
 use Symfony\Component\Config\Definition\Exception\Exception;
 use TwitterAPIExchange;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface
 {
@@ -21,16 +22,16 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             'twitter',
             '#4099FF',
             ["DE" => "23424829", "US" => "23424977", "W" => "1"],
-            getenv('strebo_twitter_1'),
-            getenv('strebo_twitter_2'),
+            getenv('strebo_twitter_3'),
+            getenv('strebo_twitter_4'),
             null
         );
 
-        $acessToken = getenv('strebo_twitter_3');
-        $tokenSecret = getenv('strebo_twitter_4');
+        $accessToken = getenv('strebo_twitter_1');
+        $tokenSecret = getenv('strebo_twitter_2');
 
         $settings = array(
-            'oauth_access_token' => $acessToken,
+            'oauth_access_token' => $accessToken,
             'oauth_access_token_secret' => $tokenSecret,
             'consumer_key' => $this->getApiKey(),
             'consumer_secret' => $this->getApiSecret()
@@ -41,11 +42,26 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function connect($code)
     {
+
+
+        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret(), getenv('strebo_twitter_1'), getenv('strebo_twitter_2'));
+        $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $code[1]]);
+        var_dump($access_token);
+
+
+
+
+        $connection->
+        $this->url="https://api.twitter.com/oauth/access_token";
+        $this->requestMethod="POST";
+
+        $this->twitter-
+
+
         $settings = ['oauth_access_token' => $code[0],
             'oauth_access_token_secret' => $code[1],
             'consumer_key' => $this->getApiKey(),
             'consumer_secret' => $this->getApiSecret()];
-
         return [$code, new TwitterAPIExchange($settings)];
     }
 
