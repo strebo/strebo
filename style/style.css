@@ -630,6 +630,10 @@ label {
     opacity:0;
 }
 
+.social-media-content-body-entry-text-title {
+    font-weight:400;
+}
+
 .social-media-content-body-entry-text-feed-extend {
     font-size:1.3rem;
 }
