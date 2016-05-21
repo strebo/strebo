@@ -323,7 +323,8 @@ label {
     font-size:1rem;
 }
 
-.social-media-content-header-x i {
+.social-media-content-header-x i,
+.social-media-content-header-x span {
     font-size:2rem;
 }
 
@@ -334,9 +335,11 @@ label {
     width:5vh;
     height:5vh;
     background-color:#eee;
+    color:#ffffff;
 }
 
-.social-media-content-header-x-feed i {
+.social-media-content-header-x-feed i,
+.social-media-content-header-x-feed span {
     font-size:1.55rem;
     color:#fff;
 }
@@ -496,6 +499,7 @@ label {
     background-color:#ff3a00;
     color:#fff;
     font-size:2.6vmax;
+    color:#ffffff;
 }
 
 #detailview-content-network-triangle {

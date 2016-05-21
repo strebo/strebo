@@ -21,7 +21,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
                 "W" => [null, null]],
             getenv('strebo_instagram_1'),
             getenv('strebo_instagram_2'),
-            'http://strebo.net'
+            'http://strebo.net?Instagram=1'
         );
         $this->instagram = new InstagramAPI($this->getApiKey());
 
@@ -32,17 +32,17 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
         $privateInstagram = new InstagramAPI(array('apiKey' => $this->getApiKey(),
             'apiSecret' => $this->getApiSecret(),
             'apiCallback' => $this->getApiCallback()));
-        $oAuthToken = $privateInstagram->getOAuthToken($code);
+        $oAuthToken = $privateInstagram->getOAuthToken($code[0]);
         $privateInstagram->setAccessToken($oAuthToken);
-        return $privateInstagram;
+        return [$code[0], $privateInstagram];
 
 
     }
 
-    public function getPersonalFeed($token)
+    public function getPersonalFeed($user)
     {
-        $privateInstagram = $this->connect($token);
-        $feed = $privateInstagram->getUserFeed(35);
+        $privateInstagram = $user->getClient(parent::getName());
+        $feed = $privateInstagram->getUserFeed(50);
         return $this->encodeJSON($feed);
 
     }
@@ -50,7 +50,7 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
     public function search($tag)
     {
-        $response = $this->instagram->getTagMedia($tag, 33);
+        $response = $this->instagram->getTagMedia($tag, 50);
         return $this->encodeJSON($response);
 
     }

@@ -8,7 +8,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
 {
 
     private $client = null;
-    private $search = false;
+    private $public = false;
 
     public function __construct()
     {
@@ -28,33 +28,37 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
     {
         $response = json_decode($this->client->post(
             "https://api.soundcloud.com/oauth2/token",
-            ["-F 'client_id=" . $this->getApiKey(),
-                "-F 'client_secret='" . $this->getApiSecret(),
-                "-F 'grant_type=authorization_code'",
-                "-F 'redirect_uri='" . $this->getApiCallback(),
-                "-F 'code='" . $code]
+            ["client_id" => $this->getApiKey(),
+                "client_secret" => $this->getApiSecret(),
+                "grant_type" => "authorization_code",
+                "redirect_uri" => $this->getApiCallback(),
+                "code" => $code[0]]
         ));
 
-        return $response->access_token;
+        $oauthSoundCloud = new SoundCloudAPI($this->getApiKey(), $this->getApiSecret(), $this->getApiCallback());
+        $oauthSoundCloud->setAccessToken($response->access_token);
+        return [$response->access_token, $oauthSoundCloud];
 
 
     }
 
-    public function getPersonalFeed($token)
+    public function getPersonalFeed($user)
     {
-        $accessToken = $this->connect($token);
-        return $this->encodeJSON($this->client->get("https://api.soundcloud.com/me/favorites", [$accessToken]));
+        $oauthSoundCloud = $user->getClient($this->getName());
+        $this->public = false;
+        return $this->encodeJSON($oauthSoundCloud->get("https://api.soundcloud.com/me/favorites"));
     }
 
 
     public function search($tag)
     {
-        $this->search = true;
+        $this->public = false;
         return $this->encodeJSON($this->client->get('https://api.soundcloud.com/tracks', [$tag]));
     }
 
     public function getPublicFeed($location)
     {
+        $this->public = true;
         return $this->encodeJSON(file_get_contents('https://api-v2.soundcloud.com/charts?genre=soundcloud%3Agenres%3Aall-music&query_urn=soundcloud%3Acharts%3A5cbb6b10abdd41f3beec23c6c5b886da&offset=20&kind=top&limit=20&client_id=02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea&app_version=1460122160'));
     }
 
@@ -65,7 +69,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
         $tempSong = [];
         $feed = [];
 
-        if (!$this->search) {
+        if ($this->public) {
             foreach ($data["collection"] as $song) {
                 $tempSong["text"] = $song["track"]["description"];
                 $tempSong["title"] = $song["track"]["title"];
@@ -87,7 +91,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 $tempSong = [];
             }
         }
-        if ($this->search) {
+        if (!$this->public) {
             foreach ($data as $song) {
                 $tempSong["text"] = $song["description"];
                 $tempSong["title"] = $song["title"];
@@ -109,7 +113,6 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 $feed[] = $tempSong;
                 $tempSong = [];
             }
-            $this->search = false;
         }
 
         $newJSON = array('name' => parent::getName(),

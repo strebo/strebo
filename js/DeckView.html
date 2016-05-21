@@ -2,7 +2,8 @@
      ng-init="networkIndex = $index">
     <div class="social-media-content-header box-shadow" style="background-color:{{socialNetwork.color}};">
         <div class="social-media-content-header-x center">
-            <i class="fa fa-{{socialNetwork.icon}}"></i><br />
+            <i ng-if="!socialNetwork.customIcon" class="fa fa-{{socialNetwork.icon}}"></i>
+            <span ng-if="socialNetwork.customIcon" class="icon-{{socialNetwork.icon}}"></span><br />
             {{socialNetwork.name}}
         </div>
     </div>

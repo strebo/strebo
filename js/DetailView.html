@@ -45,7 +45,8 @@
 
         </div>
         <div id="detailview-content-network" style="background-color:{{currentItem.socialNetwork.color}};">
-            <i class="fa fa-{{currentItem.socialNetwork.icon}} center"></i>
+            <i ng-if="!currentItem.socialNetwork.customIcon" class="fa fa-{{currentItem.socialNetwork.icon}} center"></i>
+            <span ng-if="currentItem.socialNetwork.customIcon" class="icon-{{currentItem.socialNetwork.icon}} center"></span>
         </div>
         <div id="detailview-content-network-triangle"></div>
         <div id="detailview-content-arrow-right" ng-click="nextItem()" ng-if="showL">

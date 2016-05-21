@@ -35,16 +35,16 @@ class StreboServer extends WebSocketServer
                     $this->send($user, $this->dataCollector->search($data->query));
                     break;
 
-                case 'getPersonalFeed':
-                    $currentUser = null;
-
-                    $this->send($user, $this->dataCollector->collectPersonalFeed($currentUser->getTokens));
+                case 'getPrivateFeed':
+                    $currentUser = $this->getStreboUser($user);
+                    $this->send($user, $this->dataCollector->collectPersonalFeed($currentUser));
                     break;
 
                 case 'connect':
                     $streboUser = $this->getStreboUser($user);
                     $streboUser->addToken($data->network, $data->tokens);
                     $this->send($user, $this->dataCollector->getNetworksPrivate($streboUser));
+                    $this->dataCollector->connect($streboUser, $data->network);
                     break;
 
                 case 'getNetworks':
