@@ -18,7 +18,7 @@ class BingNewsTest extends PHPUnit_Framework_TestCase
         $bing = new \Strebo\SocialNetworks\BingNews();
         $result = json_decode($bing->getPublicFeed(null));
         $this->assertEquals("Bing News", $result->name);
-        $this->assertEquals("newspaper-o", $result->icon);
+        $this->assertEquals("Bing_logo_2016", $result->icon);
         $this->assertEquals("#008273", $result->color);
         $this->assertObjectHasAttribute("type", $result->feed[0]);
         //$this->assertObjectHasAttribute("tags", $result->feed[0]);
