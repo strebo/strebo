@@ -52,7 +52,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     function serverError() {
         $rootScope.loaderview = false;
         $rootScope.serverError = true;
-        $rootScope.$apply();
+        $rootScope.$applyAsync();
     }
 
     conn.onmessage = function (e) {
