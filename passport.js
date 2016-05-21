@@ -2,7 +2,7 @@
 var TwitterStrategy = require('passport-twitter').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var SoundCloudStrategy = require('passport-soundcloud').Strategy;
-var YoutubeV3Strategy = requrie('passport-youtube-v3').Strategy;
+var YoutubeV3Strategy = require('passport-youtube-v3').Strategy;
 
 // load the auth variables
 var configAuth = require('./auth');
