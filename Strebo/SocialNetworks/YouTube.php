@@ -21,7 +21,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             ["DE" => 'DE', "US" => 'US', "W" => null],
             getenv('strebo_youtube_1'),
             null,
-            null
+            "http://strebo.net?YouTube=1"
         );
         $this->client = new \Google_Client();
         $this->client->setApplicationName("strebo_youtube");
@@ -39,10 +39,11 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $oauthClient->setApplicationName("strebo");
         $oauthClient->setClientId(getenv("strebo_youtube_3"));
         $oauthClient->setClientSecret(getenv("strebo_youtube_4"));
-        $oauthClient->fetchAccessTokenWithAuthCode($code[0]);
-        var_dump($oauthClient->getAccessToken());
+        $oauthClient->setRedirectUri($this->getApiCallback());
+        $tokenArray = $oauthClient->fetchAccessTokenWithAuthCode($code[0]);
+        $oauthClient->setAccessToken($tokenArray["access_token"]);
         $oauthYoutube = new \Google_Service_YouTube($oauthClient);
-        return [$oauthClient->getAccessToken(), $oauthYoutube];
+        return [$tokenArray, $oauthYoutube];
 
     }
 
