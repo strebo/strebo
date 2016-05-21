@@ -10,7 +10,8 @@
             <div style="font-size:0.8rem; color:#999;">&ndash; {{post.createdTime | differenceFilter}}</div></div>
         </div>
         <div class="social-media-content-header-x-feed" style="background-color:{{post.socialNetwork.color}};">
-            <i class="fa fa-{{post.socialNetwork.icon}} center"></i>
+            <i ng-if="!post.socialNetwork.customIcon" class="fa fa-{{post.socialNetwork.icon}} center"></i>
+            <span ng-if="post.socialNetwork.customIcon" class="icon-{{post.socialNetwork.icon}} center"></span>
         </div>
         <div class="social-media-content-header-x-triangle-feed"></div>
     </div>

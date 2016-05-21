@@ -91,7 +91,8 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
                             socialNetwork: {
                                 name: feedByNetwork[i].name,
                                 icon: feedByNetwork[i].icon,
-                                color: feedByNetwork[i].color
+                                color: feedByNetwork[i].color,
+                                customIcon: feedByNetwork[i].customIcon
                             },
                             text: feedByNetwork[i].feed[j].text || "",
                             title: feedByNetwork[i].feed[j].title,
