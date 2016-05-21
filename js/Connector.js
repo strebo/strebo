@@ -27,21 +27,7 @@ function getDefaultConfig(name, path, url, tokens) {
     };
 }
 
-var connectors = {
-    //youtube: {
-      //  name: "YouTube",
-        //connect: function () {
-          //  handleAuthResult(null, function (token) {
-            //        conn.send(JSON.stringify({
-              //          command: "connect",
-                //        network: "YouTube",
-                  //      tokens: [token]
-                    //}));
-                //}
-            //);
-        //}
-    //}
-};
+var connectors = {};
 
 connectors.twitter = getDefaultConfig("Twitter", "twitter", "Twitter", ["oauth_token", "oauth_verifier"]);
 connectors.instagram = getDefaultConfig("Instagram", "instagram", "Instagram", ["code"]);
