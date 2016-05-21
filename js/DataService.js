@@ -21,9 +21,23 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     console.debug("Your ID: " + Cookies.get('id'));
 
+    conn.secureSend = function(x) {
+        try {
+            if (conn && conn.readyState === 1) {
+                conn.send(x);
+            } else {
+                serverError();
+                console.debug("WebSocket is not in OPEN state.");
+            }
+        } catch(ex) {
+            serverError();
+            console.debug(ex);
+        }
+    }
+
     conn.onopen = function () {
-        conn.send('Ping');
-        conn.send(JSON.stringify({
+        conn.secureSend('Ping');
+        conn.secureSend(JSON.stringify({
             command: 'identify',
             id: Cookies.get('id')
         }));
@@ -32,10 +46,14 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     };
 
     conn.onerror = function () {
+        serverError();
+    };
+
+    function serverError() {
         $rootScope.loaderview = false;
         $rootScope.serverError = true;
         $rootScope.$apply();
-    };
+    }
 
     conn.onmessage = function (e) {
 
@@ -75,7 +93,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     function updateData() {
         $rootScope.loaderview = true;
-        conn.send(JSON.stringify({
+        conn.secureSend(JSON.stringify({
             command: mode[currentMode],
             param: $rootScope.locations[currentLocation].abbreviation,
             query: angular.element("#searchview-query").val()

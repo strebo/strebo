@@ -16,7 +16,7 @@ function getDefaultConfig(name, path, url, tokens) {
                     ltokens.push(Url.get[tokens[i]]);
                 }
                 console.debug(name + " is connected.");
-                conn.send(JSON.stringify({
+                conn.secureSend(JSON.stringify({
                     command: "connect",
                     network: name,
                     tokens: ltokens
@@ -32,7 +32,7 @@ var connectors = {
         name: "YouTube",
         connect: function () {
             handleAuthResult(null, function (token) {
-                    conn.send(JSON.stringify({
+                    conn.secureSend(JSON.stringify({
                         command: "connect",
                         network: "YouTube",
                         tokens: [token]
