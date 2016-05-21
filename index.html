@@ -66,10 +66,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!---- Cookies -->
     <script src="libs/js.cookie.js"></script>
-
-    <!---- Google -->
-    <script src="js/auth.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
     <!------------------>
 
     <script src="js/Url.js"></script>
@@ -102,10 +98,7 @@
     <script src="js/SearchController.js"></script>
     <script src="js/LoaderController.js"></script>
     <script src="js/ConnectorTooltipController.js"></script>
-
-	<script src="js/auth.js"></script>
-	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-
+    
     <script>var isAdBlockActive = false;</script>
     <script src="js/ads.js"></script>
 
@@ -170,9 +163,9 @@
         </div>
         <div id="container-board"
              style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
-            <deck-view id="deck-view" ng-if="view===0 && loaderview === false" ng-controller="DeckController"></deck-view>
-            <feed-view id="feed-view" ng-if="view===1 && loaderview === false" ng-controller="FeedController"></feed-view>
-            <loader-view id="loading-view" ng-show="loaderview===true" class="center" ng-controller="LoaderController"></loader-view>
+            <deck-view id="deck-view" ng-if="view===0 && loaderview === false && !serverError" ng-controller="DeckController"></deck-view>
+            <feed-view id="feed-view" ng-if="view===1 && loaderview === false && !serverError" ng-controller="FeedController"></feed-view>
+            <loader-view id="loading-view" ng-show="loaderview===true && !serverError" class="center" ng-controller="LoaderController"></loader-view>
             <div id="error-message" class="center" ng-if="serverError"><i id="error-icon" class="icon ion-ios-close-outline"></i><div style="position: relative;top:-3vh;">Server Not Found</div></div>
         </div>
         <detail-view id="detail-view" ng-show="detailview===true" ng-controller="DetailController"></detail-view>
