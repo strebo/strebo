@@ -27,8 +27,9 @@ app.filter('differenceFilter', function () {
                     formattedTime = '';
                 }
                 return formattedTime;
+            } else {
+                return "timeless";
             }
-
         };
     }
 )
