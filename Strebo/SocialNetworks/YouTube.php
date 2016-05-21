@@ -41,7 +41,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $oauthClient->setClientSecret(getenv("strebo_youtube_4"));
         $oauthClient->setRedirectUri($this->getApiCallback());
         $tokenArray = $oauthClient->fetchAccessTokenWithAuthCode($code[0]);
-        $oauthClient->setAccessToken($tokenArray["access_token"]);
+        $oauthClient->setAccessToken($tokenArray);
         $oauthYoutube = new \Google_Service_YouTube($oauthClient);
         return [$tokenArray, $oauthYoutube];
 
