@@ -6,11 +6,14 @@
                 <iframe ng-if="currentItem.socialNetwork.name == 'YouTube'" id="ytplayer" type="text/html" style="width:100%;height:100%;"
                         ng-src="{{currentItem.media | trustUrl}}"
                         frameborder="0"></iframe>
-                <div ng-if="currentItem.socialNetwork.name == 'SoundCloud' && isAdBlockActive == true" style="width:100%;height:100%;"
+                <div ng-if="currentItem.socialNetwork.name == 'SoundCloud' && isAdBlockActive" style="width:100%;height:100%;"
                       ng-bind-html="media">
                 </div>
-                <div ng-if="currentItem.socialNetwork.name == 'SoundCloud' && isAdBlockActive == false" style="width:100%;height:100%;">
-                    <img class="center" src="http://thewindowsclub.thewindowsclubco.netdna-cdn.com/wp-content/uploads/2013/09/adblocker-detected.jpg" />
+                <div ng-if="currentItem.socialNetwork.name == 'SoundCloud' && !isAdBlockActive" style="width:100%;height:100%;">
+                    <div class="center" style="text-align:center;width:100%;font-size:1.3rem;">
+                        <span style="font-size:4rem;">:/</span><br />
+                        <span style="font-size:3rem;">Sorry!</span><br />The SoundCloud Plugin doesn't work with an enabled AdBlocker.
+                    </div>
                 </div>
                 <img alt="Attached Picture" ng-if="currentItem.type === 'image'" class="center" ng-src="{{currentItem.media}}" style="max-height:100%; max-width:100%;" />
                 <video ng-if="currentItem.type === 'video' && currentItem.socialNetwork.name != 'YouTube'"
