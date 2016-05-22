@@ -44,25 +44,17 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     {
 
 
-        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret(), getenv('strebo_twitter_1'), getenv('strebo_twitter_2'));
+        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret());
+        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => $this->getApiCallback()));
+        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret(), $request_token['oauth_token'], $request_token['oauth_token_secret']);
         $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $code[1]]);
+        var_dump($request_token);
         var_dump($access_token);
 
+        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret(), $access_token['oauth_token'], $access_token['oauth_token_secret']);
 
 
-
-        $connection->
-        $this->url="https://api.twitter.com/oauth/access_token";
-        $this->requestMethod="POST";
-
-        $this->twitter-
-
-
-        $settings = ['oauth_access_token' => $code[0],
-            'oauth_access_token_secret' => $code[1],
-            'consumer_key' => $this->getApiKey(),
-            'consumer_secret' => $this->getApiSecret()];
-        return [$code, new TwitterAPIExchange($settings)];
+        return [$access_token, $connection];
     }
 
     public function getPersonalFeed($user)
