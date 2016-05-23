@@ -28,5 +28,5 @@ module.exports = function(app, passport) {
     // FACEBOOK ROUTES =======================
     // =======================================
     // route for facebook authentication and login
-    app.get('/auth/facebook', passport.authenticate('facebook'));
+    app.get('/auth/facebook', passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'manage_pages', 'user_posts'] }));
 };
