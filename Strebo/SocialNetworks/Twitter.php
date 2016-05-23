@@ -5,9 +5,9 @@ use Strebo;
 
 use Symfony\Component\Config\Definition\Exception\Exception;
 use TwitterAPIExchange;
-use Abraham\TwitterOAuth\TwitterOAuth;
+//use Abraham\TwitterOAuth\TwitterOAuth;
 
-class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface
+class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PublicInterface
 {
 
     private $url;
@@ -40,7 +40,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         $this->twitter = new TwitterAPIExchange($settings);
     }
 
-    public function connect($code)
+    /*public function connect($code)
     {
 
 
@@ -68,7 +68,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             ->buildOauth($this->url, $this->requestMethod)
             ->performRequest());
 
-    }
+    }*/
 
     public function search($tag)
     {
