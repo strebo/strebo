@@ -85,8 +85,9 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 preg_match_all('/(\\"[A-Za-z0-9\s]+\\"|[A-Za-z0-9]+)/', $song["track"]["tag_list"], $match);
                 $tempSong["tags"] = null;
                 for ($i = 1; $i < count($match); $i++) {
-                    $tempSong["tags"] = $match[$i];
+                    $tempSong["tags"] = str_replace("\"", "", $match[$i]);
                 }
+                var_dump($tempSong["tags"]);
                 $feed[] = $tempSong;
                 $tempSong = [];
             }
