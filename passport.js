@@ -3,6 +3,7 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var SoundCloudStrategy = require('passport-soundcloud').Strategy;
 var YoutubeV3Strategy = require('passport-youtube-v3').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 // load the auth variables
 var configAuth = require('./auth');
@@ -81,6 +82,23 @@ module.exports = function (passport) {
             clientSecret: configAuth.youtubeAuth.clientSecret,
             callbackURL: configAuth.youtubeAuth.callbackURL,
             scope: ['https://www.googleapis.com/auth/youtube.readonly']
+
+        },
+        function (/*token, tokenSecret, profile, done*/) {
+
+            //console.log(profile);
+
+        }));
+
+    // =========================================================================
+    // FACEBOOK ================================================================
+    // =========================================================================
+    passport.use(new FacebookStrategy({
+
+            clientID: configAuth.facebookAuth.clientID,
+            clientSecret: configAuth.facebookAuth.clientSecret,
+            callbackURL: configAuth.facebookAuth.callbackURL,
+            enableProof: true
 
         },
         function (/*token, tokenSecret, profile, done*/) {

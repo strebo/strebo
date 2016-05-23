@@ -20,7 +20,8 @@
 		"codeclimate/php-test-reporter": "^0.3.2",
         "vinelab/rss": "^1.0",
         "fguillot/picofeed": "@stable",
-        "abraham/twitteroauth": "^v0.6.4"
+        "abraham/twitteroauth": "^v0.6.4",
+        "facebook/php-sdk-v4": "@stable"
     },
     "config": {
         "bin-dir": "vendor/bin/"

@@ -18,5 +18,10 @@ module.exports = {
         'clientID': '993593787738-d877dvu5186gm7bu6kbkbl4oamneev28.apps.googleusercontent.com',
         'clientSecret': 'z293VhHYUA23m6yDpTYh41Bn',
         'callbackURL': 'http://strebo.net?YouTube=1'
+    },
+    'facebookAuth' : {
+        'clientID': '1707499449529400',
+        'clientSecret': '7f25c8dbfd1cdadb39c995670aed4543',
+        'callbackURL': 'http://strebo.net?Facebook=1'
     }
 };

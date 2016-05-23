@@ -23,4 +23,10 @@ module.exports = function(app, passport) {
     // =======================================
     // route for youtube authentication and login
     app.get('/auth/youtube', passport.authenticate('youtube'));
+
+    // =======================================
+    // FACEBOOK ROUTES =======================
+    // =======================================
+    // route for facebook authentication and login
+    app.get('/auth/facebook', passport.authenticate('facebook'));
 };

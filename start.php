@@ -14,6 +14,8 @@ putenv('strebo_youtube_1=AIzaSyAH6n3wcnku2Ah3qZZrgWbXcxVgiAwF-Xk');
 putenv('strebo_youtube_2=AIzaSyA8OMzoY6nuaQyQyp3nDSqVpMbjL6juT8U');
 putenv('strebo_youtube_3=993593787738-d877dvu5186gm7bu6kbkbl4oamneev28.apps.googleusercontent.com');
 putenv('strebo_youtube_4=z293VhHYUA23m6yDpTYh41Bn');
+putenv('strebo_facebook_1=1707499449529400');
+putenv('strebo_facebook_2=7f25c8dbfd1cdadb39c995670aed4543');
 
 echo "\n" . '  Welcome at strebo.
               _            _
