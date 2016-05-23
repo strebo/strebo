@@ -2,13 +2,15 @@
 
 namespace Strebo;
 
-class StreboUser
+class StreboUser extends \Thread
 {
     private $userId;
     private $socketId;
     private $tokens;
     private $authorizedTokens;
     private $clients;
+    private $privateFeed;
+    private $timer;
 
     public function __construct($userId, $socketId)
     {
@@ -17,6 +19,8 @@ class StreboUser
         $this->tokens = [];
         $this->clients = [];
         $this->authorizedTokens = [];
+        $this->privateFeed = [];
+        $this->timer = 0;
     }
 
     public function getUserId()
@@ -72,5 +76,31 @@ class StreboUser
     public function getToken($network)
     {
         return $this->tokens[$network];
+    }
+
+    public function getPrivateFeed()
+    {
+        return $this->privateFeed;
+    }
+
+    public function addPrivateFeed($network, $feed)
+    {
+        $this->privateFeed[$network] = $feed;
+    }
+
+    public function run()
+    {
+        while (true) {
+            if (isset($this->privateFeed) && $this->timer == 240) {
+                $this->privateFeed = [];
+                $this->timer = 0;
+            }
+            sleep(1);
+        }
+    }
+
+    public function setTimer($timer)
+    {
+        $this->timer = $timer;
     }
 }

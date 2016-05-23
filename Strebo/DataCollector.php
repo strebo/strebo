@@ -21,14 +21,16 @@ class DataCollector extends \Thread
     {
         foreach (array_keys((array)$this->publicFeed) as $location) {
             foreach ($this->socialNetworks as $network => $instance) {
-                echo "\n----Collecting Feed of " . $network . ": " . $location . "\n";
-                $locationString = "getLocation";
-                $data = json_decode($instance->getPublicFeed($instance->$locationString($location)));
-                if ($data != null) {
-                    $this->publicFeed[$location][$network] = $data;
-                }
-                if ($data == null) {
-                    continue;
+                if ($instance instanceof PublicInterface) {
+                    echo "\n----Collecting Feed of " . $network . ": " . $location . "\n";
+                    $locationString = "getLocation";
+                    $data = json_decode($instance->getPublicFeed($instance->$locationString($location)));
+                    if ($data != null) {
+                        $this->publicFeed[$location][$network] = $data;
+                    }
+                    if ($data == null) {
+                        continue;
+                    }
                 }
             }
         }
@@ -47,13 +49,17 @@ class DataCollector extends \Thread
 
     public function collectPersonalFeed($user)
     {
-        $personalFeed = [];
+        $privateFeed = $user->getPrivateFeed();;
 
         foreach (array_keys($user->getClients()) as $network) {
-            $personalFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($user));
+            if (!isset($privateFeed[$network])) {
+                $privateFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($user));
+                $user->addPrivateFeed($network, $privateFeed[$network]);
+                $user->setTimer(0);
+            }
         }
 
-        return json_encode(["type" => "data", "json" => $personalFeed]);
+        return json_encode(["type" => "data", "json" => $privateFeed]);
     }
 
     public function search($tag)
