@@ -96,7 +96,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         conn.secureSend(JSON.stringify({
             command: mode[currentMode],
             param: $rootScope.locations[currentLocation].abbreviation,
-            query: angular.element("#searchview-query").val()
+            query: angular.element("#searchview-query").val().replaceAll("#", "")
         }));
     }
 
