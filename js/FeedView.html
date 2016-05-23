@@ -24,7 +24,7 @@
                 class="social-media-content-body-entry-image-feed {{post.text.length == 0 ? 'social-media-content-body-entry-image-extend-feed':''}}">
             <div class="center" style="font-size:7vh;">
                 <img alt="Picture"
-                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'audio'" ng-src="{{post.thumb}}" />
+                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'audio' && post.thumb" ng-src="{{post.thumb}}" />
                 <img alt="Picture"
                         class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'image'"
                      ng-src="{{post.media}}"/>
@@ -38,11 +38,10 @@
             </div>
         </div>
         <div ng-if="post.type != 'text'" style="{{post.text.length == 0?'display:none;':''}}"
-             class="social-media-content-body-entry-text-feed" ellipsis>
-            {{post.text}}
+             class="social-media-content-body-entry-text-feed" ng-bind-html="post.text" ellipsis>
         </div>
         <div ng-if="post.type == 'text'" class="social-media-content-body-entry-text-feed-extend social-media-content-body-entry-image-extend-feed">
-            <div class="center" style="width:12vw;max-height:12vw;" ellipsis>{{post.text}}</div>
+            <div class="center" style="width:12vw;max-height:12vw;" ng-bind-html="post.text" ellipsis></div>
         </div>
     </div>
 </div>

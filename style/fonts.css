@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('../fonts/icomoon.eot?dmwkxd');
-    src:    url('../fonts/icomoon.eot?dmwkxd#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?dmwkxd') format('truetype'),
-        url('../fonts/icomoon.woff?dmwkxd') format('woff'),
-        url('../fonts/icomoon.svg?dmwkxd#icomoon') format('svg');
+    src:    url('../fonts/icomoon.eot?3vcp8j');
+    src:    url('../fonts/icomoon.eot?3vcp8j#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?3vcp8j') format('truetype'),
+        url('../fonts/icomoon.woff?3vcp8j') format('woff'),
+        url('../fonts/icomoon.svg?3vcp8j#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,10 +24,13 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-GAG_new_logo:before {
-    content: "\e901";
+.icon-chanx1:before {
+    content: "\e900";
 }
 .icon-Bing_logo_2016:before {
-    content: "\e900";
+    content: "\e926";
+}
+.icon-GAG_new_logo:before {
+    content: "\e927";
 }
 

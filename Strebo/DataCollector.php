@@ -21,6 +21,7 @@ class DataCollector extends \Thread
     {
         foreach (array_keys((array)$this->publicFeed) as $location) {
             foreach ($this->socialNetworks as $network => $instance) {
+                echo "\n----Collecting Feed of " . $network . ": " . $location . "\n";
                 $locationString = "getLocation";
                 $data = json_decode($instance->getPublicFeed($instance->$locationString($location)));
                 if ($data != null) {
@@ -103,7 +104,9 @@ class DataCollector extends \Thread
     {
         require __DIR__ . '/../vendor/autoload.php';
         while (true) {
+            echo "\n++Public Feed Collection was triggered.\n";
             $this->collectPublicFeed();
+            echo "\n++Public Feed was successfully collected.\n";
             sleep(240);
         }
     }

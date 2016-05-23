@@ -23,7 +23,7 @@
             </div>
             <div class="social-media-content-body-entry-text" ng-class="entry.type == 'text' || (!entry.thumb && (!entry.media || entry.type == 'audio')) ? 'social-media-content-body-entry-text-textview' : ''" ellipsis>
                 <div class="social-media-content-body-entry-text-title">{{entry.title}}</div>
-                {{entry.text}}
+                <div ng-bind-html="entry.text"></div>
             </div>
             <div class="social-media-content-body-entry-time" style="font-size:0.8rem; color:#999;">
                 &ndash; {{entry.createdTime | differenceFilter}}

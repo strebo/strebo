@@ -51,6 +51,7 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
         else if(e.keyCode === 37)
             previousItem();
         updateDetailView();
+        e.preventDefault();
     };
     var $doc = angular.element(document);
     $doc.on('keydown', handler);

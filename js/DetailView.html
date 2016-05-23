@@ -38,7 +38,7 @@
                 </div>
                 <div id="detailview-content-meta-body-desc" ng-if="currentItem.type != 'text'"
                      ng-bind-html="currentItem.text | urlFilter | hashFilter"></div>
-                <div id="detailview-content-meta-body-likes">
+                <div ng-if="currentItem.numberOfLikes" id="detailview-content-meta-body-likes">
                     {{currentItem.numberOfLikes | numberFilter}} Likes
                 </div>
                 <div id="detailview-content-meta-body-hashtags">
