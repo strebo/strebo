@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/strebo/strebo.svg)](https://travis-ci.org/strebo/strebo) 
+[![Quality Gate](http://sonarqube.it.dh-karlsruhe.de/api/badges/gate?key=strebo.net%3Astrebo)](http://sonarqube.it.dh-karlsruhe.de/overview?id=strebo.net%3Astrebo)
 [![Code Climate](https://codeclimate.com/github/strebo/strebo/badges/gpa.svg)](https://codeclimate.com/github/strebo/strebo)
  [![Test Coverage](https://codeclimate.com/github/strebo/strebo/badges/coverage.svg)](https://codeclimate.com/github/strebo/strebo/coverage) [![Issue Count](https://codeclimate.com/github/strebo/strebo/badges/issue_count.svg)](https://codeclimate.com/github/strebo/strebo)
 
