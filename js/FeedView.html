@@ -3,14 +3,15 @@
      ng-repeat="post in feed">
     <div class="social-media-content-header-feed">
         <div class="social-media-content-title-feed">
-            <img class="social-media-content-title-pic-feed" ng-src="{{post.authorPicture}}" alt="Author Picture"><div
+            <img class="social-media-content-title-pic-feed" ng-src="{{post.authorPicture ? post.authorPicture : 'resources/author-default.png'}}" alt="Author Picture"><div
                 style="display: inline-block; width:calc(14vw - 8vh); position: absolute; left:6vh; top:50%;
                 transform:translateY(-50%);">
             <a class="social-media-content-title-author-feed" href="{{post.link | trustUrl}}" target="_blank">{{post.author}}</a>
             <div style="font-size:0.8rem; color:#999;">&ndash; {{post.createdTime | differenceFilter}}</div></div>
         </div>
         <div class="social-media-content-header-x-feed" style="background-color:{{post.socialNetwork.color}};">
-            <i class="fa fa-{{post.socialNetwork.icon}} center"></i>
+            <i ng-if="!post.socialNetwork.customIcon" class="fa fa-{{post.socialNetwork.icon}} center"></i>
+            <span ng-if="post.socialNetwork.customIcon" class="icon-{{post.socialNetwork.icon}} center"></span>
         </div>
         <div class="social-media-content-header-x-triangle-feed"></div>
     </div>
@@ -23,7 +24,7 @@
                 class="social-media-content-body-entry-image-feed {{post.text.length == 0 ? 'social-media-content-body-entry-image-extend-feed':''}}">
             <div class="center" style="font-size:7vh;">
                 <img alt="Picture"
-                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'audio'" ng-src="{{post.thumb}}" />
+                        class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'audio' && post.thumb" ng-src="{{post.thumb}}" />
                 <img alt="Picture"
                         class="social-media-content-body-entry-media-feed {{post.text.length == 0 ? 'social-media-content-body-entry-media-extend-feed':''}}" ng-if="post.type === 'image'"
                      ng-src="{{post.media}}"/>
@@ -37,11 +38,10 @@
             </div>
         </div>
         <div ng-if="post.type != 'text'" style="{{post.text.length == 0?'display:none;':''}}"
-             class="social-media-content-body-entry-text-feed" ellipsis>
-            {{post.text}}
+             class="social-media-content-body-entry-text-feed" ng-bind-html="post.text" ellipsis>
         </div>
         <div ng-if="post.type == 'text'" class="social-media-content-body-entry-text-feed-extend social-media-content-body-entry-image-extend-feed">
-            <div class="center" style="width:12vw;max-height:12vw;" ellipsis>{{post.text}}</div>
+            <div class="center" style="width:12vw;max-height:12vw;" ng-bind-html="post.text" ellipsis></div>
         </div>
     </div>
 </div>

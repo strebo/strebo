@@ -13,9 +13,9 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
     {
         parent::__construct(
             'Bing News',
-            'newspaper-o',
+            'Bing_logo_2016',
             '#008273',
-            ["DE" => null, "US" => null, "W" => null],
+            ["DE" => "de", "US" => "us", "W" => "us"],
             null,
             null,
             null
@@ -36,7 +36,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
     public function getPublicFeed($location)
     {
         try {
-            return $this->encode($this->reader->download('https://www.bing.com/news?format=RSS'));
+            return $this->encode($this->reader->download('https://www.bing.com/news?cc=' . $location . '&format=RSS'));
         } catch (Exception $e) {
             $e->getMessage();
             return null;
@@ -60,6 +60,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
                 $item['media'] = $value->getTag('News:Image')[0];
                 $item['author'] = $value->getTag('News:Source')[0];
                 $item['title'] = $value->getTag('title')[0];
+                $item['text'] = $value->getTag('description')[0];
                 $item['createdTime'] = $this->formatTimeBing($value->getTag('pubDate')[0]);
                 $item['link'] = $value->getTag('link')[0];
                 $feed[] = $item;
@@ -68,6 +69,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
         return json_encode(array('name' => parent::getName(),
             'icon' => parent::getIcon(),
             'color' => parent::getColor(),
+            'customIcon' => true,
             'feed' => $feed));
     }
 

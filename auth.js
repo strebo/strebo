@@ -13,5 +13,15 @@ module.exports = {
         'clientID'      : 'b44373de55ef0a0048ff5de51c143db6',
         'clientSecret'  : '9b305fb370cf50d4a8d63d745c894d44',
         'callbackURL'   : 'http://strebo.net?SoundCloud=1'
+    },
+    'youtubeAuth' : {
+        'clientID': '993593787738-d877dvu5186gm7bu6kbkbl4oamneev28.apps.googleusercontent.com',
+        'clientSecret': 'z293VhHYUA23m6yDpTYh41Bn',
+        'callbackURL': 'http://strebo.net?YouTube=1'
+    },
+    'facebookAuth' : {
+        'clientID': '112533202499343',
+        'clientSecret': 'c01e0c4c83726c0a7825a8bb737e056b',
+        'callbackURL': 'http://strebo.net?Facebook=1'
     }
 };

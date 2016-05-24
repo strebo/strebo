@@ -21,7 +21,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             ["DE" => 'DE', "US" => 'US', "W" => null],
             getenv('strebo_youtube_1'),
             null,
-            null
+            "http://strebo.net?YouTube=1"
         );
         $this->client = new \Google_Client();
         $this->client->setApplicationName("strebo_youtube");
@@ -35,17 +35,32 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function connect($code)
     {
+        $oauthClient = new \Google_Client();
+        $oauthClient->setApplicationName("strebo");
+        $oauthClient->setClientId(getenv("strebo_youtube_3"));
+        $oauthClient->setClientSecret(getenv("strebo_youtube_4"));
+        $oauthClient->setRedirectUri($this->getApiCallback());
+        $tokenArray = $oauthClient->fetchAccessTokenWithAuthCode($code[0]);
+        $oauthClient->setAccessToken($tokenArray);
+        $oauthYoutube = new \Google_Service_YouTube($oauthClient);
+        return [$tokenArray, $oauthYoutube];
 
     }
 
-    public function getPersonalFeed($token)
+    public function getPersonalFeed($user)
     {
-        // TODO: Implement getPersonalFeed() method.
+        $youtube = $user->getClient($this->getName());
+        return $this->encodeJSON(
+            $youtube->videos->listVideos(
+                "snippet,statistics",
+                ["myRating" => "like", "maxResults" => 50]
+            )
+        );
     }
 
     public function search($tag)
     {
-        return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 20, "q" => $tag]));
+        return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 50, "q" => $tag]));
     }
 
     public function getPublicFeed($location)
@@ -56,14 +71,14 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                     "snippet,statistics",
                     ["chart" => "mostPopular",
                         "regionCode" => $location,
-                        "maxResults" => 20]
+                        "maxResults" => 50]
                 );
             }
             if ($location == null) {
                 $popularMedia = $this->youtube->videos->listVideos(
                     "snippet,statistics",
                     ["chart" => "mostPopular",
-                        "maxResults" => 20]
+                        "maxResults" => 50]
                 );
             }
             return $this->encodeJSON($popularMedia);
@@ -98,7 +113,6 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                 try {
                     $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
                 } catch (\Google_Service_Exception $e) {
-                    var_dump($channel);
                     $profile = null;
                 }
             }
@@ -108,7 +122,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             }
             $data['numberOfLikes'] = null;
             if (isset($item->statistics)) {
-                $data['numberOfLikes'] = $item->statistics->likeCount;
+                $data['numberOfLikes'] = intval($item->statistics->likeCount);
             }
 
             $data['media'] = "https://www.youtube.com/embed/" . $id;

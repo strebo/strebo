@@ -16,6 +16,8 @@
     "passport-instagram": "^1.0.0",
     "passport-local": "~0.1.6",
     "passport-soundcloud": "^0.1.2",
-    "passport-twitter": "~1.0.2"
+    "passport-twitter-token": "~1.1.1",
+    "passport-youtube-v3": "~2.0.0",
+    "passport-facebook-token": "~3.2.0"
   }
 }

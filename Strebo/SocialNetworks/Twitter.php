@@ -5,8 +5,9 @@ use Strebo;
 
 use Symfony\Component\Config\Definition\Exception\Exception;
 use TwitterAPIExchange;
+//use Abraham\TwitterOAuth\TwitterOAuth;
 
-class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface
+class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PublicInterface
 {
 
     private $url;
@@ -21,41 +22,53 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             'twitter',
             '#4099FF',
             ["DE" => "23424829", "US" => "23424977", "W" => "1"],
-            null,
-            null,
+            getenv('strebo_twitter_3'),
+            getenv('strebo_twitter_4'),
             null
         );
-        $oauthAccessToken = getenv('strebo_twitter_1');
-        $accessTokenSecret = getenv('strebo_twitter_2');
-        $consumerKey = getenv('strebo_twitter_3');
-        $consumerSecret = getenv('strebo_twitter_4');
+
+        $accessToken = getenv('strebo_twitter_1');
+        $tokenSecret = getenv('strebo_twitter_2');
 
         $settings = array(
-            'oauth_access_token' => $oauthAccessToken,
-            'oauth_access_token_secret' => $accessTokenSecret,
-            'consumer_key' => $consumerKey,
-            'consumer_secret' => $consumerSecret
+            'oauth_access_token' => $accessToken,
+            'oauth_access_token_secret' => $tokenSecret,
+            'consumer_key' => $this->getApiKey(),
+            'consumer_secret' => $this->getApiSecret()
         );
 
         $this->twitter = new TwitterAPIExchange($settings);
     }
 
-    public function connect($code)
+    /*public function connect($code)
     {
 
+
+        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret());
+        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => $this->getApiCallback()));
+        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret(), $request_token['oauth_token'], $request_token['oauth_token_secret']);
+        $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $code[1]]);
+        var_dump($request_token);
+        var_dump($access_token);
+
+        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret(), $access_token['oauth_token'], $access_token['oauth_token_secret']);
+
+
+        return [$access_token, $connection];
     }
 
-    public function getPersonalFeed($token)
+    public function getPersonalFeed($user)
     {
-        $this->url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
+        $oauthTwitter = $user->getClient($this->getName());
+        $this->url = 'https://api.twitter.com/1.1/statuses/home_timeline.json';
         $this->requestMethod = "GET";
-        $this->getfield = '?user_id' . $token;
+        $this->getfield = '?count=50';
 
-        return json_decode($this->twitter->setGetfield($this->getfield)
+        return $this->encodeJSON($oauthTwitter->setGetfield($this->getfield)
             ->buildOauth($this->url, $this->requestMethod)
             ->performRequest());
 
-    }
+    }*/
 
     public function search($tag)
     {

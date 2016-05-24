@@ -16,24 +16,44 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     if(!Cookies.get('id')) {
         Cookies.set('id', GUID());
+        $rootScope.connectorTooltip = true;
     }
 
     console.debug("Your ID: " + Cookies.get('id'));
 
+    conn.secureSend = function(x) {
+        try {
+            if (conn && conn.readyState === 1) {
+                conn.send(x);
+            } else {
+                serverError();
+                console.debug("WebSocket is not in OPEN state.");
+            }
+        } catch(ex) {
+            serverError();
+            console.debug(ex);
+        }
+    }
+
     conn.onopen = function () {
-        conn.send('Ping');
-        conn.send(JSON.stringify({
+        conn.secureSend('Ping');
+        conn.secureSend(JSON.stringify({
             command: 'identify',
             id: Cookies.get('id')
         }));
+        checkConnections();
         updateData();
     };
 
     conn.onerror = function () {
+        serverError();
+    };
+
+    function serverError() {
         $rootScope.loaderview = false;
         $rootScope.serverError = true;
-        $rootScope.$apply();
-    };
+        $rootScope.$applyAsync();
+    }
 
     conn.onmessage = function (e) {
 
@@ -73,10 +93,10 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     function updateData() {
         $rootScope.loaderview = true;
-        conn.send(JSON.stringify({
+        conn.secureSend(JSON.stringify({
             command: mode[currentMode],
             param: $rootScope.locations[currentLocation].abbreviation,
-            query: angular.element("#searchview-query").val()
+            query: ("" + angular.element("#searchview-query").val()).replace(/#/g,"")
         }));
     }
 
@@ -89,7 +109,8 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
                             socialNetwork: {
                                 name: feedByNetwork[i].name,
                                 icon: feedByNetwork[i].icon,
-                                color: feedByNetwork[i].color
+                                color: feedByNetwork[i].color,
+                                customIcon: feedByNetwork[i].customIcon
                             },
                             text: feedByNetwork[i].feed[j].text || "",
                             title: feedByNetwork[i].feed[j].title,

@@ -21,13 +21,16 @@ class DataCollector extends \Thread
     {
         foreach (array_keys((array)$this->publicFeed) as $location) {
             foreach ($this->socialNetworks as $network => $instance) {
-                $locationString = "getLocation";
-                $data = json_decode($instance->getPublicFeed($instance->$locationString($location)));
-                if ($data != null) {
-                    $this->publicFeed[$location][$network] = $data;
-                }
-                if ($data == null) {
-                    continue;
+                if ($instance instanceof PublicInterface) {
+                    echo "\n----Collecting Feed of " . $network . ": " . $location . "\n";
+                    $locationString = "getLocation";
+                    $data = json_decode($instance->getPublicFeed($instance->$locationString($location)));
+                    if ($data != null) {
+                        $this->publicFeed[$location][$network] = $data;
+                    }
+                    if ($data == null) {
+                        continue;
+                    }
                 }
             }
         }
@@ -44,15 +47,19 @@ class DataCollector extends \Thread
         }
     }
 
-    public function collectPersonalFeed($tokens)
+    public function collectPersonalFeed($user)
     {
-        $personalFeed = [];
+        $privateFeed = $user->getPrivateFeed();;
 
-        foreach ($tokens as $network => $token) {
-            $personalFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($token));
+        foreach (array_keys($user->getClients()) as $network) {
+            if (!isset($privateFeed[$network])) {
+                $privateFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($user));
+                $user->addPrivateFeed($network, $privateFeed[$network]);
+                $user->setTimer(0);
+            }
         }
 
-        return json_encode(["type" => "data", "json" => $personalFeed]);
+        return json_encode(["type" => "data", "json" => $privateFeed]);
     }
 
     public function search($tag)
@@ -92,12 +99,20 @@ class DataCollector extends \Thread
         return json_encode(["type" => "networks", "json" => $networks]);
     }
 
+    public function connect($user, $network)
+    {
+        $oauth = $this->socialNetworks[$network]->connect($user->getToken($network));
+        $user->addAuthorizedToken($network, $oauth[0]);
+        $user->addClient($network, $oauth[1]);
+    }
 
     public function run()
     {
         require __DIR__ . '/../vendor/autoload.php';
         while (true) {
+            echo "\n++Public Feed Collection was triggered.\n";
             $this->collectPublicFeed();
+            echo "\n++Public Feed was successfully collected.\n";
             sleep(240);
         }
     }

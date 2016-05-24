@@ -2,7 +2,8 @@
      ng-init="networkIndex = $index" id="item1{{ socialNetwork }}" draggable>
     <div class="social-media-content-header box-shadow" style="background-color:{{socialNetwork.color}};">
         <div class="social-media-content-header-x center">
-            <i class="fa fa-{{socialNetwork.icon}}"></i><br />
+            <i ng-if="!socialNetwork.customIcon" class="fa fa-{{socialNetwork.icon}}"></i>
+            <span ng-if="socialNetwork.customIcon" class="icon-{{socialNetwork.icon}}"></span><br />
             {{socialNetwork.name}}
         </div>
     </div>
@@ -10,7 +11,7 @@
         <div class="social-media-content-body-entry box-shadow" ng-repeat="entry in socialNetwork.feed"
              ng-click="showDetailView($index, networkIndex)">
             <div class="social-media-content-body-entry-image">
-                <div class="center" style="font-size:7vh;" ng-if="entry.type != 'text'">
+                <div class="center" style="font-size:7vh;" ng-if="entry.type != 'text' || entry.thumb || entry.media">
                     <img style="max-width:5.5vw;max-height:12vh;" ng-if="entry.type === 'audio' || socialNetwork.name === 'YouTube'" ng-src="{{entry.thumb}}"/>
                     <img style="max-width:5.5vw;max-height:12vh;" ng-if="entry.type === 'image'" ng-src="{{entry.media}}"/>
                     <video style="max-width:5.5vw;max-height:12vh;margin-top:1vh;" ng-if="entry.type === 'video' && socialNetwork.name !== 'YouTube'"
@@ -20,8 +21,9 @@
             <div class="social-media-content-body-entry-author">
                 <a href="{{entry.link | trustUrl}}" target="_blank">{{entry.author}}</a>
             </div>
-            <div class="social-media-content-body-entry-text" ng-class="entry.type == 'text' ? 'social-media-content-body-entry-text-textview' : ''" ellipsis>
-                {{entry.text}}
+            <div class="social-media-content-body-entry-text" ng-class="entry.type == 'text' || (!entry.thumb && (!entry.media || entry.type == 'audio')) ? 'social-media-content-body-entry-text-textview' : ''" ellipsis>
+                <div class="social-media-content-body-entry-text-title">{{entry.title}}</div>
+                <div ng-bind-html="entry.text"></div>
             </div>
             <div class="social-media-content-body-entry-time" style="font-size:0.8rem; color:#999;">
                 &ndash; {{entry.createdTime | differenceFilter}}
