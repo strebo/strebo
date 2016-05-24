@@ -20,8 +20,8 @@ module.exports = {
         'callbackURL': 'http://strebo.net?YouTube=1'
     },
     'facebookAuth' : {
-        'clientID': '1029594467122735',
-        'clientSecret': '837518b49027b8f58104c4ffb7f96fbe',
+        'clientID': '112533202499343',
+        'clientSecret': 'c01e0c4c83726c0a7825a8bb737e056b',
         'callbackURL': 'http://strebo.net?Facebook=1'
     }
 };
