@@ -33,7 +33,7 @@ connectors.twitter = getDefaultConfig("Twitter", "twitter", "Twitter", ["oauth_t
 connectors.instagram = getDefaultConfig("Instagram", "instagram", "Instagram", ["code"]);
 connectors.soundcloud = getDefaultConfig("SoundCloud", "soundcloud", "SoundCloud", ["code"]);
 connectors.youtube = getDefaultConfig("YouTube", "youtube", "YouTube", ["code"]);
-connectors.facebook = getDefaultConfig("Facebook", "facebook", "Facebook", ["accessToken"]);
+connectors.facebook = getDefaultConfig("Facebook", "facebook", "Facebook", ["code"]);
 
 function checkConnections() {
     for(var c in connectors) {
