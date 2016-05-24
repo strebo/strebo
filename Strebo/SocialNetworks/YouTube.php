@@ -140,4 +140,13 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
         return json_encode($newJSON);
     }
+
+    public function isTokenValid($user)
+    {
+        $client = $user->getClient($this->getName());
+        if ($client != null && $client->getClient()->isAccessTokenExpired()) {
+            $user->removeToken($this->getName());
+            $user->removeClient($this->getName());
+        }
+    }
 }

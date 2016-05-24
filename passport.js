@@ -1,9 +1,9 @@
 // config/passport.js
-var TwitterTokenStrategy = require('passport-twitter-token').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var SoundCloudStrategy = require('passport-soundcloud').Strategy;
 var YoutubeV3Strategy = require('passport-youtube-v3').Strategy;
-var FacebookTokenStrategy = require('passport-facebook-token').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 // load the auth variables
 var configAuth = require('./auth');
@@ -28,10 +28,11 @@ module.exports = function (passport) {
     // =========================================================================
     // TWITTER =================================================================
     // =========================================================================
-    passport.use(new TwitterTokenStrategy({
+    passport.use(new TwitterStrategy({
 
             consumerKey: configAuth.twitterAuth.consumerKey,
-            consumerSecret: configAuth.twitterAuth.consumerSecret
+            consumerSecret: configAuth.twitterAuth.consumerSecret,
+            callbackURL: configAuth.twitterAuth.callbackURL
 
         },
         function (/*token, tokenSecret, profile, done*/) {
@@ -92,16 +93,17 @@ module.exports = function (passport) {
     // =========================================================================
     // FACEBOOK ================================================================
     // =========================================================================
-    passport.use(new FacebookTokenStrategy({
+    passport.use(new FacebookStrategy({
 
             clientID: configAuth.facebookAuth.clientID,
-            clientSecret: configAuth.facebookAuth.clientSecret
-        },
-        function (/*accessToken, refreshToken, profile, done*/) {
+            clientSecret: configAuth.facebookAuth.clientSecret,
+            callbackURL: configAuth.facebookAuth.callbackURL,
+            enableProof: true
 
-            /* User.findOrCreate({facebookId: profile.id}, function (error, user) {
-             return done(error, user);
-             });*/
+        },
+        function (/*token, tokenSecret, profile, done*/) {
+
+            //console.log(profile);
 
         }));
 

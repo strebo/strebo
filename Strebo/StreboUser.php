@@ -56,7 +56,12 @@ class StreboUser extends \Thread
 
     public function getClient($network)
     {
-        return $this->clients[$network];
+        if (isset($this->clients[$network])) {
+            return $this->clients[$network];
+        }
+        if (!isset($this->clients[$network])) {
+            return null;
+        }
     }
 
     public function getClients()
@@ -76,7 +81,12 @@ class StreboUser extends \Thread
 
     public function getToken($network)
     {
-        return $this->tokens[$network];
+        if (isset($this->tokens[$network])) {
+            return $this->tokens[$network];
+        }
+        if (!isset($this->tokens[$network])) {
+            return null;
+        }
     }
 
     public function getPrivateFeed()
@@ -103,5 +113,15 @@ class StreboUser extends \Thread
     public function setTimer($timer)
     {
         $this->timer = $timer;
+    }
+
+    public function removeToken($network)
+    {
+        unset($this->tokens[$network]);
+    }
+
+    public function removeClient($network)
+    {
+        unset($this->clients[$network]);
     }
 }

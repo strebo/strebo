@@ -87,6 +87,7 @@ class DataCollector extends \Thread
         foreach ($this->socialNetworks as $instance) {
             if ($instance instanceof PrivateInterface) {
                 $status = "disconnected";
+                $instance->isTokenValid($user);
                 if (array_key_exists($instance->getName(), $user->getTokens())) {
                     $status = "connected";
                 }

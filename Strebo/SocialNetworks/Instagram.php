@@ -102,4 +102,9 @@ class Instagram extends Strebo\AbstractSocialNetwork implements Strebo\PrivateIn
 
         return json_encode($newJSON);
     }
+
+    public function isTokenValid($user)
+    {
+        //Instagram accesstokens don't expire
+    }
 }
