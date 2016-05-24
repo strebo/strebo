@@ -16,7 +16,7 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
             [null, null, null],
             getenv("strebo_facebook_1"),
             getenv("strebo_facebook_2"),
-            "http://strebo.net?Facebook=1");
+            "http://strebo.net/?Facebook=1");
 
         $this->facebook = new \Facebook\Facebook(
             ['app_id' => $this->getApiKey(),
@@ -27,24 +27,17 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
 
     public function connect($code)
     {
-        var_dump($code);
-        $client=$this->facebook->getOAuth2Client();
-        $token=$client->getAccessTokenFromCode($code);
-        var_dump($token);
-        return [];
+        $client = $this->facebook->getOAuth2Client();
+        $token = $client->getAccessTokenFromCode($code[0], $this->getApiCallback());
+        return [$token, null];
     }
 
     public function getPersonalFeed($user)
     {
-        //$request = new FacebookRequest(
-          //  $session,
-           // 'GET',
-            //'/me/feed'
-        //);
-        
-        $this->facebook->get('/me/feed');
-        //$response = $request->execute();
-        //$graphObject = $response->getGraphObject();
+        $token = $user->getAuthorizedToken($this->getName());
+        $posts = $this->facebook->get('/me/feed', $token);
+        var_dump($posts);
+
     }
 
     public function encodeJSON($json)
@@ -59,7 +52,14 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
 
     public function isTokenValid($user)
     {
-        // TODO: Implement isTokenValid() method.
+        $expiringDate = $user->getAuthorizedToken($this->getName());
+        $expiringDate = $expiringDate["expiresAt"];
+        $now = new DateTime(date("Y-m-d H:i:s.u"));
+
+        if ($now->diff($expiringDate)->format('%R') == "-") {
+            $user->removeToken($this->getName());
+            $user->removeClient($this->getName());
+        }
     }
 
 }

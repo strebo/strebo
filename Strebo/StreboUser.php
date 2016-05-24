@@ -16,10 +16,10 @@ class StreboUser extends \Thread
     {
         $this->userId = $userId;
         $this->socketId = $socketId;
-        $this->tokens = (array)[];
-        $this->clients = (array)[];
-        $this->authorizedTokens = (array)[];
-        $this->privateFeed = (array)[];
+        $this->tokens = [];
+        $this->clients = [];
+        $this->authorizedTokens = [];
+        $this->privateFeed = [];
         $this->timer = 0;
         $this->start();
     }
