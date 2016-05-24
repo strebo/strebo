@@ -3,7 +3,7 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var SoundCloudStrategy = require('passport-soundcloud').Strategy;
 var YoutubeV3Strategy = require('passport-youtube-v3').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
+var FacebookTokenStrategy = require('passport-facebook-token').Strategy;
 
 // load the auth variables
 var configAuth = require('./auth');
@@ -93,17 +93,16 @@ module.exports = function (passport) {
     // =========================================================================
     // FACEBOOK ================================================================
     // =========================================================================
-    passport.use(new FacebookStrategy({
+    passport.use(new FacebookTokenStrategy({
 
             clientID: configAuth.facebookAuth.clientID,
-            clientSecret: configAuth.facebookAuth.clientSecret,
-            callbackURL: configAuth.facebookAuth.callbackURL,
-            enableProof: true
-
+            clientSecret: configAuth.facebookAuth.clientSecret
         },
-        function (/*token, tokenSecret, profile, done*/) {
+        function (/*accessToken, refreshToken, profile, done*/) {
 
-            //console.log(profile);
+            /* User.findOrCreate({facebookId: profile.id}, function (error, user) {
+             return done(error, user);
+             });*/
 
         }));
 

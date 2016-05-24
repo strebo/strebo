@@ -16,10 +16,10 @@ class StreboUser extends \Thread
     {
         $this->userId = $userId;
         $this->socketId = $socketId;
-        $this->tokens = [];
-        $this->clients = [];
-        $this->authorizedTokens = [];
-        $this->privateFeed = [];
+        $this->tokens = (array)[];
+        $this->clients = (array)[];
+        $this->authorizedTokens = (array)[];
+        $this->privateFeed = (array)[];
         $this->timer = 0;
         $this->start();
     }
@@ -93,7 +93,7 @@ class StreboUser extends \Thread
     {
         while (true) {
             if (isset($this->privateFeed) && $this->timer == 240) {
-                $this->privateFeed = [];
+                $this->privateFeed = (array)[];
                 $this->timer = 0;
             }
             sleep(1);
