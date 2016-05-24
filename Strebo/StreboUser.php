@@ -81,7 +81,12 @@ class StreboUser extends \Thread
 
     public function getToken($network)
     {
-        return $this->tokens[$network];
+        if (isset($this->tokens[$network])) {
+            return $this->tokens[$network];
+        }
+        if (!isset($this->tokens[$network])) {
+            return null;
+        }
     }
 
     public function getPrivateFeed()
