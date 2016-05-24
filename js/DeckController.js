@@ -45,8 +45,7 @@ app.controller('DeckController', ['$scope', 'DataService', function ($scope, Dat
     .directive('droppable', function () {
         return {
             scope: {
-                drop: '&',
-                bin: '='
+                drop: '&'
             },
             link: function (scope, element) {
                 // again we need the native object
@@ -91,12 +90,7 @@ app.controller('DeckController', ['$scope', 'DataService', function ($scope, Dat
                         var item = document.getElementById(e.dataTransfer.getData('Text'));
                         this.appendChild(item);
 
-                        scope.$apply(function(scope) {
-                            var fn = scope.drop();
-                            if ('undefined' !== typeof fn) {
-                                fn(item.id);
-                            }
-                        });
+                        scope.$apply('drop()');
 
                         return false;
                     },
