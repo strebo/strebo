@@ -87,7 +87,6 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
                 for ($i = 1; $i < count($match); $i++) {
                     $tempSong["tags"] = str_replace("\"", "", $match[$i]);
                 }
-                var_dump($tempSong["tags"]);
                 $feed[] = $tempSong;
                 $tempSong = [];
             }

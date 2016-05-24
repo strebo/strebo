@@ -21,6 +21,7 @@ class StreboUser extends \Thread
         $this->authorizedTokens = [];
         $this->privateFeed = [];
         $this->timer = 0;
+        $this->start();
     }
 
     public function getUserId()
