@@ -4,7 +4,7 @@ module.exports = function (app, passport) {
     // TWITTER ROUTES ========================
     // =======================================
     // route for twitter authentication and login
-    app.post('/auth/twitter/token', passport.authenticate('twitter-token'), function (req, res) {
+    app.post('/auth/twitter', passport.authenticate('twitter-token'), function (req, res) {
         // do something with req.user
         res.send(req.user ? 200 : 401);
     });
@@ -31,7 +31,7 @@ module.exports = function (app, passport) {
     // FACEBOOK ROUTES =======================
     // =======================================
     // route for facebook authentication and login
-    app.post('/auth/facebook/token', passport.authenticate('facebook-token'), function (req, res) {
+    app.post('/auth/facebook', passport.authenticate('facebook-token'), function (req, res) {
         // do something with req.user
         res.send(req.user ? 200 : 401);
     });
