@@ -104,4 +104,14 @@ class StreboUser extends \Thread
     {
         $this->timer = $timer;
     }
+
+    public function removeToken($network)
+    {
+        unset($this->tokens[$network]);
+    }
+
+    public function removeClient($network)
+    {
+        unset($this->clients[$network]);
+    }
 }
