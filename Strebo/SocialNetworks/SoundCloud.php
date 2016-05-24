@@ -136,12 +136,15 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
         return json_encode($timeJSON);
 
     }
-    
-    public function isTokenValid($user){
+
+    public function isTokenValid($user)
+    {
         try {
             $oauthSoundCloud = $user->getClient($this->getName());
-            $response = json_decode($oauthSoundCloud->get("https://api.soundcloud.com/me/favorites"));
-        }catch (\Exception $e){
+            if ($oauthSoundCloud != null) {
+                json_decode($oauthSoundCloud->get("https://api.soundcloud.com/me/favorites"));
+            }
+        } catch (\Exception $e) {
             $user->removeToken($this->getName());
             $user->removeClient($this->getName());
         }

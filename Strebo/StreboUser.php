@@ -56,7 +56,12 @@ class StreboUser extends \Thread
 
     public function getClient($network)
     {
-        return $this->clients[$network];
+        if (isset($this->clients[$network])) {
+            return $this->clients[$network];
+        }
+        if (!isset($this->clients[$network])) {
+            return null;
+        }
     }
 
     public function getClients()
