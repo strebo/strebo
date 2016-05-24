@@ -4,7 +4,10 @@ module.exports = function (app, passport) {
     // TWITTER ROUTES ========================
     // =======================================
     // route for twitter authentication and login
-    app.get('/auth/twitter', passport.authenticate('twitter'));
+    app.post('/auth/twitter/token', passport.authenticate('twitter-token'), function (req, res) {
+        // do something with req.user
+        res.send(req.user ? 200 : 401);
+    });
 
     // =======================================
     // INSTAGRAM ROUTES ======================

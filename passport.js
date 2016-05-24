@@ -1,5 +1,5 @@
 // config/passport.js
-var TwitterStrategy = require('passport-twitter').Strategy;
+var TwitterTokenStrategy = require('passport-twitter-token').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var SoundCloudStrategy = require('passport-soundcloud').Strategy;
 var YoutubeV3Strategy = require('passport-youtube-v3').Strategy;
@@ -28,11 +28,10 @@ module.exports = function (passport) {
     // =========================================================================
     // TWITTER =================================================================
     // =========================================================================
-    passport.use(new TwitterStrategy({
+    passport.use(new TwitterTokenStrategy({
 
             consumerKey: configAuth.twitterAuth.consumerKey,
-            consumerSecret: configAuth.twitterAuth.consumerSecret,
-            callbackURL: configAuth.twitterAuth.callbackURL
+            consumerSecret: configAuth.twitterAuth.consumerSecret
 
         },
         function (/*token, tokenSecret, profile, done*/) {
