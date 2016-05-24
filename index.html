@@ -166,7 +166,7 @@
                 </div>
             </div>
         </div>
-        <div id="container-board"
+        <div id="container-board" droppable
              style="{{view===1?'overflow-y:scroll;padding-left:3vw;padding-bottom:4vh;':'white-space: nowrap; overflow-x: scroll;'}}">
             <deck-view id="deck-view" ng-if="view===0 && loaderview === false" ng-controller="DeckController"></deck-view>
             <feed-view id="feed-view" ng-if="view===1 && loaderview === false" ng-controller="FeedController"></feed-view>
