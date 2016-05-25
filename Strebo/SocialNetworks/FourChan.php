@@ -26,7 +26,7 @@ class FourChan extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
 
     public function getPublicFeed($location)
     {
-        return $this->encodeJSON(file_get_contents('https://a.4cdn.org/b/1.json'));
+        return $this->encodeJSON(file_get_contents('https://a.4cdn.org/news/1.json'));
     }
 
     public function encodeJSON($json)
@@ -41,9 +41,9 @@ class FourChan extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
 	            if(isset($gitem["posts"][0]["sub"])) { $item["title"] = $gitem["posts"][0]["sub"]; }
 	            $item["author"] = $gitem["posts"][0]["name"];
 	            $item["text"] = $gitem["posts"][0]["com"];
-	            $item["link"] = "https://boards.4chan.org/b/thread/" . $gitem["posts"][0]["no"];
+	            $item["link"] = "https://boards.4chan.org/news/thread/" . $gitem["posts"][0]["no"];
 	            if(isset($gitem["posts"][0]["tim"])) {
-	            	$item["media"] = "https://i.4cdn.org/b/" . $gitem["posts"][0]["tim"] . "" . $gitem["posts"][0]["ext"];
+	            	$item["media"] = "https://i.4cdn.org/news/" . $gitem["posts"][0]["tim"] . "" . $gitem["posts"][0]["ext"];
 	            	$item["type"] = 'image';
 	            	if($gitem["posts"][0]["ext"] == ".webm") {$item["type"] = 'video';}
 	            } else {
