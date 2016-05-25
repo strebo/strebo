@@ -1,4 +1,4 @@
-module.exports = function(app, passport) {
+module.exports = function (app, passport) {
 
     // =======================================
     // TWITTER ROUTES ========================
@@ -6,13 +6,13 @@ module.exports = function(app, passport) {
     // route for twitter authentication and login
     app.get('/auth/twitter', passport.authenticate('twitter'));
 
-	// =======================================
+    // =======================================
     // INSTAGRAM ROUTES ======================
     // =======================================
     // route for instagram authentication and login
     app.get('/auth/instagram', passport.authenticate('instagram'));
 
-	// =======================================
+    // =======================================
     // SOUNDCLOUD ROUTES =====================
     // =======================================
     // route for soundcloud authentication and login
@@ -28,5 +28,8 @@ module.exports = function(app, passport) {
     // FACEBOOK ROUTES =======================
     // =======================================
     // route for facebook authentication and login
-    app.get('/auth/facebook', passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'manage_pages', 'user_posts'] }));
+    app.get('/auth/facebook', passport.authenticate('facebook', {
+        authType: 'rerequest',
+        scope: ['user_friends', 'manage_pages', 'user_posts', 'user_likes']
+    }));
 };
