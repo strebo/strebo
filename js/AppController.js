@@ -45,13 +45,18 @@ app.controller('AppController', ['$scope', 'DataService', '$rootScope', function
 
     var handler = function(e){
         // Right Arrow
-        if(e.keyCode === 39)
+        if(e.keyCode === 39) {
             nextItem();
+            updateDetailView();
+            e.preventDefault();
+        }
         // Left Arrow
-        else if(e.keyCode === 37)
+        else if(e.keyCode === 37) {
             previousItem();
-        updateDetailView();
-        e.preventDefault();
+            updateDetailView();
+            e.preventDefault();
+        }
+        
     };
     var $doc = angular.element(document);
     $doc.on('keydown', handler);
