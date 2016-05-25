@@ -38,21 +38,24 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
         $token = $user->getAuthorizedToken($this->getName());
         $this->token = $token;
         $feed = [];
-        $taggedPosts = json_decode($this->facebook->get(
+        $taggedPosts = $this->facebook->get(
             '/me/tagged?fields=message,likes,link,description,caption,created_time,from,picture,source&',
             $token
-        ));
-        $likes = json_decode($this->facebook->get("/me/likes", $token));
+        );
+        $likes = $this->facebook->get("/me/likes", $token);
         $likePosts = [];
-        foreach ($likes->data as $site) {
-            $likePosts[] = json_decode($this->facebook->get(
+        $body = $likes->getDecodedBody();
+        foreach ($body["data"] as $site) {
+            $likePosts[] = $this->facebook->get(
                 $site->id . "/posts?fields=message,likes,link,description,caption,created_time,from,picture,source",
                 $token
-            ));
+            );
         }
 
-        $feed[] = $this->encodeJSON($taggedPosts);
-        $feed[] = $this->encodeJSON($likePosts);
+        $feed[] = $this->encodeJSON($taggedPosts->getDecodedBody());
+        foreach ($likePosts as $site) {
+            $feed[] = $this->encodeJSON($site->getDecodedBody());
+        }
 
         $this->token = null;
         return json_encode(
@@ -69,7 +72,7 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
     {
         $feed = [];
 
-        foreach ($json->data as $item) {
+        foreach ($json["data"] as $item) {
 
             $data = [];
 

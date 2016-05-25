@@ -49,9 +49,9 @@ class DataCollector extends \Thread
 
     public function collectPersonalFeed($user)
     {
-        $privateFeed = $user->getPrivateFeed();;
+        $privateFeed = $user->getPrivateFeed();
 
-        foreach (array_keys($user->getClients()) as $network) {
+        foreach (array_keys((array)$user->getClients()) as $network) {
             if (!isset($privateFeed[$network])) {
                 $privateFeed[$network] = json_decode($this->socialNetworks[$network]->getPersonalFeed($user));
                 $user->addPrivateFeed($network, $privateFeed[$network]);
