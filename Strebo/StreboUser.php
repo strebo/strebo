@@ -71,7 +71,12 @@ class StreboUser extends \Thread
 
     public function getAuthorizedToken($network)
     {
-        return $this->authorizedTokens[$network];
+        if (isset($this->authorizedTokens[$network])) {
+            return $this->authorizedTokens[$network];
+        }
+        if (!isset($this->authorizedTokens[$network])) {
+            return null;
+        }
     }
 
     public function addAuthorizedToken($network, $authorizedToken)

@@ -35,8 +35,17 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
     public function getPersonalFeed($user)
     {
         $token = $user->getAuthorizedToken($this->getName());
-        $posts = $this->facebook->get('/me/feed', $token);
+        $results = $this->facebook->get('/me/feed', $token);
+        $posts = [];
         var_dump($posts);
+        $maxResults = 50;
+        if (count($results->data < 50)) {
+            $maxResults = count($results->data);
+        }
+
+        for ($i = 0; $i < $maxResults; $i++) {
+
+        }
 
     }
 
@@ -54,12 +63,11 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
     {
         $expiringDate = $user->getAuthorizedToken($this->getName());
         $expiringDate = $expiringDate["expiresAt"];
-        $now = new DateTime(date("Y-m-d H:i:s.u"));
-
-        if ($now->diff($expiringDate)->format('%R') == "-") {
+        $now = new \DateTime(date("Y-m-d H:i:s.u"));
+        var_dump($expiringDate);
+        if ($expiringDate != null && $now->diff($expiringDate)->format('%R') == "-") {
             $user->removeToken($this->getName());
             $user->removeClient($this->getName());
         }
     }
-
 }
