@@ -5,6 +5,7 @@ use Strebo;
 
 use Symfony\Component\Config\Definition\Exception\Exception;
 use TwitterAPIExchange;
+
 //use Abraham\TwitterOAuth\TwitterOAuth;
 
 class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PublicInterface
@@ -46,12 +47,22 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PublicInter
 
         $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret());
         $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => $this->getApiCallback()));
-        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret(), $request_token['oauth_token'], $request_token['oauth_token_secret']);
+        $connection = new TwitterOAuth(
+            $this->getApiKey(),
+            $this->getApiSecret(),
+            $request_token['oauth_token'],
+            $request_token['oauth_token_secret']
+        );
         $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $code[1]]);
         var_dump($request_token);
         var_dump($access_token);
 
-        $connection = new TwitterOAuth($this->getApiKey(), $this->getApiSecret(), $access_token['oauth_token'], $access_token['oauth_token_secret']);
+        $connection = new TwitterOAuth(
+            $this->getApiKey(),
+            $this->getApiSecret(),
+            $access_token['oauth_token'],
+            $access_token['oauth_token_secret']
+        );
 
 
         return [$access_token, $connection];

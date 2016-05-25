@@ -77,29 +77,30 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
             $data = [];
 
             $data['tags'] = null;
-            $data['createdTime'] = parent::formatTime(strtotime($item->created_time));
-            if (isset($item->picture)) {
+            $data['createdTime'] = parent::formatTime(strtotime($item["created_time"]));
+            if (isset($item["picture"])) {
                 $data['type'] = "image";
-                $data['media'] = $item->picture;
+                $data['media'] = $item["picture"];
             }
-            if (!isset($item->picture)) {
+            if (!isset($item["picture"])) {
                 $data['type'] = "text";
                 $data['media'] = null;
             }
 
-            $data['link'] = $item->link;
-            $data['author'] = $item->from->name;
+            $data['link'] = $item["link"];
+            $data['author'] = $item["from"]["name"];
 
-            $author = $this->facebook->get($item->from->id . "?fields=picture");
-            $data['authorPicture'] = $author->picture->data->url;
+            $author = $this->facebook->get($item["from"]["id"] . "?fields=picture",$this->token);
+            $body=$author->getDecodedBody();
+            $data['authorPicture'] = $body["picture"]["data"]["url"];
 
             $data['numberOfLikes'] = null;
-            if (isset($item->likes)) {
-                $data['numberOfLikes'] = count($item->likes);
+            if (isset($item["likes"])) {
+                $data['numberOfLikes'] = count($item["likes"]);
             }
-            $data['thumb'] = $item->picture;
+            $data['thumb'] = $item["picture"];
             $data['title'] = null;
-            $data['text'] = $item->message;
+            $data['text'] = $item["message"];
 
             $feed[] = $data;
         }
