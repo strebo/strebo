@@ -11,13 +11,15 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
 
     public function __construct()
     {
-        parent::__construct("Facebook",
+        parent::__construct(
+            "Facebook",
             "facebook",
             "#3b5999",
             [null, null, null],
             getenv("strebo_facebook_1"),
             getenv("strebo_facebook_2"),
-            "http://strebo.net/?Facebook=1");
+            "http://strebo.net/?Facebook=1"
+        );
 
         $this->facebook = new \Facebook\Facebook(
             ['app_id' => $this->getApiKey(),
@@ -37,7 +39,7 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
     {
         $token = $user->getAuthorizedToken($this->getName());
         $this->token = $token;
-        $feed = [];
+        $feeds = [];
         $taggedPosts = $this->facebook->get(
             '/me/tagged?fields=message,likes,link,description,caption,created_time,from,picture,source&',
             $token
@@ -47,14 +49,19 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
         $body = $likes->getDecodedBody();
         foreach ($body["data"] as $site) {
             $likePosts[] = $this->facebook->get(
-                $site->id . "/posts?fields=message,likes,link,description,caption,created_time,from,picture,source",
+                $site["id"] . "/posts?fields=message,likes,link,description,caption,created_time,from,picture,source",
                 $token
             );
         }
 
-        $feed[] = $this->encodeJSON($taggedPosts->getDecodedBody());
+        $feeds[] = $this->encodeJSON($taggedPosts->getDecodedBody());
         foreach ($likePosts as $site) {
-            $feed[] = $this->encodeJSON($site->getDecodedBody());
+            $feeds[] = $this->encodeJSON($site->getDecodedBody());
+        }
+        $feed=[];
+        $feed=$likePosts;
+        foreach ($feeds as $array){
+            $feed=array_merge($feed,$array);
         }
 
         $this->token = null;
@@ -90,8 +97,8 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
             $data['link'] = $item["link"];
             $data['author'] = $item["from"]["name"];
 
-            $author = $this->facebook->get($item["from"]["id"] . "?fields=picture",$this->token);
-            $body=$author->getDecodedBody();
+            $author = $this->facebook->get($item["from"]["id"] . "?fields=picture", $this->token);
+            $body = $author->getDecodedBody();
             $data['authorPicture'] = $body["picture"]["data"]["url"];
 
             $data['numberOfLikes'] = null;
@@ -100,8 +107,10 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
             }
             $data['thumb'] = $item["picture"];
             $data['title'] = null;
-            $data['text'] = $item["message"];
-
+            $data['text']=null;
+            if(isset($item["message"])) {
+                $data['text'] = $item["message"];
+            }
             $feed[] = $data;
         }
         return $feed;
