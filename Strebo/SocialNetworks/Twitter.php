@@ -104,7 +104,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PublicInter
     {
         $this->url = 'https://api.twitter.com/1.1/trends/place.json';
         $this->requestMethod = "GET";
-        $this->getfield = '?id=' . $location;
+        $this->getfield = '?id=' . $location . '&count=3';
 
         $trendsresult = $this->twitter->setGetfield($this->getfield)
             ->buildOauth($this->url, $this->requestMethod)
@@ -124,11 +124,10 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PublicInter
 
         $this->url = 'https://api.twitter.com/1.1/search/tweets.json';
 
-
         $trendingTweets = [];
 
-        foreach ($trends as $trend) {
-            $this->getfield = '?q=' . $trend . '&result_type=popular&count=2';
+        foreach (array_slice($trends, 0, 10) as $trend) {
+            $this->getfield = '?q=' . $trend . '&result_type=popular&count=3';
 
             $trendingTweets[] = json_decode($this->twitter->setGetfield($this->getfield)
                 ->buildOauth($this->url, $this->requestMethod)
