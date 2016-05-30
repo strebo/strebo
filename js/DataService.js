@@ -21,13 +21,15 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
 
     console.debug("Your ID: " + Cookies.get('id'));
 
+    conn = new WebSocket('ws://' + location.hostname + ':8080/echobot');    
+
     conn.secureSend = function(x) {
-        try {
+	 try {
             if (conn && conn.readyState === 1) {
                 conn.send(x);
             } else {
                 serverError();
-                console.debug("WebSocket is not in OPEN state.");
+                console.debug("+++WebSocket is not in OPEN state.+++");
             }
         } catch(ex) {
             serverError();
@@ -36,6 +38,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     }
 
     conn.onopen = function () {
+        console.debug("+++ WebSocket Connection estbalished+++");
         conn.secureSend('Ping');
         conn.secureSend(JSON.stringify({
             command: 'identify',
@@ -60,6 +63,8 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
         var message = JSON.parse(e.data);
 
         if (message.type === "data") {
+            console.debug("--Got: Data");
+            console.debug(message);
             feedByNetwork = message.json;
             feed.splice(0, feed.length);
             extractPosts();
@@ -67,6 +72,8 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
             $rootScope.loaderview = false;
             $rootScope.$apply();
         } else if(message.type === "networks") {
+            console.debug("--Got: Networks");
+            console.debug(message);
             networks.splice(0, networks.length);
             for(var i = 0, len = message.json.length; i < len; ++i)
                 networks.push(message.json[i]);
@@ -92,6 +99,7 @@ app.service('DataService', ['$http', '$q', '$rootScope', function ($http, $q, $r
     /* Private Functions */
 
     function updateData() {
+        console.debug("--Request Update Of Data");
         $rootScope.loaderview = true;
         conn.secureSend(JSON.stringify({
             command: mode[currentMode],
