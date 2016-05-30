@@ -35,7 +35,7 @@ class FourChan extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
         $data = json_decode($json, true);
         $feed = [];
 
-        foreach ($data["threads"] as $gitem) {
+        foreach (array_slice($data["threads"],1) as $gitem) {
             if ($gitem["posts"][0]["resto"] == 0) {
                 $item = [];
                 if (isset($gitem["posts"][0]["sub"])) {
