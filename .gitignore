@@ -2,6 +2,7 @@
 .env.*.php
 .env.php
 .env
+*.out
 vendor/
 composer.phar
 .idea
