@@ -53,26 +53,35 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
                 $token
             );
         }
-
-        $feeds[] = $this->encodeJSON($taggedPosts->getDecodedBody());
-        foreach ($likePosts as $site) {
-            $feeds[] = $this->encodeJSON($site->getDecodedBody());
+        $decodedBody = $taggedPosts->getDecodedBody();
+        if (!empty($decodedBody["data"])) {
+            $feeds[] = $this->encodeJSON($decodedBody);
         }
-        $feed = [];
-        $feed = $likePosts;
-        foreach ($feeds as $array) {
-            $feed = array_merge($feed, $array);
+        $decodedBody = $likePosts->getDecodedBody();
+        if (!empty($decodedBody["data"])) {
+            foreach ($likePosts as $site) {
+                $feeds[] = $this->encodeJSON($site->getDecodedBody());
+            }
         }
 
-        $this->token = null;
-        return json_encode(
-            ['name' => parent::getName(),
-                'icon' => parent::getIcon(),
-                'color' => parent::getColor(),
-                'feed' => $feed]
-        );
+        if (empty($feeds)) {
+            return null;
+        }
+        if (!empty($feeds)) {
+            $feed = [];
+            foreach ($feeds as $array) {
+                $feed = array_merge($feed, $array);
+            }
 
-
+            $this->token = null;
+            return json_encode(
+                ['name' => parent::getName(),
+                    'icon' => parent::getIcon(),
+                    'color' => parent::getColor(),
+                    'feed' => $feed]
+            );
+        }
+        
     }
 
     public function encodeJSON($json)
