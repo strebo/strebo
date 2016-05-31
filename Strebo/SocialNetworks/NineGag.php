@@ -21,7 +21,7 @@ class NineGag extends Strebo\AbstractSocialNetwork implements Strebo\PublicInter
 
     public function search($tag)
     {
-       return null;
+        return null;
     }
 
     public function getPublicFeed($location)
@@ -41,7 +41,7 @@ class NineGag extends Strebo\AbstractSocialNetwork implements Strebo\PublicInter
             $item["author"] = "9GAG";
             $item["numberOfLikes"] = $gitem["votes"]["count"];
             $item["link"] = $gitem["link"];
-            if($gitem["media"] != false) {
+            if ($gitem["media"] != false) {
                 $item["type"] = "video";
                 $item["media"] = $gitem["media"]["webm"];
             } else {

@@ -152,7 +152,7 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PublicInter
                 foreach ($tweet->entities->hashtags as $hashtag) {
                     $data['tags'][] = $hashtag->text;
                 }
-                $data['createdTime'] = $this->formatTime($tweet->created_at);
+                $data['createdTime'] = parent::formatTime(strtotime($tweet->created_at));
                 $data['text'] = $tweet->text;
                 $data['title'] = null;
                 $data['link'] = 'https://twitter.com/statuses/' . $tweet->id_str;
@@ -179,32 +179,5 @@ class Twitter extends Strebo\AbstractSocialNetwork implements Strebo\PublicInter
             'feed' => $feed);
 
         return json_encode($newJSON);
-    }
-
-    public function formatTime($time)
-    {
-        $month = ["Jan" => 1,
-            "Feb" => 2,
-            "Mar" => 3,
-            "Apr" => 4,
-            "May" => 5,
-            "Jun" => 6,
-            "Jul" => 7,
-            "Aug" => 8,
-            "Sep" => 9,
-            "Oct" => 10,
-            "Nov" => 11,
-            "Dec" => 12];
-
-        $timeJSON = array('day' => substr($time, 8, 2),
-            'month' => $month[substr($time, 4, 3)],
-            'year' => substr($time, 26),
-            'hour' => substr($time, 11, 2),
-            'minute' => substr($time, 14, 2),
-            'second' => substr($time, 17, 2)
-        );
-
-        return json_encode($timeJSON);
-
     }
 }
