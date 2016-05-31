@@ -120,7 +120,7 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
     {
         $expiringDate = $user->getAuthorizedToken($this->getName());
         if ($expiringDate != null) {
-            $expiringDate = $expiringDate->expiresAt;
+            $expiringDate = $expiringDate->getExpiresAt();
             $now = new \DateTime(date("Y-m-d H:i:s.u"));
             if ($now->diff($expiringDate)->format('%R') == "-") {
                 $user->removeToken($this->getName());
