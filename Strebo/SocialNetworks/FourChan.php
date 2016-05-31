@@ -45,7 +45,10 @@ class FourChan extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
                 $item["text"] = $gitem["posts"][0]["com"];
                 $item["link"] = "https://boards.4chan.org/news/thread/" . $gitem["posts"][0]["no"];
                 if (isset($gitem["posts"][0]["tim"])) {
-                    $item["media"] = "https://i.4cdn.org/news/" . $gitem["posts"][0]["tim"] . "" . $gitem["posts"][0]["ext"];
+                    $item["media"] = "https://i.4cdn.org/news/"
+                        . $gitem["posts"][0]["tim"]
+                        . ""
+                        . $gitem["posts"][0]["ext"];
                     $item["type"] = 'image';
                     if ($gitem["posts"][0]["ext"] == ".webm") {
                         $item["type"] = 'video';
@@ -53,7 +56,7 @@ class FourChan extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
                 } else {
                     $item["type"] = 'text';
                 }
-                $item["createdTime"] = $this->formatTime($gitem["posts"][0]["time"]);
+                $item["createdTime"] = parent::formatTime($gitem["posts"][0]["time"]);
                 array_push($feed, $item);
             }
         }
@@ -65,16 +68,5 @@ class FourChan extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
             'feed' => $feed);
 
         return json_encode($newJSON);
-    }
-
-    public function formatTime($time)
-    {
-        return json_encode(array('day' => date("d", $time),
-            'month' => date("m", $time),
-            'year' => date("Y", $time),
-            'hour' => date("H", $time),
-            'minute' => date("i", $time),
-            'second' => date("s", $time)
-        ));
     }
 }
