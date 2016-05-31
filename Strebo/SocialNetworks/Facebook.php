@@ -58,10 +58,10 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
         foreach ($likePosts as $site) {
             $feeds[] = $this->encodeJSON($site->getDecodedBody());
         }
-        $feed=[];
-        $feed=$likePosts;
-        foreach ($feeds as $array){
-            $feed=array_merge($feed,$array);
+        $feed = [];
+        $feed = $likePosts;
+        foreach ($feeds as $array) {
+            $feed = array_merge($feed, $array);
         }
 
         $this->token = null;
@@ -107,8 +107,8 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
             }
             $data['thumb'] = $item["picture"];
             $data['title'] = null;
-            $data['text']=null;
-            if(isset($item["message"])) {
+            $data['text'] = null;
+            if (isset($item["message"])) {
                 $data['text'] = $item["message"];
             }
             $feed[] = $data;
@@ -119,11 +119,13 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
     public function isTokenValid($user)
     {
         $expiringDate = $user->getAuthorizedToken($this->getName());
-        $expiringDate = $expiringDate["expiresAt"];
-        $now = new \DateTime(date("Y-m-d H:i:s.u"));
-        if ($expiringDate != null && $now->diff($expiringDate)->format('%R') == "-") {
-            $user->removeToken($this->getName());
-            $user->removeClient($this->getName());
+        if ($expiringDate != null) {
+            $expiringDate = $expiringDate["expiresAt"];
+            $now = new \DateTime(date("Y-m-d H:i:s.u"));
+            if ($now->diff($expiringDate)->format('%R') == "-") {
+                $user->removeToken($this->getName());
+                $user->removeClient($this->getName());
+            }
         }
     }
 }
