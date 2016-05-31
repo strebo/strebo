@@ -54,7 +54,7 @@ class SoundCloudTest extends PHPUnit_Framework_TestCase
         putenv('strebo_soundcloud_1=b44373de55ef0a0048ff5de51c143db6');
         putenv('strebo_soundcloud_2=9b305fb370cf50d4a8d63d745c894d44');
         $soundcloud = new \Strebo\SocialNetworks\SoundCloud();
-        $time = json_decode($soundcloud->formatTime("2016/01/29 10:57:05 +0000"));
+        $time = json_decode($soundcloud->formatTime(strtotime("2016/01/29 10:57:05 +0000")));
 
         $this->assertEquals("29", $time->day);
         $this->assertEquals("01", $time->month);

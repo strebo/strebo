@@ -62,7 +62,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase
         putenv('strebo_twitter_3=BspGfBzzXbBKtdWpl0eL1cihi');
         putenv('strebo_twitter_4=I3ht3hDmG0vY2uTb32WaupyKQq7Rv0htaGW8x2DDhd5ExrNij9');
         $twitter = new \Strebo\SocialNetworks\Twitter();
-        $time = json_decode($twitter->formatTime("Mon Sep 24 03:35:21 +0000 2012"));
+        $time = json_decode($twitter->formatTime(strtotime("Mon Sep 24 03:35:21 +0000 2012")));
 
         $this->assertEquals("24", $time->day);
         $this->assertEquals("09", $time->month);
