@@ -57,9 +57,10 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
         if (!empty($decodedBody["data"])) {
             $feeds[] = $this->encodeJSON($decodedBody);
         }
-        $decodedBody = $likePosts->getDecodedBody();
-        if (!empty($decodedBody["data"])) {
-            foreach ($likePosts as $site) {
+
+        foreach ($likePosts as $site) {
+            $decodedBody = $site->getDecodedBody();
+            if (!empty($decodedBody["data"])) {
                 $feeds[] = $this->encodeJSON($site->getDecodedBody());
             }
         }
@@ -81,7 +82,7 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
                     'feed' => $feed]
             );
         }
-        
+
     }
 
     public function encodeJSON($json)
