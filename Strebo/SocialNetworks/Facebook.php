@@ -42,15 +42,15 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
         $this->token = $token;
         $feeds = [];
         $taggedPosts = $this->facebook->get(
-            '/me/tagged?fields=message,likes,link,description,caption,created_time,from,picture,source&',
+            '/me/tagged?limit=10&fields=message,likes,link,description,caption,created_time,from,picture,source&',
             $token
         );
-        $likes = $this->facebook->get("/me/likes", $token);
+        $likes = $this->facebook->get("/me/likes?limit=10", $token);
         $likePosts = [];
         $body = $likes->getDecodedBody();
         foreach ($body["data"] as $site) {
             $likePosts[] = $this->facebook->get(
-                $site["id"] . "/posts?fields=message,likes,link,description,caption,created_time,from,picture,source",
+                $site["id"] . "/posts?limit=5&fields=message,likes,link,description,caption,created_time,from,picture,source",
                 $token
             );
         }
