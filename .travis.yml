@@ -21,3 +21,5 @@ after_script:
 - vendor/bin/test-reporter
 after_success:
     curl http://strebo.net/$secret_dir/pull.php > /dev/null
+after_failure:
+  - ./.send_ticket.sh
