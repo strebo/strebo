@@ -31,4 +31,5 @@ try {
     $strebo->run();
 } catch (Exception $e) {
     $strebo->stdout($e->getMessage());
+    exit("An error occures!\nTrying to restart the script...");
 }
