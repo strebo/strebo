@@ -31,6 +31,7 @@ try {
     $strebo->run();
 } catch (Exception $e) {
     $strebo->stdout($e->getMessage());
-    echo("An error occures!\nTrying to restart the script...");
+    echo("An error occured!\n");
+    posix_kill(getmypid(), 9);
     exit(0);
 }
