@@ -40,7 +40,7 @@ exclude_paths:
 - "features/bootstrap/FeatureContext.php"
 - tests/
 - "Strebo/WebSocketServer.php"
-- "Strebo/DeprecatedSocialNetworks/"
+- DeprecatedSocialNetworks/
 - documentation/
 - libs/
 - resources/
