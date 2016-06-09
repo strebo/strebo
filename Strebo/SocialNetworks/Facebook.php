@@ -32,7 +32,7 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
     {
         $client = $this->facebook->getOAuth2Client();
         $token = $client->getAccessTokenFromCode($code[0], $this->getApiCallback());
-        $longTermToken=$client->getLongLivedAccessToken($token);
+        $longTermToken = $client->getLongLivedAccessToken($token);
         return [$longTermToken, null];
     }
 
@@ -134,7 +134,7 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
             $expiringDate = $expiringDate->getExpiresAt();
             $now = new \DateTime(date("Y-m-d H:i:s.u"));
             if ($now->diff($expiringDate)->format('%R') == "-") {
-                $user->removeToken($this->getName());
+                $user->removeAuthorizedToken($this->getName());
                 $user->removeClient($this->getName());
             }
         }

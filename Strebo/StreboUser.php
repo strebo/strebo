@@ -120,9 +120,9 @@ class StreboUser extends \Thread
         $this->timer = $timer;
     }
 
-    public function removeToken($network)
+    public function removeAuthorizedToken($network)
     {
-        unset($this->tokens[$network]);
+        unset($this->authorizedTokens[$network]);
     }
 
     public function removeClient($network)

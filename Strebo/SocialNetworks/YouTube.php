@@ -144,10 +144,12 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     public function isTokenValid($user)
     {
         $token = $user->getAuthorizedToken($this->getName());
-        $client = $this->buildYoutube(["token" => $token]);
-        if ($client != null && $client->getClient()->isAccessTokenExpired()) {
-            $user->removeToken($this->getName());
-            $user->removeClient($this->getName());
+        if ($token != null) {
+            $client = $this->buildYoutube(["token" => $token]);
+            if ($client->getClient()->isAccessTokenExpired()) {
+                $user->removeAuthorizedToken($this->getName());
+                $user->removeClient($this->getName());
+            }
         }
     }
 
