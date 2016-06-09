@@ -35,21 +35,15 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function connect($code)
     {
-        $oauthClient = new \Google_Client();
-        $oauthClient->setApplicationName("strebo");
-        $oauthClient->setClientId(getenv("strebo_youtube_3"));
-        $oauthClient->setClientSecret(getenv("strebo_youtube_4"));
-        $oauthClient->setRedirectUri($this->getApiCallback());
-        $tokenArray = $oauthClient->fetchAccessTokenWithAuthCode($code[0]);
-        $oauthClient->setAccessToken($tokenArray);
-        $oauthYoutube = new \Google_Service_YouTube($oauthClient);
-        return [$tokenArray, $oauthYoutube];
+        $oauthYoutube = $this->buildYoutube(["code" => $code[0]]);
+        return [$oauthYoutube->getClient()->getAccessToken(), null];
 
     }
 
     public function getPersonalFeed($user)
     {
-        $youtube = $user->getClient($this->getName());
+        $token = $user->getAuthorizedToken($this->getName());
+        $youtube = $this->buildYoutube(["token" => $token]);
         return $this->encodeJSON(
             $youtube->videos->listVideos(
                 "snippet,statistics",
@@ -143,10 +137,28 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function isTokenValid($user)
     {
-        $client = $user->getClient($this->getName());
+        $token = $user->getAuthorizedToken($this->getName());
+        $client = $this->buildYoutube(["token" => $token]);
         if ($client != null && $client->getClient()->isAccessTokenExpired()) {
             $user->removeToken($this->getName());
             $user->removeClient($this->getName());
         }
+    }
+
+    public function buildYoutube($token)
+    {
+        $oauthClient = new \Google_Client();
+        $oauthClient->setApplicationName("strebo");
+        $oauthClient->setClientId(getenv("strebo_youtube_3"));
+        $oauthClient->setClientSecret(getenv("strebo_youtube_4"));
+        $oauthClient->setRedirectUri($this->getApiCallback());
+        if (isset($token["code"])) {
+            $tokenArray = $oauthClient->fetchAccessTokenWithAuthCode($token['code']);
+            $oauthClient->setAccessToken($tokenArray);
+        }
+        if (isset($token["token"])) {
+            $oauthClient->setAccessToken($token["token"]);
+        }
+        return new \Google_Service_YouTube($oauthClient);
     }
 }

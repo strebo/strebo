@@ -41,7 +41,10 @@ class FourChan extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
                 if (isset($gitem["posts"][0]["sub"])) {
                     $item["title"] = $gitem["posts"][0]["sub"];
                 }
-                $item["author"] = $gitem["posts"][0]["name"];
+                $item["author"] = null;
+                if (isset($gitem["posts"][0]["name"])) {
+                    $item["author"] = $gitem["posts"][0]["name"];
+                }
                 $item["text"] = $gitem["posts"][0]["com"];
                 $item["link"] = "https://boards.4chan.org/news/thread/" . $gitem["posts"][0]["no"];
                 if (isset($gitem["posts"][0]["tim"])) {
