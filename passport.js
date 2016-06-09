@@ -81,7 +81,10 @@ module.exports = function (passport) {
             clientID: configAuth.youtubeAuth.clientID,
             clientSecret: configAuth.youtubeAuth.clientSecret,
             callbackURL: configAuth.youtubeAuth.callbackURL,
-            scope: ['https://www.googleapis.com/auth/youtube.readonly']
+            scope: ['https://www.googleapis.com/auth/youtube',
+                'https://www.googleapis.com/auth/youtube.force-ssl',
+                'https://www.googleapis.com/auth/youtube.readonly',
+                'https://www.googleapis.com/auth/youtubepartner']
 
         },
         function (/*token, tokenSecret, profile, done*/) {
