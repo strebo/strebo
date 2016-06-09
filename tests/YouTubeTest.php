@@ -19,19 +19,22 @@ class YouTubeTest extends PHPUnit_Framework_TestCase
         putenv('strebo_youtube_1=AIzaSyAH6n3wcnku2Ah3qZZrgWbXcxVgiAwF-Xk');
         putenv('strebo_youtube_2=AIzaSyA8OMzoY6nuaQyQyp3nDSqVpMbjL6juT8U');
         $youtube = new \Strebo\SocialNetworks\YouTube();
-        $result = json_decode($youtube->getPublicFeed(null));
-        $this->assertEquals("YouTube", $result->name);
-        $this->assertEquals("youtube", $result->icon);
-        $this->assertEquals("#e62117", $result->color);
-        $this->assertObjectHasAttribute("type", $result->feed[0]);
-        $this->assertObjectHasAttribute("tags", $result->feed[0]);
-        $this->assertObjectHasAttribute("title", $result->feed[0]);
-        $this->assertObjectHasAttribute("createdTime", $result->feed[0]);
-        $this->assertObjectHasAttribute("link", $result->feed[0]);
-        $this->assertObjectHasAttribute("author", $result->feed[0]);
-        $this->assertObjectHasAttribute("authorPicture", $result->feed[0]);
-        $this->assertObjectHasAttribute("numberOfLikes", $result->feed[0]);
-        $this->assertObjectHasAttribute("media", $result->feed[0]);
+        $result = $youtube->getPublicFeed(null);
+        if ($result != null) {
+            $result = json_decode($youtube->getPublicFeed(null));
+            $this->assertEquals("YouTube", $result->name);
+            $this->assertEquals("youtube", $result->icon);
+            $this->assertEquals("#e62117", $result->color);
+            $this->assertObjectHasAttribute("type", $result->feed[0]);
+            $this->assertObjectHasAttribute("tags", $result->feed[0]);
+            $this->assertObjectHasAttribute("title", $result->feed[0]);
+            $this->assertObjectHasAttribute("createdTime", $result->feed[0]);
+            $this->assertObjectHasAttribute("link", $result->feed[0]);
+            $this->assertObjectHasAttribute("author", $result->feed[0]);
+            $this->assertObjectHasAttribute("authorPicture", $result->feed[0]);
+            $this->assertObjectHasAttribute("numberOfLikes", $result->feed[0]);
+            $this->assertObjectHasAttribute("media", $result->feed[0]);
+        }
     }
 
     public function testGetPersonalFeed()
