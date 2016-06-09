@@ -38,7 +38,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     public function getPersonalFeed($user)
     {
         try {
-            $token = $user->getAuthorizedToken($this->getName());
+            $token = (array)$user->getAuthorizedToken($this->getName());
             $youtube = $this->buildYoutube(["token" => $token]);
             return $this->encodeJSON(
                 $youtube->videos->listVideos(
@@ -143,7 +143,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function isTokenValid($user)
     {
-        $token = $user->getAuthorizedToken($this->getName());
+        $token = (array)$user->getAuthorizedToken($this->getName());
         if ($token != null) {
             $client = $this->buildYoutube(["token" => $token]);
             if ($client->getClient()->isAccessTokenExpired()) {
