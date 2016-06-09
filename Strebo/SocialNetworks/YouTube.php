@@ -46,7 +46,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                     ["myRating" => "like", "maxResults" => 50]
                 )
             );
-        } catch (\Error $e) {
+        } catch (\Google_Service_Exception $e) {
             $e->getMessage();
             return null;
         }
@@ -56,7 +56,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     {
         try {
             return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 50, "q" => $tag]));
-        } catch (\Error $e) {
+        } catch (\Google_Service_Exception $e) {
             $e->getMessage();
             return null;
         }
@@ -81,8 +81,8 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                 );
             }
             return $this->encodeJSON($popularMedia);
-        } catch (\Google_IO_Exception $ioException) {
-            $ioException->getMessage();
+        } catch (\Google_Service_Exception $exception) {
+            $exception->getMessage();
             return null;
         }
     }
