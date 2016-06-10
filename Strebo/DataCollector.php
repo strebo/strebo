@@ -67,7 +67,7 @@ class DataCollector extends \Thread
         $results = [];
         foreach ($this->socialNetworks as $network => $instance) {
             if ($instance instanceof PublicInterface) {
-                $data = json_decode($instance->search($tag));
+                $data = json_decode($instance->search(urlencode($tag)));
 
                 if ($data != null) {
                     $results[$network] = $data;
