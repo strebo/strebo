@@ -1,6 +1,8 @@
 <?php
 namespace Strebo;
-
+/**
+ * @codeCoverageIgnore
+ */
 class WebSocketUser
 {
     public $socket;
