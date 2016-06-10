@@ -41,9 +41,9 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $token = (array)$user->getAuthorizedToken($this->getName());
             $youtube = $this->buildYoutube(["token" => $token]);
             return $this->encodeJSON(
-                $youtube->videos->listVideos(
-                    "snippet,statistics",
-                    ["myRating" => "like", "maxResults" => 50]
+                $youtube->activities->listActivities(
+                    "snippet",
+                    ["home" => "true", "maxResults" => 50]
                 )
             );
         } catch (\Google_Service_Exception $e) {
