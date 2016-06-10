@@ -96,13 +96,22 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
 
             $data['tags'] = null;
             $data['createdTime'] = parent::formatTime(strtotime($item["created_time"]));
-            if (isset($item["picture"])) {
+
+            if (isset($item["source"])) {
+                $data['type'] = "video";
+                $data['media'] = $item["source"];
+                $data['thumb'] = $item["picture"];
+            }
+
+            if (!isset($item["source"]) && isset($item["picture"])) {
                 $data['type'] = "image";
                 $data['media'] = $item["picture"];
+                $data['thumb'] = $item["picture"];
             }
-            if (!isset($item["picture"])) {
+            if (!isset($item["picture"]) && !isset($item["source"])) {
                 $data['type'] = "text";
                 $data['media'] = null;
+                $data['thumb'] = null;
             }
 
             $data['link'] = $item["link"];
@@ -114,9 +123,8 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
 
             $data['numberOfLikes'] = null;
             if (isset($item["likes"])) {
-                $data['numberOfLikes'] = count($item["likes"]);
+                $data['numberOfLikes'] = count($item["likes"]["data"]);
             }
-            $data['thumb'] = $item["picture"];
             $data['title'] = null;
             $data['text'] = null;
             if (isset($item["message"])) {

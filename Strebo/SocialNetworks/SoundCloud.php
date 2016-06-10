@@ -4,7 +4,7 @@ namespace Strebo\SocialNetworks;
 use Strebo;
 use SoundCloud\Client as SoundCloudAPI;
 
-class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInterface, Strebo\PublicInterface
+class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PublicInterface
 {
 
     private $client = null;
@@ -24,7 +24,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
         $this->client = new SoundCloudAPI($this->getApiKey(), $this->getApiSecret(), $this->getApiCallback());
     }
 
-    public function connect($code)
+    /*public function connect($code)
     {
         $response = json_decode($this->client->post(
             "https://api.soundcloud.com/oauth2/token",
@@ -47,7 +47,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
         $oauthSoundCloud = $user->getClient($this->getName());
         $this->public = false;
         return $this->encodeJSON($oauthSoundCloud->get("https://api.soundcloud.com/me/activities"));
-    }
+    }*/
 
 
     public function search($tag)
@@ -123,7 +123,7 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
         return json_encode($newJSON);
     }
 
-    public function isTokenValid($user)
+   /* public function isTokenValid($user)
     {
         try {
             $oauthSoundCloud = $user->getClient($this->getName());
@@ -134,5 +134,5 @@ class SoundCloud extends Strebo\AbstractSocialNetwork implements Strebo\PrivateI
             $user->removeAuthorizedToken($this->getName());
             $user->removeClient($this->getName());
         }
-    }
+    }*/
 }
