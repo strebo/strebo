@@ -123,7 +123,7 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
             $data['authorPicture'] = $body["picture"]["data"]["url"];
 
             $likes = $this->facebook->get($item["id"] . "/likes?summary=true", $this->token)->getDecodedBody();
-            $data['numberOfLikes'] = $likes->summary->total_count;
+            $data['numberOfLikes'] = $likes["summary"]["total_count"];
             $data['title'] = null;
             $data['text'] = null;
             if (isset($item["message"])) {
