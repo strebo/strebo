@@ -15,7 +15,7 @@ install:
 before_script:
 - echo "sonar.host.url=http://sonarqube.it.dh-karlsruhe.de" >> sonar-scanner-2.6/conf/sonar-scanner.properties
 script:
-- vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist Strebo/SocialNetworks/ tests/ Strebo/AbstractSocialNetwork.php Strebo/DataCollector.php Strebo/PrivateInterface.php Strebo/PublicInterface.php Strebo/SocialNetworkFactory.php Strebo/StreboServer.php Strebo/StreboUser.php
+- vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist Strebo/ tests/
 - sonar-scanner-2.6/bin/sonar-scanner
 after_script:
 - vendor/bin/test-reporter
