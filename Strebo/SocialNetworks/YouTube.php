@@ -107,14 +107,15 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
             $data['link'] = "https://www.youtube.com/watch?v=" . $id;
             $data['author'] = $item->snippet->channelTitle;
-            $channel = $this->youtube->channels->listChannels("contentDetails", ["id" => $item->snippet->channelId]);
             $profile = null;
-            if (isset($channel->items[0]->contentDetails->googlePlusUserId)) {
-                try {
+            try {
+                $channel = $this->youtube->channels->listChannels("contentDetails", ["id" => $item->snippet->channelId]);
+                if (isset($channel->items[0]->contentDetails->googlePlusUserId)) {
                     $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
-                } catch (\Google_Service_Exception $e) {
-                    $profile = null;
                 }
+            } catch (\Google_Service_Exception $e) {
+                $e->getMessage();
+
             }
             $data['authorPicture'] = null;
             if (isset($profile->image)) {
