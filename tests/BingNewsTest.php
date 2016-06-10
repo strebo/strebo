@@ -49,6 +49,15 @@ class BingNewsTest extends PHPUnit_Framework_TestCase
 
     public function testFormatTime()
     {
-        // TO BE DONE
+        $bing = new \Strebo\SocialNetworks\BingNews();
+        $time=json_decode($bing->formatTime(strtotime("Thu, 09 Jun 2016 23:59:00 GMT")));
+
+        $this->assertEquals("09", $time->day);
+        $this->assertEquals("06", $time->month);
+        $this->assertEquals("2016", $time->year);
+        $this->assertEquals("23", $time->hour);
+        $this->assertEquals("59", $time->minute);
+        $this->assertEquals("00", $time->second);
+
     }
 }

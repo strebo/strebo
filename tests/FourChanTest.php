@@ -46,7 +46,15 @@ class FourChanTest extends PHPUnit_Framework_TestCase
 
     public function testFormatTime()
     {
-        // TO BE DONE
+        $chan = new \Strebo\SocialNetworks\FourChan();
+        $time=json_decode($chan->formatTime(1448638702));
+        $this->assertEquals("27", $time->day);
+        $this->assertEquals("11", $time->month);
+        $this->assertEquals("2015", $time->year);
+        $this->assertEquals("15", $time->hour);
+        $this->assertEquals("38", $time->minute);
+        $this->assertEquals("22", $time->second);
+
     }
 }
 
