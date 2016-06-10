@@ -45,7 +45,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $videos = [];
             foreach ($channels->items as $item) {
                 array_merge(
-                    $videos[],
+                    $videos,
                     json_decode(
                         $this->encodeJSON(
                             $youtube->search->listSearch("snippet", ["maxResults" => 5, "channelId" => $item->id])
