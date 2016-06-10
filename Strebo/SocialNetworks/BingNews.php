@@ -53,7 +53,7 @@ class BingNews extends Strebo\AbstractSocialNetwork implements Strebo\PublicInte
 
         $data = $parser->execute();
         $feed = [];
-        if ($data->items[0]->hasNamespace('News')) {
+        if (isset($items[0]) && $data->items[0]->hasNamespace('News')) {
             foreach ($data->items as $value) {
                 $item = [];
                 $item['type'] = 'image';
