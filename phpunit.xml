@@ -7,8 +7,7 @@
     processIsolation="true"
     stopOnFailure="true"
     syntaxCheck="false"
-    backupGlobals="false"
-    bootstrap="test-bootstrap.php">
+    backupGlobals="false">
     <testsuites>
         <testsuite name="php-dba-cache">
           <directory suffix="Test.php">tests</directory>
