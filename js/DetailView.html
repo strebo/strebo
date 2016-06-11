@@ -18,7 +18,7 @@
                 <img alt="Attached Picture" ng-if="currentItem.type === 'image'" class="center" ng-src="{{currentItem.media}}" style="max-height:100%; max-width:100%;" />
                 <video ng-if="currentItem.type === 'video' && currentItem.socialNetwork.name != 'YouTube'"
                        class="center" style="max-height:100%; max-width:100%;"
-                       ng-src="{{currentItem.media | trustUrl}}" controls></video>
+                       ng-src="{{currentItem.media | trustUrl}}" autoplay loop controls></video>
                 <div class="center" style="font-size:2rem;width:80%;padding:2vh;border:0.2vh solid #eee;"
                      ng-if="currentItem.type === 'text'"
                      ng-bind-html="currentItem.text | urlFilter | hashFilter">
