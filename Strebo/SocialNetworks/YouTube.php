@@ -41,9 +41,16 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $token = (array)$user->getAuthorizedToken($this->getName());
             $youtube = $this->buildYoutube(["token" => $token]);
 
-            $channels = $youtube->activities->listActivities("snippet", ["home" => "true", "maxResults" => 10]);
+            $channels = $youtube->activities->listActivities("snippet", ["home" => "true"]);
             $videos = [];
+            $count = 0;
             foreach ($channels->items as $item) {
+                if ($count == 10) {
+                    break;
+                }
+                if (strcasecmp($item->snippet->type, "recommendation") != 0) {
+                    continue;
+                }
                 $videos = array_merge(
                     $videos,
                     json_decode(
@@ -55,6 +62,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                         )
                     )->feed
                 );
+                $count++;
             }
 
             return json_encode(['name' => parent::getName(),
@@ -176,8 +184,14 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     {
         $oauthClient = new \Google_Client();
         $oauthClient->setApplicationName("strebo");
-        $oauthClient->setClientId(getenv("strebo_youtube_3"));
-        $oauthClient->setClientSecret(getenv("strebo_youtube_4"));
+
+        if (!isset($token["code"]) && !isset($token["token"])) {
+            $oauthClient->setDeveloperKey(getenv("strebo_youtube_1"));
+        }
+        if (isset($token["code"]) || isset($token["token"])) {
+            $oauthClient->setClientId(getenv("strebo_youtube_3"));
+            $oauthClient->setClientSecret(getenv("strebo_youtube_4"));
+        }
         $oauthClient->setRedirectUri($this->getApiCallback());
         if (isset($token["code"])) {
             $tokenArray = $oauthClient->fetchAccessTokenWithAuthCode($token['code']);
