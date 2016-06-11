@@ -40,14 +40,28 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         try {
             $token = (array)$user->getAuthorizedToken($this->getName());
             $youtube = $this->buildYoutube(["token" => $token]);
-            return $this->encodeJSON(
-                $youtube->activities->listActivities(
-                    "snippet",
-                    ["home" => "true", "maxResults" => 50]
-                )
-            );
+
+            $channels = $youtube->activities->listActivities("snippet", ["home" => "true", "maxResults" => 10]);
+            $videos = [];
+            foreach ($channels->items as $item) {
+                array_merge(
+                    $videos,
+                    json_decode(
+                        $this->encodeJSON(
+                            $youtube->search->listSearch(
+                                "snippet", ["maxResults" => 5, "channelId" => $item->snippet->channelId]
+                            )
+                        )
+                    )->feed
+                );
+            }
+
+            return json_encode(['name' => parent::getName(),
+                'icon' => parent::getIcon(),
+                'color' => parent::getColor(),
+                'feed' => $videos]);
         } catch (\Google_Service_Exception $e) {
-            $e->getMessage();
+            print_r($e->getMessage());
             return null;
         }
     }
@@ -57,7 +71,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
         try {
             return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 50, "q" => $tag]));
         } catch (\Google_Service_Exception $e) {
-            $e->getMessage();
+            print_r($e->getMessage());
             return null;
         }
     }
@@ -82,7 +96,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             }
             return $this->encodeJSON($popularMedia);
         } catch (\Google_Service_Exception $exception) {
-            $exception->getMessage();
+            print_r($exception->getMessage());
             return null;
         }
     }
@@ -114,7 +128,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                     $profile = $this->googlePlus->people->get($channel->items[0]->contentDetails->googlePlusUserId);
                 }
             } catch (\Google_Service_Exception $e) {
-                $e->getMessage();
+                print_r($e->getMessage());
 
             }
             $data['authorPicture'] = null;

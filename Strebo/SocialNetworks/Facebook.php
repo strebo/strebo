@@ -50,7 +50,8 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
         $body = $likes->getDecodedBody();
         foreach ($body["data"] as $site) {
             $likePosts[] = $this->facebook->get(
-                $site["id"] . "/posts?limit=5&fields=message,likes,link,description,caption,created_time,from,picture,source",
+                $site["id"] .
+                "/posts?limit=5&fields=message,likes,link,description,caption,created_time,from,picture,source",
                 $token
             );
         }
@@ -121,10 +122,8 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
             $body = $author->getDecodedBody();
             $data['authorPicture'] = $body["picture"]["data"]["url"];
 
-            $data['numberOfLikes'] = null;
-            if (isset($item["likes"])) {
-                $data['numberOfLikes'] = count($item["likes"]["data"]);
-            }
+            $likes = $this->facebook->get($item["id"] . "/likes?summary=true", $this->token)->getDecodedBody();
+            $data['numberOfLikes'] = $likes["summary"]["total_count"];
             $data['title'] = null;
             $data['text'] = null;
             if (isset($item["message"])) {
