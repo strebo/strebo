@@ -44,12 +44,13 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $channels = $youtube->activities->listActivities("snippet", ["home" => "true", "maxResults" => 10]);
             $videos = [];
             foreach ($channels->items as $item) {
-                array_merge(
+                $videos = array_merge(
                     $videos,
                     json_decode(
                         $this->encodeJSON(
                             $youtube->search->listSearch(
-                                "snippet", ["maxResults" => 5, "channelId" => $item->snippet->channelId]
+                                "snippet",
+                                ["maxResults" => 5, "channelId" => $item->snippet->channelId, "type" => "video"]
                             )
                         )
                     )->feed
@@ -69,7 +70,10 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
     public function search($tag)
     {
         try {
-            return $this->encodeJSON($this->youtube->search->listSearch("snippet", ["maxResults" => 50, "q" => $tag]));
+            return $this->encodeJSON($this->youtube->search->listSearch(
+                "snippet",
+                ["maxResults" => 50, "type" => "video", "q" => $tag]
+            ));
         } catch (\Google_Service_Exception $e) {
             print_r($e->getMessage());
             return null;
