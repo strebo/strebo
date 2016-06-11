@@ -21,7 +21,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             null,
             "http://strebo.net?YouTube=1"
         );
-        $this->youtube = $this->buildYoutube(null);
+        $this->youtube = $this->buildYoutube([null]);
         $client = new \Google_Client();
         $client->setApplicationName("strebo_google_plus");
         $client->setDeveloperKey(getenv("strebo_youtube_2"));
