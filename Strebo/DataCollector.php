@@ -104,8 +104,10 @@ class DataCollector extends \Thread
     public function connect($user, $network)
     {
         $oauth = $this->socialNetworks[$network]->connect($user->getToken($network));
-        $user->addAuthorizedToken($network, $oauth[0]);
-        $user->addClient($network, $oauth[1]);
+        if ($oauth != null) {
+            $user->addAuthorizedToken($network, $oauth[0]);
+            $user->addClient($network, $oauth[1]);
+        }
     }
 
     public function run()

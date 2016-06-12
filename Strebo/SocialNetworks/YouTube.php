@@ -30,9 +30,13 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
 
     public function connect($code)
     {
-        $oauthYoutube = $this->buildYoutube(["code" => $code[0]]);
-        return [$oauthYoutube->getClient()->getAccessToken(), null];
-
+        try {
+            $oauthYoutube = $this->buildYoutube(["code" => $code[0]]);
+            return [$oauthYoutube->getClient()->getAccessToken(), null];
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            return null;
+        }
     }
 
     public function getPersonalFeed($user)
@@ -41,7 +45,7 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
             $token = (array)$user->getAuthorizedToken($this->getName());
             $youtube = $this->buildYoutube(["token" => $token]);
 
-            $channels = $youtube->activities->listActivities("snippet", ["home" => "true"]);
+            $channels = $youtube->activities->listActivities("snippet", ["home" => "true", "maxResults" => 50]);
             $videos = [];
             $count = 0;
             foreach ($channels->items as $item) {

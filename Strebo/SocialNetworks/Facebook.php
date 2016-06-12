@@ -30,10 +30,15 @@ class Facebook extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInt
 
     public function connect($code)
     {
-        $client = $this->facebook->getOAuth2Client();
-        $token = $client->getAccessTokenFromCode($code[0], $this->getApiCallback());
-        $longTermToken = $client->getLongLivedAccessToken($token);
-        return [$longTermToken, null];
+        try {
+            $client = $this->facebook->getOAuth2Client();
+            $token = $client->getAccessTokenFromCode($code[0], $this->getApiCallback());
+            $longTermToken = $client->getLongLivedAccessToken($token);
+            return [$longTermToken, null];
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            return null;
+        }
     }
 
     public function getPersonalFeed($user)
