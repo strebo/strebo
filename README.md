@@ -37,7 +37,7 @@ You can install the dependencies here with ``npm install``.
 
 In addition there is a need of a Webserver like **Apache**.
 
-## start
+### start
 
 Execute the following commands in the shell:
 ``php start.php``
@@ -45,7 +45,19 @@ and
 ``node server.js``
 to start the servers.
 
-##extensions
+## installation with Docker
+
+### build the docker image
+
+Build the docker image with (make sure you are in the same repository as our dockerfile) :
+``docker build -t strebo .``
+
+### run the image
+
+After the build process you just have to run it:
+``docker run -it -p 80:80 -p 8080:8080 -p 443:443``
+
+## extensions
 
 The extensions are located in **Strebo/SocialNetworks**. If you want to add a social network please fork our project and make a pull request. It's sufficient to add a class there which inhertis from the AbstractSocialNetwork and implements the PublicInterface or PrivateInterface (or both). The new social network will be automatically and dynamically included.
 
