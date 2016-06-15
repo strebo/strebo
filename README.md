@@ -23,7 +23,25 @@ Core features:
 
 Enjoy!
 
-## installation
+## installation with docker
+
+Please be sure you have installed docker and you are in the root directory of our project.
+
+Build the docker image with:
+
+``docker build -t strebo .``
+
+After the build process you just have to run it:
+
+``docker run -it -p 80:80 -p 8080:8080 -p 443:443``
+
+Et voilà:
+
+<img src="https://strebo.files.wordpress.com/2016/06/screenshot.png" alt="screenshot"  />
+
+<strong>Hint:</strong> The personal board for what logins are required <em>WON'T</em> work. For this you would have to need to create your own accounts and applications on several social networks. Since in our applications is set that only strebo.net is a valid request and redirect URI.
+
+## manual installation
 Please make sure you have **PHP7** (**thread-safe** version) installed and you have enabled the required extensions. An additional extension you have to download is **pthreads**. Follow the instruction of http://tzfrs.de/2014/07/fix-it-the-right-way-ssl-error-unable-to-get-local-issuer-certificate/ to enable HTTPS calls to social network APIs.
 
 To install the required frameworks we use **Composer**. Execute the following commands in the shell in the directory of the project:
@@ -44,18 +62,6 @@ Execute the following commands in the shell:
 and
 ``node server.js``
 to start the servers.
-
-## installation with Docker
-
-### build the docker image
-
-Build the docker image with (make sure you are in the same repository as our dockerfile) :
-``docker build -t strebo .``
-
-### run the image
-
-After the build process you just have to run it:
-``docker run -it -p 80:80 -p 8080:8080 -p 443:443``
 
 ## extensions
 
