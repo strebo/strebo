@@ -69,6 +69,27 @@ class YouTube extends Strebo\AbstractSocialNetwork implements Strebo\PrivateInte
                 $count++;
             }
 
+            if (count($videos) == 0) {
+                $count = 0;
+                foreach ($channels->items as $item) {
+                    if ($count == 10) {
+                        break;
+                    }
+                    $videos = array_merge(
+                        $videos,
+                        json_decode(
+                            $this->encodeJSON(
+                                $youtube->search->listSearch(
+                                    "snippet",
+                                    ["maxResults" => 5, "channelId" => $item->snippet->channelId, "type" => "video"]
+                                )
+                            )
+                        )->feed
+                    );
+                    $count++;
+                }
+            }
+
             return json_encode(['name' => parent::getName(),
                 'icon' => parent::getIcon(),
                 'color' => parent::getColor(),

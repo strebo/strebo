@@ -23,7 +23,25 @@ Core features:
 
 Enjoy!
 
-## installation
+## installation with docker
+
+Please be sure you have installed docker and you are in the root directory of our project.
+
+Build the docker image with:
+
+``docker build -t strebo .``
+
+After the build process you just have to run it:
+
+``docker run -it -p 80:80 -p 8080:8080 -p 443:443``
+
+Et voilà:
+
+<img src="https://strebo.files.wordpress.com/2016/06/screenshot.png" alt="screenshot"  />
+
+<strong>Hint:</strong> The personal board for what logins are required <em>WON'T</em> work. For this you would have to need to create your own accounts and applications on several social networks. Since in our applications is set that only strebo.net is a valid request and redirect URI.
+
+## manual installation
 Please make sure you have **PHP7** (**thread-safe** version) installed and you have enabled the required extensions. An additional extension you have to download is **pthreads**. Follow the instruction of http://tzfrs.de/2014/07/fix-it-the-right-way-ssl-error-unable-to-get-local-issuer-certificate/ to enable HTTPS calls to social network APIs.
 
 To install the required frameworks we use **Composer**. Execute the following commands in the shell in the directory of the project:
@@ -37,7 +55,7 @@ You can install the dependencies here with ``npm install``.
 
 In addition there is a need of a Webserver like **Apache**.
 
-## start
+### start
 
 Execute the following commands in the shell:
 ``php start.php``
@@ -45,7 +63,7 @@ and
 ``node server.js``
 to start the servers.
 
-##extensions
+## extensions
 
 The extensions are located in **Strebo/SocialNetworks**. If you want to add a social network please fork our project and make a pull request. It's sufficient to add a class there which inhertis from the AbstractSocialNetwork and implements the PublicInterface or PrivateInterface (or both). The new social network will be automatically and dynamically included.
 
