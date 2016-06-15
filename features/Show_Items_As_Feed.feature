@@ -13,4 +13,4 @@ Feature: Show Items as Feed
     When |I press "Feed View"
     Then | I get posts of the single social networks
     And | There is an Error while fetching Data
-    And | I show an Error Message
+    And | I should see an Error Message
