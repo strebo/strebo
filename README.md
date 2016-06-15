@@ -33,7 +33,7 @@ Build the docker image with:
 
 After the build process you just have to run it:
 
-``docker run -it -p 80:80 -p 8080:8080 -p 443:443``
+``docker run -it -p 80:80 -p 8080:8080 -p 443:443 strebo``
 
 Et voilà:
 
